@@ -1,0 +1,21 @@
+title: User Manual
+lang: en
+description: Turtlebot4 User Manual
+
+remote_theme: rundocs/jekyll-rtd-theme
+
+readme_index:
+  with_frontmatter: true
+
+include:
+  - _includes
+
+exclude:
+  - Makefile
+  - Gemfile
+  - Gemfile.lock
+
+plugins:
+  - jemoji
+  - jekyll-avatar
+  - jekyll-mentions
