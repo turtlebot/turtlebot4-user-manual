@@ -4,6 +4,24 @@ sort: 3
 
 # Quick Start
 
+## Network Configuration
+
+ROS2 Galactic supports two middlewares: [CycloneDDS](https://github.com/eclipse-cyclonedds/cyclonedds) and [FastRTPS](https://github.com/eProsima/Fast-DDS). The default is CycloneDDS.
+
+The Create® 3 and Raspberry Pi both use the `usb0` and `wlan0` network interfaces to communicate. As a result, CycloneDDS needs to be configured on the user PC in order to see the robot topics properly.
+
+CycloneDDS is configured in an XML file, and that configuration should be applied to the `CYCLONEDDS_URI` environment variable.
+
+Add this line to your `~/.bashrc` file to automatically configure CycloneDDS each time you open your terminal:
+
+```bash
+export CYCLONEDDS_URI='<CycloneDDS><Domain><General><DontRoute>true</></></></>'
+```
+
+For more CycloneDDS configuration options, visit the [CycloneDDS documentation](https://github.com/eclipse-cyclonedds/cyclonedds#run-time-configuration).
+
+If you wish to switch middlewares or want more information on configuring the Create® 3, check out the [Create® 3 Docs](https://iroboteducation.github.io/create3_docs/setup/xml-config/).
+
 ## WiFi Setup
 
 - Power on the robot by placing it on its dock.
