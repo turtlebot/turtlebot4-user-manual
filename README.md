@@ -1,6 +1,6 @@
 # Turtlebot4 User Manual
 
-This repository contains the source code for building the Turtlebot4 User Manual. To view the manual, click [here](https://turtlebot.github.io/turtlebot4_manual/).
+This repository contains the source code for building the Turtlebot4 User Manual. To view the manual, click [here](https://turtlebot.github.io/turtlebot4-user-manual/).
 
 ## Build
 
