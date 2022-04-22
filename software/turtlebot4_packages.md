@@ -92,7 +92,6 @@ The TurtleBot 4 can also use all of the actions, messages, and services that the
 
 #### Services
 * [EStop](https://github.com/iRobotEducation/irobot_create_msgs/blob/main/srv/EStop.srv): Set system EStop on or off, cutting motor power when on and enabling motor power when off.
-* [ResetPose](https://github.com/iRobotEducation/irobot_create_msgs/blob/main/srv/ResetPose.srv): Reset the robot pose estimate to the specified value.
 * [RobotPower](https://github.com/iRobotEducation/irobot_create_msgs/blob/main/srv/RobotPower.srv): Power off robot.
 
 See [irobot_create_msgs](https://github.com/iRobotEducation/irobot_create_msgs) for more details.

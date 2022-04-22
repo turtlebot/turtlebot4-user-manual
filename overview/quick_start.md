@@ -74,8 +74,15 @@ sudo wifi.sh -a
 </figure>
 
 - The Create® 3 is now in AP mode. Connect to its WiFi network called 'Create-XXXX'
-- In a browser go to 192.168.10.1
-- Click connect and enter your WiFi ssid and password
+- In a browser go to `192.168.10.1`
+- Go to the Connect tab, enter your WiFi ssid and password, and then click 'Connect'
+
+<figure class="aligncenter">
+    <img src="media/create3_connect.png" alt="Create 3 connect" style="width: 100%"/>
+    <figcaption>Connecting the Create® 3 to WiFi</figcaption>
+</figure>
+
+
 - Wait for it to connect to WiFi and play a chime
 - On your PC, run `ros2 topic list` to ensure that the Create® 3 is publishing its topics
 
@@ -114,6 +121,35 @@ It is recommended to update both the Create® 3 and the Raspberry Pi when you fi
 
 ### Create® 3
 
+Check the [Create® 3 software releases] to see if a newer firmware version is available. You can check the firmware version of your robot by visiting the Create® 3's webserver.
+
+#### Update over WiFi
+
+The Create® 3 can be updated through its webserver. There are two options to connect to the webserver:
+
+##### Find the IP address of the Create® 3 on your WiFi network.
+
+This can be done by going to your routers portal and viewing connected devices. You should see the Create® 3 in your Wireless Clients if it is connected.
+
+Enter the IP address into a browser. You will be taken to the Create® 3 webserver.
+
+Go to the Update tab and click the 'Update' button. The robot will automatically download and install the latest firmware.
+
+<figure class="aligncenter">
+    <img src="media/create3_update.png" alt="Create 3 Update" style="width: 50%"/>
+    <figcaption>Updating the Create® 3 over WiFi</figcaption>
+</figure>
+
+
+##### Place the robot into AP mode.
+
+If you cannot find the IP address of the Create® 3 on your WiFi network, you can alternatively put it into AP mode and connect directly to it with your PC:
+
+- Download the latest firmware from <http://edu.irobot.com/create3-latest-fw>.
+- Place the robot into AP mode and access the webserver. See [Create® 3 WiFi Setup](#create-3-wifi-setup).
+- Go to the Update tab and click on the link to update from firmware file.
+- Upload the latest firmware and wait for the robot to be updated.
+
 #### Update over USB-C
 
 Download the latest firmware from <http://edu.irobot.com/create3-latest-fw>.
@@ -138,13 +174,7 @@ curl -X POST --data-binary @Create3-G.X.Y.swu http://192.168.186.2/api/firmware-
 
 This may take a few minutes.
 
-#### Update over WiFi
 
-Find the IP address of the Create 3 on your WiFi network.
-
-Enter the IP address into a browser. You will be taken to the Create 3 portal.
-
-Click on update and either upload 
 
 ### Debian packages
 
