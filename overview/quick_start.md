@@ -30,7 +30,7 @@ If you wish to switch middlewares or want more information on configuring the Cr
 
 - On the first boot, the Raspberry Pi will enter AP mode which will allow you to connect to it over WiFi.
 
-- On a PC, connect to the `TurtleBot4` WiFi network. The password is also `TurtleBot4`.
+- On a PC, connect to the `Turtlebot4` WiFi network. The password is also `Turtlebot4`.
 
 - Once connected, you can SSH into the Raspberry Pi to configure its WiFi.
 
