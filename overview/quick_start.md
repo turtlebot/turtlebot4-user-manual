@@ -6,7 +6,7 @@ sort: 3
 
 ## Powering on the robot
 
-To power the robot, place it on the charging dock. The Create® 3 lightring will turn on and the Raspberry Pi will be powered as well. To power off the robot, press and hold the Power button on the Create® 3. The lightring will flash 3 times, and the Create® 3 will play a sound before turning off.
+To power the robot, place it on the charging dock. The Create® 3 lightring will turn on and the Raspberry Pi will be powered as well. To power off the robot, remove it from the dock and press and hold the Power button on the Create® 3. The lightring will flash 3 times, and the Create® 3 will play a sound before turning off.
 
 ## Installing ROS2 Galactic on your PC
 
