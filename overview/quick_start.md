@@ -4,6 +4,31 @@ sort: 3
 
 # Quick Start
 
+## Powering on the robot
+
+To power the robot, place it on the charging dock. The Create® 3 lightring will turn on and the Raspberry Pi will be powered as well. To power off the robot, press and hold the Power button on the Create® 3. The lightring will flash 3 times, and the Create® 3 will play a sound before turning off.
+
+## Installing ROS2 Galactic on your PC
+
+Follow [these instructions](https://docs.ros.org/en/galactic/Installation/Ubuntu-Install-Debians.html) to install ROS2 Galactic Desktop on your PC.
+
+Also, install useful tools with this command:
+
+```bash
+sudo apt update && sudo apt install -y \
+  build-essential \
+  cmake \
+  git \
+  python3-colcon-common-extensions \
+  python3-flake8 \
+  python3-pip \
+  python3-pytest-cov \
+  python3-rosdep \
+  python3-setuptools \
+  python3-vcstool \
+  wget
+```
+
 ## Network Configuration
 
 ROS2 Galactic supports two middlewares: [CycloneDDS](https://github.com/eclipse-cyclonedds/cyclonedds) and [FastRTPS](https://github.com/eProsima/Fast-DDS). The default is CycloneDDS.
@@ -24,10 +49,6 @@ If you wish to switch middlewares or want more information on configuring the Cr
 
 ## WiFi Setup
 
-- Power on the robot by placing it on its dock.
-
-- The Raspberry Pi will boot after a few moments. 
-
 - On the first boot, the Raspberry Pi will enter AP mode which will allow you to connect to it over WiFi.
 
 - On a PC, connect to the `Turtlebot4` WiFi network. The password is also `Turtlebot4`.
@@ -42,17 +63,54 @@ ssh ubuntu@10.42.0.1
 - In `/usr/local/bin` there will be a script called `wifi.sh` which can be used to configure the Raspberry Pi's WiFi:
 
 ```bash
-sudo wifi.sh -s "YOUR_WIFI_SSID" -p "YOUR_WIFI_PASSWORD" -r YOUR_REGULATORY_DOMAIN && sudo reboot
+sudo wifi.sh -s '<WIFI_SSID>' -p '<WIFI_PASSWORD>' -r <REGULATORY_DOMAIN> && sudo reboot
 ```
 
 ```note
-The Regulatory domain is based on the country you live in. For a full list, click [here](https://www.arubanetworks.com/techdocs/InstantWenger_Mobile/Advanced/Content/Instant%20User%20Guide%20-%20volumes/Country_Codes_List.htm#regulatory_domain_3737302751_1017918).
+The Regulatory Domain is based on the country you live in. USA: `US`, Canada: `CA`, UK: `GB`, Germany: `DE`, Japan: `JP3`, Spain: `ES`. For a full list, click [here](https://www.arubanetworks.com/techdocs/InstantWenger_Mobile/Advanced/Content/Instant%20User%20Guide%20-%20volumes/Country_Codes_List.htm#regulatory_domain_3737302751_1017918).
 ```
 
 - Your Raspberry Pi will reboot and connect to your WiFi network.
-- On your PC, run `ros2 topic list` to ensure that the TurtleBot 4 is publishing its topics.
-- Run `ros2 topic echo /ip` to read the new IP of the Raspberry Pi. On the TurtleBot 4 Standard this will also be displayed on the screen.
-- You can now SSH into the TurtleBot 4's Raspberry Pi at the new IP and begin using it.
+
+### Find the Raspberry Pi IP on your network
+
+The TurtleBot 4 will display its WiFi IP address on the display.
+
+<figure class="aligncenter">
+    <img src="media/display_ip.jpg" alt="IP Address" style="width: 30%"/>
+    <figcaption>WiFi IP address on a TurtleBot 4</figcaption>
+</figure>
+
+For the TurtleBot 4 Lite, you will need to check the `/ip` topic for the new address.
+
+On your PC, run the following commands:
+
+```bash
+source /opt/ros/galactic/setup.bash
+ros2 topic echo /ip
+```
+
+You should see the IP address printed out in your terminal periodically.
+
+<figure class="aligncenter">
+    <img src="media/ip_echo.png" alt="IP Echo" style="width: 60%"/>
+    <figcaption>Echoing the IP address of a TurtleBot 4</figcaption>
+</figure>
+
+If you are unable to find the IP address with the previous methods, you can try to use:
+
+```bash
+nmap -sP 192.168.1.0/24
+```
+
+Make sure to replace `192.168.1` with your subnet.
+
+<figure class="aligncenter">
+    <img src="media/nmap.png" alt="nmap" style="width: 60%"/>
+    <figcaption>Scanning IP Addresses with nmap</figcaption>
+</figure>
+
+Once you have found the IP address, you can now ssh back into the robot with it.
 
 ```bash
 ssh ubuntu@xxx.xxx.xxx.xxx

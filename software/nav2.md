@@ -11,7 +11,7 @@ sort: 6
 
 ### Launch files
 
-- **Nav2 Bringup**: Launches Nav2 nodes, with the option to launch SLAM or Localization as well.
+- **Nav Bringup**: Launches Nav2 nodes, with the option to launch SLAM or Localization as well.
 
 ### Parameters
 
@@ -39,7 +39,7 @@ The default TurtleBot 4 configuration can be found [here](https://github.com/tur
 Launching Nav2 with synchronous SLAM:
 
 ```bash
-ros2 launch turtlebot4_navigation nav2_bringup.launch.py slam:=sync
+ros2 launch turtlebot4_navigation nav_bringup.launch.py slam:=sync
 ```
 
 The map and costmaps can be viewed in Rviz2:
