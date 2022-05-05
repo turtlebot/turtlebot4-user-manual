@@ -23,10 +23,12 @@ sort: 2
     - slam_toolbox: <https://github.com/SteveMacenski/slam_toolbox>
 
 ### TurtleBot 4
-  - Common package: <https://github.com/turtlebot/turtlebot4>
-  - Desktop visualization package: <https://github.com/turtlebot/turtlebot4_desktop>
-  - Simulator package: <https://github.com/turtlebot/turtlebot4_simulator>
-  - Robot package: <https://github.com/turtlebot/turtlebot4_robot>
+  - TurtleBot 4 Common packages: <https://github.com/turtlebot/turtlebot4>
+  - TurtleBot 4 Desktop visualization packages: <https://github.com/turtlebot/turtlebot4_desktop>
+  - TurtleBot 4 Simulator packages: <https://github.com/turtlebot/turtlebot4_simulator>
+  - TurtleBot 4 Robot packages: <https://github.com/turtlebot/turtlebot4_robot>
+  - TurtleBot 4 examples: <https://github.com/turtlebot/turtlebot4_examples>
+  - TurtleBot 4 tutorials: <https://github.com/turtlebot/turtlebot4_tutorials>
   - TurtleBot 4 images: <http://download.ros.org/downloads/turtlebot4/>
   - TurtleBot 4 hardware: <https://github.com/turtlebot/turtlebot4-hardware>
 

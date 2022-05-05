@@ -8,7 +8,7 @@ The TurtleBot 4 has 4 main repositories for software: [`turtlebot4`](https://git
 
 ## TurtleBot 4
 
-The `turtlebot4` metapackage contains common packages that are used by both `turtlebot4_robot` and `turtlebot4_simulator`.
+The `turtlebot4` repository contains common packages that are used by both `turtlebot4_robot` and `turtlebot4_simulator`.
 
 ### Installation
 
@@ -401,7 +401,7 @@ The TurtleBot 4 display has a simple scrolling menu. There are 4 control functio
 Source code is available [here](https://github.com/turtlebot/turtlebot4_robot).
 
 ```note
-The `turtlebot4_robot` metapackage contains packages that are used by the physical TurtleBot 4 robot and are run on the Raspberry Pi.
+The `turtlebot4_robot` metapackage can be installed on a Raspberry Pi 4B running Ubuntu Server 20.04 with ROS2 Galactic.
 ```
 
 ### Installation
@@ -443,7 +443,7 @@ Publishers:
 Subscribers:
 - **/hmi/display**: *turtlebot4_msgs/msg/UserDisplay*
     - description: The current information that is to be displayed (TurtleBot 4 model only).
-- **/hmi/led/_<led>**: *std_msgs/msg/Int32*
+- **/hmi/led/\_\<led\>**: *std_msgs/msg/Int32*
     - description: Hidden topics indicating the state of each LED.
 
 #### GPIO Interface
@@ -532,13 +532,13 @@ sudo systemctl start turtlebot4.service
 The launch files are installed on the TurtleBot 4 with this command:
 
 ```bash
-ros2 run robot_upstart install turtlebot4_bringup/launch/standard.launch.py --job turtlebot4
+ros2 run robot_upstart install turtlebot4_bringup/launch/standard.launch.py --job turtlebot4 --rmw rmw_cyclonedds_cpp --rmw_config /etc/cyclonedds_rpi.xml
 ```
 
 and on the TurtleBot 4 Lite with this command:
 
 ```bash
-ros2 run robot_upstart install turtlebot4_bringup/launch/lite.launch.py --job turtlebot4
+ros2 run robot_upstart install turtlebot4_bringup/launch/lite.launch.py --job turtlebot4 --rmw rmw_cyclonedds_cpp --rmw_config /etc/cyclonedds_rpi.xml
 ```
 
 To uninstall, use this command:
