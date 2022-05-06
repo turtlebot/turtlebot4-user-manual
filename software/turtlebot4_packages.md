@@ -18,6 +18,18 @@ Source code is available [here](https://github.com/turtlebot/turtlebot4).
 The `turtlebot4` packages are automatically installed when either of `turtlebot4_robot` or `turtlebot4_simulator` is installed.
 ```
 
+#### Debian installation
+
+Individual packages can be installed through apt:
+
+```bash
+sudo apt update
+sudo apt install ros-galactic-turtlebot4-description \
+ros-galactic-turtlebot4-msgs \
+ros-galactic-turtlebot4-navigation \
+ros-galactic-turtlebot4-node
+```
+
 #### Source installation
 
 To manually install this metapackage from source, clone the git repository:
@@ -648,6 +660,15 @@ Source code is available [here](https://github.com/turtlebot/turtlebot4_desktop)
 The `turtlebot4_desktop` metapackage can be installed on a PC running Ubuntu Desktop 20.04 with ROS2 Galactic.
 ```
 
+#### Debian installation
+
+To install the metapackage through apt:
+
+```bash
+sudo apt update
+sudo apt install ros-galactic-turtlebot4-desktop
+```
+
 #### Source installation
 
 To manually install this metapackage from source, clone the git repository:
@@ -710,6 +731,15 @@ sudo apt-get update && sudo apt-get install wget
 sudo sh -c 'echo "deb http://packages.osrfoundation.org/gazebo/ubuntu-stable `lsb_release -cs` main" > /etc/apt/sources.list.d/gazebo-stable.list'
 wget http://packages.osrfoundation.org/gazebo.key -O - | sudo apt-key add -
 sudo apt-get update && sudo apt-get install ignition-edifice
+```
+
+#### Debian installation
+
+To install the metapackage through apt:
+
+```bash
+sudo apt update
+sudo apt install ros-galactic-turtlebot4-simulator ros-galactic-irobot-create-nodes
 ```
 
 #### Source installation
