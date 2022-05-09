@@ -108,6 +108,10 @@ The TurtleBot 4 can also use all of the actions, messages, and services that the
 
 See [irobot_create_msgs](https://github.com/iRobotEducation/irobot_create_msgs) for more details.
 
+```note
+When publishing or subscribing to topics, make sure that the [QoS](https://docs.ros.org/en/galactic/Concepts/About-Quality-of-Service-Settings.html) that you use matches that of the topic.
+```
+
 ### Navigation
 
 The `turtlebot4_navigation` packages contains launch and configuration files for using SLAM and navigation on the TurtleBot 4.
