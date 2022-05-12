@@ -1,7 +1,7 @@
 ---
-sort: 6
+sort: 5
 ---
 
-# Troubleshooting
+# Tutorials
 
 {% include list.liquid all=true %}
