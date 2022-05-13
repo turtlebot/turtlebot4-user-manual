@@ -31,3 +31,14 @@ Launching asynchronous SLAM:
 ```bash
 ros2 launch turtlebot4_navigation slam_async.launch.py
 ```
+
+## Saving the map
+
+Once you have driven the robot around and generated the map, you can use the following call to save the map to your current directory:
+
+```bash
+ros2 service call /slam_toolbox/save_map slam_toolbox/srv/SaveMap "name:
+  data: 'map_name'"
+```
+
+This will generate two files: map_name.yaml and map_name.pgm. You can open the .pgm file with an image editor to view your map.

@@ -1,0 +1,67 @@
+---
+sort: 2
+---
+
+# Generating a map
+
+In this tutorial we will be mapping an area by driving the TurtleBot 4 around and using SLAM. Start by making sure that the area you will be mapping is clear of unwanted obstacles. Ideally, you don't want people or animals moving around the area while creating the map.
+
+## Launch SLAM
+
+First, make sure that the RPLIDAR and description nodes are running on the TurtleBot 4.
+
+Then run SLAM. It is recommended to run synchronous SLAM on a remote PC to get a higher resolution map.
+
+```bash
+ros2 launch turtlebot4_navigation slam_sync.launch.py
+```
+
+Asynchronous SLAM can be used as well.
+
+```bash
+ros2 launch turtlebot4_navigation slam_async.launch.py
+```
+
+## Launch Rviz2
+
+To visualise the map, launch Rviz2 with the `view_robot` launch file.
+
+```bash
+ros2 launch turtlebot4_viz view_robot.launch.py
+```
+
+<figure class="aligncenter">
+    <img src="media/rviz_slam.png" alt="RVIZ SLAM" style="width: 80%"/>
+    <figcaption>Rviz2 showing a map generate by SLAM</figcaption>
+</figure>
+
+## Drive the TurtleBot 4
+
+Use any method to drive the robot around the area you wish to map. Check out the [driving](./driving.md) tutorial if you are unsure of how to drive the robot.
+
+Keep watch of RVIZ as you drive the robot around the area to make sure that the map gets filled out properly.
+
+<figure class="aligncenter">
+    <img src="media/slam_mapping.gif" alt="mapping" style="width: 80%"/>
+    <figcaption>Generating a map by driving the TurtleBot 4</figcaption>
+</figure>
+
+## Save the map
+
+Once you are happy with your map, you can save it with the following command:
+
+```bash
+ros2 service call /slam_toolbox/save_map slam_toolbox/srv/SaveMap "name:
+  data: 'map_name'"
+```
+
+This will save the map to your current directory.
+
+## View the map
+
+Once the map is saved it will generate a `map_name.pgm` file which can be viewed in an image editor. A `map_name.yaml` file is also created. You can edit this file to adjust the map parameters.
+
+<figure class="aligncenter">
+    <img src="media/map.png" alt="map" style="width: 60%"/>
+    <figcaption>Generated map image</figcaption>
+</figure>
