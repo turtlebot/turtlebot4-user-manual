@@ -114,10 +114,10 @@ When publishing or subscribing to topics, make sure that the [QoS](https://docs.
 
 ### Navigation
 
-The `turtlebot4_navigation` packages contains launch and configuration files for using SLAM and navigation on the TurtleBot 4.
+The `turtlebot4_navigation` packages contains launch and configuration files for using SLAM and navigation on the TurtleBot 4. It also contains the TurtleBot 4 Navigator Python node.
 
 Launch files:
-* [Nav2 Bringup](https://github.com/turtlebot/turtlebot4/blob/galactic/turtlebot4_navigation/launch/nav2_bringup.launch.py): Launches navigation. Allows for launch configurations to use SLAM, Nav2, and localization.
+* [Nav Bringup](https://github.com/turtlebot/turtlebot4/blob/galactic/turtlebot4_navigation/launch/nav_bringup.launch.py): Launches navigation. Allows for launch configurations to use SLAM, Nav2, and localization.
 * [SLAM Sync](https://github.com/turtlebot/turtlebot4/blob/galactic/turtlebot4_navigation/launch/slam_sync.launch.py): Launches `slam_toolbox` with online synchronous mapping. Recommended for use on a PC.
 * [SLAM Async](https://github.com/turtlebot/turtlebot4/blob/galactic/turtlebot4_navigation/launch/slam_async.launch.py): Launches `slam_toolbox` with online asynchronous mapping. Recommended for use on the Raspberry Pi 4.
 
@@ -157,13 +157,17 @@ ros2 launch turtlebot4_navigation nav_bringup.launch.py slam:=sync
 
 Running asynchronous SLAM with Nav2:
 ```bash
-ros2 launch turtlebot4_navigation nav_bringup.launch.py slam:=async nav2:=true
+ros2 launch turtlebot4_navigation nav_bringup.launch.py slam:=async
 ```
 
 Running Nav2 with localization and existing map:
 ```bash
-ros2 launch turtlebot4_navigation nav_bringup.launch.py localization:=true nav2:=true map:=/path/to/map.yaml
+ros2 launch turtlebot4_navigation nav_bringup.launch.py localization:=true slam:=off map:=/path/to/map.yaml
 ```
+
+#### TurtleBot 4 Navigator
+
+The [TurtleBot 4 Navigator](https://github.com/turtlebot/turtlebot4/blob/galactic/turtlebot4_navigation/turtlebot4_navigation/turtlebot4_navigator.py) is a Python node that adds TurtleBot 4 specific functionality to the [Nav2 Simple Commander](https://github.com/ros-planning/navigation2/tree/galactic/nav2_simple_commander). It provides a set of Python methods for navigating the TurtleBot 4. This includes docking, navigating to a pose, following waypoints, and more. Visit the [Navigation Tutorials](../tutorials/navigation.html) for examples.
 
 ### Node
 
