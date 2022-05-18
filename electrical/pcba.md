@@ -396,3 +396,7 @@ The two connectors are both [6-Pin Molex PicoBlade P/N 0532610671](https://www.d
 ## User USB-C Ports
 
 The are 4 USB-C ports that go through an integrated hub on the User Interface board and connect to the Raspberry Pi through a single USB 3.0 cable. The current available to all 4 ports is 3A. Additionally, each individual port is current limited to 3A. In other words, each port is capable of supplying 3A if the others aren’t in use, or the available 3A is shared amongst ports that are in use. The bandwidth for communication is split among 4 dynamically depending on how many of the ports are communication at once, and is limited by the USB 3.0 connection to the Raspberry Pi.
+
+```note
+On the REV 2 board only port 4 can supply 3A. The other three ports can supply 2.6A +/- 0.1A. The revision and port numbers are labeled on the underside of the PCBA.
+```
