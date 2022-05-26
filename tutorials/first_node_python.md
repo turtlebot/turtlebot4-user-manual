@@ -102,7 +102,7 @@ class TurtleBot4FirstNode(Node):
     def interface_buttons_callback(self, create3_buttons_msg: InterfaceButtons):
 ```
 
-Notice that the `interface_buttons_subscriber_` uses the [InterfaceButtons](https://github.com/iRobotEducation/irobot_create_msgs/blob/main/msg/InterfaceButtons.msg) message type, and the quality of service is `qos_profile_sensor_data`. These parameters must match the topic, otherwise the subscription will fail. If you are unsure what message type or QoS a topic is using, you can use the ROS2 CLI to find this information.
+Notice that the `interface_buttons_subscriber` uses the [InterfaceButtons](https://github.com/iRobotEducation/irobot_create_msgs/blob/main/msg/InterfaceButtons.msg) message type, and the quality of service is `qos_profile_sensor_data`. These parameters must match the topic, otherwise the subscription will fail. If you are unsure what message type or QoS a topic is using, you can use the ROS2 CLI to find this information.
 
 Call `ros2 topic info /<topic> --verbose` to get the full details.
 

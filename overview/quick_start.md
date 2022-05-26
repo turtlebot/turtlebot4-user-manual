@@ -171,7 +171,9 @@ sudo bluetoothctl --agent=NoInputNoOutput
 - Then, enter `pair MAC_ADDRESS`.
 - Finally, enter `connect MAC_ADDRESS`.
 - The CLI should report that the controller has been connected and the light on the controller will turn blue.
-- Enter `exit` to exit the CLI. 
+- Enter `exit` to exit the CLI.
+
+Visit the [Driving Tutorial](../tutorials/driving.md#joystick-teleoperation) to begin driving your TurtleBot 4.
 
 ## Updating the TurtleBot 4
 

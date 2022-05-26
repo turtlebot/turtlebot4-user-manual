@@ -15,64 +15,7 @@ Requirements:
 Recommended:
 - PC with dedicated GPU
 
-### Source
-
-#### Install
-
-Dev tools:
-
-```bash
-sudo apt install -y \
-python3-colcon-common-extensions \
-python3-rosdep \
-python3-vcstool
-```
-
-Ignition Edifice:
-
-```bash
-sudo apt-get update && sudo apt-get install wget
-sudo sh -c 'echo "deb http://packages.osrfoundation.org/gazebo/ubuntu-stable `lsb_release -cs` main" > /etc/apt/sources.list.d/gazebo-stable.list'
-wget http://packages.osrfoundation.org/gazebo.key -O - | sudo apt-key add -
-sudo apt-get update && sudo apt-get install ignition-edifice
-```
-
-#### Build
-
-- Create a workspace if you don't already have one:
-
-```bash
-mkdir -p ~/turtlebot4_ws/src
-```
-
-- Clone this repository into the src directory from above
-
-```bash
-cd ~/turtlebot4_ws/src
-git clone https://github.com/turtlebot/turtlebot4_simulator.git
-```
-
-- Use `vcs` to clone additional dependencies into the workspace:
-
-```bash
-vcs import ~/turtlebot4_ws/src/ < ~/turtlebot4_ws/src/turtlebot4_simulator/dependencies.repos
-```
-
-- Navigate to the workspace and install ROS 2 dependencies with:
-
-```bash
-cd ~/turtlebot4_ws
-rosdep install --from-path src -yi
-```
-
-- Build the workspace:
-
-```bash
-source /opt/ros/galactic/setup.bash
-export IGNITION_VERSION=edifice
-colcon build --symlink-install
-source install/local_setup.bash
-```
+Follow the installation instructions described [here](./turtlebot4_packages.md#installation-3).
 
 ## Launching Ignition Gazebo
 
