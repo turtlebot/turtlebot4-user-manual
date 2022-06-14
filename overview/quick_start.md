@@ -270,11 +270,21 @@ sudo apt update
 sudo apt install ros-galactic-turtlebot4-desktop
 ```
 
+To update all robot packages, run:
+
+```bash
+sudo apt update
+sudo apt install ros-galactic-turtlebot4-base \
+                 ros-galactic-turtlebot4-bringup \
+                 ros-galactic-turtlebot4-diagnostics \
+                 ros-galactic-turtlebot4-tests \
+```
+
 ### Source packages
 
 To update a source package you will need to use a terminal to manually pull changes.
 
-For example, updating the `turtlebot4_robot` package on the `galactic` branch:
+For example, updating the `turtlebot4_robot` repo on the `galactic` branch:
 
 ```bash
 cd ~/turtlebot4_ws/src/turtlebot4_robot
@@ -294,13 +304,10 @@ source install/setup.bash
 ### Install latest Raspberry Pi image
 
 ```warning
-Installing a new image on the Raspberry Pi will delete any changes you may have made. Save your changes before proceeding.
+Installing a new image on the Raspberry Pi will delete any changes you may have made. Save your changes externally before proceeding.
 ```
 
-If you wish to install the latest image onto your robot, follow these instructions.
-
-The latest TurtleBot 4 Raspberry Pi images are available at <http://download.ros.org/downloads/turtlebot4/>.
-
+Check your current image version by calling `cat /etc/turtlebot4` on the Raspberry Pi. Find the latest TurtleBot 4 Raspberry Pi images at <http://download.ros.org/downloads/turtlebot4/>. If a newer version is available, follow these steps:
 - Download the latest image for your robot model and extract it. 
 - Power off your robot and then remove the microSD card from the Raspberry Pi.
 - Insert the microSD card into your PC. You may need an adapter.
@@ -335,9 +342,7 @@ IMAGE_PATH is the path to where you want the image saved -- e.g., `~/turtlebot4_
 wget https://raw.githubusercontent.com/turtlebot/turtlebot4_setup/galactic/scripts/sd_flash.sh
 bash sd_flash.sh /path/to/downloaded/image
 ```
-- Follow the instructions and wait for the SD card to be flashed. Remove the SD card from your PC.
+- Follow the instructions and wait for the SD card to be flashed. 
+- Remove the SD card from your PC.
 - Ensure your Raspberry Pi 4 is not powered on before inserting the flashed SD card.
 - Follow [WiFi Setup](#wifi-setup) to configure your WiFi.
-
-
-
