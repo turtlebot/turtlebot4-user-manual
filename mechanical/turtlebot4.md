@@ -26,7 +26,7 @@ The plate is attached to the robot by four Round head M4x0.7 screws. Remove the 
 
 Modifying the plate can be done roughly by hand, however a 3D model and 2D drawing of the part is available at [Github](https://github.com/turtlebot/turtlebot4-hardware). When cutting or drilling into the plate, ensure proper safety precautions are taken; wear safety glasses, be familiar with your tools, fasten the plate securely to a work surface. When working with acrylic, it is best to start with a smaller hole (Ø3mm) and enlarge it to the desired size incrementally.
 
-To reattach the plate, insert the screws and torque them to 120 N-cm. With additional weight on the top integration plate, it is recommended that a low or medium strength thread locker is used for additional security.
+To reattach the plate, apply a low to medium strength thread locker (e.g. Loctite 222). Insert the screws and torque them to 25N-cm.
  
 ## Attaching Accessories to the Base Unit
 

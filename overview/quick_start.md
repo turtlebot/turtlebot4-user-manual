@@ -53,6 +53,10 @@ If you wish to switch middlewares or want more information on configuring the Cr
 
 - On a PC, connect to the `Turtlebot4` WiFi network. The password is also `Turtlebot4`.
 
+```note
+The TurtleBot 4 AP network is a 5GHz network. Your computer will need to support 5GHz WiFi to connect to the network.
+```
+
 - Once connected, you can SSH into the Raspberry Pi to configure its WiFi.
 
 ```bash
@@ -71,6 +75,10 @@ The Regulatory Domain is based on the country you live in. USA: `US`, Canada: `C
 ```
 
 - Your Raspberry Pi will reboot and connect to your WiFi network.
+
+```tip
+Connect the Raspberry Pi to a 5GHz WiFi network for optimal performance.
+```
 
 ### Find the Raspberry Pi IP on your network
 
@@ -122,6 +130,12 @@ If you wish to put the Raspberry Pi back into AP mode, you can call
 sudo wifi.sh -a
 ```
 
+```tip
+If you are moving your TurtleBot 4 to a new location with a different WiFi network, 
+reconfigure the Raspberry Pi to connect to that network beforehand or place it into AP mode. 
+Otherwise it will continue trying to connect to your current network.
+```
+
 ## Create® 3 WiFi Setup
 
 - Press both Create® 3 button 1 and 2 simultaneously until light ring turns blue
@@ -143,6 +157,10 @@ sudo wifi.sh -a
 
 - Wait for it to connect to WiFi and play a chime
 - On your PC, run `ros2 topic list` to ensure that the Create® 3 is publishing its topics
+
+```note
+The Create® 3 can only be connected to 2.4 GHz WiFi networks.
+```
 
 ## TurtleBot 4 Controller Setup
 
@@ -281,7 +299,7 @@ Installing a new image on the Raspberry Pi will delete any changes you may have 
 
 If you wish to install the latest image onto your robot, follow these instructions.
 
-The latest TurtleBot 4 Raspberry Pi images are available at http://download.ros.org/downloads/turtlebot4/.
+The latest TurtleBot 4 Raspberry Pi images are available at <http://download.ros.org/downloads/turtlebot4/>.
 
 - Download the latest image for your robot model and extract it. 
 - Power off your robot and then remove the microSD card from the Raspberry Pi.
