@@ -36,6 +36,22 @@ ros2 launch turtlebot4_bringup rplidar.launch.py
 
 The laserscan will be published to the */scan* topic by default.
 
+### Controlling
+
+To stop the motor from spinning, call:
+
+```bash
+ros2 service call /stop_motor std_srvs/srv/Empty {}
+```
+
+This will also stop scans from publishing.
+
+To start the motor again, call:
+
+```bash
+ros2 service call /start_motor std_srvs/srv/Empty {}
+```
+
 
 ## OAK-D
 

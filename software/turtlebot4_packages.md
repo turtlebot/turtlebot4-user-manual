@@ -549,25 +549,29 @@ To start the service again, call:
 sudo systemctl start turtlebot4.service
 ```
 
-The launch files are installed on the TurtleBot 4 with this command:
+##### Installing
+
+The [install.py](https://github.com/turtlebot/turtlebot4_setup/blob/galactic/scripts/install.py) script is available in */usr/local/bin* to make installing `robot_upstart` jobs easier.
+
+To install a TurtleBot4 job, simply call:
 
 ```bash
-ros2 run robot_upstart install turtlebot4_bringup/launch/standard.launch.py --job turtlebot4 --rmw rmw_cyclonedds_cpp --rmw_config /etc/cyclonedds_rpi.xml
+install.py model <ROS_DOMAIN_ID>
 ```
 
-and on the TurtleBot 4 Lite with this command:
+where *model* is either *lite* or *standard*.
+
+```note
+The *ROS_DOMAIN_ID* is optional and defaults to 0. Remember to set the *ROS_DOMAIN_ID* of the Create® 3 and of your terminal to match.
+```
+
+To uninstall, call:
 
 ```bash
-ros2 run robot_upstart install turtlebot4_bringup/launch/lite.launch.py --job turtlebot4 --rmw rmw_cyclonedds_cpp --rmw_config /etc/cyclonedds_rpi.xml
+uninstall.py
 ```
 
-To uninstall, use this command:
-
-```bash
-ros2 run robot_upstart uninstall turtlebot4
-```
-
-Once uninstalled, the launch file will no longer be launched on boot.
+Once uninstalled, the job no longer be launched on boot.
 
 
 ### Bringup
