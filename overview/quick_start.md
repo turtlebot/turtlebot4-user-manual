@@ -33,14 +33,68 @@ sudo apt update && sudo apt install -y \
 
 ROS2 Galactic supports two middlewares: [CycloneDDS](https://github.com/eclipse-cyclonedds/cyclonedds) and [FastRTPS](https://github.com/eProsima/Fast-DDS). The default is CycloneDDS.
 
-The Create® 3 and Raspberry Pi both use the `usb0` and `wlan0` network interfaces to communicate. As a result, CycloneDDS needs to be configured on the user PC in order to see the robot topics properly.
+The Create® 3 and Raspberry Pi both use the `usb0` and `wlan0` network interfaces to communicate. As a result, CycloneDDS needs to be configured on the user PC in order to see the robot topics properly. CycloneDDS is configured in an XML file, and that configuration should be applied to the `CYCLONEDDS_URI` environment variable.
 
-CycloneDDS is configured in an XML file, and that configuration should be applied to the `CYCLONEDDS_URI` environment variable.
-
-Add this line to your `~/.bashrc` file to automatically configure CycloneDDS each time you open your terminal:
+An example XML file is available [here](https://github.com/turtlebot/turtlebot4_setup/blob/galactic/conf/cyclonedds_pc.xml). Download this file to your PC by calling:
 
 ```bash
-export CYCLONEDDS_URI='<CycloneDDS><Domain><General><DontRoute>true</></></></>'
+wget https://raw.githubusercontent.com/turtlebot/turtlebot4_setup/galactic/conf/cyclonedds_pc.xml
+```
+
+```note
+The *<DontRoute>true</DontRoute>* setting is required to see the Create 3 topics. 
+```
+
+### Network Interfaces
+
+By default, CycloneDDS will automatically choose the best network interface for ROS2 communications. On some occasions it might choose the wrong interface. To mitigate this, you can specify which network interface CycloneDDS should use for ROS2 communication. Open your terminal and use the command `ip link` to view all available network interfaces. Your WiFi interface will look something like this:
+
+```bash
+3: wlp0s20f3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP mode DORMANT group default qlen 1000
+    link/ether dc:41:a9:9f:5f:ec brd ff:ff:ff:ff:ff:ff
+```
+
+Open the `cyclonedds_pc.xml` file with a text editor and add the following line below `<DontRoute>true</DontRoute>`
+
+```xml
+<NetworkInterfaceAddress>wlp0s20f3</NetworkInterfaceAddress>
+```
+
+replacing `wlp0s20f3` with your WiFi interface name. Your `cyclonedds_pc.xml` file should now look like this:
+
+```xml
+<CycloneDDS>
+    <Domain>
+        <General>
+            <DontRoute>true</DontRoute>
+            <NetworkInterfaceAddress>wlp0s20f3</NetworkInterfaceAddress>
+        </General>
+    </Domain>
+</CycloneDDS>
+```
+
+```note
+You can use multiple network interfaces by adding each interface name within the NetworkInterfaceAddress tag and separating each name with a comma.
+```
+
+### Apply CycloneDDS configurations
+
+Move the xml file to a convenient location:
+
+```bash
+sudo mv cyclonedds_pc.xml /etc/
+```
+
+Add this line to your `~/.bashrc` file to automatically configure CycloneDDS each time you open a new terminal:
+
+```bash
+export CYCLONEDDS_URI=/etc/cyclonedds_pc.xml
+```
+
+Source `~/.bashrc` to apply the configurations to your current terminal.
+
+```bash
+source ~/.bashrc
 ```
 
 For more CycloneDDS configuration options, visit the [CycloneDDS documentation](https://github.com/eclipse-cyclonedds/cyclonedds#run-time-configuration).
