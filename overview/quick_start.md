@@ -192,6 +192,12 @@ Otherwise it will continue trying to connect to your current network.
 
 ## Create® 3 WiFi Setup
 
+### Access the webserver (v0.1.3 or higher)
+
+- In a browser, enter the IP address of your TurtleBot 4 Raspberry Pi with the port `8080`. e.g. `192.168.1.189:8080`.
+
+### Access the webserver (v0.1.2 or higher)
+
 - Press both Create® 3 button 1 and 2 simultaneously until light ring turns blue
 
 <figure class="aligncenter">
@@ -201,13 +207,15 @@ Otherwise it will continue trying to connect to your current network.
 
 - The Create® 3 is now in AP mode. Connect to its WiFi network called 'Create-XXXX'
 - In a browser go to `192.168.10.1`
+
+### Connect to WiFi
+
 - Go to the Connect tab, enter your WiFi ssid and password, and then click 'Connect'
 
 <figure class="aligncenter">
     <img src="media/create3_connect.png" alt="Create 3 connect" style="width: 100%"/>
     <figcaption>Connecting the Create® 3 to WiFi</figcaption>
 </figure>
-
 
 - Wait for it to connect to WiFi and play a chime
 - On your PC, run `ros2 topic list` to ensure that the Create® 3 is publishing its topics
@@ -253,43 +261,30 @@ It is recommended to update both the Create® 3 and the Raspberry Pi when you fi
 
 ### Create® 3
 
-Check the [Create® 3 software releases](https://iroboteducation.github.io/create3_docs/releases/overview/) to see if a newer firmware version is available. You can check the firmware version of your robot by visiting the Create® 3's webserver.
+Check the [Create® 3 software releases](https://iroboteducation.github.io/create3_docs/releases/overview/) to see if a newer firmware version is available. You can check the firmware version of your Create® 3 by visiting the webserver.
 
-#### Update over WiFi
+#### Update via webserver
 
-The Create® 3 can be updated through its webserver. There are two options to connect to the webserver:
+The Create® 3 can be updated through its [webserver](#access-the-webserver-v013-or-higher):
 
-##### Find the IP address of the Create® 3 on your WiFi network.
-
-This can be done by going to your routers portal and viewing connected devices. You should see the Create® 3 in your Wireless Clients if it is connected.
-
-Enter the IP address into a browser. You will be taken to the Create® 3 webserver.
-
-Go to the Update tab and click the 'Update' button. The robot will automatically download and install the latest firmware.
+- Go to the Update tab and click the 'Update' button. 
+- The robot will automatically download and install the latest firmware.
 
 <figure class="aligncenter">
     <img src="media/create3_update.png" alt="Create 3 Update" style="width: 50%"/>
-    <figcaption>Updating the Create® 3 over WiFi</figcaption>
+    <figcaption>Updating the Create® 3 using its webserver</figcaption>
 </figure>
-
-
-##### Place the robot into AP mode.
-
-If you cannot find the IP address of the Create® 3 on your WiFi network, you can alternatively put it into AP mode and connect directly to it with your PC:
-
-- Download the latest firmware from <http://edu.irobot.com/create3-latest-fw>.
-- Place the robot into AP mode and access the webserver. See [Create® 3 WiFi Setup](#create-3-wifi-setup).
-- Go to the Update tab and click on the link to update from firmware file.
-- Upload the latest firmware and wait for the robot to be updated.
 
 #### Update over USB-C
 
-Download the latest firmware from <http://edu.irobot.com/create3-latest-fw>.
+The Create® 3 can also be updated over the USB-C interface:
 
-Copy the firmware to the Raspberry Pi:
+- Download the latest firmware from <http://edu.irobot.com/create3-latest-fw>.
+
+- Copy the firmware to the Raspberry Pi:
 
 ```bash
-sudo scp ~/Downloads/Create3-G.X.Y.swu ubuntu@xxx.xxx.xxx.xxx:/home/ubuntu/
+scp ~/Downloads/Create3-G.X.Y.swu ubuntu@xxx.xxx.xxx.xxx:/home/ubuntu/
 ```
 
 SSH into the Raspberry Pi and update the Create® 3 firmware over USB-C:
@@ -305,7 +300,6 @@ curl -X POST --data-binary @Create3-G.X.Y.swu http://192.168.186.2/api/firmware-
 ```
 
 This may take a few minutes.
-
 
 
 ### Debian packages
@@ -330,7 +324,11 @@ To update all robot packages, run:
 sudo apt update
 sudo apt install ros-galactic-turtlebot4-base \
                  ros-galactic-turtlebot4-bringup \
+                 ros-galactic-turtlebot4-description \
                  ros-galactic-turtlebot4-diagnostics \
+                 ros-galactic-turtlebot4-msgs \
+                 ros-galactic-turtlebot4-navigation \
+                 ros-galactic-turtlebot4-node \
                  ros-galactic-turtlebot4-tests \
 ```
 
