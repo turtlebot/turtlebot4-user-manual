@@ -1,10 +1,10 @@
 ---
-sort: 4
+sort: 1
 ---
 
-# TurtleBot 4 Image Changelogs
+# TurtleBot 4 Images
 
-TurtleBot 4 RPi4 image changelogs.
+TurtleBot 4 RPi4 image changelogs. Latest images are available [here](http://download.ros.org/downloads/turtlebot4/).
 
 ## v0.1.2
 
