@@ -6,77 +6,6 @@ sort: 1
 
 TurtleBot 4 RPi4 image changelogs. Latest images are available [here](http://download.ros.org/downloads/turtlebot4/).
 
-## v0.1.2
-
-**OS**: Ubuntu Server 20.04.4 LTS
-
-**ROS**: Galactic
-
-**Create® 3 Firmware**: G.2.2
-
-### General
-
-- Initial public release
-
-### TurtleBot 4 Packages
-
-<table>
-    <thead>
-        <tr>
-            <th>Package</th>
-            <th>Version</th>
-            <th>Changes</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>turtlebot4_base</td>
-            <td>0.1.2</td>
-            <td>-</td>
-        </tr>
-        <tr>
-            <td>turtlebot4_bringup</td>
-            <td>0.1.2</td>
-            <td>-</td>
-        </tr>
-        <tr>
-            <td>turtlebot4_description</td>
-            <td>0.1.0</td>
-            <td>-</td>
-        </tr>
-        <tr>
-            <td>turtlebot4_diagnostics</td>
-            <td>0.1.2</td>
-            <td>-</td>
-        </tr>
-        <tr>
-            <td>turtlebot4_msgs</td>
-            <td>0.1.0</td>
-            <td>-</td>
-        </tr>
-        <tr>
-            <td>turtlebot4_navigation</td>
-            <td>0.1.0</td>
-            <td>-</td>
-        </tr>
-        <tr>
-            <td>turtlebot4_node</td>
-            <td>0.1.0</td>
-            <td>-</td>
-        </tr>
-        <tr>
-            <td>turtlebot4_robot</td>
-            <td>0.1.2</td>
-            <td>-</td>
-        </tr>
-        <tr>
-            <td>turtlebot4_tests</td>
-            <td>0.1.2</td>
-            <td>-</td>
-        </tr>
-    </tbody>
-</table>
-
 ## v0.1.3
 
 **OS**: Ubuntu Server 20.04.5 LTS
@@ -174,3 +103,76 @@ TurtleBot 4 RPi4 image changelogs. Latest images are available [here](http://dow
         </tr>
     </tbody>
 </table>
+
+## v0.1.2
+
+**OS**: Ubuntu Server 20.04.4 LTS
+
+**ROS**: Galactic
+
+**Create® 3 Firmware**: G.2.2
+
+### General
+
+- Initial public release
+
+### TurtleBot 4 Packages
+
+<table>
+    <thead>
+        <tr>
+            <th>Package</th>
+            <th>Version</th>
+            <th>Changes</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>turtlebot4_base</td>
+            <td>0.1.2</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>turtlebot4_bringup</td>
+            <td>0.1.2</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>turtlebot4_description</td>
+            <td>0.1.0</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>turtlebot4_diagnostics</td>
+            <td>0.1.2</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>turtlebot4_msgs</td>
+            <td>0.1.0</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>turtlebot4_navigation</td>
+            <td>0.1.0</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>turtlebot4_node</td>
+            <td>0.1.0</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>turtlebot4_robot</td>
+            <td>0.1.2</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>turtlebot4_tests</td>
+            <td>0.1.2</td>
+            <td>-</td>
+        </tr>
+    </tbody>
+</table>
+
+
