@@ -39,14 +39,18 @@ Replace `office.yaml` with your own map.
 If you are using the simulator, call:
 
 ```bash
-ros2 launch turtlebot4_ignition_bringup ignition.launch.py nav:=true slam:=off localization:=true
+ros2 launch turtlebot4_ignition_bringup ignition.launch.py nav2:=true slam:=off localization:=true
 ```
 
 This will launch the simulation in the default `depot` world and will use the existing `depot.yaml` file for the map. If you are using a different world you will need to create a map for it and pass that in as a launch argument.
 
 For example:
 ```bash
-ros2 launch turtlebot4_ignition_bringup ignition.launch.py nav:=true slam:=off localization:=true world:=classroom map:=classroom.yaml
+ros2 launch turtlebot4_ignition_bringup ignition.launch.py nav2:=true slam:=off localization:=true world:=classroom map:=classroom.yaml
+```
+
+```note
+An initial pose is required before navigation can begin.
 ```
 
 ### Interacting with Nav2
