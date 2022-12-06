@@ -1,5 +1,5 @@
 ---
-sort: 3
+sort: 7
 ---
 
 # Sensors

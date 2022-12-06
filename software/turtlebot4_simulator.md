@@ -1,0 +1,123 @@
+---
+sort: 4
+---
+
+# TurtleBot 4 Simulator
+
+The `turtlebot4_simulator` metapackage contains packages used to simulate the TurtleBot 4 in Ignition Gazebo.
+
+## Installation
+
+Source code is available [here](https://github.com/turtlebot/turtlebot4_simulator).
+
+```note
+The `turtlebot4_simulator` metapackage can be installed on a PC running Ubuntu Desktop 20.04 with ROS2 Galactic.
+```
+
+### Dev Tools
+
+```bash
+sudo apt install -y \
+python3-colcon-common-extensions \
+python3-rosdep \
+python3-vcstool
+```
+
+### Ignition Edifice
+
+Ignition Edifice must be installed:
+
+```bash
+sudo apt-get update && sudo apt-get install wget
+sudo sh -c 'echo "deb http://packages.osrfoundation.org/gazebo/ubuntu-stable `lsb_release -cs` main" > /etc/apt/sources.list.d/gazebo-stable.list'
+wget http://packages.osrfoundation.org/gazebo.key -O - | sudo apt-key add -
+sudo apt-get update && sudo apt-get install ignition-edifice
+```
+
+### Debian installation
+
+To install the metapackage through apt:
+
+```bash
+sudo apt update
+sudo apt install ros-galactic-turtlebot4-simulator ros-galactic-irobot-create-nodes
+```
+
+### Source installation
+
+To manually install this metapackage from source, clone the git repository:
+
+```bash
+cd ~/turtlebot4_ws/src
+git clone https://github.com/turtlebot/turtlebot4_simulator.git
+```
+
+Install dependencies:
+
+```bash
+cd ~/turtlebot4_ws
+vcs import src < src/turtlebot4_simulator/dependencies.repos
+rosdep install --from-path src -yi
+```
+
+Build the packages:
+
+```bash
+source /opt/ros/galactic/setup.bash
+colcon build --symlink-install
+```
+
+## Ignition Bringup
+
+The `turtlebot4_ignition_bringup` package contains launch files and configurations to launch Ignition Gazebo.
+
+Launch files:
+* [Ignition](https://github.com/turtlebot/turtlebot4_simulator/blob/galactic/turtlebot4_ignition_bringup/launch/ignition.launch.py): Launches Ignition Gazebo and all required nodes to run the simulation.
+* [ROS Ignition Bridge](https://github.com/turtlebot/turtlebot4_simulator/blob/galactic/turtlebot4_ignition_bringup/launch/ros_ign_bridge.launch.py): Launches all of the required `ros_ign_bridge` nodes to bridge Ignition topics with ROS topics.
+* [TurtleBot 4 Nodes](https://github.com/turtlebot/turtlebot4_simulator/blob/galactic/turtlebot4_ignition_bringup/launch/turtlebot4_nodes.launch.py): Launches the `turtlebot4_node` and `turtlebot4_ignition_hmi_node` required to control the HMI plugin and robot behaviour.
+
+Ignition launch configuration options:
+- **model**: Which TurtleBot 4 model to use.
+    - options: *standard, lite*
+    - default: *standard*
+- **rviz**: Whether to launch rviz.
+    - options: *true, false*
+    - default: *false*
+- **slam**: Whether to launch SLAM.
+    - options: *off, sync, async*
+    - default: *off*
+- **nav2**: Whether to launch Nav2.
+    - options: *true, false*
+    - default: *false*
+- **param_file**: Path to parameter file for `turtlebot4_node`.
+    - default: */path/to/turtlebot4_ignition_bringup/config/turtlebot4_node.yaml*
+- **world**: Which world to use for simulation.
+    - default: *depot*
+- **robot_name**: What to name the spawned robot.
+    - default: *turtlebot4*
+
+Running the simulator with default settings:
+```bash
+ros2 launch turtlebot4_ignition_bringup ignition.launch.py
+```
+
+Running synchronous SLAM with Nav2:
+```bash
+ros2 launch turtlebot4_ignition_bringup ignition.launch.py slam:=sync nav2:=true rviz:=true
+```
+
+## Ignition GUI Plugins
+
+The `turtlebot4_ignition_gui_plugins` package contains the source code for the TurtleBot 4 HMI GUI plugin.
+
+The [TurtleBot 4 HMI GUI plugin](https://github.com/turtlebot/turtlebot4_simulator/tree/galactic/turtlebot4_ignition_gui_plugins/Turtlebot4Hmi) is only used for the standard model. The lite model uses the [Create® 3 HMI GUI plugin](https://github.com/iRobotEducation/create3_sim/tree/main/irobot_create_ignition/irobot_create_ignition_plugins/Create3Hmi).
+
+<figure class="aligncenter">
+    <img src="media/turtlebot4_hmi_gui.png" alt="TurtleBot 4 HMI GUI" style="width: 35%"/>
+    <figcaption>TurtleBot 4 HMI GUI plugin</figcaption>
+</figure>
+
+## Ignition Toolbox
+
+The `turtlebot4_ignition_toolbox` package contains the source code for the TurtleBot 4 HMI node. The TurtleBot 4 HMI node acts as a bridge between the `turtlebot4_node` and `ros_ign_bridge` to convert the custom [TurtleBot 4 messages](#messages) into standard messages such as `Int32` and `String`.
+

@@ -3,7 +3,14 @@ const removeActiveClasses = function (ulElement) {
     Array.prototype.forEach.call(lis, function(li) {
         li.classList.remove('active');
     });
-  }
+}
+
+const addActiveClasses = function (ulElement) {
+    const lis = ulElement.querySelectorAll('li');
+    Array.prototype.forEach.call(lis, function(li) {
+        li.classList.add('active');
+    });
+}
 
 const getChildPosition = function (element) {
     var parent = element.parentNode;
@@ -18,18 +25,50 @@ const getChildPosition = function (element) {
 }
 
 const setActiveClass = function(link) {
+    // List item representing the tab
     liTab = link.parentNode;
+    // Unordered list that holds the tabs
     ulTab = liTab.parentNode;
+    // Position of active tab
     position = getChildPosition(liTab);
 
-    removeActiveClasses(ulTab);
+    // Make tab active
+    addActiveClasses(liTab);
+    liTab.classList.add('active');
+
+    // Get tab contents
     tabContentId = ulTab.getAttribute('data-tab');
     tabContentElement = document.getElementById(tabContentId);
-    removeActiveClasses(tabContentElement);
 
-    // Set active if tab matches rosVersion
-    tabContentElement.querySelectorAll('li')[position].classList.add('active');
-    liTab.classList.add('active');
+    // Make tab contents active
+    tabContent = tabContentElement.querySelectorAll('.tab-content > li');
+    activeTabContent = tabContent[position];
+    addActiveClasses(activeTabContent)
+    activeTabContent.classList.add('active');
+    
+}
+
+const removeActiveClass = function(link) {
+    // List item representing the tab
+    liTab = link.parentNode;
+    // Unordered list that holds the tabs
+    ulTab = liTab.parentNode;
+    // Position of active tab
+    position = getChildPosition(liTab);
+
+    // Remove tab active
+    removeActiveClasses(liTab);
+    liTab.classList.remove('active');
+
+    // Get tab contents
+    tabContentId = ulTab.getAttribute('data-tab');
+    tabContentElement = document.getElementById(tabContentId);
+
+    // Make tab contents inactive
+    tabContent = tabContentElement.querySelectorAll('.tab-content > li');
+    inactiveTabContent = tabContent[position];
+    removeActiveClasses(inactiveTabContent);
+    inactiveTabContent.classList.remove('active');
 }
 
 window.addEventListener('load', function () {
@@ -47,6 +86,10 @@ window.addEventListener('load', function () {
         if (link.innerHTML.trim() === window.localStorage.getItem("rosVersion"))
         {
             setActiveClass(link);
+        }
+        else
+        {
+            removeActiveClass(link);
         }
     });
 
@@ -66,6 +109,10 @@ window.addEventListener('load', function () {
             if (link.innerHTML.trim() === window.localStorage.getItem("rosVersion"))
             {
                 setActiveClass(link);
+            }
+            else
+            {
+                removeActiveClass(link);
             }
         });
       }, false);
