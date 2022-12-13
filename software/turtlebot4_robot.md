@@ -18,6 +18,11 @@ The `turtlebot4_robot` metapackage is pre-installed on the TurtleBot 4 Raspberry
 
 To manually install this metapackage from source, clone the git repository:
 
+{% tabs install %}
+{% tab install galactic %}
+
+Clone the repository into your workspace:
+
 ```bash
 cd ~/turtlebot4_ws/src
 git clone https://github.com/turtlebot/turtlebot4_robot.git
@@ -27,7 +32,6 @@ Install dependencies:
 
 ```bash
 cd ~/turtlebot4_ws
-vcs import src < src/turtlebot4_robot/dependencies.repos
 rosdep install --from-path src -yi
 ```
 
@@ -38,19 +42,87 @@ source /opt/ros/galactic/setup.bash
 colcon build --symlink-install
 ```
 
+{% endtab %}
+{% tab install humble %}
+
+Clone the repository into your workspace:
+
+```bash
+cd ~/turtlebot4_ws/src
+git clone https://github.com/turtlebot/turtlebot4_robot.git
+```
+
+Install dependencies:
+
+```bash
+cd ~/turtlebot4_ws
+rosdep install --from-path src -yi
+```
+
+Build the packages:
+
+```bash
+source /opt/ros/humble/setup.bash
+colcon build --symlink-install
+```
+
+{% endtab %}
+{% endtabs %}
+
 ## Base
 
-The `turtlebot4_base` package contains the source code for the [rclcpp](https://github.com/ros2/rclcpp) node `turtlebot4_base_node` which runs on the physical robot. This node interfaces with the GPIO lines of the Raspberry Pi which allows it to read the state of the buttons, as well as write to the LEDs and display.
+The `turtlebot4_base` package contains the source code for the [rclcpp](https://github.com/ros2/rclcpp) node `turtlebot4_base_node` which runs on the physical robot. This node interfaces with the GPIO lines of the Raspberry Pi which allows it to read the state of the buttons, as well as write to the LEDs and display. 
+
+```note
+This node is only used on the standard TurtleBot 4 model.
+```
 
 Publishers:
-- **/hmi/buttons**: *turtlebot4_msgs/msg/UserButton*
-    - description: Button states of the TurtleBot 4 HMI (TurtleBot 4 model only).
+
+<table>
+    <thead>
+        <tr>
+            <th>Topic</th>
+            <th>Message Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><b>hmi/buttons</b></td>
+            <td><i>turtlebot4_msgs/msg/UserButton</i></td>
+            <td>Button states of the TurtleBot 4 HMI</td>
+        </tr>
+    </tbody>
+</table>
+
 
 Subscribers:
-- **/hmi/display**: *turtlebot4_msgs/msg/UserDisplay*
-    - description: The current information that is to be displayed (TurtleBot 4 model only).
-- **/hmi/led/\_\<led\>**: *std_msgs/msg/Int32*
-    - description: Hidden topics indicating the state of each LED.
+
+<table>
+    <thead>
+        <tr>
+            <th>Topic</th>
+            <th>Message Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><b>hmi/display</b></td>
+            <td><i>turtlebot4_msgs/msg/UserDisplay</i></td>
+            <td>The current information that is to be displayed</td>
+        </tr>
+    </tbody>
+    <tbody>
+        <tr>
+            <td><b>hmi/led/_[led]</b></td>
+            <td><i>std_msgs/msg/Int32</i></td>
+            <td>Hidden topics indicating the state of each LED</td>
+        </tr>
+    </tbody>
+</table>
+
 
 ### GPIO Interface
 
@@ -99,67 +171,6 @@ turtlebot4_base_node:
 The value for each GPIO device is the GPIO number, NOT the pin number.
 ```
 
-### Robot Upstart
-
-The robot uses the [robot_upstart](https://github.com/clearpathrobotics/robot_upstart/tree/foxy-devel) package to install the bringup launch files as a background process that launches when the robot starts. The launch files are located under the `turtlebot4_bringup` package.
-
-To check if the TurtleBot 4 service is running, use this command on the Raspberry Pi:
-
-```bash
-systemctl | grep turtlebot4
-```
-
-If the service is active, the CLI will echo `turtlebot4.service  loaded active running   "bringup turtlebot4"`.
-
-To read the most recent logs from the service, call:
-
-```bash
-sudo journalctl -u turtlebot4 -r
-```
-
-To stop the service, call:
-
-```bash
-sudo systemctl stop turtlebot4.service
-```
-
-This will kill all of the nodes launched by the launch file. 
-
-```note
-The service will automatically start again on reboot. To fully disable the service, uninstall the job.
-```
-
-To start the service again, call:
-
-```bash
-sudo systemctl start turtlebot4.service
-```
-
-#### Installing
-
-The [install.py](https://github.com/turtlebot/turtlebot4_setup/blob/galactic/scripts/install.py) script is available in */usr/local/bin* to make installing `robot_upstart` jobs easier.
-
-To install a TurtleBot4 job, simply call:
-
-```bash
-install.py model <ROS_DOMAIN_ID>
-```
-
-where *model* is either *lite* or *standard*.
-
-```note
-The *ROS_DOMAIN_ID* is optional and defaults to 0. Remember to set the *ROS_DOMAIN_ID* of the Create® 3 and of your terminal to match.
-```
-
-To uninstall, call:
-
-```bash
-uninstall.py
-```
-
-Once uninstalled, the job no longer be launched on boot.
-
-
 ## Bringup
 
 The `turtlebot4_bringup` package contains the launch and configuration files to run the robots software.
@@ -176,6 +187,78 @@ Config files:
 * [TurtleBot 4 Controller](https://github.com/turtlebot/turtlebot4_robot/blob/galactic/turtlebot4_bringup/config/turtlebot4_controller.config.yaml): Configurations for the TurtleBot 4 controller.
 * [TurtleBot 4](https://github.com/turtlebot/turtlebot4_robot/blob/galactic/turtlebot4_bringup/config/turtlebot4.yaml): Configurations for the `turtlebot4_node` and `turtlebot4_base_node`.
 
+### Robot Upstart
+
+The robot uses the [robot_upstart](https://github.com/clearpathrobotics/robot_upstart/tree/foxy-devel) package to install the bringup launch files as a background service that launches when the robot starts. The launch files are located under the `turtlebot4_bringup` package.
+
+{% tabs upstart %}
+{% tab upstart galactic %}
+
+Robot upstart commands:
+
+<table>
+    <thead>
+        <tr>
+            <th>Command</th>
+            <th>Bash</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><b>Stop</b></td>
+            <td><code>sudo systemctl stop turtlebot4</code></td>
+            <td>Kill all nodes launched by the service. <br/> The service will start again on reboot if it is not uninstalled.</td>
+        </tr>
+        <tr>
+            <td><b>Start</b></td>
+            <td><code>sudo systemctl start turtlebot4</code></td>
+            <td>Launch all nodes if the service is inactive</td>
+        </tr>
+        <tr>
+            <td><b>Restart</b></td>
+            <td><code>sudo systemctl restart turtlebot4</code></td>
+            <td>Kill all nodes launched by the service, then launch again</td>
+        </tr>
+        <tr>
+            <td><b>Install</b></td>
+            <td>
+                <code>install.py model [ROS_DOMAIN_ID]</code> (v0.1.2)<br/> 
+                <code>install.py model --domain [ROS_DOMAIN_ID]</code> (v0.1.3)
+            </td>
+            <td>Install the service. Optionally, set the ROS_DOMAIN_ID.</td>
+        </tr>
+        <tr>
+            <td><b>Uninstall</b></td>
+            <td>
+                <code>uninstall.py</code>
+            </td>
+            <td>Uninstall the service. The nodes will no longer be launched on boot.</td>
+        </tr>
+        <tr>
+            <td><b>Status</b></td>
+            <td>
+                <code>sudo systemctl status turtlebot4</code>
+            </td>
+            <td>View the current status of the service, and recent logs.</td>
+        </tr>
+        <tr>
+            <td><b>View Logs</b></td>
+            <td>
+                <code>sudo journalctl -u turtlebot4 -r</code>
+            </td>
+            <td>View the latest logs from the service.</td>
+        </tr>
+    </tbody>
+</table>
+
+{% endtab %}
+{% tab upstart humble %}
+
+TODO: Turtlebot4_setup
+{% endtab %}
+{% endtabs %}
+
 ## Diagnostics
 
 The `turtlebot4_diagnostics` packages contains the source code and launch files for the TurtleBot 4 diagnostics updater.
@@ -188,19 +271,122 @@ Launch files:
 
 The [diagnostics updater](https://github.com/turtlebot/turtlebot4_robot/blob/galactic/turtlebot4_diagnostics/turtlebot4_diagnostics/diagnostics_updater.py) is a Python3 node that runs on the robot. It subscribes to diagnostic topics records statistics specific to each topic. The diagnostic data is viewable with `rqt_robot_monitor`.
 
+{% tabs diagnostics %}
+{% tab diagnostics galactic %}
+
 Diagnostic topics:
 
-- **/battery_state**: Check battery voltage and percentage.
-- **/wheel_status**: Check if wheels are enabled.
-- **/dock**: Check if the robot is docked.
-- **/scan**: Check the frequency of laser scans from the RPLIDAR.
-- **/left/image**: Check the frequency of images from the left OAK-D camera.
-- **/right/image**: Check the frequency of images from the right OAK-D camera.
-- **/color/image**: Check the frequency of images from the OAK-D colour sensor.
-- **/stereo/image**: Check the frequency of depth images from the OAK-D.
-- **/hazard_detection**: Check for detected hazards.
-- **/imu**: Check the frequency of IMU messages.
-- **/mouse**: Check the frequency of Mouse messages.
+<table>
+    <thead>
+        <tr>
+            <th>Topic</th>
+            <th>Message Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><b>battery_state</b></td>
+            <td><i>sensor_msgs/msg/BatteryState</i></td>
+            <td>Battery voltage and percentage</td>
+        </tr>
+        <tr>
+            <td><b>color/preview/image</b></td>
+            <td><i>sensor_msgs/msg/Image</i></td>
+            <td>OAK-D color camera data</td>
+        </tr>
+        <tr>
+            <td><b>dock</b></td>
+            <td><i>irobot_create_msgs/msg/Dock</i></td>
+            <td>Dock status</td>
+        </tr>
+        <tr>
+            <td><b>hazard_detection</b></td>
+            <td><i>irobot_create_msgs/msg/HazardDetectionVector</i></td>
+            <td>Create 3 Hazards</td>
+        </tr>
+        <tr>
+            <td><b>imu</b></td>
+            <td><i>sensor_msgs/msg/Imu</i></td>
+            <td>IMU data</td>
+        </tr>
+        <tr>
+            <td><b>mouse</b></td>
+            <td><i>irobot_create_msgs/msg/Mouse</i></td>
+            <td>Mouse sensor data</td>
+        </tr>
+        <tr>
+            <td><b>scan</b></td>
+            <td><i>sensor_msgs/msg/LaserScan</i></td>
+            <td>RPLIDAR laser scan data</td>
+        </tr>
+        <tr>
+            <td><b>wheel_status</b></td>
+            <td><i>irobot_create_msgs/msg/WheelStatus</i></td>
+            <td>Wheels enabled status</td>
+        </tr>
+    </tbody>
+</table>
+
+{% endtab %}
+{% tab diagnostics humble %}
+
+Diagnostic topics:
+
+<table>
+    <thead>
+        <tr>
+            <th>Topic</th>
+            <th>Message Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><b>battery_state</b></td>
+            <td><i>sensor_msgs/msg/BatteryState</i></td>
+            <td>Battery voltage and percentage</td>
+        </tr>
+        <tr>
+            <td><b>color/preview/image</b></td>
+            <td><i>sensor_msgs/msg/Image</i></td>
+            <td>OAK-D color camera data</td>
+        </tr>
+        <tr>
+            <td><b>dock</b></td>
+            <td><i>irobot_create_msgs/msg/DockStatus</i></td>
+            <td>Dock status</td>
+        </tr>
+        <tr>
+            <td><b>hazard_detection</b></td>
+            <td><i>irobot_create_msgs/msg/HazardDetectionVector</i></td>
+            <td>Create 3 Hazards</td>
+        </tr>
+        <tr>
+            <td><b>imu</b></td>
+            <td><i>sensor_msgs/msg/Imu</i></td>
+            <td>IMU data</td>
+        </tr>
+        <tr>
+            <td><b>mouse</b></td>
+            <td><i>irobot_create_msgs/msg/Mouse</i></td>
+            <td>Mouse sensor data</td>
+        </tr>
+        <tr>
+            <td><b>scan</b></td>
+            <td><i>sensor_msgs/msg/LaserScan</i></td>
+            <td>RPLIDAR laser scan data</td>
+        </tr>
+        <tr>
+            <td><b>wheel_status</b></td>
+            <td><i>irobot_create_msgs/msg/WheelStatus</i></td>
+            <td>Wheels enabled status</td>
+        </tr>
+    </tbody>
+</table>
+
+{% endtab %}
+{% endtabs %}
 
 Viewing diagnostics:
 
