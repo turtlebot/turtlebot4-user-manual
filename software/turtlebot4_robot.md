@@ -25,7 +25,7 @@ Clone the repository into your workspace:
 
 ```bash
 cd ~/turtlebot4_ws/src
-git clone https://github.com/turtlebot/turtlebot4_robot.git
+git clone https://github.com/turtlebot/turtlebot4_robot.git -b galactic
 ```
 
 Install dependencies:
@@ -49,7 +49,7 @@ Clone the repository into your workspace:
 
 ```bash
 cd ~/turtlebot4_ws/src
-git clone https://github.com/turtlebot/turtlebot4_robot.git
+git clone https://github.com/turtlebot/turtlebot4_robot.git  -b humble
 ```
 
 Install dependencies:

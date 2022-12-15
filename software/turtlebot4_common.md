@@ -29,7 +29,7 @@ To manually install this metapackage from source, clone the git repository:
 
 ```bash
 cd ~/turtlebot4_ws/src
-git clone https://github.com/turtlebot/turtlebot4.git
+git clone https://github.com/turtlebot/turtlebot4.git -b galactic
 ```
 
 Install dependencies:
@@ -68,7 +68,7 @@ To manually install this metapackage from source, clone the git repository:
 
 ```bash
 cd ~/turtlebot4_ws/src
-git clone https://github.com/turtlebot/turtlebot4.git
+git clone https://github.com/turtlebot/turtlebot4.git -b humble
 ```
 
 Install dependencies:
@@ -284,6 +284,16 @@ The `turtlebot4_node` package contains the source code for the [rclcpp](https://
                 <td><i>irobot_create_msgs/srv/RobotPower</i></td>
                 <td>Power off the robot</td>
             </tr>
+            <tr>
+                <td><b>start_motor</b></td>
+                <td><i>std_srvs/srv/Empty</i></td>
+                <td>Start the RPLIDAR motor</td>
+            </tr>
+            <tr>
+                <td><b>stop_motor</b></td>
+                <td><i>std_srvs/srv/Empty</i></td>
+                <td>Stop the RPLIDAR motor</td>
+            </tr>
         </tbody>
     </table>
 </figure>
@@ -343,6 +353,11 @@ The `turtlebot4_node` package contains the source code for the [rclcpp](https://
                 <td><b>ip</b></td>
                 <td><i>std_msgs/msg/String</i></td>
                 <td>The IP address of the Wi-Fi interface</td>
+            </tr>
+            <tr>
+                <td><b>function_calls</b></td>
+                <td><i>std_msgs/msg/String</i></td>
+                <td>Publishes the name of a button or menu function when it is called</td>
             </tr>
         </tbody>
     </table>
@@ -420,6 +435,16 @@ The `turtlebot4_node` package contains the source code for the [rclcpp](https://
                 <td><b>robot_power</b></td>
                 <td><i>irobot_create_msgs/srv/RobotPower</i></td>
                 <td>Power off the robot</td>
+            </tr>
+            <tr>
+                <td><b>start_motor</b></td>
+                <td><i>std_srvs/srv/Empty</i></td>
+                <td>Start the RPLIDAR motor</td>
+            </tr>
+            <tr>
+                <td><b>stop_motor</b></td>
+                <td><i>std_srvs/srv/Empty</i></td>
+                <td>Stop the RPLIDAR motor</td>
             </tr>
         </tbody>
     </table>
