@@ -188,6 +188,7 @@ ros2 run turtlebot4_setup turtlebot4_setup
 
 You will be greeted by a menu with several submenus. From here you can navigate between the menus and configure your robot.
 
+<br/>
 <u><b style="font-size: 20px;">Usage</b></u>
 
 You can navigate up and down between the menus by using the `up` and `down` arrow keys, or `j` and `k`. To select a menu,
@@ -206,6 +207,8 @@ will run various commands based on which settings were changed.
 ```note
 Changes to the `ROS_DOMAIN_ID`, `ROBOT_NAMESPACE`, `RMW_IMPLEMENTATION` or `DISCOVERY_SERVER` environment variables will be applied the the Create 3 as well, causing it to reboot. Changes made to Wi-Fi settings will cause your SSH session to hang, and the RPi4 to reboot.
 ```
+
+<br/>
 <u><b style="font-size: 20px;">ROS Setup</b></u>
 
 The ROS Setup menu is used to configure the ROS environment. ROS and system configuration files are located in the `/etc/turtlebot4/` folder on the RPi4. 
@@ -248,6 +251,7 @@ The ROS Setup menu is used to configure the ROS environment. ROS and system conf
 
 There are currently 3 ROS Setup submenus: Bash Setup, Discovery Server, and Robot Upstart.
 
+<br/>
 <u><b style="font-size: 18px;">Bash Setup</b></u>
 
 The Bash Setup menu allows the user to make changes to the `/etc/turtlebot4/setup.bash` file.
@@ -305,6 +309,7 @@ This file sets environment variables that affect ROS2.
     </tbody>
 </table>
 
+<br/>
 <u><b style="font-size: 18px;">Discovery Server</b></u>
 
 The Discovery Server menu allows the user to enable or disable the discovery server, as well as set the IP and Port of the server.
@@ -343,6 +348,7 @@ Enabling the discovery server will also set `RMW_IMPLEMENTATION` to `rmw_fastrtp
 Discovery server settings are applied to the `DISCOVERY_SERVER` environment variable in `/etc/turtlebot4/setup.bash`.
 ```
 
+<br/>
 <u><b style="font-size: 18px;">Robot Upstart</b></u>
 
 The robot upstart menu has menu options for interacting with the `robot_upstart` job that runs the TurtleBot 4 nodes as a background service.
@@ -383,6 +389,96 @@ The robot upstart menu has menu options for interacting with the `robot_upstart`
         </tr>
     </tbody>
 </table>
+
+<br/>
+<u><b style="font-size: 20px;">Wi-Fi Setup</b></u>
+
+The Wi-Fi Setup menu allows users to easily connect the TurtleBot 4 to their Wi-Fi network, as well as configure the connection.
+
+<table>
+    <thead>
+        <tr>
+            <th>Menu Option</th>
+            <th>Description</th>
+            <th>Default</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><b>Wi-Fi Mode</b></td>
+            <td>Set the RPi4 to act as a Wi-Fi access point or client</td>
+            <td>Access Point</td>
+        </tr>
+        <tr>
+            <td><b>SSID</b></td>
+            <td>The SSID of the Wi-Fi network. <br/> In access point mode, this is the name of the network that will be broadcasted.</td>
+            <td>Turtlebot4</td>
+        </tr>
+        <tr>
+            <td><b>Password</b></td>
+            <td>The password of the Wi-Fi network. This can be left empty.</td>
+            <td>Turtlebot4</td>
+        </tr>
+        <tr>
+            <td><b>Regulatory Domain</b></td>
+            <td>Country Code of the country you live in.</td>
+            <td>CA</td>
+        </tr>
+        <tr>
+            <td><b>Band</b></td>
+            <td>Which Wi-Fi band to use. Set to 'Any' if unsure.</td>
+            <td>5GHz</td>
+        </tr>
+        <tr>
+            <td><b>IP Address</b></td>
+            <td>Sets a static IP address for the `wlan0` interface.</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><b>DHCP</b></td>
+            <td>Whether to use DHCP to dynamically set an IP address.</td>
+            <td>True</td>
+        </tr>
+    </tbody>
+</table>
+
+<br/>
+<u><b style="font-size: 20px;">Bluetooth Setup</b></u>
+
+This menu option launches `bluetoothctl` and allows you to pair and connect to a bluetooth device.
+See [TurtleBot 4 Controller Setup](../overview/quick_start.md#turtlebot-4-controller-setup) for details.
+
+<br/>
+<u><b style="font-size: 20px;">View Settings</b></u>
+
+The View Settings menu lists the TurtleBot 4 configuration files and allows you to preview them by navigating to each file.
+
+Changes you saved in other menus will be reflected here.
+
+<br/>
+<u><b style="font-size: 20px;">Apply Settings</b></u>
+
+Selecting "Apply Settings" will prompt the user to confirm that they want to apply these settings. It will also list all of the changes
+that will be applied. When confirmed, the setup tool will run various commands based on which settings were changed.
+
+```note
+If settings that affect the Create 3 were changed, those changes will be sent to the base over USB-C,
+and the Create 3 will then reboot to apply the settings. Changes to the Wi-Fi network will cause the tool to run
+`sudo netplan apply && sudo reboot`, causing the RPi4 to update its network settings before rebooting. This will cause any SSH session to hang.
+```
+
+Once settings have been applied, you can exit the setup tool. If there were changes made to environment variables, you will
+need to run `turtlebot4-source` or `source $ROBOT_SETUP` to apply them to your current terminal. Changes will be automatically
+applied to any new terminals.
+
+<br/>
+<u><b style="font-size: 20px;">About</b></u>
+
+The "About" menu displays system information and has menu options to change the TurtleBot 4 model and hostname.
+
+```warning
+Changing the model to not match the physical robot model is not recommended.
+```
 
 {% endtab %}
 {% endtabs %}
