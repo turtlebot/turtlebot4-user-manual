@@ -2,7 +2,7 @@
 sort: 7
 ---
 
-# Create 3
+# Create® 3
 
 The TurtleBot 4 can also use all of the actions, messages, and services that the iRobot® Create® 3 platform supports:
 
