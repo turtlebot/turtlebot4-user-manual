@@ -1,6 +1,7 @@
 title: User Manual
 lang: en
 description: Turtlebot4 User Manual
+repository: roni-kreinin/turtlebot4-user-manual
 
 remote_theme: rundocs/jekyll-rtd-theme
 
@@ -14,8 +15,10 @@ exclude:
   - Makefile
   - Gemfile
   - Gemfile.lock
+  - vendor
 
 plugins:
   - jemoji
   - jekyll-avatar
   - jekyll-mentions
+  - jekyll-tabs
