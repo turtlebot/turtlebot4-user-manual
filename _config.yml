@@ -14,6 +14,7 @@ exclude:
   - Makefile
   - Gemfile
   - Gemfile.lock
+  - vendor
 
 plugins:
   - jemoji
