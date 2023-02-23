@@ -1,7 +1,7 @@
 ---
-sort: 3
+sort: 2
 ---
 
-# Software
+# Setup
 
 {% include list.liquid all=true %}
