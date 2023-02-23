@@ -125,8 +125,6 @@ TurtleBot 4's come with an already set up RPi4 image, so these scripts will not 
 {% endtab %}
 {% endtabs %}
 
-## Files
-
 ## Configuration Tools
 
 {% tabs configuration %}
@@ -205,7 +203,7 @@ menu that will show you all of the changes that were saved, and prompt you for c
 will run various commands based on which settings were changed.
 
 ```note
-Changes to the `ROS_DOMAIN_ID`, `ROBOT_NAMESPACE`, `RMW_IMPLEMENTATION` or `DISCOVERY_SERVER` environment variables will be applied the the Create 3 as well, causing it to reboot. Changes made to Wi-Fi settings will cause your SSH session to hang, and the RPi4 to reboot.
+Changes to the `ROS_DOMAIN_ID`, `ROBOT_NAMESPACE`, `RMW_IMPLEMENTATION` or `ROS_DISCOVERY_SERVER` environment variables will be applied the the Create 3 as well, causing it to reboot. Changes made to Wi-Fi settings will cause your SSH session to hang, and the RPi4 to reboot.
 ```
 
 <br/>

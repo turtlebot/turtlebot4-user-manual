@@ -2,7 +2,7 @@
 sort: 1
 ---
 
-# TurtleBot 4 Images
+# TurtleBot 4 Galactic
 
 TurtleBot 4 RPi4 image changelogs. Latest images are available [here](http://download.ros.org/downloads/turtlebot4/).
 
