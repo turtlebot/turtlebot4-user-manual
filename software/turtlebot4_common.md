@@ -147,7 +147,7 @@ Launch files:
 
 Running synchronous SLAM:
 ```bash
-ros2 launch turtlebot4_navigation slam.launch.py sync:=true
+ros2 launch turtlebot4_navigation slam.launch.py
 ```
 
 Running asynchronous SLAM:

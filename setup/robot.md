@@ -88,19 +88,17 @@ For the TurtleBot 4 Lite, you will need to check the `/ip` topic for the new add
 {% tabs ip %}
 {% tab ip galactic %}
 
-On your PC, run the following commands:
+On your PC, run the following command:
  
 ```bash
-source /opt/ros/galactic/setup.bash
 ros2 topic echo /ip
 ```
 {% endtab %}
 {% tab ip humble %}
 
-On your PC, run the following commands:
+On your PC, run the following command:
 
 ```bash
-source /opt/ros/humble/setup.bash
 ros2 topic echo /ip
 ```
 
