@@ -10,6 +10,9 @@ In this tutorial we will be mapping an area by driving the TurtleBot 4 around an
 
 First, make sure that the RPLIDAR and description nodes are running on the TurtleBot 4.
 
+{% tabs slam %}
+{% tab slam galactic %}
+
 Then run SLAM. It is recommended to run synchronous SLAM on a remote PC to get a higher resolution map.
 
 ```bash
@@ -21,6 +24,25 @@ Asynchronous SLAM can be used as well.
 ```bash
 ros2 launch turtlebot4_navigation slam_async.launch.py
 ```
+
+{% endtab %}
+{% tab slam humble %}
+
+Then run SLAM. It is recommended to run synchronous SLAM on a remote PC to get a higher resolution map.
+
+```bash
+ros2 launch turtlebot4_navigation slam.launch.py
+```
+
+Asynchronous SLAM can be used as well.
+
+```bash
+ros2 launch turtlebot4_navigation slam.launch.py sync:=false
+```
+
+{% endtab %}
+{% endtabs %}
+
 
 ## Launch Rviz2
 

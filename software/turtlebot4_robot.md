@@ -255,7 +255,22 @@ Robot upstart commands:
 {% endtab %}
 {% tab upstart humble %}
 
-TODO: Turtlebot4_setup
+Use the TurtleBot 4 setup tool to manage `robot_upstart`:
+
+```bash
+turtlebot4-setup
+```
+
+Navigate to 'ROS Setup', then 'Robot Upstart'.
+Use the various menu options to start, stop, uninstall, or reinstall the upstart job.
+
+<figure class="aligncenter">
+    <img src="media/robot_upstart.png" alt="robot_upstart" style="width: 70%"/>
+    <figcaption>Manage robot_upstart with the TurtleBot 4 setup tool</figcaption>
+</figure>
+
+The setup tool will automatically reinstall the `robot_upstart` job when certain settings are changed.
+
 {% endtab %}
 {% endtabs %}
 
@@ -269,7 +284,7 @@ Launch files:
 
 ### Diagnostics Updater
 
-The [diagnostics updater](https://github.com/turtlebot/turtlebot4_robot/blob/galactic/turtlebot4_diagnostics/turtlebot4_diagnostics/diagnostics_updater.py) is a Python3 node that runs on the robot. It subscribes to diagnostic topics records statistics specific to each topic. The diagnostic data is viewable with `rqt_robot_monitor`.
+The [diagnostics updater](https://github.com/turtlebot/turtlebot4_robot/blob/galactic/turtlebot4_diagnostics/turtlebot4_diagnostics/diagnostics_updater.py) is a Python3 node that runs on the robot. It subscribes to diagnostic topics and records statistics specific to each topic. The diagnostic data is viewable with `rqt_robot_monitor`.
 
 {% tabs diagnostics %}
 {% tab diagnostics galactic %}

@@ -20,6 +20,9 @@ mkdir ~/turtlebot4_ws/src -p
 
 ## Create a package and node
 
+{% tabs package %}
+{% tab package galactic %}
+
 You will need to create a ROS2 package to hold your files. For this tutorial, we will create a package called `turtlebot4_python_tutorials` with a node called `turtlebot4_first_python_node`.
 
 ```bash
@@ -27,6 +30,20 @@ source /opt/ros/galactic/setup.bash
 cd ~/turtlebot4_ws/src
 ros2 pkg create --build-type ament_python --node-name turtlebot4_first_python_node turtlebot4_python_tutorials
 ```
+
+{% endtab %}
+{% tab package humble %}
+
+You will need to create a ROS2 package to hold your files. For this tutorial, we will create a package called `turtlebot4_python_tutorials` with a node called `turtlebot4_first_python_node`.
+
+```bash
+source /opt/ros/humble/setup.bash
+cd ~/turtlebot4_ws/src
+ros2 pkg create --build-type ament_python --node-name turtlebot4_first_python_node turtlebot4_python_tutorials
+```
+
+{% endtab %}
+{% endtabs %}
 
 This will create a `turtlebot4_python_tutorials` folder and populate it with a basic "Hello World" node, as well as the setup and package.xml files required for a ROS2 Python package.
 

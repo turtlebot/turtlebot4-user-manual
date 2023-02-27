@@ -26,6 +26,9 @@ The TurtleBot 4 uses the [Nav2](https://navigation.ros.org/) stack for navigatio
 
 ### Launching navigation
 
+{% tabs navigation %}
+{% tab navigation galactic %}
+
 For this tutorial we can launch navigation with [Nav Bringup](https://github.com/turtlebot/turtlebot4/blob/galactic/turtlebot4_navigation/launch/nav_bringup.launch.py).
 
 On a physical TurtleBot 4, call:
@@ -48,6 +51,26 @@ For example:
 ```bash
 ros2 launch turtlebot4_ignition_bringup ignition.launch.py nav2:=true slam:=off localization:=true world:=classroom map:=classroom.yaml
 ```
+
+{% endtab %}
+{% tab navigation humble %}
+
+For this tutorial we can launch navigation with the [turtlebot4_navigation](https://github.com/turtlebot/turtlebot4/tree/humble/turtlebot4_navigation) package.
+
+Open a terminal and launch [localization](https://github.com/turtlebot/turtlebot4/blob/humble/turtlebot4_navigation/launch/localization.launch.py):
+
+```bash
+ros2 launch turtlebot4_navigation localization.launch.py map:=office.yaml
+```
+
+Then, in another terminal, launch [nav2](https://github.com/turtlebot/turtlebot4/blob/humble/turtlebot4_navigation/launch/nav2.launch.py):
+
+```bash
+ros2 launch turtlebot4_navigation nav2.launch.py
+```
+
+{% endtab %}
+{% endtabs %}
 
 ```note
 An initial pose is required before navigation can begin.
@@ -447,13 +470,7 @@ ros2 launch turtlebot4_viz view_robot.launch.py
 
 This example demonstrates how to create a navigation path in Rviz during runtime. It uses the [2D Pose Estimate](#2d-pose-estimate) tool to pass the TurtleBot 4 Navigator a set of poses. Then we use the [Follow Waypoints](#follow-waypoints) behaviour to follow those poses. This example was run on a physical TurtleBot 4.
 
-To run this example, start nav bringup on your PC or on the Raspberry Pi:
-
-```bash
-ros2 launch turtlebot4_navigation nav_bringup.launch.py slam:=off localization:=true map:=office.yaml
-```
-
-Replace `office.yaml` with the map of your environment.
+To run this example, start [Navigation](./navigation.md#launching-navigation) on your PC or on the Raspberry Pi using a map of your environment.
 
 Once the navigation has started, open another terminal and run:
 

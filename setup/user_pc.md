@@ -39,8 +39,6 @@ sudo apt update && sudo apt install ros-humble-turtlebot4-desktop
 
 ## Simple Discovery
 
-If you are using [Simple Discovery](./networking.md#simple-discovery), you may want to create a `setup.bash` file which you can source to apply your ROS2 settings. add the following lines to your `~/.bashrc` file. This will make sure that any time you open a new terminal, the correct ROS2 settings are applied.
-
 {% tabs simple %}
 {% tab simple galactic %}
 

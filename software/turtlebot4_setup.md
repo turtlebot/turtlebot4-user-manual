@@ -169,7 +169,7 @@ These scripts are installed in the */usr/local/bin* folder and are used to confi
 {% endtab %}
 {% tab configuration humble %}
 
-<u><b style="font-size: 20px;">Configuration Tool</b></u>
+<u><b style="font-size: 20px;">Setup Tool</b></u>
 
 In Humble, the TurtleBot 4 has a new command line setup tool that simplifies the configuration process.
 The tool can be run on the TurtleBot 4 by calling:
@@ -417,11 +417,11 @@ The Wi-Fi Setup menu allows users to easily connect the TurtleBot 4 to their Wi-
             <td>The password of the Wi-Fi network. This can be left empty.</td>
             <td>Turtlebot4</td>
         </tr>
-        <tr>
+        <!-- <tr>
             <td><b>Regulatory Domain</b></td>
             <td>Country Code of the country you live in.</td>
             <td>CA</td>
-        </tr>
+        </tr> -->
         <tr>
             <td><b>Band</b></td>
             <td>Which Wi-Fi band to use. Set to 'Any' if unsure.</td>

@@ -14,6 +14,9 @@ The robot must first be set up and connected to Wi-Fi before it can be driven. C
 
 The simplest way to get your robot driving is to use a keyboard application on your PC.
 
+{% tabs keyboard %}
+{% tab keyboard galactic %}
+
 You can install the `teleop_twist_keyboard` package on your PC by running the following commands:
 
 ```bash
@@ -27,6 +30,26 @@ Once installed, run the node by calling:
 source /opt/ros/galactic/setup.bash
 ros2 run teleop_twist_keyboard teleop_twist_keyboard
 ```
+
+{% endtab %}
+{% tab keyboard humble %}
+
+You can install the `teleop_twist_keyboard` package on your PC by running the following commands:
+
+```bash
+sudo apt update
+sudo apt install ros-humble-teleop-twist-keyboard
+```
+
+Once installed, run the node by calling:
+
+```bash
+source /opt/ros/humble/setup.bash
+ros2 run teleop_twist_keyboard teleop_twist_keyboard
+```
+
+{% endtab %}
+{% endtabs %}
 
 This will start a CLI interface which allows you to press keys to command the robot to drive.
 
