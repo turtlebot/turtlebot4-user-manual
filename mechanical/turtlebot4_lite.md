@@ -11,7 +11,7 @@ TurtleBot Lite is built on the iRobot Create® 3 learning platform which feature
 There is space for sensors and accessories to be attached to the base unit around the Oak Camera and RPILIDAR. To attach accessories to the Create® 3, the existing holes in the plate can be used. These Ø3.5mm holes are spaced apart 10mm. Alternatively, holes can be drilled by [removing the Create® 3 Integration Plate](#removing-the-create%C2%AE-3-integration-plate). 3D models of the robot are available on [Github](https://github.com/turtlebot/turtlebot4-hardware) which can help in the design.
 
 <figure class="aligncenter">
-    <img src="media/lite_integration_plate.png" alt="Create 3 Integration Plate" style="width: 50%"/>
+    <img src="media/lite_integration_plate.png" alt="Create® 3 Integration Plate" style="width: 50%"/>
     <figcaption>TurtleBot 4 Lite Integration</figcaption>
 </figure>
 
@@ -40,6 +40,6 @@ To reattach the plate, place the plate slightly angled such that the posts fit i
 The Raspberry Pi is found in the rear tray of the robot. To fully access the Raspberry Pi, disconnect the USB cables connected to the Oak Camera and RPLIDAR and feed them through the slot opening at the rear of the robot. You can now carefully slide out the cargo bay.
  
 <figure class="aligncenter">
-    <img src="media/create_tray.jpg" alt="Create 3 Tray" style="width: 50%"/>
+    <img src="media/create_tray.jpg" alt="Create® 3 Tray" style="width: 50%"/>
     <figcaption>Create® 3 Cargo Bay removal</figcaption>
 </figure>
