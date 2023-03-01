@@ -4,13 +4,13 @@ sort: 3
 
 # Robot
 
-The first step for setting up the TurtleBot 4 is to connect the Raspberry Pi to your Wi-Fi network.
+The first step for setting up the TurtleBot 4 is to power it on and connect it to your Wi-Fi network.
 
 ## Power on the robot
 
 Place the TurtleBot 4 onto its dock. The green LED on the dock will turn on for a few seconds, and the TurtleBot 4 should power on. Allow the robot some time to boot up.
 
-## Connecting the Raspberry Pi to Wi-Fi
+## Connect the Raspberry Pi to Wi-Fi
 
 ### Connect to the Access Point
 
@@ -20,7 +20,7 @@ On the first boot, the Raspberry Pi will enter Access Point (AP) mode which will
 The TurtleBot 4 AP network is a 5GHz network. Your computer will need to support 5GHz Wi-Fi to connect to the network.
 ```
 
-### SSH into the RPi
+### SSH into the Raspberry Pi
 
 Once connected, you can SSH into the Raspberry Pi to configure its Wi-Fi. Open a terminal on your PC and call: 
 
@@ -30,9 +30,9 @@ ssh ubuntu@10.42.0.1
 
 Log in using the password `turtlebot4`.
 
-### Connect the RPi to your network
+### Connect the Raspberry Pi to your network
 
-Once logged in, configure the RPi to connect to your Wi-Fi network.
+Once logged in, configure the Raspberry Pi to connect to your Wi-Fi network.
 
 ```tip
 Connect the Raspberry Pi to a 5GHz Wi-Fi network for optimal performance.
@@ -76,10 +76,10 @@ Change your Wi-Fi mode to 'Client' when connecting to an existing network.
 
 ### Find the new Raspberry Pi IP
 
-Once the Wi-Fi settings are applied, the RPi will reboot and connect to your network. DHCP will assign it a new IP address. On the TurtleBot 4, this IP address will be shown at the top of the display. 
+Once the Wi-Fi settings are applied, the Raspberry Pi will reboot and connect to your network. DHCP will assign it a new IP address. On the TurtleBot 4, this IP address will be shown at the top of the display. 
 
 <figure class="aligncenter">
-    <img src="media/display_ip.jpg" alt="IP Address" style="width: 30%"/>
+    <img src="media/display_ip2.jpg" alt="IP Address" style="transform:rotate(270deg); width: 20%"/>
     <figcaption>Wi-Fi IP address on a TurtleBot 4</figcaption>
 </figure>
 
@@ -107,10 +107,13 @@ ros2 topic echo /ip
 
 You should see the IP address printed out in your terminal periodically.
 
-<figure class="aligncenter">
-    <img src="media/ip_echo.png" alt="IP Echo" style="width: 60%"/>
-    <figcaption>Echoing the IP address of a TurtleBot 4</figcaption>
-</figure>
+```bash
+$ ros2 topic echo /ip
+data: 192.168.28.24
+---
+data: 192.168.28.24
+---
+```
 
 ```note
 If you are unable to find the IP address with the previous methods, try logging into your gateway and looking for a device with host name "ubuntu".
@@ -122,77 +125,27 @@ Once you have found the IP address, you can now SSH back into the robot with it.
 ssh ubuntu@xxx.xxx.xxx.xxx
 ```
 
-### Access Point Mode
+## Updating the TurtleBot 4
 
-Placing the RPi into Access Point mode can be useful when using the robot in an area without Wi-Fi connection.
+It is recommended to update both the Create® 3 and the Raspberry Pi when you first use it to receive the latest bug fixes and improvements.
 
-{% tabs ap %}
-{% tab ap galactic %}
+### Create® 3
 
-SSH into the RPi and call:
+Check the [Create® 3 software releases](https://iroboteducation.github.io/create3_docs/releases/overview/) to see if a newer firmware version is available. You can check the firmware version of your Create® 3 by visiting the webserver.
 
-```bash
-sudo wifi.sh -a && sudo reboot
-```
+If new firmware is available, download it, then access the [Create® 3 webserver](https://iroboteducation.github.io/create3_docs/webserver/overview/). Go to the <b>Update</b> tab, upload the firmware, then update your robot.
 
-The RPi will revert back to the original AP mode.
+### Raspberry Pi packages
 
-Optionally you can set your own SSID and password with:
+SSH into the Raspberry Pi, then update all packages by calling:
 
 ```bash
-sudo wifi.sh -s '<SSID>' -p '<PASSWORD>' -a && sudo reboot
-```
-
-{% endtab %}
-{% tab ap humble %}
-
-SSH into the RPi and run the [TurtleBot 4 setup tool](../software/turtlebot4_setup.md#configuration-tools):
-
-```bash
-turtlebot4-setup
-```
-
-Go to <b>Wi-Fi Setup</b> and select <b>Apply Defaults</b>. Optionally you can set your own SSID and password before saving and applying the new settings.
-
-{% endtab %}
-{% endtabs %}
-
-```tip
-If you are moving your TurtleBot 4 to a new location with a different Wi-Fi network, 
-reconfigure the Raspberry Pi to connect to that network beforehand or place it into AP mode. 
-Otherwise it will continue trying to connect to your current network.
-```
-
-### Recovering the Raspberry Pi
-
-If you entered incorrect Wi-Fi credentials or your Wi-Fi network is down, you will not be able to access the RPi over Wi-Fi. To recover from this, you can connect directly to the RPi using an ethernet cable. You may need a USB to Ethernet adapter for your PC.
-
-<figure class="aligncenter">
-    <img src="media/ethernet.jpg" alt="Ethernet connection" style="width: 80%;"/>
-    <figcaption>Connecting to the TurtleBot 4 over Ethernet</figcaption>
-</figure>
-
-The Raspberry Pi uses a static IP address for the ethernet interface, `192.168.185.3`. You will need to configure your wired connection to use the same subnet:
-
-- Go to your wired connection settings.
-- Set your IPv4 Method to `Manual` and set your static IP. The IP address cannot be the same as the Raspberry Pi.
-
-<figure class="aligncenter">
-    <img src="media/static_ip.png" alt="Setting IP" style="width: 70%;"/>
-    <figcaption>Configure your PC's wired IP</figcaption>
-</figure>
-
-- Click 'Apply'
-
-You can now go to your terminal and SSH into the robot by typing:
-
-```bash
-ssh ubuntu@192.168.185.3
+sudo apt update && sudo apt upgrade
 ```
 
 ## Simple Discovery
 
-To use the TurtleBot 4 with Simple Discovery, the Create 3 should be connected to Wi-Fi.
+To use the TurtleBot 4 with Simple Discovery, the Create® 3 should be connected to Wi-Fi.
 
 ### Create® 3 Wi-Fi Setup
 
@@ -206,7 +159,7 @@ Press both Create® 3 button 1 and 2 simultaneously until light ring turns blue.
 The Create® 3 is now in AP mode. Connect to its Wi-Fi network called 'Create-XXXX'. Then, in a web browser, navigate to `192.168.10.1`. This will open the Create® 3 [webserver](https://iroboteducation.github.io/create3_docs/webserver/overview/). Go to the Connect tab, enter your Wi-Fi SSID and password, and then click 'Connect'.
 
 <figure class="aligncenter">
-    <img src="media/create3_connect.png" alt="Create 3 connect" style="width: 100%"/>
+    <img src="media/create3_connect.png" alt="Create® 3 connect" style="width: 100%"/>
     <figcaption>Connecting the Create® 3 to Wi-Fi</figcaption>
 </figure>
 
@@ -221,17 +174,17 @@ The Create® 3 can only be connected to 2.4 GHz Wi-Fi networks.
 {% tabs discovery %}
 {% tab discovery galactic %}
 
-<u><b style="font-size: 20px;">Create 3</b></u>
+<u><b style="font-size: 20px;">Create® 3</b></u>
 
-The Create 3 needs to be updated to the latest firmware, have its Wi-Fi disabled, and be configured to use the RPi4 as the discovery server over the USB-C connection.
+The Create® 3 needs to be updated to the latest firmware, have its Wi-Fi disabled, and be configured to use the Raspberry Pi as the discovery server over the USB-C connection.
 
 <b>Setup instructions:</b>
 - Update to the [latest firmware](https://iroboteducation.github.io/create3_docs/releases/overview/) using the webserver.
-- Once updated, perform a [factory reset](https://iroboteducation.github.io/create3_docs/webserver/about/#:~:text=set%20to%20USB.-,Factory%20Reset,-A%20hyperlink%20to) to disconnect the Create 3 from any Wi-Fi networks.
+- Once updated, perform a [factory reset](https://iroboteducation.github.io/create3_docs/webserver/about/#:~:text=set%20to%20USB.-,Factory%20Reset,-A%20hyperlink%20to) to disconnect the Create® 3 from any Wi-Fi networks.
 - On the webserver, go to Application -> Configuration. Save the following settings:
 
 <figure class="aligncenter">
-    <img src="media/create3_discovery.png" alt="Create 3 discovery" style="width: 100%"/>
+    <img src="media/create3_discovery.png" alt="Create® 3 discovery" style="width: 100%"/>
     <figcaption>Create® 3 discovery server settings</figcaption>
 </figure>
 
@@ -266,13 +219,13 @@ You can move any ROS2 related environment variables such as `ROS_DOMAIN_ID` from
 {% endtab %}
 {% tab discovery humble %}
 
-<u><b style="font-size: 20px;">Create 3</b></u>
+<u><b style="font-size: 20px;">Create® 3</b></u>
 
-The Create 3 needs to be updated to the latest firmware and have its Wi-Fi disabled.
+The Create® 3 needs to be updated to the latest firmware and have its Wi-Fi disabled.
 
 <b>Setup instructions:</b>
 - Update to the [latest firmware](https://iroboteducation.github.io/create3_docs/releases/overview/) using the webserver.
-- Once updated, perform a [factory reset](https://iroboteducation.github.io/create3_docs/webserver/about/#:~:text=set%20to%20USB.-,Factory%20Reset,-A%20hyperlink%20to) to disconnect the Create 3 from any Wi-Fi networks.
+- Once updated, perform a [factory reset](https://iroboteducation.github.io/create3_docs/webserver/about/#:~:text=set%20to%20USB.-,Factory%20Reset,-A%20hyperlink%20to) to disconnect the Create® 3 from any Wi-Fi networks.
 
 <u><b style="font-size: 20px;">Raspberry Pi</b></u>
 
@@ -326,23 +279,75 @@ sudo bluetoothctl --agent=NoInputNoOutput
 
 Visit the [Driving Tutorial](../tutorials/driving.md#joystick-teleoperation) to begin driving your TurtleBot 4.
 
-## Updating the TurtleBot 4
+## Access Point Mode
 
-It is recommended to update both the Create® 3 and the Raspberry Pi when you first use it to receive the latest bug fixes and improvements.
+Placing the Raspberry Pi into Access Point mode can be useful when using the robot in an area without Wi-Fi connection.
 
-### Create® 3
+{% tabs ap %}
+{% tab ap galactic %}
 
-Check the [Create® 3 software releases](https://iroboteducation.github.io/create3_docs/releases/overview/) to see if a newer firmware version is available. You can check the firmware version of your Create® 3 by visiting the webserver.
-
-### Raspberry Pi packages
-
-Update all packages by calling:
+SSH into the Raspberry Pi and call:
 
 ```bash
-sudo apt update && sudo apt upgrade
+sudo wifi.sh -a && sudo reboot
 ```
 
-### Install latest Raspberry Pi image
+The Raspberry Pi will revert back to the original AP mode.
+
+Optionally you can set your own SSID and password with:
+
+```bash
+sudo wifi.sh -s '<SSID>' -p '<PASSWORD>' -a && sudo reboot
+```
+
+{% endtab %}
+{% tab ap humble %}
+
+SSH into the Raspberry Pi and run the [TurtleBot 4 setup tool](../software/turtlebot4_setup.md#configuration-tools):
+
+```bash
+turtlebot4-setup
+```
+
+Go to <b>Wi-Fi Setup</b> and select <b>Apply Defaults</b>. Optionally you can set your own SSID and password before saving and applying the new settings.
+
+{% endtab %}
+{% endtabs %}
+
+```tip
+If you are moving your TurtleBot 4 to a new location with a different Wi-Fi network, 
+reconfigure the Raspberry Pi to connect to that network beforehand or place it into AP mode. 
+Otherwise it will continue trying to connect to your current network.
+```
+
+## Recovering the Raspberry Pi
+
+If you entered incorrect Wi-Fi credentials or your Wi-Fi network is down, you will not be able to access the Raspberry Pi over Wi-Fi. To recover from this, you can connect directly to the Raspberry Pi using an ethernet cable. You may need a USB to Ethernet adapter for your PC.
+
+<figure class="aligncenter">
+    <img src="media/ethernet.jpg" alt="Ethernet connection" style="width: 80%;"/>
+    <figcaption>Connecting to the TurtleBot 4 over Ethernet</figcaption>
+</figure>
+
+The Raspberry Pi uses a static IP address for the ethernet interface, `192.168.185.3`. You will need to configure your wired connection to use the same subnet:
+
+- Go to your wired connection settings.
+- Set your IPv4 Method to `Manual` and set your static IP. The IP address cannot be the same as the Raspberry Pi.
+
+<figure class="aligncenter">
+    <img src="media/static_ip.png" alt="Setting IP" style="width: 70%;"/>
+    <figcaption>Configure your PC's wired IP</figcaption>
+</figure>
+
+- Click 'Apply'
+
+You can now go to your terminal and SSH into the robot by typing:
+
+```bash
+ssh ubuntu@192.168.185.3
+```
+
+## Install latest Raspberry Pi image
 
 ```warning
 Installing a new image on the Raspberry Pi will delete any changes you may have made. Save your changes externally before proceeding.

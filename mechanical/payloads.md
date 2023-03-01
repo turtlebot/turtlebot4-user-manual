@@ -10,7 +10,7 @@ The TurtleBot4 is able to perform with heavier payloads over 9 kg, however some 
 
 In order to ensure the robot is as stable as possible during operation, it is important to mount the payload such that its center of gravity (COG) is fully supported by the wheelbase. This can be achieved through two methods:
 1.	Design the payload mounting to accommodate for the offset COG. This can be done by using the existing acrylic integration plate or by using a custom plate. 
-2.	Add an additional caster wheel to the rear of the Create 3. This will ensure that the payload is fully supported and balanced. Detailed instructions as well as design files are available [here](https://iroboteducation.github.io/create3_docs/hw/mechanical/#adding-a-rear-caster).
+2.	Add an additional caster wheel to the rear of the Create® 3. This will ensure that the payload is fully supported and balanced. Detailed instructions as well as design files are available [here](https://iroboteducation.github.io/create3_docs/hw/mechanical/#adding-a-rear-caster).
 
 Additionally, the payload height can be lowered to ensure better stability for the robot, particularly if an additional caster wheel is not used and the system is balanced on three wheels. While the acceleration and speed can be modified to accommodate for the elevated COG (see below), lowering it will optimize robot performance. 
 
@@ -36,7 +36,7 @@ Lowering the integration plate of the Standard TurtleBot4, and therefore the pay
 
 When reassembling the robot with new hardware, ensure that all fasteners are torqued according to the fastener and mating threads and that a threadlocker is used. 
 
-For the TurtleBot4 Lite, the Create 3 plate can be used to secure payloads. Tips for mounting directly to this plate can be found on the [Create 3 Github](https://iroboteducation.github.io/create3_docs/hw/mechanical/).
+For the TurtleBot4 Lite, the Create® 3 plate can be used to secure payloads. Tips for mounting directly to this plate can be found on the [Create® 3 Github](https://iroboteducation.github.io/create3_docs/hw/mechanical/).
 
 ```note
 The minimum clearance to accommodate the OAK-D-Pro is 108mm. For the OAK-D-Lite it is 102mm.

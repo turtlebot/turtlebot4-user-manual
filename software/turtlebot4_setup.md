@@ -203,7 +203,7 @@ menu that will show you all of the changes that were saved, and prompt you for c
 will run various commands based on which settings were changed.
 
 ```note
-Changes to the `ROS_DOMAIN_ID`, `ROBOT_NAMESPACE`, `RMW_IMPLEMENTATION` or `ROS_DISCOVERY_SERVER` environment variables will be applied the the Create 3 as well, causing it to reboot. Changes made to Wi-Fi settings will cause your SSH session to hang, and the RPi4 to reboot.
+Changes to the `ROS_DOMAIN_ID`, `ROBOT_NAMESPACE`, `RMW_IMPLEMENTATION` or `ROS_DISCOVERY_SERVER` environment variables will be applied the the Create® 3 as well, causing it to reboot. Changes made to Wi-Fi settings will cause your SSH session to hang, and the RPi4 to reboot.
 ```
 
 <br/>
@@ -460,8 +460,8 @@ Selecting "Apply Settings" will prompt the user to confirm that they want to app
 that will be applied. When confirmed, the setup tool will run various commands based on which settings were changed.
 
 ```note
-If settings that affect the Create 3 were changed, those changes will be sent to the base over USB-C,
-and the Create 3 will then reboot to apply the settings. Changes to the Wi-Fi network will cause the tool to run
+If settings that affect the Create® 3 were changed, those changes will be sent to the base over USB-C,
+and the Create® 3 will then reboot to apply the settings. Changes to the Wi-Fi network will cause the tool to run
 `sudo netplan apply && sudo reboot`, causing the RPi4 to update its network settings before rebooting. This will cause any SSH session to hang.
 ```
 

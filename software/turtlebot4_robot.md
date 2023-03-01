@@ -318,7 +318,7 @@ Diagnostic topics:
         <tr>
             <td><b>hazard_detection</b></td>
             <td><i>irobot_create_msgs/msg/HazardDetectionVector</i></td>
-            <td>Create 3 Hazards</td>
+            <td>Create® 3 Hazards</td>
         </tr>
         <tr>
             <td><b>imu</b></td>
@@ -375,7 +375,7 @@ Diagnostic topics:
         <tr>
             <td><b>hazard_detection</b></td>
             <td><i>irobot_create_msgs/msg/HazardDetectionVector</i></td>
-            <td>Create 3 Hazards</td>
+            <td>Create® 3 Hazards</td>
         </tr>
         <tr>
             <td><b>imu</b></td>

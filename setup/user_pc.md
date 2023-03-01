@@ -115,7 +115,7 @@ wget https://raw.githubusercontent.com/turtlebot/turtlebot4_setup/galactic/conf/
 ```
 
 ```note
-The `DontRoute` setting is required to see the Create 3 topics. 
+The `DontRoute` setting is required to see the Create® 3 topics. 
 ```
 
 Move the xml file to a convenient location:
@@ -139,7 +139,7 @@ For more CycloneDDS configuration options, visit the [CycloneDDS documentation](
 
 ## Discovery Server
 
-The discovery server requires some additional configuration. Because the Create 3 is not on the same network as the user PC, an IP route has to be added to the Create 3, through the Raspberry Pi. This route must be up at all times to maintain a connection between the PC and the Create 3. Additionally, every device in the system must use `rmw_fastrtps_cpp` as their DDS and must define the `ROS_DISCOVERY_SERVER` environment variable to inform FastDDS of the IP and port of the server.
+The discovery server requires some additional configuration. Because the Create® 3 is not on the same network as the user PC, an IP route has to be added to the Create® 3, through the Raspberry Pi. This route must be up at all times to maintain a connection between the PC and the Create® 3. Additionally, every device in the system must use `rmw_fastrtps_cpp` as their DDS and must define the `ROS_DISCOVERY_SERVER` environment variable to inform FastDDS of the IP and port of the server.
 
 ```note
 The Raspberry Pi must be connected to Wi-Fi before proceeding. Follow the [Robot Setup](./robot.html#robot) instructions.
@@ -148,7 +148,7 @@ The Raspberry Pi must be connected to Wi-Fi before proceeding. Follow the [Robot
 {% tabs discovery %}
 {% tab discovery galactic %}
 
-Each remote PC that will be communicating with the TurtleBot 4 will have to add an IP route for the Create 3, as well as configure the ROS2 environment to use the RPi4 as the discovery server. The IP route will be added using a service so that it persists through reboots.
+Each remote PC that will be communicating with the TurtleBot 4 will have to add an IP route for the Create® 3, as well as configure the ROS2 environment to use the RPi4 as the discovery server. The IP route will be added using a service so that it persists through reboots.
 
 Get and install discovery files:
 ```
@@ -187,7 +187,7 @@ ros2 daemon stop; ros2 daemon start
 
 to restart the ROS2 daemon.
 
-You should now be able to see the Raspberry Pi and Create 3 topics:
+You should now be able to see the Raspberry Pi and Create® 3 topics:
 
 ```bash
 ros2 topic list
@@ -254,7 +254,7 @@ ros2 daemon stop; ros2 daemon start
 
 to restart the ROS2 daemon.
 
-You should now be able to see the Raspberry Pi and Create 3 topics:
+You should now be able to see the Raspberry Pi and Create® 3 topics:
 
 ```bash
 ros2 topic list
