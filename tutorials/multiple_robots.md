@@ -10,7 +10,7 @@ This tutorial will cover the two main methods for running multiple TurtleBot 4's
 
 ## ROS_DOMAIN_ID
 
-The **ROS_DOMAIN_ID** is an environment variable used in ROS2 to change the ports that ROS2 processes use for communication. This effectively allows us to separate different ROS2 processes from communicating with each other on the same network. For a detailed explanation, click [here](https://docs.ros.org/en/galactic/Concepts/About-Domain-ID.html).
+The **ROS_DOMAIN_ID** is an environment variable used in ROS 2 to change the ports that ROS 2 processes use for communication. This effectively allows us to separate different ROS 2 processes from communicating with each other on the same network. For a detailed explanation, click [here](https://docs.ros.org/en/galactic/Concepts/About-Domain-ID.html).
 
 We can leverage this by assigning a unique **ROS_DOMAIN_ID** to each of our robots. This will ensure that communication between robots does not occur. The **ROS_DOMAIN_ID** can be set to any value between 0 and 101, inclusively.
 
@@ -100,7 +100,7 @@ Navigate to 'Bash Setup' in the 'ROS Setup' menu, then change your `ROS_DOMAIN_I
 
 This will apply the new `ROS_DOMAIN_ID` to the Create® 3, RPi4 Terminal, and RPi4 Robot Upstart job.
 
-On the user PC, set the `ROS_DOMAIN_ID` in your *setup.bash* file and source it. See [Installing ROS2](../setup/user_pc.md#installing-ros2) for more details.
+On the user PC, set the `ROS_DOMAIN_ID` in your *setup.bash* file and source it. See [Installing ROS 2](../setup/user_pc.md#installing-ros2) for more details.
 
 {% endtab %}
 {% endtabs %}

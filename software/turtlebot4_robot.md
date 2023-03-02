@@ -7,7 +7,7 @@ sort: 3
 Source code is available [here](https://github.com/turtlebot/turtlebot4_robot).
 
 ```note
-The `turtlebot4_robot` metapackage can be installed on a Raspberry Pi 4B running Ubuntu Server 20.04 with ROS2 Galactic.
+The `turtlebot4_robot` metapackage can be installed on a Raspberry Pi 4B running Ubuntu Server 20.04 with ROS 2 Galactic.
 ```
 
 ## Installation

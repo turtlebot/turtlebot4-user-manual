@@ -14,7 +14,7 @@ sort: 2
   - Raspberry Pi Imager: <https://www.raspberrypi.com/software/>
   - Raspberry Pi Pinout: <https://pinout.xyz/>
 
-### ROS2
+### ROS 2
   - Documentation: <https://docs.ros.org/en/humble/index.html>
   - Debian Install: <https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debians.html>
   - Nav2 Documentation: <https://navigation.ros.org/>
@@ -26,6 +26,7 @@ sort: 2
   - TurtleBot 4 desktop visualization packages: <https://github.com/turtlebot/turtlebot4_desktop>
   - TurtleBot 4 simulator packages: <https://github.com/turtlebot/turtlebot4_simulator>
   - TurtleBot 4 robot packages: <https://github.com/turtlebot/turtlebot4_robot>
+  - TurtleBot 4 setup: <https://github.com/turtlebot/turtlebot4_setup>
   - TurtleBot 4 examples: <https://github.com/turtlebot/turtlebot4_examples>
   - TurtleBot 4 tutorials: <https://github.com/turtlebot/turtlebot4_tutorials>
   - TurtleBot 4 images: <http://download.ros.org/downloads/turtlebot4/>

@@ -4,7 +4,7 @@ sort: 2
 
 # Creating your first node (C++)
 
-This tutorial will go through the steps of creating a ROS2 package and writing a ROS2 node in C++. For a Python example, click [here](./first_node_python.html#creating-your-first-node-python). These steps are similar to the [ROS2 Tutorial](https://docs.ros.org/en/galactic/Tutorials/Writing-A-Simple-Cpp-Publisher-And-Subscriber.html), but focus on interacting with the TurtleBot 4. For source code, click [here](https://github.com/turtlebot/turtlebot4_tutorials/tree/galactic/turtlebot4_cpp_tutorials).
+This tutorial will go through the steps of creating a ROS 2 package and writing a ROS 2 node in C++. For a Python example, click [here](./first_node_python.html#creating-your-first-node-python). These steps are similar to the [ROS 2 Tutorial](https://docs.ros.org/en/galactic/Tutorials/Writing-A-Simple-Cpp-Publisher-And-Subscriber.html), but focus on interacting with the TurtleBot 4. For source code, click [here](https://github.com/turtlebot/turtlebot4_tutorials/tree/galactic/turtlebot4_cpp_tutorials).
 
 ```note
 You can follow this tutorial on either the Raspberry Pi of your TurtleBot 4, or your PC.
@@ -23,7 +23,7 @@ mkdir ~/turtlebot4_ws/src -p
 {% tabs package %}
 {% tab package galactic %}
 
-You will need to create a ROS2 package to hold your files. For this tutorial, we will create a package called `turtlebot4_cpp_tutorials` with a node called `turtlebot4_first_cpp_node`.
+You will need to create a ROS 2 package to hold your files. For this tutorial, we will create a package called `turtlebot4_cpp_tutorials` with a node called `turtlebot4_first_cpp_node`.
 
 ```bash
 source /opt/ros/galactic/setup.bash
@@ -34,7 +34,7 @@ ros2 pkg create --build-type ament_cmake --node-name turtlebot4_first_cpp_node t
 {% endtab %}
 {% tab package humble %}
 
-You will need to create a ROS2 package to hold your files. For this tutorial, we will create a package called `turtlebot4_cpp_tutorials` with a node called `turtlebot4_first_cpp_node`.
+You will need to create a ROS 2 package to hold your files. For this tutorial, we will create a package called `turtlebot4_cpp_tutorials` with a node called `turtlebot4_first_cpp_node`.
 
 ```bash
 source /opt/ros/humble/setup.bash
@@ -46,7 +46,7 @@ ros2 pkg create --build-type ament_cmake --node-name turtlebot4_first_cpp_node t
 {% endtabs %}
 
 
-This will create a `turtlebot4_cpp_tutorials` folder and populate it with a basic "Hello World" node, as well as the CMakeLists.txt and package.xml files required for a ROS2 C++ package.
+This will create a `turtlebot4_cpp_tutorials` folder and populate it with a basic "Hello World" node, as well as the CMakeLists.txt and package.xml files required for a ROS 2 C++ package.
 
 ## Write your node
 
@@ -54,7 +54,7 @@ The next step is to start coding. For this tutorial, our goal will be to use the
 
 ### Add your dependencies
 
-For this tutorial, we will need to use the `rclcpp` and `irobot_create_msgs` packages. The `rclcpp` package allows us to create ROS2 nodes and gives us full access to all the base ROS2 functionality in C++. The `irobot_create_msgs` package gives us access to the custom messages used by the Create® 3 for reading the button presses and controlling the lightring.
+For this tutorial, we will need to use the `rclcpp` and `irobot_create_msgs` packages. The `rclcpp` package allows us to create ROS 2 nodes and gives us full access to all the base ROS 2 functionality in C++. The `irobot_create_msgs` package gives us access to the custom messages used by the Create® 3 for reading the button presses and controlling the lightring.
 
 In your CMakeLists.txt file, add these lines under `find_package(ament_cmake REQUIRED)`:
 
@@ -150,13 +150,13 @@ private:
 };
 ```
 
-Notice that the `interface_buttons_subscriber_` uses the [InterfaceButtons](https://github.com/iRobotEducation/irobot_create_msgs/blob/main/msg/InterfaceButtons.msg) message type, and the quality of service is `rclcpp::SensorDataQoS()`. These parameters must match the topic, otherwise the subscription will fail. If you are unsure what message type or QoS a topic is using, you can use the ROS2 CLI to find this information.
+Notice that the `interface_buttons_subscriber_` uses the [InterfaceButtons](https://github.com/iRobotEducation/irobot_create_msgs/blob/main/msg/InterfaceButtons.msg) message type, and the quality of service is `rclcpp::SensorDataQoS()`. These parameters must match the topic, otherwise the subscription will fail. If you are unsure what message type or QoS a topic is using, you can use the ROS 2 CLI to find this information.
 
 Call `ros2 topic info /<topic> --verbose` to get the full details.
 
 <figure class="aligncenter">
     <img src="media/topic_info.png" alt="Topic Info" style="width: 60%"/>
-    <figcaption>ROS2 topic information</figcaption>
+    <figcaption>ROS 2 topic information</figcaption>
 </figure>
 
 ### Test Create® 3 Button 1
@@ -261,7 +261,7 @@ Add this code below your `interface_buttons_callback` function:
   // Perform this function when Button 1 is pressed.
   void button_1_function()
   {
-    // Create a ROS2 message
+    // Create a ROS 2 message
     auto lightring_msg = irobot_create_msgs::msg::LightringLeds();
     // Stamp the message with the current time
     lightring_msg.header.stamp = this->get_clock()->now();
@@ -410,7 +410,7 @@ And modify `button_1_function` to toggle the light:
 ```cpp
   void button_1_function()
   {
-    // Create a ROS2 message
+    // Create a ROS 2 message
     auto lightring_msg = irobot_create_msgs::msg::LightringLeds();
     // Stamp the message with the current time
     lightring_msg.header.stamp = this->get_clock()->now();
@@ -515,7 +515,7 @@ private:
   // Perform a function when Button 1 is pressed.
   void button_1_function()
   {
-    // Create a ROS2 message
+    // Create a ROS 2 message
     auto lightring_msg = irobot_create_msgs::msg::LightringLeds();
     // Stamp the message with the current time
     lightring_msg.header.stamp = this->get_clock()->now();

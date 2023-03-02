@@ -11,7 +11,7 @@ The `turtlebot4_simulator` metapackage contains packages used to simulate the Tu
 Source code is available [here](https://github.com/turtlebot/turtlebot4_simulator).
 
 ```note
-The `turtlebot4_simulator` metapackage can be installed on a PC running Ubuntu Desktop 20.04 with ROS2 Galactic.
+The `turtlebot4_simulator` metapackage can be installed on a PC running Ubuntu Desktop 20.04 with ROS 2 Galactic.
 ```
 
 ### Dev Tools

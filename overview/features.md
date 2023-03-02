@@ -11,7 +11,7 @@ sort: 1
     <figcaption>TurtleBot 4</figcaption>
 </figure>
 
-The TurtleBot 4 is a ROS2-based mobile robot intended for education and research. The TurtleBot 4 is capable of mapping its surroundings, navigation autonomously, running AI models on its camera, and more.
+The TurtleBot 4 is a ROS 2-based mobile robot intended for education and research. The TurtleBot 4 is capable of mapping the robot's surroundings, navigating autonomously, running AI models on its camera, and more.
 
 It uses a [Create® 3](https://edu.irobot.com/what-we-offer/create3) as the base platform, and builds on it with the TurtleBot 4 shell and User Interface (UI) board. Inside the shell sits a Raspberry Pi 4B which runs the TurtleBot 4 software.
 
