@@ -8,10 +8,14 @@ In this tutorial we will be mapping an area by driving the TurtleBot 4 around an
 
 ## Launch SLAM
 
-First, make sure that the RPLIDAR and description nodes are running on the TurtleBot 4.
-
 {% tabs slam %}
 {% tab slam galactic %}
+
+First, install `turtlebot4_navigation`:
+
+```bash
+sudo apt install ros-galactic-turtlebot4-navigation
+```
 
 Then run SLAM. It is recommended to run synchronous SLAM on a remote PC to get a higher resolution map.
 
@@ -27,6 +31,12 @@ ros2 launch turtlebot4_navigation slam_async.launch.py
 
 {% endtab %}
 {% tab slam humble %}
+
+First, install `turtlebot4_navigation`:
+
+```bash
+sudo apt install ros-humble-turtlebot4-navigation
+```
 
 Then run SLAM. It is recommended to run synchronous SLAM on a remote PC to get a higher resolution map.
 

@@ -8,7 +8,7 @@ TurtleBot 4 RPi4 image changelogs. Latest images are available [here](http://dow
 
 ## v1.0.0
 
-**OS**: Ubuntu Server 22.04.5 LTS
+**OS**: Ubuntu Server 22.04.2 LTS
 
 **ROS**: Humble
 
@@ -21,7 +21,7 @@ TurtleBot 4 RPi4 image changelogs. Latest images are available [here](http://dow
 without creating new RPI4 images.
 - Added namespacing support. See [Multiple Robots](../tutorials/multiple_robots.md#namespacing) for more details.
 - Added discovery server support. See [Discovery Server](../setup/networking.md#discovery-server) for more details.
-- Added support for the updated OAK-D ROS2 driver. Cameras are now easier to configure, and can be turned off and on at runtime.
+- Added support for the updated OAK-D ROS 2 driver. Cameras are now easier to configure, and can be turned off and on at runtime.
 - Added power saver mode. The robot will automatically turn off the OAK-D and RPLIDAR when docked to charge faster.
     - Added RPLIDAR and OAK-D start/stop functions to manually turn the sensors on/off through the TurtleBot 4 node.
 - Added a function calls publisher. Any function used in the TurtleBot 4 node will have its name published to the `function_calls` topic.
@@ -61,7 +61,7 @@ This allows users to add custom functions and hook their own nodes into the syst
         </tr>
         <tr>
             <td>turtlebot4_description</td>
-            <td>1.0.0</td>
+            <td>1.0.1</td>
             <td>
                 - Namespacing support <br/>
                 - Static transforms for wheel_drop links <br/>
@@ -78,12 +78,12 @@ This allows users to add custom functions and hook their own nodes into the syst
         </tr>
         <tr>
             <td>turtlebot4_msgs</td>
-            <td>1.0.0</td>
+            <td>1.0.1</td>
             <td>-</td>
         </tr>
         <tr>
             <td>turtlebot4_navigation</td>
-            <td>1.0.0</td>
+            <td>1.0.1</td>
             <td>
                 - Namespacing support <br/>
                 - Reworked SLAM, localization, and Nav2 launch files
@@ -91,7 +91,7 @@ This allows users to add custom functions and hook their own nodes into the syst
         </tr>
         <tr>
             <td>turtlebot4_node</td>
-            <td>1.0.0</td>
+            <td>1.0.1</td>
             <td>
                 - Namespacing support <br/>
                 - Added function calls publisher <br/>
@@ -108,7 +108,7 @@ This allows users to add custom functions and hook their own nodes into the syst
         </tr>
         <tr>
             <td>turtlebot4_setup</td>
-            <td>1.0.0</td>
+            <td>1.0.1</td>
             <td>
                 - Added setup tool to make configurating easier <br/>
                 - Now functions as debian package, installing required files on RPi <br/>

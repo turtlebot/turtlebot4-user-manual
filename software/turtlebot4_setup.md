@@ -26,7 +26,7 @@ There are several install scripts that are used to set up the TurtleBot 4 image.
             <td><b>turtlebot4_setup.sh</b></td>
             <td style="white-space: nowrap;"><code>bash turtlebot4_setup.sh -m [model]</code></td>
             <td>This script should be used on a clean Ubuntu 20.04 Server image.
-            It sets up installs ROS2 Galactic as well as other dependencies of the TurtleBot 4.
+            It sets up installs ROS 2 Galactic as well as other dependencies of the TurtleBot 4.
             It will also install configuration files to their appropriate locations.</td>
         </tr>
         <tr>
@@ -91,7 +91,7 @@ There are several install scripts that are used to set up the TurtleBot 4 image.
             <td><b>turtlebot4_setup.sh</b></td>
             <td style="white-space: nowrap;"><code>bash turtlebot4_setup.sh -m [model]</code></td>
             <td>This script should be used on a clean Ubuntu 22.04 Server image.
-            It sets up installs ROS2 Humble as well as other dependencies of the TurtleBot 4.</td>
+            It sets up installs ROS 2 Humble as well as other dependencies of the TurtleBot 4.</td>
         </tr>
         <tr>
             <td><b>humble.sh</b></td>
@@ -237,7 +237,7 @@ The ROS Setup menu is used to configure the ROS environment. ROS and system conf
         </tr>
         <tr>
             <td><b>setup.bash</b></td>
-            <td>Bash file that exports environment variables to configure ROS2.
+            <td>Bash file that exports environment variables to configure ROS 2.
             This file is sourced in .bashrc such that the environment is applied to all terminals</td>
         </tr>
         <tr>
@@ -253,7 +253,7 @@ There are currently 3 ROS Setup submenus: Bash Setup, Discovery Server, and Robo
 <u><b style="font-size: 18px;">Bash Setup</b></u>
 
 The Bash Setup menu allows the user to make changes to the `/etc/turtlebot4/setup.bash` file.
-This file sets environment variables that affect ROS2.
+This file sets environment variables that affect ROS 2.
 
 <table>
     <thead>

@@ -11,7 +11,7 @@ The `turtlebot4_desktop` metapackage contains packages used for visualising and 
 Source code is available [here](https://github.com/turtlebot/turtlebot4_desktop).
 
 ```note
-The `turtlebot4_desktop` metapackage can be installed on a PC running Ubuntu Desktop 20.04 with ROS2 Galactic.
+The `turtlebot4_desktop` metapackage can be installed on a PC running Ubuntu Desktop 20.04 with ROS 2 Galactic.
 ```
 
 ### Debian installation

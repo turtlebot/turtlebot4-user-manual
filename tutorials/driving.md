@@ -67,7 +67,7 @@ If you have a TurtleBot 4 controller or have your own Bluetooth controller, you 
 First, make sure that your controller is paired and connects to the robot. If you have a TurtleBot 4 controller, press the home button and check that the controller's light turns blue. If your controller is not paired or connecting, refer to the [Controller Setup](../overview/quick_start.md#turtlebot-4-controller-setup) section.
 
 ```note
-If you are using a TurtleBot 4 Lite, the Bluetooth packages will not be installed by default. To install them, SSH into the Raspberry Pi and call `sudo bluetooth.sh` and then reboot the Pi. Then follow the Controller Setup instructions.
+If you are using a TurtleBot 4 Lite with ROS 2 Galactic, the Bluetooth packages will not be installed by default. To install them, SSH into the Raspberry Pi and call `sudo bluetooth.sh` and then reboot the Pi. Then follow the Controller Setup instructions.
 ```
 
 Once your controller is connected, make sure that the `joy_teleop` nodes are running. These are launched as part of the Standard and Lite launch files under `turtlebot4_bringup`. If it is not running, you can run it manually by calling:
@@ -104,7 +104,7 @@ Set the `linear.x` value to drive the robot forwards or backwards, and the `angu
 
 ## Create® 3 Actions
 
-The Create® 3 provides a set of [ROS2 Actions](https://docs.ros.org/en/galactic/Tutorials/Understanding-ROS2-Actions.html) for driving the robot. You can use the [DriveDistance](https://github.com/iRobotEducation/irobot_create_msgs/blob/main/action/DriveDistance.action), [DriveArc](https://github.com/iRobotEducation/irobot_create_msgs/blob/main/action/DriveArc.action), and [RotateAngle](https://github.com/iRobotEducation/irobot_create_msgs/blob/main/action/RotateAngle.action) actions to tell the robot exactly how far and how fast to drive or rotate.
+The Create® 3 provides a set of [ROS 2 Actions](https://docs.ros.org/en/galactic/Tutorials/Understanding-ROS 2-Actions.html) for driving the robot. You can use the [DriveDistance](https://github.com/iRobotEducation/irobot_create_msgs/blob/main/action/DriveDistance.action), [DriveArc](https://github.com/iRobotEducation/irobot_create_msgs/blob/main/action/DriveArc.action), and [RotateAngle](https://github.com/iRobotEducation/irobot_create_msgs/blob/main/action/RotateAngle.action) actions to tell the robot exactly how far and how fast to drive or rotate.
 
 For example, command the robot to drive 0.5 m forwards at 0.3 m/s:
 

@@ -1,16 +1,53 @@
 ---
-sort: 3
+sort: 1
 ---
 
-# Robot
+# Basic Setup
+
+These instructions will set up the user PC and robot for basic communication. Further setup will depend on the chosen [networking](./networking.md) configuration.
+
+## User PC
+
+### Installing ROS 2
+
+To interface with the robot, it is recommended to use a remote PC running the appropriate version of Ubuntu Desktop, with ROS 2 installed.
+
+{% tabs installation %}
+{% tab installation galactic %}
+
+Required OS: [Ubuntu 20.04](https://releases.ubuntu.com/20.04/)
+
+Follow [these instructions](https://docs.ros.org/en/galactic/Installation/Ubuntu-Install-Debians.html) to install ROS 2 Galactic on your PC.
+
+Once ROS 2 is installed, install `turtlebot4_desktop`:
+
+```bash
+sudo apt update && sudo apt install ros-galactic-turtlebot4-desktop
+```
+
+{% endtab %}
+{% tab installation humble %}
+
+Required OS: [Ubuntu 22.04](https://releases.ubuntu.com/22.04/)
+
+Follow [these instructions](https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debians.html) to install ROS 2 Humble on your PC.
+
+Once ROS 2 is installed, install `turtlebot4_desktop`:
+
+```bash
+sudo apt update && sudo apt install ros-humble-turtlebot4-desktop
+```
+
+{% endtab %}
+{% endtabs %}
+
+## Robot
 
 The first step for setting up the TurtleBot 4 is to power it on and connect it to your Wi-Fi network.
 
-## Power on the robot
+### Power on the robot
 
 Place the TurtleBot 4 onto its dock. The green LED on the dock will turn on for a few seconds, and the TurtleBot 4 should power on. Allow the robot some time to boot up.
-
-## Connect the Raspberry Pi to Wi-Fi
 
 ### Connect to the Access Point
 
@@ -88,17 +125,24 @@ For the TurtleBot 4 Lite, you will need to check the `/ip` topic for the new add
 {% tabs ip %}
 {% tab ip galactic %}
 
-On your PC, run the following command:
- 
+On your PC, run the following commands:
+
 ```bash
+source /opt/ros/galactic/setup.bash
+export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
+export ROS_DOMAIN_ID=0
 ros2 topic echo /ip
 ```
+
 {% endtab %}
 {% tab ip humble %}
 
-On your PC, run the following command:
+On your PC, run the following commands:
 
 ```bash
+source /opt/ros/humble/setup.bash
+export RMW_IMPLEMENTATION=rmw_fastrtps_cpp
+export ROS_DOMAIN_ID=0
 ros2 topic echo /ip
 ```
 
@@ -122,131 +166,44 @@ If you are unable to find the IP address with the previous methods, try logging 
 Once you have found the IP address, you can now SSH back into the robot with it.
 
 ```bash
-ssh ubuntu@xxx.xxx.xxx.xxx
+ssh ubuntu@192.168.28.24
 ```
 
-## Updating the TurtleBot 4
+### Accessing the Create® 3 webserver
+
+Once you have acquired the Raspberry Pi IP address, you can access the [Create® 3 webserver](https://iroboteducation.github.io/create3_docs/webserver/overview/).
+
+Open a web browser and navigate to your Raspberry Pi IP, with the port 8080.
+
+<figure class="aligncenter">
+    <img src="media/webserver_rpi.png" alt="Webserver" style="width: 60%"/>
+    <figcaption>Accessing the Create® 3 webserver</figcaption>
+</figure>
+
+You will be greeted by the Create® 3 webserver home page.
+
+<figure class="aligncenter">
+    <img src="media/webserver_home.png" alt="Webserver" style="width: 90%"/>
+    <figcaption>Create® 3 webserver home page</figcaption>
+</figure>
+
+### Updating the TurtleBot 4
 
 It is recommended to update both the Create® 3 and the Raspberry Pi when you first use it to receive the latest bug fixes and improvements.
 
-### Create® 3
+#### Create® 3
 
 Check the [Create® 3 software releases](https://iroboteducation.github.io/create3_docs/releases/overview/) to see if a newer firmware version is available. You can check the firmware version of your Create® 3 by visiting the webserver.
 
-If new firmware is available, download it, then access the [Create® 3 webserver](https://iroboteducation.github.io/create3_docs/webserver/overview/). Go to the <b>Update</b> tab, upload the firmware, then update your robot.
+If new firmware is available, download it, then access the [webserver](./basic.md#accessing-the-create®-3-webserver). Go to the <b>Update</b> tab, upload the firmware, then update your robot.
 
-### Raspberry Pi packages
+#### Raspberry Pi packages
 
 SSH into the Raspberry Pi, then update all packages by calling:
 
 ```bash
 sudo apt update && sudo apt upgrade
 ```
-
-## Simple Discovery
-
-To use the TurtleBot 4 with Simple Discovery, the Create® 3 should be connected to Wi-Fi.
-
-### Create® 3 Wi-Fi Setup
-
-Press both Create® 3 button 1 and 2 simultaneously until light ring turns blue.
-
-<figure class="aligncenter">
-    <img src="media/create_ap_mode.jpg" alt="Create AP mode" style="width: 70%"/>
-    <figcaption>Putting the Create® 3 in AP mode</figcaption>
-</figure>
-
-The Create® 3 is now in AP mode. Connect to its Wi-Fi network called 'Create-XXXX'. Then, in a web browser, navigate to `192.168.10.1`. This will open the Create® 3 [webserver](https://iroboteducation.github.io/create3_docs/webserver/overview/). Go to the Connect tab, enter your Wi-Fi SSID and password, and then click 'Connect'.
-
-<figure class="aligncenter">
-    <img src="media/create3_connect.png" alt="Create® 3 connect" style="width: 100%"/>
-    <figcaption>Connecting the Create® 3 to Wi-Fi</figcaption>
-</figure>
-
-Wait for it to connect to Wi-Fi and play a chime. On your PC, run `ros2 topic list` to ensure that the Create® 3 is publishing its topics.
-
-```note
-The Create® 3 can only be connected to 2.4 GHz Wi-Fi networks.
-```
-
-## Discovery Server
-
-{% tabs discovery %}
-{% tab discovery galactic %}
-
-<u><b style="font-size: 20px;">Create® 3</b></u>
-
-The Create® 3 needs to be updated to the latest firmware, have its Wi-Fi disabled, and be configured to use the Raspberry Pi as the discovery server over the USB-C connection.
-
-<b>Setup instructions:</b>
-- Update to the [latest firmware](https://iroboteducation.github.io/create3_docs/releases/overview/) using the webserver.
-- Once updated, perform a [factory reset](https://iroboteducation.github.io/create3_docs/webserver/about/#:~:text=set%20to%20USB.-,Factory%20Reset,-A%20hyperlink%20to) to disconnect the Create® 3 from any Wi-Fi networks.
-- On the webserver, go to Application -> Configuration. Save the following settings:
-
-<figure class="aligncenter">
-    <img src="media/create3_discovery.png" alt="Create® 3 discovery" style="width: 100%"/>
-    <figcaption>Create® 3 discovery server settings</figcaption>
-</figure>
-
-<u><b style="font-size: 20px;">Raspberry Pi</b></u>
-
-The Raspberry Pi needs to enable IP forwarding, configure itself as the discovery server, and reinstall the TurtleBot 4 upstart job with the new configuration. Environment variables will now be declared in `/etc/turtlebot4_discovery/setup.bash`, such that both the terminal and upstart environment will have the same configurations.
-
-<b>Setup instructions:</b>
-- SSH into the Raspberry Pi
-- Uncomment "net.ipv4.ip_forward=1" in `/etc/sysctl.conf`
-- Get and install discovery files:
-```
-git clone https://github.com/turtlebot/turtlebot4_setup.git -b galactic && \
-sudo mv turtlebot4_setup/turtlebot4_discovery /etc/ && \
-sudo mv turtlebot4_setup/scripts/install.py /usr/local/bin/ && \
-rm turtlebot4_setup -rf
-```
-- Source other workspaces in `/etc/turtlebot4_discovery/setup.bash` if needed
-- Add the following line to .bashrc: `source /etc/turtlebot4_discovery/setup.bash`
-- Re-install the upstart job with the updated `install.py` script:
-
-```bash
-install.py --discovery on --workspace /etc/turtlebot4_discovery/setup.bash
-```
-
-Restart the robot by powering it off with the power button and placing it back on the dock.
-
-```tip
-You can move any ROS2 related environment variables such as `ROS_DOMAIN_ID` from `~/.bashrc` to `/etc/turtlebot4_discovery/setup.bash`
-```
-
-{% endtab %}
-{% tab discovery humble %}
-
-<u><b style="font-size: 20px;">Create® 3</b></u>
-
-The Create® 3 needs to be updated to the latest firmware and have its Wi-Fi disabled.
-
-<b>Setup instructions:</b>
-- Update to the [latest firmware](https://iroboteducation.github.io/create3_docs/releases/overview/) using the webserver.
-- Once updated, perform a [factory reset](https://iroboteducation.github.io/create3_docs/webserver/about/#:~:text=set%20to%20USB.-,Factory%20Reset,-A%20hyperlink%20to) to disconnect the Create® 3 from any Wi-Fi networks.
-
-<u><b style="font-size: 20px;">Raspberry Pi</b></u>
-
-The Raspberry Pi needs to configure itself as the discovery server, and reinstall the TurtleBot 4 upstart job with the new configuration.
-
-<b>Setup instructions:</b>
-- SSH into the Raspberry Pi
-- Run the [TurtleBot 4 setup tool](../software/turtlebot4_setup.md#configuration-tools):
-
-```bash
-turtlebot4-setup
-```
-- Enter the <b>Discovery Server</b> menu via <b>ROS Setup</b>.
-- Enable the discovery server.
-- Leave the IP address as `127.0.0.1`, and the port as `11811`.
-- Save the settings, navigate to the main menu, and apply settings.
-
-Restart the robot by powering it off with the power button and placing it back on the dock.
-
-{% endtab %}
-{% endtabs %}
 
 ## TurtleBot 4 Controller Setup
 
@@ -257,7 +214,7 @@ If you wish to manually pair a controller, follow these instructions:
 - SSH into the TurtleBot 4
 
 ```bash
-sudo bluetoothctl --agent=NoInputNoOutput
+sudo bluetoothctl
 ```
 
 - The `bluetoothd` CLI interface will start.
@@ -276,8 +233,6 @@ sudo bluetoothctl --agent=NoInputNoOutput
 - Finally, enter `connect MAC_ADDRESS`.
 - The CLI should report that the controller has been connected and the light on the controller will turn blue.
 - Enter `exit` to exit the CLI.
-
-Visit the [Driving Tutorial](../tutorials/driving.md#joystick-teleoperation) to begin driving your TurtleBot 4.
 
 ## Access Point Mode
 

@@ -180,7 +180,7 @@ The [TurtleBot 4 Navigator](https://github.com/turtlebot/turtlebot4/blob/galacti
 
 The `turtlebot4_node` package contains the source code for the [rclcpp](https://github.com/ros2/rclcpp) node `turtlebot4_node` that controls the robots HMI as well as other logic. This node is used by both the physical robot and the simulated robot.
 
-### ROS2 Interfaces
+### ROS 2 Interfaces
 
 {% tabs turtlebot4_node %}
 {% tab turtlebot4_node galactic %}

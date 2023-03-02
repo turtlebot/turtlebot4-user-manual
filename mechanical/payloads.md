@@ -76,7 +76,7 @@ The Create® 3 has linear velocity limits of 0.31 m/s with safety enabled, and 0
 
 #### Keyboard Teleoperation
 
-If you are using the `teleop_twist_keyboard` ROS2 node, you can follow the CLI instructions to reduce linear and angular velocities.
+If you are using the `teleop_twist_keyboard` ROS 2 node, you can follow the CLI instructions to reduce linear and angular velocities.
 
 #### Joystick Teleoperation
 

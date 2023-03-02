@@ -140,7 +140,7 @@ The [TurtleBot 4 Navigator](https://github.com/turtlebot/turtlebot4/blob/galacti
 TurtleBot 4 Navigator requires at least version 1.0.11 of Nav2 Simple Commander
 ```
 
-The code for the following examples is available at <https://github.com/turtlebot/turtlebot4_tutorials>. For each example, the robot starts on a dock at the origin of the map. 
+The following examples can be installed with `sudo apt install ros-$ROS_DISTRO-turtlebot4-tutorials` and are available at <https://github.com/turtlebot/turtlebot4_tutorials>. For each example, the robot starts on a dock at the origin of the map. 
 
 ### Navigate to Pose
 
@@ -197,7 +197,7 @@ def main():
 
 ##### Initialise the node
 
-We start by initialising `rclpy` and creating the `TurtleBot4Navigator` object. This will initialise any ROS2 publishers, subscribers and action clients that we need.
+We start by initialising `rclpy` and creating the `TurtleBot4Navigator` object. This will initialise any ROS 2 publishers, subscribers and action clients that we need.
 
 ```py
 rclpy.init()
