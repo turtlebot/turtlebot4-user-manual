@@ -4,9 +4,14 @@ sort: 3
 
 # Simple Discovery
 
-To use the TurtleBot 4 with Simple Discovery, the Create® 3 should be connected to Wi-Fi.
+```note
+The TurtleBot 4 should be configured for either Simple Discovery or Discovery Server, not both. 
+See [Networking](./networking.md) for details.
+```
 
 ## Create® 3
+
+To use the TurtleBot 4 with Simple Discovery, the Create® 3 should be connected to Wi-Fi.
 
 ### Wi-Fi Setup
 

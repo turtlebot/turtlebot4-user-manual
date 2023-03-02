@@ -4,6 +4,11 @@ sort: 4
 
 # Discovery Server
 
+```note
+The TurtleBot 4 should be configured for either Simple Discovery or Discovery Server, not both. 
+See [Networking](./networking.md) for details.
+```
+
 ## Robot
 
 {% tabs discovery %}
@@ -83,7 +88,8 @@ turtlebot4-setup
 - When the Create® 3 chimes, call `ros2 topic list` to view topics
 
 ```note
-You may need to call `ros2 topic list` twice to get a full list of topics.
+When a network change occurs or a new node is added, you may need to restart the ros2 daemon to see it with ros2cli. 
+You may also need to call `ros2 topic list` twice to get a full list of topics.
 ```
 
 {% endtab %}
@@ -142,7 +148,8 @@ ros2 topic list
 ```
 
 ```note
-You may need to call `ros2 topic list` twice to get a full list of topics.
+When a network change occurs or a new node is added, you may need to restart the ros2 daemon to see it with ros2cli. 
+You may also need to call `ros2 topic list` twice to get a full list of topics.
 ```
 
 {% endtab %}
@@ -214,7 +221,8 @@ ros2 topic list
 ```
 
 ```note
-You may need to call `ros2 topic list` twice to get a full list of topics.
+When a network change occurs or a new node is added, you may need to restart the ros2 daemon to see it with ros2cli. 
+You may also need to call `ros2 topic list` twice to get a full list of topics.
 ```
 
 {% endtab %}

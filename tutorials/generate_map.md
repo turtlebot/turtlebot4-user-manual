@@ -50,6 +50,12 @@ Asynchronous SLAM can be used as well.
 ros2 launch turtlebot4_navigation slam.launch.py sync:=false
 ```
 
+To change map resolution or other SLAM parameters, copy the [default config](https://github.com/turtlebot/turtlebot4/blob/humble/turtlebot4_navigation/config/slam.yaml) and modify it. Then, pass the parameters in as a launch argument.
+
+```bash
+ros2 launch turtlebot4_navigation slam.launch.py params:=/full/path/to/slam.yaml
+```
+
 {% endtab %}
 {% endtabs %}
 

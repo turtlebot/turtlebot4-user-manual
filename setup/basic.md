@@ -173,7 +173,7 @@ ssh ubuntu@192.168.28.24
 
 Once you have acquired the Raspberry Pi IP address, you can access the [Create® 3 webserver](https://iroboteducation.github.io/create3_docs/webserver/overview/).
 
-Open a web browser and navigate to your Raspberry Pi IP, with the port 8080.
+Open a web browser and navigate to your Raspberry Pi IP with the port 8080.
 
 <figure class="aligncenter">
     <img src="media/webserver_rpi.png" alt="Webserver" style="width: 60%"/>

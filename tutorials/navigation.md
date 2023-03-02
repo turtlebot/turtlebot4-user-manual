@@ -533,7 +533,7 @@ This example begins the same as the others by initialising the TurtleBot 4 Navig
 
 ##### Create your path
 
-After initialisation, the user is prompted to create their path by using the [2D Pose Estimate](#2d-pose-estimate) tool. You must set at least one pose. Once all of the poses have been set, the user can press CTRL + C to stop creating the path and begin navigating.
+After initialisation, the user is prompted to create their path by using the [2D Pose Estimate](#2d-pose-estimate) tool. You must set at least one pose. Once all of the poses have been set, the robot will begin navigating.
 
 ```py
 goal_pose = navigator.createPath()
