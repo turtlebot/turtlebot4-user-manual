@@ -341,7 +341,7 @@ IMAGE_PATH is the path to where you want the image saved -- e.g., `~/turtlebot4_
 - Get the SD flash script from `turtlebot4_setup` and flash the SD card:
 
 ```bash
-wget https://raw.githubusercontent.com/turtlebot/turtlebot4_setup/galactic/scripts/sd_flash.sh
+wget https://raw.githubusercontent.com/turtlebot/turtlebot4_setup/humble/scripts/sd_flash.sh
 bash sd_flash.sh /path/to/downloaded/image
 ```
 - Follow the instructions and wait for the SD card to be flashed. 

@@ -16,7 +16,7 @@ sort: 2
 
 ### ROS 2
   - Documentation: <https://docs.ros.org/en/humble/index.html>
-  - Debian Install: <https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debians.html>
+  - Ubuntu (Debian) Install: <https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debians.html>
   - Nav2 Documentation: <https://navigation.ros.org/>
   - Nav2 Github: <https://github.com/ros-planning/navigation2>
   - SLAM Toolbox: <https://github.com/SteveMacenski/slam_toolbox>

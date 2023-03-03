@@ -11,7 +11,7 @@ The [`turtlebot4`](https://github.com/turtlebot/turtlebot4) repository contains 
 {% tabs installation %}
 {% tab installation galactic %}
 
-**Debian installation**
+**Debian package**
 
 Individual packages can be installed through apt:
 
@@ -50,7 +50,7 @@ colcon build --symlink-install
 
 {% tab installation humble %}
 
-**Debian installation**
+**Debian package**
 
 Individual packages can be installed through apt:
 

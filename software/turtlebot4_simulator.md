@@ -44,7 +44,7 @@ TurtleBot 4 Simulation in Humble is not yet available.
 {% endtab %}
 {% endtabs %}
 
-### Debian installation
+### Debian package
 
 {% tabs debian %}
 {% tab debian galactic %}
