@@ -26,6 +26,9 @@ The TurtleBot 4 uses the [Nav2](https://navigation.ros.org/) stack for navigatio
 
 ### Launching navigation
 
+{% tabs navigation %}
+{% tab navigation galactic %}
+
 For this tutorial we can launch navigation with [Nav Bringup](https://github.com/turtlebot/turtlebot4/blob/galactic/turtlebot4_navigation/launch/nav_bringup.launch.py).
 
 On a physical TurtleBot 4, call:
@@ -48,6 +51,26 @@ For example:
 ```bash
 ros2 launch turtlebot4_ignition_bringup ignition.launch.py nav2:=true slam:=off localization:=true world:=classroom map:=classroom.yaml
 ```
+
+{% endtab %}
+{% tab navigation humble %}
+
+For this tutorial we can launch navigation with the [turtlebot4_navigation](https://github.com/turtlebot/turtlebot4/tree/humble/turtlebot4_navigation) package.
+
+Open a terminal and launch [localization](https://github.com/turtlebot/turtlebot4/blob/humble/turtlebot4_navigation/launch/localization.launch.py):
+
+```bash
+ros2 launch turtlebot4_navigation localization.launch.py map:=office.yaml
+```
+
+Then, in another terminal, launch [nav2](https://github.com/turtlebot/turtlebot4/blob/humble/turtlebot4_navigation/launch/nav2.launch.py):
+
+```bash
+ros2 launch turtlebot4_navigation nav2.launch.py
+```
+
+{% endtab %}
+{% endtabs %}
 
 ```note
 An initial pose is required before navigation can begin.
@@ -117,7 +140,7 @@ The [TurtleBot 4 Navigator](https://github.com/turtlebot/turtlebot4/blob/galacti
 TurtleBot 4 Navigator requires at least version 1.0.11 of Nav2 Simple Commander
 ```
 
-The code for the following examples is available at <https://github.com/turtlebot/turtlebot4_tutorials>. For each example, the robot starts on a dock at the origin of the map. 
+The following examples can be installed with `sudo apt install ros-$ROS_DISTRO-turtlebot4-tutorials` and are available at <https://github.com/turtlebot/turtlebot4_tutorials>. For each example, the robot starts on a dock at the origin of the map. 
 
 ### Navigate to Pose
 
@@ -174,7 +197,7 @@ def main():
 
 ##### Initialise the node
 
-We start by initialising `rclpy` and creating the `TurtleBot4Navigator` object. This will initialise any ROS2 publishers, subscribers and action clients that we need.
+We start by initialising `rclpy` and creating the `TurtleBot4Navigator` object. This will initialise any ROS 2 publishers, subscribers and action clients that we need.
 
 ```py
 rclpy.init()
@@ -447,13 +470,7 @@ ros2 launch turtlebot4_viz view_robot.launch.py
 
 This example demonstrates how to create a navigation path in Rviz during runtime. It uses the [2D Pose Estimate](#2d-pose-estimate) tool to pass the TurtleBot 4 Navigator a set of poses. Then we use the [Follow Waypoints](#follow-waypoints) behaviour to follow those poses. This example was run on a physical TurtleBot 4.
 
-To run this example, start nav bringup on your PC or on the Raspberry Pi:
-
-```bash
-ros2 launch turtlebot4_navigation nav_bringup.launch.py slam:=off localization:=true map:=office.yaml
-```
-
-Replace `office.yaml` with the map of your environment.
+To run this example, start [Navigation](./navigation.md#launching-navigation) on your PC or on the Raspberry Pi using a map of your environment.
 
 Once the navigation has started, open another terminal and run:
 
@@ -516,7 +533,7 @@ This example begins the same as the others by initialising the TurtleBot 4 Navig
 
 ##### Create your path
 
-After initialisation, the user is prompted to create their path by using the [2D Pose Estimate](#2d-pose-estimate) tool. You must set at least one pose. Once all of the poses have been set, the user can press CTRL + C to stop creating the path and begin navigating.
+After initialisation, the user is prompted to create their path by using the [2D Pose Estimate](#2d-pose-estimate) tool. You must set at least one pose. Once all of the poses have been set, the robot will begin navigating.
 
 ```py
 goal_pose = navigator.createPath()

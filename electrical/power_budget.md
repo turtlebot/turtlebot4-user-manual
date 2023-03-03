@@ -4,7 +4,7 @@ sort: 4
 
 # Power Budget
 
-The total power made available by the Create 3 output power adapter is 28.8W. This supplies the USB-C connector mated to Raspberry Pi, and the two pin auxiliary VBAT connector combined. Since the two connectors share this power amongst them, a rise in consumption of one will lead to reduction of available power for the other. Thus, although maximum theoretical power consumption of individual components is mentioned in Table 2, the true limiting factor is the remaining power available to the whole system.
+The total power made available by the Create® 3 output power adapter is 28.8W. This supplies the USB-C connector mated to Raspberry Pi, and the two pin auxiliary VBAT connector combined. Since the two connectors share this power amongst them, a rise in consumption of one will lead to reduction of available power for the other. Thus, although maximum theoretical power consumption of individual components is mentioned in Table 2, the true limiting factor is the remaining power available to the whole system.
 
 <figure>
     <figcaption style="text-align:center;">Table 1: Nominal power consumption</figcaption>

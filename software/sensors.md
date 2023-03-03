@@ -1,5 +1,5 @@
 ---
-sort: 3
+sort: 8
 ---
 
 # Sensors
@@ -22,11 +22,26 @@ If the device exists, the terminal will echo `/dev/RPLIDAR`.
 
 ### Installing
 
+{% tabs rplidar %}
+{% tab rplidar galactic %}
+
 The RPLIDAR drivers are installed by default on all TurtleBot 4's. To manually install, run:
 
 ```bash
 sudo apt install ros-galactic-rplidar-ros
 ```
+
+{% endtab %}
+{% tab rplidar humble %}
+
+The RPLIDAR drivers are installed by default on all TurtleBot 4's. To manually install, run:
+
+```bash
+sudo apt install ros-humble-rplidar-ros
+```
+
+{% endtab %}
+{% endtabs %}
 
 ### Running
 
@@ -61,7 +76,26 @@ The OAK-D cameras are connected to the Raspberry Pi with a USB-C to USB-A cable.
 
 ### Installing
 
-The OAK-D drivers are installed by default on all TurtleBot 4's. To manually install, follow the instructions on the DepthAI ROS [github](https://github.com/luxonis/depthai-ros/tree/main#getting-started).
+{% tabs rplidar %}
+{% tab rplidar galactic %}
+
+The OAK-D drivers are installed by default on all TurtleBot 4's. To manually install, run:
+
+```bash
+sudo apt install ros-galactic-depthai-ros
+```
+
+{% endtab %}
+{% tab rplidar humble %}
+
+The OAK-D drivers are installed by default on all TurtleBot 4's. To manually install, run:
+
+```bash
+sudo apt install ros-humble-depthai-ros
+```
+
+{% endtab %}
+{% endtabs %}
 
 ### Running
 
@@ -71,7 +105,7 @@ The default node used by the TurtleBot 4 can be launched:
 ros2 launch turtlebot4_bringup oakd.launch.py
 ```
 
-Other nodes are available in the DepthAI ROS examples [package](https://github.com/luxonis/depthai-ros-examples/tree/main/depthai_examples/launch).
+Other nodes are available in the DepthAI ROS [repo](https://github.com/luxonis/depthai-ros).
 
 For example:
 

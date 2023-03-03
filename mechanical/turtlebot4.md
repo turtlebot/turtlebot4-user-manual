@@ -39,7 +39,7 @@ To attach accessories inside the Shell, the [PCBA](#removing-the-pcba) and the [
 To attach accessories to the Create® 3, the existing holes in the plate can be used, or additional holes can be drilled by [removing the Create® 3 Integration Plate](#removing-the-create%C2%AE-3-integration-plate-and-shell).
 
 <figure class="aligncenter">
-    <img src="media/base_unit.png" alt="Create 3 attachment" style="width: 50%"/>
+    <img src="media/base_unit.png" alt="Create® 3 attachment" style="width: 50%"/>
     <figcaption>TurtleBot 4 Attachment Locations</figcaption>
 </figure>
 
@@ -66,7 +66,7 @@ The PCBA should now be free to be removed and placed safely.
 The Create® 3 Integration Plate and Shell can be removed with the rest of the assembly on or off. To remove the Create® 3 Integration Plate, first open and remove the rear Create® 3 tray. Then disconnect the USB C cable and the power harness from the Create® 3 base. Feed these cables through the slot at the back of the Create® 3. Using the tabs on the Create® 3, twist the plate counter-clockwise until it snaps to unlock it and remove the plate.
 
 <figure class="aligncenter">
-    <img src="media/remove_create3.png" alt="Create 3 plate removal" style="width: 50%"/>
+    <img src="media/remove_create3.png" alt="Create® 3 plate removal" style="width: 50%"/>
     <figcaption>Create® 3 Integration Plate Removal</figcaption>
 </figure>
 

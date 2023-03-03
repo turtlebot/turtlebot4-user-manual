@@ -2,7 +2,7 @@
     color: #fff;
     background: #000000;
 
-    background-image:url('./media/turtlebot4_logo.png');
+    background-image:url('/turtlebot4-user-manual/media/turtlebot4_logo.png');
     background-size: 174px 60px;
     background-repeat: no-repeat;
     background-position-x: center;
@@ -74,38 +74,38 @@ a img {
 }
 
 .cpr-logo{
-    background-image:url('./media/cpr_logo.png');
+    background-image:url('/turtlebot4-user-manual/media/cpr_logo.png');
     width: 199px;
     height: 50px;
 }
 
 .osrf-logo{
-    background-image:url('./media/openrobotics-logo-REV.png');
+    background-image:url('/turtlebot4-user-manual/media/openrobotics-logo-REV.png');
     height: 50px;
     width: 120px;
 }
 
 .ros-logo{
-    background-image:url('./media/ros_logo.png');
+    background-image:url('/turtlebot4-user-manual/media/ros_logo.png');
     height: 40px;
     width: 160px;
     margin-bottom: 5px;
 }
 
 .lessons-logo{
-    background-image:url('./media/lessons.png');
+    background-image:url('/turtlebot4-user-manual/media/lessons.png');
     height: 50px;
     width: 50px;
 }
 
 .github-logo{
-    background-image:url('./media/github_logo.png');
+    background-image:url('/turtlebot4-user-manual/media/github_logo.png');
     height: 50px;
     width: 50px;
 }
 
 .shop-logo{
-    background-image:url('./media/shop.jpg');
+    background-image:url('/turtlebot4-user-manual/media/shop.jpg');
     height: 50px;
     width: 59px;
 }
@@ -152,4 +152,8 @@ td{
     margin-left: auto;
     margin-right: auto;
     text-align: center;
+}
+
+.markdown-body ul {
+    padding-left: 1em;
 }

@@ -1,0 +1,106 @@
+---
+sort: 7
+---
+
+# Create® 3
+
+The TurtleBot 4 can also use all of the actions, messages, and services that the iRobot® Create® 3 platform supports:
+
+{% tabs create3 %}
+{% tab create3 galactic %}
+
+**Actions**
+
+* [AudioNoteSequence](https://github.com/iRobotEducation/irobot_create_msgs/blob/galactic/action/AudioNoteSequence.action): Play a given set of notes from the speaker for a given number of iterations.
+* [DockServo](https://github.com/iRobotEducation/irobot_create_msgs/blob/galactic/action/DockServo.action): Command the robot to dock into its charging station.
+* [DriveArc](https://github.com/iRobotEducation/irobot_create_msgs/blob/galactic/action/DriveArc.action): Command the robot to drive along an arc defined by radius.
+* [DriveDistance](https://github.com/iRobotEducation/irobot_create_msgs/blob/galactic/action/DriveDistance.action): Command the robot to drive a defined distance in a straight line.
+* [LedAnimation](https://github.com/iRobotEducation/irobot_create_msgs/blob/galactic/action/LedAnimation.action): Command the lights to perform specified animation.
+* [NavigateToPosition](https://github.com/iRobotEducation/irobot_create_msgs/blob/galactic/action/NavigateToPosition.action): Command the robot to drive to a goal odometry position using simple approach that rotates to face goal position then translates to goal position then optionally rotates to goal heading.
+* [RotateAngle](https://github.com/iRobotEducation/irobot_create_msgs/blob/galactic/action/RotateAngle.action): Command the robot to rotate in place a specified amount.
+* [Undock](https://github.com/iRobotEducation/irobot_create_msgs/blob/galactic/action/Undock.action): Command the robot to undock from its charging station.
+* [WallFollow](https://github.com/iRobotEducation/irobot_create_msgs/blob/galactic/action/WallFollow.action): Command the robot to wall follow on left or right side using bump and IR sensors.
+
+**Messages**
+
+* [AudioNote](https://github.com/iRobotEducation/irobot_create_msgs/blob/galactic/msg/AudioNote.msg): Command the robot to play a note.
+* [AudioNoteVector](https://github.com/iRobotEducation/irobot_create_msgs/blob/galactic/msg/AudioNoteVector.msg): Command the robot to play a sequence of notes.
+* [Button](https://github.com/iRobotEducation/irobot_create_msgs/blob/galactic/msg/Button.msg): Status for a button.
+* [Dock](https://github.com/iRobotEducation/irobot_create_msgs/blob/galactic/msg/Dock.msg): Information about the robot sensing the its dock charging station.
+* [HazardDetection](https://github.com/iRobotEducation/irobot_create_msgs/blob/galactic/msg/HazardDetection.msg): An hazard or obstacle detected by the robot.
+* [HazardDetectionVector](https://github.com/iRobotEducation/irobot_create_msgs/blob/galactic/msg/HazardDetectionVector.msg): All the hazards and obstacles detected by the robot.
+* [InterfaceButtons](https://github.com/iRobotEducation/irobot_create_msgs/blob/galactic/msg/InterfaceButtons.msg): Status of the 3 interface buttons on the Create® robot faceplate.
+* [IrIntensity](https://github.com/iRobotEducation/irobot_create_msgs/blob/galactic/msg/IrIntensity.msg): Reading from an IR intensity sensor.
+* [IrIntensityVector](https://github.com/iRobotEducation/irobot_create_msgs/blob/galactic/msg/IrIntensityVector.msg): Vector of current IR intensity readings from all sensors.
+* [IrOpcode](https://github.com/iRobotEducation/irobot_create_msgs/blob/galactic/msg/IrOpcode.msg): Opcode detected by the robot IR receivers. Used to detect the dock and virtual walls.
+* [KidnapStatus](https://github.com/iRobotEducation/irobot_create_msgs/blob/galactic/msg/KidnapStatus.msg): Whether the robot has been picked up off the ground.
+* [LedColor](https://github.com/iRobotEducation/irobot_create_msgs/blob/galactic/msg/LedColor.msg): RGB values for an LED.
+* [LightringLeds](https://github.com/iRobotEducation/irobot_create_msgs/blob/galactic/msg/LightringLeds.msg): Command RGB values of 6 lightring lights.
+* [Mouse](https://github.com/iRobotEducation/irobot_create_msgs/blob/galactic/msg/Mouse.msg): Reading from a mouse sensor.
+* [SlipStatus](https://github.com/iRobotEducation/irobot_create_msgs/blob/galactic/msg/SlipStatus.msg): Whether the robot is currently slipping or not.
+* [StopStatus](https://github.com/iRobotEducation/irobot_create_msgs/blob/galactic/msg/StopStatus.msg): Whether the robot is currently stopped or not.
+* [WheelStatus](https://github.com/iRobotEducation/irobot_create_msgs/blob/galactic/msg/WheelStatus.msg): Current/PWM readings from the robot's two wheels in addition to whether wheels are enabled.
+* [WheelTicks](https://github.com/iRobotEducation/irobot_create_msgs/blob/galactic/msg/WheelTicks.msg): Reading from the robot two wheels encoders.
+* [WheelVels](https://github.com/iRobotEducation/irobot_create_msgs/blob/galactic/msg/WheelVels.msg): Indication about the robot two wheels current speed.
+
+**Services**
+
+* [EStop](https://github.com/iRobotEducation/irobot_create_msgs/blob/galactic/srv/EStop.srv): Set system EStop on or off, cutting motor power when on and enabling motor power when off.
+* [RobotPower](https://github.com/iRobotEducation/irobot_create_msgs/blob/galactic/srv/RobotPower.srv): Power off robot.
+
+See [irobot_create_msgs](https://github.com/iRobotEducation/irobot_create_msgs) for more details.
+
+```note
+When publishing or subscribing to topics, make sure that the [QoS](https://docs.ros.org/en/galactic/Concepts/About-Quality-of-Service-Settings.html) that you use matches that of the topic.
+```
+
+{% endtab %}
+{% tab create3 humble %}
+
+**Actions**
+
+* [AudioNoteSequence](https://github.com/iRobotEducation/irobot_create_msgs/blob/main/action/AudioNoteSequence.action): Play a given set of notes from the speaker for a given number of iterations.
+* [Dock](https://github.com/iRobotEducation/irobot_create_msgs/blob/main/action/Dock.action): Command the robot to dock into its charging station.
+* [DriveArc](https://github.com/iRobotEducation/irobot_create_msgs/blob/main/action/DriveArc.action): Command the robot to drive along an arc defined by radius.
+* [DriveDistance](https://github.com/iRobotEducation/irobot_create_msgs/blob/main/action/DriveDistance.action): Command the robot to drive a defined distance in a straight line.
+* [LedAnimation](https://github.com/iRobotEducation/irobot_create_msgs/blob/main/action/LedAnimation.action): Command the lights to perform specified animation.
+* [NavigateToPosition](https://github.com/iRobotEducation/irobot_create_msgs/blob/main/action/NavigateToPosition.action): Command the robot to drive to a goal odometry position using simple approach that rotates to face goal position then translates to goal position then optionally rotates to goal heading.
+* [RotateAngle](https://github.com/iRobotEducation/irobot_create_msgs/blob/main/action/RotateAngle.action): Command the robot to rotate in place a specified amount.
+* [Undock](https://github.com/iRobotEducation/irobot_create_msgs/blob/main/action/Undock.action): Command the robot to undock from its charging station.
+* [WallFollow](https://github.com/iRobotEducation/irobot_create_msgs/blob/main/action/WallFollow.action): Command the robot to wall follow on left or right side using bump and IR sensors.
+
+**Messages**
+
+* [AudioNote](https://github.com/iRobotEducation/irobot_create_msgs/blob/main/msg/AudioNote.msg): Command the robot to play a note.
+* [AudioNoteVector](https://github.com/iRobotEducation/irobot_create_msgs/blob/main/msg/AudioNoteVector.msg): Command the robot to play a sequence of notes.
+* [Button](https://github.com/iRobotEducation/irobot_create_msgs/blob/main/msg/Button.msg): Status for a button.
+* [DockStatus](https://github.com/iRobotEducation/irobot_create_msgs/blob/main/msg/DockStatus.msg): Information about the robot sensing the its dock charging station.
+* [HazardDetection](https://github.com/iRobotEducation/irobot_create_msgs/blob/main/msg/HazardDetection.msg): An hazard or obstacle detected by the robot.
+* [HazardDetectionVector](https://github.com/iRobotEducation/irobot_create_msgs/blob/main/msg/HazardDetectionVector.msg): All the hazards and obstacles detected by the robot.
+* [InterfaceButtons](https://github.com/iRobotEducation/irobot_create_msgs/blob/main/msg/InterfaceButtons.msg): Status of the 3 interface buttons on the Create® robot faceplate.
+* [IrIntensity](https://github.com/iRobotEducation/irobot_create_msgs/blob/main/msg/IrIntensity.msg): Reading from an IR intensity sensor.
+* [IrIntensityVector](https://github.com/iRobotEducation/irobot_create_msgs/blob/main/msg/IrIntensityVector.msg): Vector of current IR intensity readings from all sensors.
+* [IrOpcode](https://github.com/iRobotEducation/irobot_create_msgs/blob/main/msg/IrOpcode.msg): Opcode detected by the robot IR receivers. Used to detect the dock and virtual walls.
+* [KidnapStatus](https://github.com/iRobotEducation/irobot_create_msgs/blob/main/msg/KidnapStatus.msg): Whether the robot has been picked up off the ground.
+* [LedColor](https://github.com/iRobotEducation/irobot_create_msgs/blob/main/msg/LedColor.msg): RGB values for an LED.
+* [LightringLeds](https://github.com/iRobotEducation/irobot_create_msgs/blob/main/msg/LightringLeds.msg): Command RGB values of 6 lightring lights.
+* [Mouse](https://github.com/iRobotEducation/irobot_create_msgs/blob/main/msg/Mouse.msg): Reading from a mouse sensor.
+* [SlipStatus](https://github.com/iRobotEducation/irobot_create_msgs/blob/main/msg/SlipStatus.msg): Whether the robot is currently slipping or not.
+* [StopStatus](https://github.com/iRobotEducation/irobot_create_msgs/blob/main/msg/StopStatus.msg): Whether the robot is currently stopped or not.
+* [WheelStatus](https://github.com/iRobotEducation/irobot_create_msgs/blob/main/msg/WheelStatus.msg): Current/PWM readings from the robot's two wheels in addition to whether wheels are enabled.
+* [WheelTicks](https://github.com/iRobotEducation/irobot_create_msgs/blob/main/msg/WheelTicks.msg): Reading from the robot two wheels encoders.
+* [WheelVels](https://github.com/iRobotEducation/irobot_create_msgs/blob/main/msg/WheelVels.msg): Indication about the robot two wheels current speed.
+
+**Services**
+
+* [EStop](https://github.com/iRobotEducation/irobot_create_msgs/blob/main/srv/EStop.srv): Set system EStop on or off, cutting motor power when on and enabling motor power when off.
+* [RobotPower](https://github.com/iRobotEducation/irobot_create_msgs/blob/main/srv/RobotPower.srv): Power off robot.
+
+See [irobot_create_msgs](https://github.com/iRobotEducation/irobot_create_msgs) for more details.
+
+```note
+When publishing or subscribing to topics, make sure that the [QoS](https://docs.ros.org/en/humble/Concepts/About-Quality-of-Service-Settings.html) that you use matches that of the topic.
+```
+
+{% endtab %}
+{% endtabs %}

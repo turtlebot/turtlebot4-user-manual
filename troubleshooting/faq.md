@@ -75,11 +75,26 @@ Once the Pi has restarted, call `sudo systemctl restart hciuart`. Now you can ru
 
 ### 1. ros2: command not found
 
-Make sure you have sourced ROS2 galactic:
+{% tabs source %}
+{% tab source galactic %}
+
+Make sure you have sourced ROS 2 Galactic:
 
 ```bash
 source /opt/ros/galactic/setup.bash
 ```
+
+{% endtab %}
+{% tab source humble %}
+
+Make sure you have sourced ROS 2 Humble:
+
+```bash
+source /opt/ros/humble/setup.bash
+```
+
+{% endtab %}
+{% endtabs %}
 
 If you are building packages from source, you will also want to source the workspace:
 

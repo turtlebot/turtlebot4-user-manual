@@ -2,11 +2,11 @@
 sort: 2
 ---
 
-# ROS2 Tests
+# ROS 2 Tests
 
 Both TurtleBot 4 models have the `turtlebot4_tests` package installed by default. This package provides some tests that can be run from CLI to test basic system functions.
 
-Each test uses a ROS2 topic, action, or service to perform the action. To run Create® 3 tests, the Create® 3 must be connected to the Raspberry Pi over either WiFi or USB-C.
+Each test uses a ROS 2 topic, action, or service to perform the action. To run Create® 3 tests, the Create® 3 must be connected to the Raspberry Pi over either WiFi or USB-C.
 
 To run the tests, call
 
