@@ -33,7 +33,6 @@ ls /dev/RPLIDAR
 
 If the device exists, the terminal will echo `/dev/RPLIDAR`.
 
-
 ### Installing
 
 {% tabs rplidar %}
