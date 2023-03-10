@@ -10,7 +10,20 @@ sort: 8
 
 The RPLIDAR connects to the TurtleBot 4 with a micro USB to USB-A cable. The sensor does not require high data throughput, so using a USB 2.0 port is sufficient. 
 
-Once connected, the RPLIDAR should register on the Raspberry PI as a USB device. If the [udev rules](https://github.com/turtlebot/turtlebot4-images/blob/galactic/turtlebot4_setup/udev/turtlebot4.rules) are installed, the RPLIDAR will appear as `/dev/RPLIDAR`. Otherwise it will be `/dev/ttyUSB0`.
+{% tabs udev %}
+{% tab udev galactic %}
+
+Once connected, the RPLIDAR should register on the Raspberry PI as a USB device. If the [udev rules](https://github.com/turtlebot/turtlebot4_setup/blob/galactic/udev/turtlebot4.rules) are installed, the RPLIDAR will appear as `/dev/RPLIDAR`. Otherwise it will be `/dev/ttyUSB0`.
+
+
+{% endtab %}
+{% tab udev humble %}
+
+Once connected, the RPLIDAR should register on the Raspberry PI as a USB device. If the [udev rules](https://github.com/turtlebot/turtlebot4_setup/blob/humble/udev/50-turtlebot4.rules) are installed, the RPLIDAR will appear as `/dev/RPLIDAR`. Otherwise it will be `/dev/ttyUSB0`.
+
+
+{% endtab %}
+{% endtabs %}
 
 To check that the USB device exists, use the command
 
@@ -19,6 +32,7 @@ ls /dev/RPLIDAR
 ```
 
 If the device exists, the terminal will echo `/dev/RPLIDAR`.
+
 
 ### Installing
 
