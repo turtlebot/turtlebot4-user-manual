@@ -8,7 +8,7 @@ TurtleBot Lite is built on the iRobot Create® 3 learning platform which feature
 
 ## Attaching Accessories to the Base Unit
 
-There is space for sensors and accessories to be attached to the base unit around the Oak Camera and RPILIDAR. To attach accessories to the Create® 3, the existing holes in the plate can be used. These Ø3.5mm holes are spaced apart 10mm. Alternatively, holes can be drilled by [removing the Create® 3 Integration Plate](#removing-the-create%C2%AE-3-integration-plate). 3D models of the robot are available on [Github](https://github.com/turtlebot/turtlebot4-hardware) which can help in the design.
+There is space for sensors and accessories to be attached to the base unit around the Oak Camera and RPILIDAR. To attach accessories to the Create® 3, the existing holes in the plate can be used. These Ø3.5mm holes are spaced apart 10mm. Alternatively, holes can be drilled by [removing the Create® 3 Integration Plate](#removing-the-create-3-integration-plate). 3D models of the robot are available on [Github](https://github.com/turtlebot/turtlebot4-hardware) which can help in the design.
 
 <figure class="aligncenter">
     <img src="media/lite_integration_plate.png" alt="Create® 3 Integration Plate" style="width: 50%"/>

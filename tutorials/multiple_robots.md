@@ -4,7 +4,7 @@ sort: 6
 
 # Multiple robots
 
-By default, each TurtleBot 4 will use the same [topic, action, and service names](../software/turtlebot4_packages.md#messages) for communication. If we connect two default TurtleBot 4's to the same network, the topics from both robots will communicate with each other and cause unwanted behaviours.
+By default, each TurtleBot 4 will use the same [topic, action, and service names](../software/turtlebot4_common.md#ros-2-interfaces) for communication. If we connect two default TurtleBot 4's to the same network, the topics from both robots will communicate with each other and cause unwanted behaviours.
 
 This tutorial will cover the two main methods for running multiple TurtleBot 4's on a single network.
 
@@ -38,7 +38,7 @@ Once the settings are confirmed, the script will apply the changes to the Create
 
 **Create® 3**
 
-To manually set the **ROS_DOMAIN_ID** of the Create® 3, go to the [webserver](../overview/quick_start.md#access-the-webserver-v013-or-higher). Navigate to Application->Configuration. Set the Domain ID and click 'Save'. Then restart the application.
+To manually set the **ROS_DOMAIN_ID** of the Create® 3, go to the [webserver](../setup/basic.md#accessing-the-create-3-webserver). Navigate to Application->Configuration. Set the Domain ID and click 'Save'. Then restart the application.
 
 **RPi4 Terminal**
 
@@ -80,7 +80,7 @@ Replace <model> with your TurtleBot 4 model (standard or lite) and # with your R
 
 **User PC**
 
-The **ROS_DOMAIN_ID** can be set on the User PC in the same way as the [RPi4 Terminal](#rpi4-terminal).
+The **ROS_DOMAIN_ID** can be set on the User PC in the same way as the RPi4 Terminal (described above).
 
 {% endtab %}
 {% tab domain humble %}
@@ -100,7 +100,7 @@ Navigate to 'Bash Setup' in the 'ROS Setup' menu, then change your `ROS_DOMAIN_I
 
 This will apply the new `ROS_DOMAIN_ID` to the Create® 3, RPi4 Terminal, and RPi4 Robot Upstart job.
 
-On the user PC, set the `ROS_DOMAIN_ID` in your *setup.bash* file and source it. See [Installing ROS 2](../setup/user_pc.md#installing-ros2) for more details.
+On the user PC, set the `ROS_DOMAIN_ID` in your *setup.bash* file and source it. See [Installing ROS 2](../setup/basic.md#installing-ros-2) for more details.
 
 {% endtab %}
 {% endtabs %}

@@ -34,9 +34,9 @@ There is space for sensors to be attached to the base unit above the PCBA as wel
 
 To attach accessories above the PCBA, mounting brackets can be designed for the desired accessory and attached to the TurtleBot 4 by securing them to the standoffs. 3D models of the TurtleBot4 are available on [Github](https://github.com/turtlebot/turtlebot4-hardware) that can help in the design process.
 
-To attach accessories inside the Shell, the [PCBA](#removing-the-pcba) and the [Create® 3 Integration Plate](#removing-the-create%C2%AE-3-integration-plate-and-shell) should be removed. Inside, the existing holes can be used or additional mounting features can be machined or 3D printed.
+To attach accessories inside the Shell, the [PCBA](#removing-the-pcba) and the [Create® 3 Integration Plate](#removing-the-create-3-integration-plate-and-shell) should be removed. Inside, the existing holes can be used or additional mounting features can be machined or 3D printed.
 
-To attach accessories to the Create® 3, the existing holes in the plate can be used, or additional holes can be drilled by [removing the Create® 3 Integration Plate](#removing-the-create%C2%AE-3-integration-plate-and-shell).
+To attach accessories to the Create® 3, the existing holes in the plate can be used, or additional holes can be drilled by [removing the Create® 3 Integration Plate](#removing-the-create-3-integration-plate-and-shell).
 
 <figure class="aligncenter">
     <img src="media/base_unit.png" alt="Create® 3 attachment" style="width: 50%"/>

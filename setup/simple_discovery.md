@@ -15,7 +15,7 @@ To use the TurtleBot 4 with Simple Discovery, the Create® 3 should be connected
 
 ### Wi-Fi Setup
 
-Access the [Create® 3 webserver](./basic.md#accessing-the-create®-3-webserver), then navigate to the <b>Connect</b> tab.
+Access the [Create® 3 webserver](./basic.md#accessing-the-create-3-webserver), then navigate to the <b>Connect</b> tab.
 Enter your Wi-Fi SSID and password, and then click 'Connect'.
 
 <figure class="aligncenter">
@@ -31,7 +31,7 @@ The Create® 3 can only be connected to 2.4 GHz Wi-Fi networks.
 
 ### Application Configuration
 
-Access the [Create® 3 webserver](./basic.md#accessing-the-create®-3-webserver), then navigate to the <b>Application Configuration</b> tab.
+Access the [Create® 3 webserver](./basic.md#accessing-the-create-3-webserver), then navigate to the <b>Application Configuration</b> tab.
 Set ROS 2 Domain ID to 0, ROS 2 Namespace to an empty string, and RMW_IMPLEMENTATION to the [default](networking.md#dds) for your ROS 2 version. Additionally, make
 sure that the Fast DDS discover server is disabled.
 

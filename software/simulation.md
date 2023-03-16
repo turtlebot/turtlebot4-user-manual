@@ -19,11 +19,11 @@ Requirements:
 Recommended:
 - PC with dedicated GPU
 
-Follow the installation instructions described [here](./turtlebot4_packages.md#installation-3).
+Follow the installation instructions described [here](./turtlebot4_simulator.md#installation).
 
 ## Launching Ignition Gazebo
 
-The `ignition.launch.py` launch file has several [launch configurations](turtlebot4_packages.md#ignition-bringup) that allow the user to customize the simulation.
+The `ignition.launch.py` launch file has several [launch configurations](turtlebot4_simulator.md#ignition-bringup) that allow the user to customize the simulation.
 
 Default TurtleBot 4 launch:
 

@@ -197,7 +197,7 @@ It is recommended to update both the Create® 3 and the Raspberry Pi when you fi
 
 Check the [Create® 3 software releases](https://iroboteducation.github.io/create3_docs/releases/overview/) to see if a newer firmware version is available. You can check the firmware version of your Create® 3 by visiting the webserver.
 
-If new firmware is available, download it, then access the [webserver](./basic.md#accessing-the-create®-3-webserver). Go to the <b>Update</b> tab, upload the firmware, then update your robot.
+If new firmware is available, download it, then access the [webserver](./basic.md#accessing-the-create-3-webserver). Go to the <b>Update</b> tab, upload the firmware, then update your robot.
 
 #### Raspberry Pi packages
 
