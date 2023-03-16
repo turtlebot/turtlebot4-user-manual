@@ -1,5 +1,6 @@
 .jekyll-metadata
 _site
 .sass-cache
+.vscode
 
 Gemfile.lock
