@@ -141,3 +141,10 @@ Call `source ~/.bashrc` to apply these settings to your current terminal.
 ```
 
 For more CycloneDDS configuration options, visit the [CycloneDDS documentation](https://github.com/eclipse-cyclonedds/cyclonedds#run-time-configuration).
+
+## Verification
+Verify that your PC and the robot are able to communicate using ROS topics. Run the following command on both the robot and you PC to display the Raspberry Pi and Create®3 ROS topics and ensure that both outputs match:
+
+```bash
+ros2 topic list
+```
