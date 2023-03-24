@@ -14,6 +14,10 @@ The robot must first be set up and connected to Wi-Fi before it can be driven. C
 
 The simplest way to get your robot driving is to use a keyboard application on your PC.
 
+```note
+In order to control the Turtlebot 4 while running the application on your pc, you must set up the [networking](../setup/networking.md) between your robot and your pc, so that they can communicate over ros topics.
+```
+
 {% tabs keyboard %}
 {% tab keyboard galactic %}
 
