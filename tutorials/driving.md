@@ -7,12 +7,16 @@ sort: 1
 There are several methods to get your TurtleBot 4 moving.
 
 ```note
-The robot must first be set up and connected to Wi-Fi before it can be driven. Check out the [Quick Start](../overview/quick_start.md) section if you have not already.
+The robot must first be set up and connected to Wi-Fi before it can be driven. Check out the [Setup](../setup/basic.md) section if you have not already.
 ```
 
 ## Keyboard Teleoperation
 
 The simplest way to get your robot driving is to use a keyboard application on your PC.
+
+```note
+In order to control the Turtlebot 4 while running the application on your pc, you must set up the [networking](../setup/networking.md) between your robot and your pc, so that they can communicate over ros topics.
+```
 
 {% tabs keyboard %}
 {% tab keyboard galactic %}
@@ -64,7 +68,7 @@ Press **i** to drive forward, **j** to rotate left, and so on. You can also adju
 
 If you have a TurtleBot 4 controller or have your own Bluetooth controller, you can drive the robot with it.
 
-First, make sure that your controller is paired and connects to the robot. If you have a TurtleBot 4 controller, press the home button and check that the controller's light turns blue. If your controller is not paired or connecting, refer to the [Controller Setup](../overview/quick_start.md#turtlebot-4-controller-setup) section.
+First, make sure that your controller is paired and connects to the robot. If you have a TurtleBot 4 controller, press the home button and check that the controller's light turns blue. If your controller is not paired or connecting, refer to the [Controller Setup](../setup/basic.md#turtlebot-4-controller-setup) section.
 
 ```note
 If you are using a TurtleBot 4 Lite with ROS 2 Galactic, the Bluetooth packages will not be installed by default. To install them, SSH into the Raspberry Pi and call `sudo bluetooth.sh` and then reboot the Pi. Then follow the Controller Setup instructions.
@@ -104,7 +108,7 @@ Set the `linear.x` value to drive the robot forwards or backwards, and the `angu
 
 ## Create® 3 Actions
 
-The Create® 3 provides a set of [ROS 2 Actions](https://docs.ros.org/en/galactic/Tutorials/Understanding-ROS 2-Actions.html) for driving the robot. You can use the [DriveDistance](https://github.com/iRobotEducation/irobot_create_msgs/blob/main/action/DriveDistance.action), [DriveArc](https://github.com/iRobotEducation/irobot_create_msgs/blob/main/action/DriveArc.action), and [RotateAngle](https://github.com/iRobotEducation/irobot_create_msgs/blob/main/action/RotateAngle.action) actions to tell the robot exactly how far and how fast to drive or rotate.
+The Create® 3 provides a set of [ROS 2 Actions](https://docs.ros.org/en/humble/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Actions/Understanding-ROS2-Actions.html) for driving the robot. You can use the [DriveDistance](https://github.com/iRobotEducation/irobot_create_msgs/blob/main/action/DriveDistance.action), [DriveArc](https://github.com/iRobotEducation/irobot_create_msgs/blob/main/action/DriveArc.action), and [RotateAngle](https://github.com/iRobotEducation/irobot_create_msgs/blob/main/action/RotateAngle.action) actions to tell the robot exactly how far and how fast to drive or rotate.
 
 For example, command the robot to drive 0.5 m forwards at 0.3 m/s:
 

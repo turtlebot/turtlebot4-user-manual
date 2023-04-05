@@ -56,14 +56,14 @@ You can now go to your terminal and SSH into the robot by typing:
 ssh ubuntu@192.168.185.3
 ```
 
-### 1. Waiting to connect to bluetoothd...
+### 2. Waiting to connect to bluetoothd...
 
 This issue is usually a result of the bluetooth service being stopped.
 
 To start the service again, run `sudo systemctl start bluetooth`.
 
 
-### 2. No default controller available
+### 3. No default controller available
 
 This error occurs if you are attempting to connect a bluetooth device to the Raspberry Pi with `sudo bluetoothctl` and the `hciuart` service throws errors.
 
@@ -104,7 +104,7 @@ source /path/to/ws/install/setup.bash
 
 ### 2. Create® 3 topics are not visible
 
-First, check that the Create® 3 is connected to your WiFi network. You should be able to access the Create® 3 portal by entering the Create® 3 IP address in a browser. For information on how to connect the Create® 3 to WiFi, check the [quick start guide](../overview/quick_start.md#create%C2%AE-3-wifi-setup).
+First, check that the Create® 3 is connected to your WiFi network. You should be able to access the Create® 3 portal by entering the Create® 3 IP address in a browser. For information on how to connect the Create® 3 to WiFi, check the [Wi-Fi Setup Guide](../setup/simple_discovery.md#wi-fi-setup).
 
 If it is connected to WiFi, check if you can see Create® 3 topics on the Raspberry Pi.
 

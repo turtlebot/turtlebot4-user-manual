@@ -444,7 +444,7 @@ The Wi-Fi Setup menu allows users to easily connect the TurtleBot 4 to their Wi-
 <u><b style="font-size: 20px;">Bluetooth Setup</b></u>
 
 This menu option launches `bluetoothctl` and allows you to pair and connect to a bluetooth device.
-See [TurtleBot 4 Controller Setup](../overview/quick_start.md#turtlebot-4-controller-setup) for details.
+See [TurtleBot 4 Controller Setup](../setup/basic.md#turtlebot-4-controller-setup) for details.
 
 <br/>
 <u><b style="font-size: 20px;">View Settings</b></u>
