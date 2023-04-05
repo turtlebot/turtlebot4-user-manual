@@ -108,7 +108,7 @@ Set the `linear.x` value to drive the robot forwards or backwards, and the `angu
 
 ## Create® 3 Actions
 
-The Create® 3 provides a set of [ROS 2 Actions](https://docs.ros.org/en/galactic/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Actions/Understanding-ROS2-Actions.html) for driving the robot. You can use the [DriveDistance](https://github.com/iRobotEducation/irobot_create_msgs/blob/main/action/DriveDistance.action), [DriveArc](https://github.com/iRobotEducation/irobot_create_msgs/blob/main/action/DriveArc.action), and [RotateAngle](https://github.com/iRobotEducation/irobot_create_msgs/blob/main/action/RotateAngle.action) actions to tell the robot exactly how far and how fast to drive or rotate.
+The Create® 3 provides a set of [ROS 2 Actions](https://docs.ros.org/en/humble/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Actions/Understanding-ROS2-Actions.html) for driving the robot. You can use the [DriveDistance](https://github.com/iRobotEducation/irobot_create_msgs/blob/main/action/DriveDistance.action), [DriveArc](https://github.com/iRobotEducation/irobot_create_msgs/blob/main/action/DriveArc.action), and [RotateAngle](https://github.com/iRobotEducation/irobot_create_msgs/blob/main/action/RotateAngle.action) actions to tell the robot exactly how far and how fast to drive or rotate.
 
 For example, command the robot to drive 0.5 m forwards at 0.3 m/s:
 
