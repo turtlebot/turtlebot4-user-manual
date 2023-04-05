@@ -28,7 +28,6 @@ Clone this repository:
 ```bash
 git clone https://github.com/turtlebot/turtlebot4-user-manual.git
 ```
-Update the `_includes` folder locally to match [the Jekyll RTD Theme](https://github.com/rundocs/jekyll-rtd-theme/tree/develop/_includes) without overwriting any existing files.
 
 Build and start a local server:
 
