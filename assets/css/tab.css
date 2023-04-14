@@ -41,7 +41,7 @@
     border: 1px #4fbed5 solid;
 }
 
-.tab-content li {
+.tab-content > li {
     display: none;
 }
 
