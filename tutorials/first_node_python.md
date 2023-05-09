@@ -112,6 +112,10 @@ def main(args=None):
 
 Our next step is to subscribe to the Create® 3 interface buttons topic to receive button presses.
 
+```note
+The Create® 3 interface buttons will still execute their standard operations. Pressing button 1 will direct the robot to dock (if it is currently undocked) and pressing button 2 will direct the robot to undock (if it is currently docked).
+```
+
 We will need to create a `rclpy.Subscription` as well as a callback function for the subscription. The callback function will be called every time we receive a message on the interface buttons topic.
 
 ```py
