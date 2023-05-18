@@ -7,7 +7,7 @@ sort: 1
 TurtleBot 4 is designed to be modified to meet your needs and make it possible to attach additional sensors and accessories. 
 
 ## Attaching Accessories to the Top Integration Plate
-The TurtleBot 4 is equipped with an acrylic plate at the top that is easy to modify in order to attach additional sensors and peripherals.
+The TurtleBot 4 is equipped with a High Density Polypropylene (HDPE) plate at the top that is easy to modify in order to attach additional sensors and peripherals.
 
 ```warning
 Modifications to the plate should only be done when it is removed from the robot, attempting to modify the plate while mounted can cause the plastic to crack.
