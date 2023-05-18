@@ -70,7 +70,7 @@ To install the metapackage through apt:
 
 ```bash
 sudo apt update
-sudo apt install ros-humble-turtlebot4-simulator ros-humble-irobot-create-nodes
+sudo apt install ros-humble-turtlebot4-simulator
 ```
 
 {% endtab %}
@@ -117,7 +117,6 @@ Install dependencies:
 
 ```bash
 cd ~/turtlebot4_ws
-vcs import src < src/turtlebot4_simulator/dependencies.repos
 rosdep install --from-path src -yi
 ```
 
