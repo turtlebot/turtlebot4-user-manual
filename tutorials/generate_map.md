@@ -8,6 +8,10 @@ In this tutorial we will be mapping an area by driving the TurtleBot 4 around an
 
 ## Launch SLAM
 
+```note
+Remember to always source your ROS 2 environment before trying to launch a node.
+```
+
 {% tabs slam %}
 {% tab slam galactic %}
 

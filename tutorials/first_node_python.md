@@ -4,7 +4,20 @@ sort: 3
 
 # Creating your first node (Python)
 
-This tutorial will go through the steps of creating a ROS 2 package and writing a ROS 2 node in Python. For a C++ example, click [here](./first_node_cpp.html#creating-your-first-node-c). These steps are similar to the [ROS 2 Tutorial](https://docs.ros.org/en/galactic/Tutorials/Writing-A-Simple-Py-Publisher-And-Subscriber.html), but focus on interacting with the TurtleBot 4. For source code, click [here](https://github.com/turtlebot/turtlebot4_tutorials/tree/galactic/turtlebot4_python_tutorials).
+This tutorial will go through the steps of creating a ROS 2 package and writing a ROS 2 node in Python. For a C++ example, click [here](./first_node_cpp.html#creating-your-first-node-c). 
+
+{% tabs navigation %}
+{% tab navigation galactic %}
+
+These steps are similar to the [ROS 2 Tutorial](https://docs.ros.org/en/galactic/Tutorials/Writing-A-Simple-Cpp-Publisher-And-Subscriber.html), but focus on interacting with the TurtleBot 4. For source code, click [here](https://github.com/turtlebot/turtlebot4_tutorials/tree/galactic/turtlebot4_cpp_tutorials).
+
+{% endtab %}
+{% tab navigation humble %}
+
+ These steps are similar to the [ROS 2 Tutorial](https://docs.ros.org/en/humble/Tutorials/Writing-A-Simple-Cpp-Publisher-And-Subscriber.html), but focus on interacting with the TurtleBot 4. For source code, click [here](https://github.com/turtlebot/turtlebot4_tutorials/tree/humble/turtlebot4_cpp_tutorials).
+
+{% endtab %}
+{% endtabs %}
 
 ```note
 You can follow this tutorial on either the Raspberry Pi of your TurtleBot 4, or your PC.
@@ -98,6 +111,10 @@ def main(args=None):
 ### Subscribe to the Create® 3 interface buttons
 
 Our next step is to subscribe to the Create® 3 interface buttons topic to receive button presses.
+
+```note
+The Create® 3 interface buttons will still execute their standard operations. Pressing button 1 will direct the robot to dock (if it is currently undocked) and pressing button 2 will direct the robot to undock (if it is currently docked).
+```
 
 We will need to create a `rclpy.Subscription` as well as a callback function for the subscription. The callback function will be called every time we receive a message on the interface buttons topic.
 

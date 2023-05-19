@@ -1,5 +1,5 @@
 ---
-sort: 6
+sort: 7
 ---
 
 # Multiple robots
@@ -178,11 +178,39 @@ Save the settings, then apply settings in the main menu.
 
 This will apply the new namespace to the Create® 3, RPi4 Terminal, and RPi4 Robot Upstart job.
 
+### Viewing the Robot in RViz
+
 On the user PC, `turtlebot4_desktop` launch files can use a `namespace` argument to view a specific robot:
 
 ```bash
 ros2 launch turtlebot4_viz view_model.launch.py namespace:=/robot1
 ```
+
+### Launching Robots in Simulation
+
+The first robot can be launched normally, with the addition of a `namespace`. All other parameters are still available as shown below:
+
+```bash
+ros2 launch turtlebot4_ignition_bringup turtlebot4_ignition.launch.py namespace:=/robot1 nav2:=true slam:=false localization:=true rviz:=true
+```
+
+Any additional robots must be launched using the `turtlebot4_spawn` launch file, a unique `namespace` and a unique spawn location:
+
+```bash
+ros2 launch turtlebot4_ignition_bringup turtlebot4_spawn.launch.py namespace:=/robot2 x:=0.0 y:=1.0 nav2:=true slam:=false localization:=true rviz:=true
+```
+
+### Launching Navigation
+
+The SLAM, Localization and Nav2 launch files all support namespacing and can be launched as follows:
+
+```bash
+ros2 launch turtlebot4_navigation slam.launch.py namespace:=/robot1
+ros2 launch turtlebot4_navigation localization.launch.py map:=office.yaml namespace:=/robot1
+ros2 launch turtlebot4_navigation nav2.launch.py namespace:=/robot1
+```
+
+Replace `robot1` with the desired robot namespace. 
 
 {% endtab %}
 {% endtabs %}
