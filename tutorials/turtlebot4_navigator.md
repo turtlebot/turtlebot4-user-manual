@@ -959,6 +959,17 @@ elif goal_options[selected_index]['name'] == 'Exit':
     break
 ```
 
+### Watch Navigation Progress in RViz
+
+<figure class="aligncenter">
+    <video style="width: 100%" controls autoplay muted>
+    <source src="media/mail_delivery_rviz.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+    </video>
+    <figcaption>Mail Delivery (3x speed)</figcaption>
+</figure>
+
+
 #### Navigate
 
 Finally, navigate to the selected position. 
@@ -1277,6 +1288,16 @@ else:
     if position_index >= len(goal_pose):
         position_index = 0
 ```
+
+### Watch Navigation Progress in RViz
+
+<figure class="aligncenter">
+    <video style="width: 100%" controls autoplay muted>
+    <source src="media/patrol_loop_rviz.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+    </video>
+    <figcaption>Patrol Loop (9x speed)</figcaption>
+</figure>
 
 {% endtab %}
 {% endtabs %}
