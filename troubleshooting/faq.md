@@ -136,3 +136,30 @@ Replace `#` with the ID.
 
 If topics are not visible on the Raspberry Pi, you may need to restart the Create® 3 application through the portal, or reboot the robot.
 
+## Replacement Components for the Create® 3
+
+The Turtlebot4 is built ontop of the Create® 3 platform which has components that can be replaced as they wear. These components can be purchased directly from iRobot at the following links.
+
+[Lithium Ion Battery](https://www.irobot.com/en_US/roomba-accessories/4624864.html)
+
+<figure class="aligncenter">
+    <img src="https://www.irobot.com/dw/image/v2/BFXP_PRD/on/demandware.static/-/Sites-master-catalog-irobot/en_US/dw0dee737f/images/large/accessories/roomba/4624864.jpg" alt="Lithium Ion Battery for Roomba® e & i series" style="width: 50%"/>
+</figure>
+
+[Wheel Modules](https://www.irobot.com/en_US/roomba-wheel-module-bundle-compatible-with-the-i%2C-e%2C-and-j-series./4624872_4624873.html)
+
+<figure class="aligncenter">
+    <img src="https://www.irobot.com/dw/image/v2/BFXP_PRD/on/demandware.static/-/Sites-master-catalog-irobot/default/dw756dca80/images/large/accessories/roomba/4624872_4624873_1.jpg" alt="Roomba® Wheel Module Bundle Compatible with the i, e, and j series" style="width: 50%"/>
+</figure>
+
+[Left Wheel Module](https://www.irobot.com/en_US/roomba-left-wheel-module/4624872.html)
+
+<figure class="aligncenter">
+    <img src="https://www.irobot.com/dw/image/v2/BFXP_PRD/on/demandware.static/-/Sites-master-catalog-irobot/default/dwfe23ae21/images/large/accessories/roomba/4624872.jpg" alt="Roomba® Left Wheel Module" style="width: 50%"/>
+</figure>
+
+[Right Wheel Module](https://www.irobot.com/en_US/roomba-right-wheel-module/4624873.html)
+
+<figure class="aligncenter">
+    <img src="https://www.irobot.com/dw/image/v2/BFXP_PRD/on/demandware.static/-/Sites-master-catalog-irobot/default/dw999685d5/images/large/accessories/roomba/4624873_1.jpg" alt="Roomba® Right Wheel Module" style="width: 50%"/>
+</figure>
