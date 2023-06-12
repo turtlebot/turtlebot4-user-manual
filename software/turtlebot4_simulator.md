@@ -4,7 +4,7 @@ sort: 4
 
 # TurtleBot 4 Simulator
 
-The `turtlebot4_simulator` metapackage contains packages used to simulate the TurtleBot 4 in Ignition Gazebo.
+The `turtlebot4_simulator` metapackage contains packages used to simulate the TurtleBot 4 in Gazebo.
 
 ## Installation
 
@@ -22,30 +22,30 @@ Install useful development tools:
 sudo apt install ros-dev-tools
 ```
 
-### Ignition Gazebo
+### Gazebo
 
-{% tabs ignition %}
-{% tab ignition galactic %}
+{% tabs gazebo %}
+{% tab gazebo galactic %}
 
-Ignition Edifice must be installed:
+Gazebo Edifice must be installed:
 
 ```bash
 sudo apt-get update && sudo apt-get install wget
 sudo sh -c 'echo "deb http://packages.osrfoundation.org/gazebo/ubuntu-stable `lsb_release -cs` main" > /etc/apt/sources.list.d/gazebo-stable.list'
 wget http://packages.osrfoundation.org/gazebo.key -O - | sudo apt-key add -
-sudo apt-get update && sudo apt-get install ignition-edifice
+sudo apt-get update && sudo apt-get install gz-edifice
 ```
 
 {% endtab %}
-{% tab ignition humble %}
+{% tab gazebo humble %}
 
-Ignition Fortress must be installed:
+Gazebo Fortress must be installed:
 
 ```bash
 sudo apt-get update && sudo apt-get install wget
 sudo sh -c 'echo "deb http://packages.osrfoundation.org/gazebo/ubuntu-stable `lsb_release -cs` main" > /etc/apt/sources.list.d/gazebo-stable.list'
 wget http://packages.osrfoundation.org/gazebo.key -O - | sudo apt-key add -
-sudo apt-get update && sudo apt-get install ignition-fortress
+sudo apt-get update && sudo apt-get install gz-fortress
 ```
 
 {% endtab %}
@@ -130,20 +130,20 @@ colcon build --symlink-install
 {% endtab %}
 {% endtabs %}
 
-## Ignition Bringup
+## Gazebo Bringup
 
-The `turtlebot4_ignition_bringup` package contains launch files and configurations to launch Ignition Gazebo.
+The `turtlebot4_ignition_bringup` package contains launch files and configurations to launch Gazebo.
 
 {% tabs bringup %}
 {% tab bringup galactic %}
 
 Launch files:
 
-* [Ignition](https://github.com/turtlebot/turtlebot4_simulator/blob/galactic/turtlebot4_ignition_bringup/launch/ignition.launch.py): Launches Ignition Gazebo and all required nodes to run the simulation.
-* [ROS Ignition Bridge](https://github.com/turtlebot/turtlebot4_simulator/blob/galactic/turtlebot4_ignition_bringup/launch/ros_ign_bridge.launch.py): Launches all of the required `ros_ign_bridge` nodes to bridge Ignition topics with ROS topics.
+* [Gazebo](https://github.com/turtlebot/turtlebot4_simulator/blob/galactic/turtlebot4_ignition_bringup/launch/ignition.launch.py): Launches Ignition Gazebo and all required nodes to run the simulation.
+* [ROS Gazebo Bridge](https://github.com/turtlebot/turtlebot4_simulator/blob/galactic/turtlebot4_ignition_bringup/launch/ros_ign_bridge.launch.py): Launches all of the required `ros_ign_bridge` nodes to bridge Ignition topics with ROS topics.
 * [TurtleBot 4 Nodes](https://github.com/turtlebot/turtlebot4_simulator/blob/galactic/turtlebot4_ignition_bringup/launch/turtlebot4_nodes.launch.py): Launches the `turtlebot4_node` and `turtlebot4_ignition_hmi_node` required to control the HMI plugin and robot behaviour.
 
-Ignition launch configuration options:
+Gazebo launch configuration options:
 - **model**: Which TurtleBot 4 model to use.
     - options: *standard, lite*
     - default: *standard*
@@ -178,12 +178,12 @@ ros2 launch turtlebot4_ignition_bringup ignition.launch.py slam:=sync nav2:=true
 
 Launch files:
 
-* [Turtlebot 4 Ignition Launch](https://github.com/turtlebot/turtlebot4_simulator/blob/humble/turtlebot4_ignition_bringup/launch/turtlebot4_ignition.launch.py): Launches Ignition Gazebo and all required nodes to run the simulation.
-* [Ignition](https://github.com/turtlebot/turtlebot4_simulator/blob/humble/turtlebot4_ignition_bringup/launch/ignition.launch.py): Launches Ignition Gazebo only.
-* [ROS Ignition Bridge](https://github.com/turtlebot/turtlebot4_simulator/blob/humble/turtlebot4_ignition_bringup/launch/ros_ign_bridge.launch.py): Launches all of the required `ros_ign_bridge` nodes to bridge Ignition topics with ROS topics.
+* [Turtlebot 4 Gazebo Launch](https://github.com/turtlebot/turtlebot4_simulator/blob/humble/turtlebot4_ignition_bringup/launch/turtlebot4_ignition.launch.py): Launches Gazebo Gazebo and all required nodes to run the simulation.
+* [Gazebo](https://github.com/turtlebot/turtlebot4_simulator/blob/humble/turtlebot4_ignition_bringup/launch/ignition.launch.py): Launches Ignition Gazebo only.
+* [ROS Gazebo Bridge](https://github.com/turtlebot/turtlebot4_simulator/blob/humble/turtlebot4_ignition_bringup/launch/ros_ign_bridge.launch.py): Launches all of the required `ros_ign_bridge` nodes to bridge Gazebo topics with ROS topics.
 * [TurtleBot 4 Nodes](https://github.com/turtlebot/turtlebot4_simulator/blob/humble/turtlebot4_ignition_bringup/launch/turtlebot4_nodes.launch.py): Launches the `turtlebot4_node` and `turtlebot4_ignition_hmi_node` required to control the HMI plugin and robot behaviour.
 
-Turtlebot 4 Ignition launch configuration options:
+Turtlebot 4 Gazebo launch configuration options:
 
 - **model**: Which TurtleBot 4 model to use
     - options: *standard, lite*
@@ -231,7 +231,7 @@ ros2 launch turtlebot4_ignition_bringup turtlebot4_ignition.launch.py slam:=true
 {% endtab %}
 {% endtabs %}
 
-## Ignition GUI Plugins
+## Gazebo GUI Plugins
 
 The `turtlebot4_ignition_gui_plugins` package contains the source code for the TurtleBot 4 HMI GUI plugin.
 
@@ -253,7 +253,6 @@ The [TurtleBot 4 HMI GUI plugin](https://github.com/turtlebot/turtlebot4_simulat
     <figcaption>TurtleBot 4 HMI GUI plugin</figcaption>
 </figure>
 
-## Ignition Toolbox
+## Gazebo Toolbox
 
 The `turtlebot4_ignition_toolbox` package contains the source code for the TurtleBot 4 HMI node. The TurtleBot 4 HMI node acts as a bridge between the `turtlebot4_node` and `ros_ign_bridge` to convert the custom [TurtleBot 4 messages](./turtlebot4_common.md#messages) into standard messages such as `Int32` and `String`.
-
