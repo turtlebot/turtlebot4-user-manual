@@ -263,7 +263,7 @@ ros2 launch turtlebot4_viz view_robot.launch.py
     <source src="media/nav_to_pose_rviz_humble.mp4" type="video/mp4">
     Your browser does not support the video tag.
     </video>
-    <figcaption>Navigate to a pose</figcaption>
+    <figcaption>Navigate to a pose (3x speed)</figcaption>
 </figure>
 
 {% endtab %}
