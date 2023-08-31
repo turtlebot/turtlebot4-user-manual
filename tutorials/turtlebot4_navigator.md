@@ -1301,3 +1301,316 @@ else:
 
 {% endtab %}
 {% endtabs %}
+
+## LLM Integration
+
+This example demonstrates an integration between the OpenAI [Chat Completions API](https://platform.openai.com/docs/guides/gpt/chat-completions-api) and the Turtlebot 4, substantially inspired by the ['Code as Policies: Language Model Programs for Embodied Control' (Liang et al.)](https://arxiv.org/abs/2209.07753) research.
+
+It demonstrates how an LLM can be 'taught' how to use the Turtlebot 4 Navigation API with only a few examples, and also shows how an LLM can easily bridge natural language commands to API calls without an intermediate parsing step.
+
+Before using this as the basis for a product, please consult the substantial list of caveats found in the original paper! :smile:
+
+### Installation
+1. Create an [OpenAI account](https://platform.openai.com/signup?launch) and [API key](https://platform.openai.com/account/api-keys). Be sure to copy your API key to a safe place, it cannot be retrieved after creation!
+2. Verify that your OpenAI account has [some credit](https://platform.openai.com/account/usage). A few cents are all that's required for initial testing
+3. Install the OpenAI Python library via `pip install openai`
+4. If you do not already have a workspace, open a terminal and create one `mkdir ~/turtlebot4_ws/src -p`
+5. Download or clone [the code](https://github.com/turtlebot/turtlebot4_tutorials) into your workspace.
+6. Run colcon build in your workspace `cd ~/turtlebot4_ws/ && colcon build`
+
+### Running
+
+To run this example, first start the Gazebo simulation:
+
+```bash
+ros2 launch turtlebot4_ignition_bringup turtlebot4_ignition.launch.py nav2:=true slam:=false localization:=true rviz:=true
+```
+
+Once the simulation has started, open another terminal and run:
+
+```bash
+ros2 launch turtlebot4_openai_tutorials natural_language_nav_launch.py openai_api_key:=API_KEY parking_brake:=false
+```
+Use the API key you created earlier in place of API_KEY, and set `parking_brake:=true` if you don't want the commands to be passed to the robot.
+
+<i>I suggest setting `parking_brake:=true` initially, as it takes time for the robot to initialize before the system can even accept commands.</i>
+
+Once the robot is undocked (or, immediately, if the 'parking brake' is not set), open a third terminal and run:
+```bash
+ros2 topic pub --once /user_input std_msgs/msg/String "data: STRING"
+```
+where STRING is a command string which corresponds to the prompted API. If you are using unmodified code, the following commands are all good examples:
+```bash
+ros2 topic pub --once /user_input std_msgs/msg/String "data: Dock"
+ros2 topic pub --once /user_input std_msgs/msg/String "data: Go to -1,0, face East"
+ros2 topic pub --once /user_input std_msgs/msg/String "data: Go to 5,5"
+ros2 topic pub --once /user_input std_msgs/msg/String "data: Move to the wooden object"
+ros2 topic pub --once /user_input std_msgs/msg/String "data: Navigate to the item which can hold oil"
+ros2 topic pub --once /user_input std_msgs/msg/String "data: Travel to the room containing a toilet"
+```
+
+Due to the use of an LLM, the system is capable of inferring a significant amount of relationships which are not present in the code itself. For example, the words 'oil' and 'toilet' are not found in the code base at all, much less how they relate to the API.
+
+<i>Be sure to use the ```--once``` flag, or else a forgotten terminal will be billing you for credits constantly</i>
+
+You can optionally also open a <i>fourth</i> terminal to monitor if the system is ready for new input.
+```bash
+ros2 topic echo /ready_for_input
+```
+
+### Code breakdown
+
+Note that code constructs covered in previous tutorials may not be explained in detail here.
+
+#### Launchfile
+
+Source located [here](https://github.com/turtlebot/turtlebot4_tutorials/blob/humble/turtlebot4_openai_tutorials/launch/natural_language_nav_launch.py).
+
+Let's take a look at the launchfile.
+
+```py
+def generate_launch_description():
+    return LaunchDescription([
+        DeclareLaunchArgument('openai_api_key', default_value='',
+                              description='API key set up via \
+                              https://platform.openai.com/account/api-keys'),
+        DeclareLaunchArgument('model_name', default_value='gpt-3.5-turbo',
+                              description='OpenAI model name as selected from \
+                              https://platform.openai.com/docs/guides/gpt'),
+        DeclareLaunchArgument('parking_brake', default_value='true',
+                              description='Set to false to execute commands on the robot'),
+        Node(
+            package='turtlebot4_openai_tutorials',
+            executable='natural_language_nav',
+            output='screen',
+            emulate_tty=True,
+            parameters=[
+                {'openai_api_key': LaunchConfiguration('openai_api_key')},
+                {'model_name': LaunchConfiguration('model_name')},
+                {'parking_brake': LaunchConfiguration('parking_brake')}
+            ]
+        ),
+    ])
+```
+This is a straightforward launchfile, used to create three key parameters.
+
+`openai_api_key` must be altered here or set on the command line at launch time
+
+`model_name` is unlikely to need to change, but options can be found [here](https://platform.openai.com/docs/guides/gpt)
+
+`parking_brake` serves the purpose outlined above in the <b>Running</b> section
+
+#### GPTNode
+Let's take a look at the new node in this example, found [here](https://github.com/turtlebot/turtlebot4_tutorials/blob/humble/turtlebot4_openai_tutorials/turtlebot4_openai_tutorials/natural_language_nav.py)
+
+##### Constructor
+
+This is a straightforward Python ROS 2 node `__init__` example. It declares and uses some parameters, sets up some variables, creates a subscription for a user input string, and creates a publisher to provide status feedback.
+
+```py
+def __init__(self, navigator):
+    super().__init__('gpt_node')
+    self.declare_parameter('openai_api_key', '')
+    self.declare_parameter('model_name', 'gpt-3.5-turbo')
+    self.declare_parameter('parking_brake', True)
+
+    # OpenAI key, model, prompt setup
+    openai.api_key = self.get_parameter('openai_api_key').value
+    self.model_name = self.get_parameter('model_name').value
+    self.prompts = []
+    self.full_prompt = ""
+
+    # ROS stuff. Navigator node handle, topics
+    self.navigator = navigator
+    self.sub_input = self.create_subscription(String, 'user_input', self.user_input, 10)
+    self.pub_ready = self.create_publisher(Bool, 'ready_for_input', 10)
+    self.publish_status(False)
+```
+
+##### OpenAI Interaction
+
+This code is mainly the original paper's example code modified to use more recent API calls. It takes a prompt (i.e. context) and a query, sends it to OpenAI, and returns a response.
+
+```py
+def query(self, base_prompt, query, stop_tokens=None, query_kwargs=None, log=True):
+    new_prompt = f'{base_prompt}\n{query}'
+    """ Query OpenAI API with a prompt and query """
+
+    use_query_kwargs = {
+        'model': self.model_name,
+        'max_tokens': 512,
+        'temperature': 0,
+    }
+    if query_kwargs is not None:
+        use_query_kwargs.update(query_kwargs)
+
+    messages = [
+        {"role": "user", "content": new_prompt}
+    ]
+    response = openai.ChatCompletion.create(
+        messages=messages, stop=stop_tokens, **use_query_kwargs
+    )['choices'][0]['message']['content'].strip()
+
+    if log:
+        self.info(query)
+        self.info(response)
+
+    return response
+```
+
+##### User Input
+
+This code is the handler for new user input. If the system is ready to process new information, it applies some formatting, calls the OpenAI API via ```self.query```, and optionally executes the resulting code. The use of the ```globals()``` and ```locals()``` variables could likely be improved.
+
+```py
+def user_input(self, msg):
+    """Process user input and optionally execute resulting code."""
+    # User input
+    if not self.ready_for_input:
+        # This doesn't seem to be an issue when there's only one publisher
+        # but it's good practice
+        self.info(f"Received input <{msg.data}> when not ready, skipping")
+        return
+    self.publish_status(False)
+    self.info(f"Received input <{msg.data}>")
+
+    # Add "# " to the start to match code samples, issue query
+    query = '# ' + msg.data
+    result = self.query(f'{self.full_prompt}', query, ['#', 'objects = ['])
+
+    # This is because the example API calls 'navigator', not 'self.navigator'
+    navigator = self.navigator
+
+    # Execute?
+    if not self.get_parameter('parking_brake').value:
+        try:
+            exec(result, globals(), locals())
+        except Exception:
+            self.error("Failure to execute resulting code:")
+            self.error("---------------\n"+result)
+            self.error("---------------")
+    self.publish_status(True)
+```
+
+#### Main Script
+The main script [here](https://github.com/turtlebot/turtlebot4_tutorials/blob/humble/turtlebot4_openai_tutorials/turtlebot4_openai_tutorials/natural_language_nav.py) is similar to previous examples.
+
+##### Prompt File Input
+
+This file reads in a set of example prompts found in a text file in a 'ROS 2-friendly' way. Aside from the call to `ament_index_python`, it's quite standard Python.
+
+```py
+def read_prompt_file(prompt_file):
+    """Read in a specified file which is located in the package 'prompts' directory."""
+    data_path = ament_index_python.get_package_share_directory('turtlebot4_openai_tutorials')
+    prompt_path = os.path.join(data_path, 'prompts', prompt_file)
+
+    with open(prompt_path, 'r') as file:
+        return file.read()
+```
+
+##### System Setup
+
+The first part of `main()` creates the `navigator` and `gpt` nodes, reads in the prompt file, and initializes navigation. The latter is virtually identical to previous examples, with the only difference being the `parking_brake` parameter.
+
+```py
+def main():
+    rclpy.init()
+
+    navigator = TurtleBot4Navigator()
+    gpt = GPTNode(navigator)
+
+    gpt.prompts.append(read_prompt_file('turtlebot4_api.txt'))
+    for p in gpt.prompts:
+        gpt.full_prompt = gpt.full_prompt + '\n' + p
+
+    # No need to talk to robot if we're not executing
+    if not gpt.get_parameter('parking_brake').value:
+        gpt.warn("Parking brake not set, robot will execute commands!")
+        # Start on dock
+        if not navigator.getDockedStatus():
+            navigator.info('Docking before initialising pose')
+            navigator.dock()
+
+        # Set initial pose
+        initial_pose = navigator.getPoseStamped([0.0, 0.0], TurtleBot4Directions.NORTH)
+        navigator.setInitialPose(initial_pose)
+
+        # Wait for Nav2
+        navigator.waitUntilNav2Active()
+
+        # Undock
+        navigator.undock()
+    else:
+        gpt.warn("Parking brake set, robot will not execute commands!")
+```
+
+##### User Input
+
+Once the navigation system is initialized, additional custom context can be added. In this case, since an object detection system is not included, relationships between certain objects in the environment and their positions have been added to the context.
+
+Then, `spin()` is entered and we are ready to receive commands!
+
+```py
+    # Add custom context
+    context = "destinations = {'wood crate': [0.0, 3.0, 0], 'steel barrels': [2.0, 2.0, 90], \
+        'bathroom door': [-6.0, -6.0, 180] }"
+    exec(context, globals())
+    gpt.info("Entering input parsing loop with context:")
+    gpt.info(context)
+    gpt.full_prompt = gpt.full_prompt + '\n' + context
+
+    # Main loop
+    gpt.publish_status(True)
+    try:
+        rclpy.spin(gpt)
+    except KeyboardInterrupt:
+        pass
+
+    gpt.destroy_node()
+    navigator.destroy_node()
+
+    rclpy.shutdown()
+```
+
+#### Prompt File
+A prompt file or files as found [here](https://github.com/turtlebot/turtlebot4_tutorials/blob/humble/turtlebot4_openai_tutorials/prompts/turtlebot4_api.txt) are also required. This file contains a handful of examples of 'proper' API use, where each set of API calls or commands to be executed is preceded by a representative prompt.
+
+For example, a prompt of `# Navigate to shelf` is tied to the series of valid Python commands
+```py
+dest = destinations['metal shelf']
+navigator.info('Moving to metal shelf')
+goal = navigator.getPoseStamped(dest[0:2], dest[2])
+```
+
+It is very important that the examples found in this file are bug-free. For further details, see the [original paper](https://arxiv.org/abs/2209.07753).
+
+```py
+# Dock
+navigator.dock()
+# Undock
+navigator.undock()
+# Go to location 0.0, 1.0, facing North
+navigator.info('Moving to 0.0, 1.0, North')
+goal = navigator.getPoseStamped([0.0, 1.0], TurtleBot4Directions.NORTH)
+navigator.startToPose(goal)
+# Move to location -1.0, 5.0, facing South East
+navigator.info('Moving to -1.0, 5.0, South East')
+goal = navigator.getPoseStamped([-1.0, 5.0], TurtleBot4Directions.SOUTH_EAST)
+navigator.startToPose(goal)
+# Navigate to shelf
+dest = destinations['metal shelf']
+navigator.info('Moving to metal shelf')
+goal = navigator.getPoseStamped(dest[0:2], dest[2])
+navigator.startToPose(goal)
+# Navigate to wooden object
+dest = destinations['wooden crate']
+navigator.info('Moving to wooden crate')
+goal = navigator.getPoseStamped(dest[0:2], dest[2])
+navigator.startToPose(goal)
+# Go to forklift
+dest = destinations['forklift']
+navigator.info('Moving to forklift')
+goal = navigator.getPoseStamped(dest[0:2], dest[2])
+navigator.startToPose(goal)
+```
