@@ -1302,11 +1302,11 @@ else:
 {% endtab %}
 {% endtabs %}
 
-## LLM Integration
+## Large Language Model Integration
 
 This example demonstrates an integration between the OpenAI [Chat Completions API](https://platform.openai.com/docs/guides/gpt/chat-completions-api) and the Turtlebot 4, substantially inspired by the ['Code as Policies: Language Model Programs for Embodied Control' (Liang et al.)](https://arxiv.org/abs/2209.07753) research.
 
-It demonstrates how an LLM can be 'taught' how to use the Turtlebot 4 Navigation API with only a few examples, and also shows how an LLM can easily bridge natural language commands to API calls without an intermediate parsing step.
+It demonstrates how an Large Language Model (LLM) can be 'taught' how to use the Turtlebot 4 Navigation API with only a few examples, and also shows how an LLM can easily bridge natural language commands to API calls without an intermediate parsing step.
 
 Before using this as the basis for a product, please consult the substantial list of caveats found in the original paper! :smile:
 
@@ -1320,11 +1320,26 @@ Before using this as the basis for a product, please consult the substantial lis
 
 ### Running
 
+{% tabs navigation %}
+{% tab navigation galactic %}
+
 To run this example, first start the Gazebo simulation:
 
 ```bash
-ros2 launch turtlebot4_ignition_bringup turtlebot4_ignition.launch.py nav2:=true slam:=false localization:=true rviz:=true
+ros2 launch turtlebot4_ignition_bringup ignition.launch.py nav2:=true slam:=false localization:=true rviz:=true
 ```
+
+{% endtab %}
+{% tab navigation humble %}
+
+To run this example, first start the Gazebo simulation, specifying the 'depot' world:
+
+```bash
+ros2 launch turtlebot4_ignition_bringup turtlebot4_ignition.launch.py nav2:=true slam:=false localization:=true rviz:=true world:=depot map:=/opt/ros/humble/share/turtlebot4_navigation/maps/depot.yaml
+```
+
+{% endtab %}
+{% endtabs %}
 
 Once the simulation has started, open another terminal and run:
 
