@@ -201,6 +201,7 @@ Turtlebot 4 Ignition launch configuration options:
     - options: *true, false*
     - default: *false*
 - **world**: Which world to use for simulation
+    - options: *depot, maze, warehouse*
     - default: *warehouse*
 - **namespace**: Optional robot namespace
   - options: Any valid ROS 2 name as a string
