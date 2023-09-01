@@ -55,6 +55,9 @@ You can now go to your terminal and SSH into the robot by typing:
 ```bash
 ssh ubuntu@192.168.185.3
 ```
+If you are still unable to ssh into the robot and receive the error `No route to host` then this may be the result of the sd card being flashed improperly. This can happen if the image wasn't extracted before flashing or if the image was flashed to a partition on the sd card. Instructions on how to flash the SD card can be found [here](../setup/basic.md#install-latest-raspberry-pi-image).
+
+If you are able to ssh into the robot then you can continue the setup instructions to [connect the raspberry pi to your network](../setup/basic.md#connect-the-raspberry-pi-to-your-network).
 
 ### 2. Waiting to connect to bluetoothd...
 
