@@ -71,6 +71,10 @@ To fix this, call `sudo systemctl disable hciuart` and then reboot the Pi with `
 
 Once the Pi has restarted, call `sudo systemctl restart hciuart`. Now you can run `sudo bluetoothctl` again and the bluetooth controller should be found.
 
+### 4. OAKD topics not present
+
+There is an automatic power-saving mode that shuts down the OAKD topics when the robot is docked. Undock your robot.
+
 ## Common issues with the user PC
 
 ### 1. ros2: command not found
