@@ -312,7 +312,7 @@ Installing a new image on the Raspberry Pi will delete any changes you may have 
 
 Find the latest TurtleBot 4 Raspberry Pi images at <http://download.ros.org/downloads/turtlebot4/>.
 
-- Download the latest image extract it. 
+- Download the latest image and extract it. 
 - Power off your robot and then remove the microSD card from the Raspberry Pi.
 - Insert the microSD card into your PC. You may need an adapter.
 - Install the imaging tool `dcfldd`
