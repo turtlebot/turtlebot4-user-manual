@@ -92,8 +92,16 @@ Keep watch of RVIZ as you drive the robot around the area to make sure that the 
 
 Once you are happy with your map, you can save it with the following command:
 
+
 ```bash
-ros2 run nav2_map_server map_saver_cli -f "map_name" --ros-args -p map_subscribe_transient_local:=true -r __ns:=/namespace
+ros2 service call /slam_toolbox/save_map slam_toolbox/srv/SaveMap "name:
+  data: 'map_name'"
+```
+
+<!-- TODO: Change the instructions below when this works - aka when slam-toolbox 2.7.2 is released: If you are using namespacing, you will have to add the namespace to the service topic for example `/robot1/slam_toolbox/save_map`. -->
+
+```note
+If you are using namespacing, you will need to call the map saver tool directly: `ros2 run nav2_map_server map_saver_cli -f "map_name" --ros-args -p map_subscribe_transient_local:=true -r __ns:=/namespace`
 ```
 
 This will save the map to your current directory.

@@ -49,11 +49,11 @@ Replace `office.yaml` with your own map.
 ros2 launch turtlebot4_ignition_bringup ignition.launch.py nav2:=true slam:=off localization:=true
 ```
 
-This will launch the simulation in the default `depot` world and will use the existing `depot.yaml` file for the map. If you are using a different world you will need to create a map for it and pass that in as a launch argument.
+This will launch the simulation in the default `depot` world and will use the existing `depot.yaml` file for the map. If you are using a custom world you will need to build the [turtlebot4_simulator package](../software/turtlebot4_simulator.md#source-installation) from source and place your world file [alongside the others](https://github.com/turtlebot/turtlebot4_simulator/tree/galactic/turtlebot4_ignition_bringup/worlds). You will then need to create a map for it and pass both the world name and the map file path in as launch arguments.
 
 For example:
 ```bash
-ros2 launch turtlebot4_ignition_bringup ignition.launch.py nav2:=true slam:=off localization:=true world:=classroom map:=classroom.yaml
+ros2 launch turtlebot4_ignition_bringup ignition.launch.py nav2:=true slam:=off localization:=true world:=classroom map:=path/to/classroom.yaml
 ```
 
 {% endtab %}
@@ -89,12 +89,22 @@ If using multiple robots through the namespacing method, an additional `namespac
 ros2 launch turtlebot4_ignition_bringup turtlebot4_ignition.launch.py nav2:=true slam:=false localization:=true rviz:=true
 ```
 
-This will launch the simulation in the default `warehouse` world and will use the existing [`warehouse.yaml`](https://github.com/turtlebot/turtlebot4/blob/humble/turtlebot4_navigation/maps/warehouse.yaml) file for the map. If you are using a different world you will need to create a map for it and pass that in as a launch argument.
+This will launch the simulation in the default `warehouse` world and will use the existing [`warehouse.yaml`](https://github.com/turtlebot/turtlebot4/blob/humble/turtlebot4_navigation/maps/warehouse.yaml) file for the map.
+
+To launch a different supported world, see the [simulation package](../software/turtlebot4_simulator.md#ignition-bringup) for a list of supported worlds. You must pass the name of the chosen world and the path to the map file.
 
 For example:
 ```bash
 ros2 launch turtlebot4_ignition_bringup turtlebot4_ignition.launch.py nav2:=true slam:=false localization:=true \
-rviz:=true world:=maze map:=src/turtlebot4/turtlebot4_navigation/maps/maze.yaml
+rviz:=true world:=depot map:=/opt/ros/humble/share/turtlebot4_navigation/maps/depot.yaml
+```
+
+If you are using a custom world you will need to build the [turtlebot4_simulator package](../software/turtlebot4_simulator.md#source-installation) from source and place your world file [alongside the others](https://github.com/turtlebot/turtlebot4_simulator/tree/humble/turtlebot4_ignition_bringup/worlds). You will then need to create a map for it and pass both the world name and the map file path in as launch arguments.
+
+For example:
+```bash
+ros2 launch turtlebot4_ignition_bringup turtlebot4_ignition.launch.py nav2:=true slam:=false localization:=true \
+rviz:=true world:=classroom map:=path/to/classroom.yaml
 ```
 
 {% endtab %}

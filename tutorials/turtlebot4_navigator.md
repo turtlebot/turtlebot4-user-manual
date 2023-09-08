@@ -23,7 +23,11 @@ TurtleBot 4 Navigator requires at least version 1.0.11 of Nav2 Simple Commander
 
 ## Install Tutorial Package
 
-The following examples can be installed with `sudo apt install ros-$ROS_DISTRO-turtlebot4-tutorials` and are available at <https://github.com/turtlebot/turtlebot4_tutorials>. For each example, the robot starts on a dock at the origin of the map. 
+The following examples can be installed with `sudo apt install ros-$ROS_DISTRO-turtlebot4-tutorials` and are available at <https://github.com/turtlebot/turtlebot4_tutorials>. For each example, the robot starts on a dock at the origin of the map.
+
+```note
+All of these examples are designed to be run in the simulation environment. In order to run these tutorial codes with a physical robot you must install the tutorial package from source and modify target destinations to ones that make sense in your map. You then must individually launch SLAM, Nav2, Localization, and RViz as necessary and pass a map of your environment when launching localization. This is only recommended for intermediate users and up because there are no walkthrough instructions.
+```
 
 ## Navigate to Pose
 
@@ -263,7 +267,7 @@ ros2 launch turtlebot4_viz view_robot.launch.py
     <source src="media/nav_to_pose_rviz_humble.mp4" type="video/mp4">
     Your browser does not support the video tag.
     </video>
-    <figcaption>Navigate to a pose</figcaption>
+    <figcaption>Navigate to a pose (3x speed)</figcaption>
 </figure>
 
 {% endtab %}
