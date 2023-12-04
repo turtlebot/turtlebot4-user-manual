@@ -23,13 +23,13 @@
 <hr>
 
 <div class="copyright text-center text-gray" role="contentinfo">
-    <i class="fa fa-copyright"></i>
-    Clearpath Robotics Inc. 
-    2023
+    Clearpath Robotics, by Rockwell Automation. All rights reserved.
     {{ __.revision | default: "Revision" }}
     <a class="text-gray" href="{{ docs.repository_url }}/commit/{{ docs.build_revision }}" title="{{ docs.build_revision }}" rel="noreferrer" target="_blank">
         {{- docs.build_revision | slice: 0, 7 -}}
     </a>
+    <br>
+    <i class="fa fa-copyright"></i> Clearpath Robotics, Inc., a Rockwell Automation Company. All rights reserved.
     {% unless site.url contains "rundocs.io" %}
         <br>
         <div class="generator">
