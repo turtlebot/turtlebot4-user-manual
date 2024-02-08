@@ -6,6 +6,9 @@ sort: 2
 
 The TurtleBot 4 consists of two computing units: the Create® 3, and the Raspberry Pi. They connect to each other over a USB-C cable, which is used to both power the Raspberry Pi, and establish a ethernet connection between the units. Both units also have Wi-Fi cards. The Create® 3 is able to connect to only 2.4 GHz networks, while the Raspberry Pi can connect to both 2.4 and 5 GHz networks. The user can also use their PC to communicate with the robot over Wi-Fi.
 
+> [!IMPORTANT]  
+> For Turtlebot4 to work with all desired functionality you will need a Wi-Fi that supports 2.4 and 5 Ghz. Older technology will most likely cause bandwith problems.
+
 ## DDS
 
 ROS 2 has multiple [DDS](https://docs.ros.org/en/humble/Concepts/About-Different-Middleware-Vendors.html) vendors, but the TurtleBot 4 only supports [CycloneDDS](https://github.com/ros2/rmw_cyclonedds) and [FastDDS](https://github.com/ros2/rmw_fastrtps) out of the box. In Galactic, CycloneDDS is the default while in Humble, FastDDS is the default. The TurtleBot 4 can switch between the two DDS implementations on both versions of ROS 2.
