@@ -6,18 +6,20 @@ sort: 5
 
 The `turtlebot4_desktop` metapackage contains packages used for visualising and interfacing with the TurtleBot 4 from a PC.
 
-## Installation
-
 Source code is available [here](https://github.com/turtlebot/turtlebot4_desktop).
 
-```note
-The `turtlebot4_desktop` metapackage can be installed on a PC running Ubuntu Desktop 20.04 with ROS 2 Galactic.
-```
+## Installation
+
+This package is installed when following the [user computer setup instructions](../setup/basic.md#user-pc).
 
 ### Debian package
 
 {% tabs debian %}
 {% tab debian galactic %}
+
+```note
+The `turtlebot4_desktop` metapackage can be installed on a PC running Ubuntu Desktop 20.04 with ROS 2 Galactic.
+```
 
 To install the metapackage through apt:
 
@@ -28,6 +30,10 @@ sudo apt install ros-galactic-turtlebot4-desktop
 
 {% endtab %}
 {% tab debian humble %}
+
+```note
+The `turtlebot4_desktop` metapackage can be installed on a PC running Ubuntu Desktop 22.04 with ROS 2 Humble.
+```
 
 To install the metapackage through apt:
 
@@ -40,6 +46,10 @@ sudo apt install ros-humble-turtlebot4-desktop
 {% endtabs %}
 
 ### Source installation
+
+```note
+Source installation is an alternative to the debian package and should only be used if the debian package cannot be used or if modifications are being made to the source code.
+```
 
 {% tabs source %}
 {% tab source galactic %}
@@ -65,6 +75,8 @@ source /opt/ros/galactic/setup.bash
 colcon build --symlink-install
 ```
 
+Next, the workspace must be sourced by running `source ~/turtlebot4_ws/install/setup.bash` in the terminal or by adding that command in the `.bashrc` file and sourcing the `.bashrc` file.
+
 {% endtab %}
 {% tab source humble %}
 
@@ -88,6 +100,8 @@ Build the packages:
 source /opt/ros/humble/setup.bash
 colcon build --symlink-install
 ```
+
+Next, the workspace must be sourced by running `source ~/turtlebot4_ws/install/setup.bash` in the terminal or by adding that command in the `.bashrc` file and sourcing the `.bashrc` file.
 
 {% endtab %}
 {% endtabs %}

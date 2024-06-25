@@ -5,7 +5,8 @@ sort: 4
 # Discovery Server
 
 ```note
-The TurtleBot 4 should be configured for either Simple Discovery or Discovery Server, not both. 
+The TurtleBot 4 can be configured for either Simple Discovery or Discovery Server, not both. A mixture of settings will result in a system that does not work properly.
+
 See [Networking](./networking.md) for details.
 ```
 

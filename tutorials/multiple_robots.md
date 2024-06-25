@@ -200,6 +200,10 @@ Any additional robots must be launched using the `turtlebot4_spawn` launch file,
 ros2 launch turtlebot4_ignition_bringup turtlebot4_spawn.launch.py namespace:=/robot2 x:=0.0 y:=1.0 nav2:=true slam:=false localization:=true rviz:=true
 ```
 
+```note
+Not all functionality is currently fully supported in multi-robot simulation.
+```
+
 ### Launching Navigation
 
 The SLAM, Localization and Nav2 launch files all support namespacing and can be launched as follows:

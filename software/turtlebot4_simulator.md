@@ -6,9 +6,9 @@ sort: 4
 
 The `turtlebot4_simulator` metapackage contains packages used to simulate the TurtleBot 4 in Ignition Gazebo.
 
-## Installation
-
 Source code is available [here](https://github.com/turtlebot/turtlebot4_simulator).
+
+## Installation
 
 ```note
 The `turtlebot4_simulator` metapackage can be installed on a PC running Ubuntu Desktop 20.04 with ROS 2 Galactic or Ubuntu Desktop 22.04 with ROS 2 Humble.
@@ -78,6 +78,10 @@ sudo apt install ros-humble-turtlebot4-simulator
 
 ### Source installation
 
+```note
+Source installation is an alternative to the debian package and should only be used if the debian package cannot be used or if modifications are being made to the source code.
+```
+
 {% tabs setup %}
 {% tab setup galactic %}
 
@@ -103,6 +107,8 @@ source /opt/ros/galactic/setup.bash
 colcon build --symlink-install
 ```
 
+Next, the workspace must be sourced by running `source ~/turtlebot4_ws/install/setup.bash` in the terminal or by adding that command in the `.bashrc` file and sourcing the `.bashrc` file.
+
 {% endtab %}
 {% tab setup humble %}
 
@@ -127,8 +133,20 @@ source /opt/ros/humble/setup.bash
 colcon build --symlink-install
 ```
 
+Next, the workspace must be sourced by running `source ~/turtlebot4_ws/install/setup.bash` in the terminal or by adding that command in the `.bashrc` file and sourcing the `.bashrc` file.
+
 {% endtab %}
 {% endtabs %}
+
+## Networking
+
+Any ROS 2 networking settings on the computer apply to all nodes launched including the simulation nodes. It is recommended to configure the computer for simple discovery prior to running any simulations. If the computer is on the same network as other ROS nodes unrelated to the simulation, then the `LOCAL_HOST_ONLY` environment variable should be set to `True`.
+
+The simulation can be run in discovery server mode but the discovery server referenced must exist and be accessible for discovery as well as not having any conflicts in the topics launched.
+
+``` warning
+Simulated robots and physical robots should not be combined in the same system.
+```
 
 ## Ignition Bringup
 

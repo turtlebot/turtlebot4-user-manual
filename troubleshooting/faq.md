@@ -18,10 +18,10 @@ If the LED is not on, then the Raspberry Pi is not powered. Check the USB-C conn
 
 #### Check for obstructions
 
-If the Pi is on but you cannot see the access point, make sure that any wires in the robot are not obstructing the WiFi module of the Raspberry Pi. This includes the ribbon cable connecting the RPi to the UI PCBA on the TurtleBot 4, and the wires powering the fans on both models.
+If the Pi is on but you cannot see the access point, make sure that any wires in the robot are not obstructing the WiFi module of the Raspberry Pi. This includes the ribbon cable connecting the Raspberry Pi to the UI PCBA on the TurtleBot 4, and the wires powering the fans on both models.
 
 <figure class="aligncenter">
-    <img src="media/rpi4_wifi.jpg" alt="RPi 4B WiFi" style="width: 90%;"/>
+    <img src="media/rpi4_wifi.jpg" alt="Raspberry Pi 4B WiFi" style="width: 90%;"/>
     <figcaption>Raspberry Pi 4B WiFi module and antenna</figcaption>
 </figure>
 
@@ -29,9 +29,9 @@ If the Pi is on but you cannot see the access point, make sure that any wires in
 
 If the WiFi module is unobstructed, try restarting the robot. Take the robot off of its dock and press and hold the Power button on the Create® 3 until it is off. Wait a few seconds and place the robot back on its dock.
 
-#### Access the RPi over Ethernet
+#### Access the Raspberry Pi over Ethernet
 
-If you are still unable to see the `Turtlebot4` access point, you can connect directly to the RPi using an ethernet cable. You may need a USB to Ethernet adapter for your PC.
+If you are still unable to see the `Turtlebot4` access point, you can connect directly to the Raspberry Pi using an ethernet cable. You may need a USB to Ethernet adapter for your PC.
 
 <figure class="aligncenter">
     <img src="media/ethernet.jpg" alt="Ethernet connection" style="width: 80%;"/>
@@ -55,9 +55,9 @@ You can now go to your terminal and SSH into the robot by typing:
 ```bash
 ssh ubuntu@192.168.185.3
 ```
-If you are still unable to ssh into the robot and receive the error `No route to host` then this may be the result of the sd card being flashed improperly. This can happen if the image wasn't extracted before flashing or if the image was flashed to a partition on the sd card. Instructions on how to flash the SD card can be found [here](../setup/basic.md#install-latest-raspberry-pi-image).
+If you are still unable to SSH into the robot and receive the error `No route to host` then this may be the result of the sd card being flashed improperly. This can happen if the image wasn't extracted before flashing or if the image was flashed to a partition on the sd card. Instructions on how to flash the SD card can be found [here](../setup/basic.md#install-latest-raspberry-pi-image).
 
-If you are able to ssh into the robot then you can continue the setup instructions to [connect the raspberry pi to your network](../setup/basic.md#connect-the-raspberry-pi-to-your-network).
+If you are able to SSH into the robot then you can continue the setup instructions to [connect the Raspberry Pi to your network](../setup/basic.md#connect-the-raspberry-pi-to-your-network).
 
 ### 2. Waiting to connect to bluetoothd...
 
@@ -74,9 +74,9 @@ To fix this, call `sudo systemctl disable hciuart` and then reboot the Pi with `
 
 Once the Pi has restarted, call `sudo systemctl restart hciuart`. Now you can run `sudo bluetoothctl` again and the bluetooth controller should be found.
 
-### 4. OAKD topics not present
+### 4. OAK-D topics not present
 
-There is an automatic power-saving mode that shuts down the OAKD topics when the robot is docked. Undock your robot.
+There is an automatic power-saving mode that shuts down the OAK-D topics when the robot is docked. Undock your robot.
 
 ## Common issues with the user PC
 

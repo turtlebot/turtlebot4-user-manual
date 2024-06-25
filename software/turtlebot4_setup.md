@@ -4,7 +4,9 @@ sort: 6
 
 # TurtleBot 4 Setup
 
-The [`turtlebot4_setup`](https://github.com/turtlebot/turtlebot4_setup) repository contains scripts, configurations, and tools used for setting up and configuring the TurtleBot 4.
+The `turtlebot4_setup` repository contains scripts, configurations, and tools used for setting up and configuring the TurtleBot 4.
+
+Source code is available [here](https://github.com/turtlebot/turtlebot4_setup).
 
 ## Install Scripts
 

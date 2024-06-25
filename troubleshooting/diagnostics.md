@@ -42,3 +42,29 @@ In this example, the OAK-D node is not running, so the camera topics are not bei
     <img src="media/diagnostics_camera.png" alt="rqt_robot_monitor" style="width: 60%;"/>
     <figcaption>Color camera diagnostics</figcaption>
 </figure>
+
+# Disabling Diagnostics
+
+For systems experiencing high CPU usage issues or limited bandwidth, it can help to disable the diagnostics whenever they are not actively in use.
+
+{% tabs navigation %}
+{% tab navigation galactic %}
+
+Instructions are not currently available for Galactic.
+
+{% endtab %}
+{% tab navigation humble %}
+
+
+To disable diagnostics, SSH into your TurtleBot 4 and run the turtlebot4 setup tool:
+
+```bash
+turtlebot4-setup
+```
+
+Navigate to 'Bash Setup' in the 'ROS Setup' menu, then change the `DIAGNOSTICS` setting to `False`. 
+Save the settings, then apply settings in the main menu.
+
+
+{% endtab %}
+{% endtabs %}

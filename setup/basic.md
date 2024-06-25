@@ -6,7 +6,7 @@ sort: 1
 
 These instructions will set up the user PC and robot for basic communication. Further setup will depend on the chosen [networking](./networking.md) configuration.
 
-## User PC
+## 1. User PC {#user-pc}
 
 ### Installing ROS 2
 
@@ -41,7 +41,7 @@ sudo apt update && sudo apt install ros-humble-turtlebot4-desktop
 {% endtab %}
 {% endtabs %}
 
-## Robot
+## 2. Robot {#robot}
 
 The first step for setting up the TurtleBot 4 is to power it on and connect it to your Wi-Fi network.
 
@@ -207,7 +207,14 @@ SSH into the Raspberry Pi, then update all packages by calling:
 sudo apt update && sudo apt upgrade
 ```
 
-## TurtleBot 4 Controller Setup
+## 3. Next Steps {#next-steps}
+
+Next the networking must be configured. Review the [Networking](networking.md) page to select a networking configuration.
+
+
+## Supplemental Configuration
+
+### TurtleBot 4 Controller Manual Setup
 
 The TurtleBot 4 comes with an included TurtleBot 4 Controller. It is paired in advance with the Raspberry Pi.
 
@@ -236,7 +243,11 @@ sudo bluetoothctl
 - The CLI should report that the controller has been connected and the light on the controller will turn blue.
 - Enter `exit` to exit the CLI.
 
-## Access Point Mode
+```warning
+Ensure that the commands are completed in quick succession. Too much delay between commands can result in the process timing out and to ultimately fail. If pairing fails then remove the device by using the `untrust` command followed by `remove` command alongside the MAC Address and try again.
+```
+
+### Access Point Mode
 
 Placing the Raspberry Pi into Access Point mode can be useful when using the robot in an area without Wi-Fi connection.
 
@@ -277,7 +288,9 @@ reconfigure the Raspberry Pi to connect to that network beforehand or place it i
 Otherwise it will continue trying to connect to your current network.
 ```
 
-## Recovering the Raspberry Pi
+## Troubleshooting
+
+### Recovering the Raspberry Pi
 
 If you entered incorrect Wi-Fi credentials or your Wi-Fi network is down, you will not be able to access the Raspberry Pi over Wi-Fi. To recover from this, you can connect directly to the Raspberry Pi using an ethernet cable. You may need a USB to Ethernet adapter for your PC.
 
@@ -304,7 +317,9 @@ You can now go to your terminal and SSH into the robot by typing:
 ssh ubuntu@192.168.185.3
 ```
 
-## Install latest Raspberry Pi image
+### Install latest Raspberry Pi image
+
+Resetting to a fresh Raspberry Pi image allows complete resetting of the Raspberry Pi. This is suggested if the system has been modified in a way that has corrupted the wired connection or general operating system.
 
 ```warning
 Installing a new image on the Raspberry Pi will delete any changes you may have made. Save your changes externally before proceeding.
