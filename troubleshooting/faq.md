@@ -147,6 +147,12 @@ If topics are not visible on the Raspberry Pi, you may need to restart the Creat
 
 The Turtlebot4 is built ontop of the Create® 3 platform which has components that can be replaced as they wear. These components can be purchased directly from iRobot at the following links.
 
+[Home Charging Base](https://www.irobot.com/en_US/roomba-home-base/4648035.html)
+
+<figure class="aligncenter">
+    <img src="https://www.irobot.com/dw/image/v2/BFXP_PRD/on/demandware.static/-/Sites-master-catalog-irobot/en_US/dw5371164a/images/large/accessories/roomba/4648035.jpg" alt="Roomba® Home Charging Base" style="width: 50%"/>
+</figure>
+
 [Lithium Ion Battery](https://www.irobot.com/en_US/roomba-accessories/4624864.html)
 
 <figure class="aligncenter">
