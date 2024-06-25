@@ -38,6 +38,7 @@ sort: 2
   - Electrical overview: <https://iroboteducation.github.io/create3_docs/hw/electrical/>
   - Create® 3 Simulator: <https://github.com/iRobotEducation/create3_sim>
   - Create® 3 Messages: <https://github.com/iRobotEducation/irobot_create_msgs>
+  - Create® 3 Republisher: <https://github.com/iRobotEducation/create3_examples>
 
 ### Luxonis
   - OAK-D-Lite product details: <https://docs.luxonis.com/projects/hardware/en/latest/pages/DM9095.html>

@@ -203,7 +203,9 @@ menu that will show you all of the changes that were saved, and prompt you for c
 will run various commands based on which settings were changed.
 
 ```note
-Changes to the `ROS_DOMAIN_ID`, `ROBOT_NAMESPACE`, `RMW_IMPLEMENTATION` or `ROS_DISCOVERY_SERVER` environment variables will be applied the the Create® 3 as well, causing it to reboot. Changes made to Wi-Fi settings will cause your SSH session to hang, and the RPi4 to reboot.
+Changes to the `ROS_DOMAIN_ID`, `ROBOT_NAMESPACE`, `RMW_IMPLEMENTATION` or `ROS_DISCOVERY_SERVER` environment variables will be applied to the Create® 3 as well, causing it to reboot. This includes all changes made in the Discovery Server menu.
+
+Changes made to Wi-Fi settings will cause your SSH session to hang, and the RPi4 to reboot. This will look like the Raspberry Pi stopped communicated but is expected. You will need to close the terminal, wait for the robot to fully reboot and then initiate a new SSH connection.
 ```
 
 <br/>
@@ -228,8 +230,12 @@ The ROS Setup menu is used to configure the ROS environment. ROS and system conf
             <td>Default CycloneDDS configuration</td>
         </tr>
         <tr>
-            <td><b>fastdds_discovery_super_client.xml</b></td>
-            <td>Discovery Server FastDDS configuration</td>
+            <td><b>discovery.sh</b></td>
+            <td>Script that starts a discovery server</td>
+        </tr>
+        <tr>
+            <td><b>fastdds_discovery_create3.xml</b></td>
+            <td>FastDDS configuration for the Create 3 in Discovery Server</td>
         </tr>
         <tr>
             <td><b>fastdds_rpi.xml</b></td>
@@ -285,11 +291,6 @@ This file sets environment variables that affect ROS 2.
             <td>0</td>
         </tr>
         <tr>
-            <td><b>ROS_DISCOVERY_SERVER</b></td>
-            <td>Set the IP and Port of the discovery server.</td>
-            <td>127.0.0.1:11811</td>
-        </tr>
-        <tr>
             <td><b>RMW_IMPLEMENTATION</b></td>
             <td>Set the RMW implementation (rmw_fastrtps_cpp, rmw_cyclonedds_cpp)</td>
             <td>rmw_fastrtps_cpp</td>
@@ -310,7 +311,7 @@ This file sets environment variables that affect ROS 2.
 <br/>
 <u><b style="font-size: 18px;">Discovery Server</b></u>
 
-The Discovery Server menu allows the user to enable or disable the discovery server, as well as set the IP and Port of the server.
+The Discovery Server menu allows the user to enable or disable the onboard discovery server, as well as set the Server ID and Port for the onboard server. The menu also allows for selecting one additional discovery server for the robot to connect to although it is not advisable for beginners. See the [discovery server page](../setup/discovery_server.md#example-configuration) for an example on how to set up a two robot system.
 
 <table>
     <thead>
@@ -323,25 +324,39 @@ The Discovery Server menu allows the user to enable or disable the discovery ser
     <tbody>
         <tr>
             <td><b>Enabled</b></td>
-            <td>Whether to use a Discovery Server</td>
+            <td>Whether to use Discovery Server mode</td>
             <td>False</td>
         </tr>
         <tr>
-            <td><b>IP</b></td>
-            <td>Discovery Server IP</td>
-            <td>127.0.0.1</td>
+            <td><b>Onboard Server - Port</b></td>
+            <td>Discovery server port for the onboard server</td>
+            <td>11811</td>
         </tr>
         <tr>
-            <td><b>Port</b></td>
-            <td>Discovery Server Port</td>
+            <td><b>Onboard Server - Server ID</b></td>
+            <td>Discovery server ID for the onboard server</td>
+            <td>0</td>
+        </tr>
+        <tr>
+            <td><b>Offboard Server - IP</b></td>
+            <td>IP address of an optional offboard Discovery Server to connect to (disabled if set as blank)</td>
+            <td><i>blank</i></td>
+        </tr>
+        <tr>
+            <td><b>Offboard Server - Port</b></td>
+            <td>Discovery server port for the offboard server</td>
             <td>11811</td>
+        </tr>
+        <tr>
+            <td><b>Offboard Server - Server ID</b></td>
+            <td>Discovery server ID for the offboard server</td>
+            <td>1</td>
         </tr>
     </tbody>
 </table>
 
 ```note
-Enabling the discovery server will also set `RMW_IMPLEMENTATION` to `rmw_fastrtps_cpp`. Additionally,
-`FASTRTPS_DEFAULT_PROFILES_FILE` will be set to `/etc/turtlebot4/fastdds_discovery_super_client.xml`.
+Enabling the discovery server will also set `RMW_IMPLEMENTATION` to `rmw_fastrtps_cpp`.
 
 Discovery server settings are applied to the `DISCOVERY_SERVER` environment variable in `/etc/turtlebot4/setup.bash`.
 ```
