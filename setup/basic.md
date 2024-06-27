@@ -327,7 +327,8 @@ Installing a new image on the Raspberry Pi will delete any changes you may have 
 
 Find the latest TurtleBot 4 Raspberry Pi images at <http://download.ros.org/downloads/turtlebot4/>.
 
-- Download the latest image and extract it. 
+- Download the latest image for the given ROS distribution and robot model. 
+- Extract the zip file to get the `.img` file 
 - Power off your robot and then remove the microSD card from the Raspberry Pi.
 - Insert the microSD card into your PC. You may need an adapter.
 - Install the imaging tool `dcfldd`
@@ -335,13 +336,13 @@ Find the latest TurtleBot 4 Raspberry Pi images at <http://download.ros.org/down
 ```bash
 sudo apt install dcfldd
 ```
-- Identify your SD card
+- Identify your SD card by running
 
 ```bash
-sudo fdisk -l
+lsblk -d -e7
 ```
 
-- The SD card should have a name like `/dev/mmcblk0` or `/dev/sda`.
+- The SD card should have a name like `mmcblk0` or `sdb`.
 
 - If you wish to backup your current image, do so now:
 
@@ -359,7 +360,7 @@ IMAGE_PATH is the path to where you want the image saved -- e.g., `~/turtlebot4_
 
 ```bash
 wget https://raw.githubusercontent.com/turtlebot/turtlebot4_setup/humble/scripts/sd_flash.sh
-bash sd_flash.sh /path/to/downloaded/image
+bash sd_flash.sh /path/to/downloaded/image.img
 ```
 - Follow the instructions and wait for the SD card to be flashed. 
 - Remove the SD card from your PC.
