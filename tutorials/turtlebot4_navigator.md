@@ -283,7 +283,7 @@ ros2 launch turtlebot4_viz view_robot.launch.py
 {% tabs navigation %}
 {% tab navigation galactic %}
 
-This example demonstrates the [Navigate Through Poses](https://navigation.ros.org/behavior_trees/trees/nav_through_poses_recovery.html) behaviour tree. The Nav2 stack is given a set of poses on the map and creates a path that goes through each pose in order until the last pose is reached. The robot then attempts to drive along the path. This example is demonstrated in the `depot` world of the TurtleBot 4 simulation.
+This example demonstrates the [Navigate Through Poses](https://docs.nav2.org/behavior_trees/trees/nav_through_poses_recovery.html) behaviour tree. The Nav2 stack is given a set of poses on the map and creates a path that goes through each pose in order until the last pose is reached. The robot then attempts to drive along the path. This example is demonstrated in the `depot` world of the TurtleBot 4 simulation.
 
 To run this example, start the Ignition Gazebo simulation:
 

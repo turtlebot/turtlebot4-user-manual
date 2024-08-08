@@ -22,7 +22,7 @@ For this tutorial, we will be using localization to navigate on a map [generated
 
 ## Nav2
 
-The TurtleBot 4 uses the [Nav2](https://navigation.ros.org/) stack for navigation.
+The TurtleBot 4 uses the [Nav2](https://docs.nav2.org/) stack for navigation.
 
 ```note
 Remember to always source your ROS 2 environment before trying to launch a node.
