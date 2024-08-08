@@ -16,9 +16,13 @@ For ROS 2 networking, the TurtleBot 4 can function with two different configurat
 
 ### Simple Discovery
 
-Simple Discovery is the default protocol that ROS 2 uses. Simple Discovery uses multicasting to allow a host to send packets to multiple recipients on the network simultaneously. In ROS 2, this allows for all devices on the network to automatically discover each others ROS 2 nodes.
+Simple Discovery is the default protocol that ROS 2 uses, and is available with both FastDDS and CycloneDDS. Simple Discovery uses multicasting to allow each ROS 2 participant to contact every other ROS 2 participant at the same time. This allows for all devices on the network to automatically discover each other's ROS 2 nodes.
 
-To use the TurtleBot 4 in the multicast configuration, both the RPi4 and the Create® 3 should be connected to the same Wi-Fi network. It is recommended that the RPi4 gets connected to a 5GHz network for improved performance, so the network must bridge the 2.4 and 5 GHz bands.
+To use the TurtleBot 4 in the multicast configuration, both the RPi4 and the Create® 3 should be connected to the same Wi-Fi network. It is recommended that the RPi4 is connected to a 5GHz network for improved performance, so the network must bridge the 2.4 GHz and 5 GHz bands. Networks that provide 2.4 GHz and 5 GHz on the same SSID may not work properly with the Create3. This issue can be avoided by using Discovery Server.
+
+```note
+Connecting the Raspberry Pi using a 2.4 GHz network or over a network with very limited bandwidth can limit functionality including navigation and sending/receiving images.
+```
 
 <figure class="aligncenter">
     <img src="media/simple.png" alt="simple_discovery" style="width: 70%"/>
@@ -27,9 +31,13 @@ To use the TurtleBot 4 in the multicast configuration, both the RPi4 and the Cre
 
 ### Discovery Server
 
-The FastDDS Discovery Server allows for one device on the network to act as the discovery server, while the rest of the devices become discovery clients. This is akin to the ROS Master in ROS 1. Check out the Discovery Server [documentation](https://fast-dds.docs.eprosima.com/en/latest/fastdds/ros2/discovery_server/ros2_discovery_server.html) for more details.
+The Discovery Server option is supported only on FastDDS. The FastDDS Discovery Server allows for one or more devices on the network to act as a discovery server, while other devices are discovery clients for those servers. This is akin to the ROS Master in ROS 1. These discovery servers create connections between ROS 2 nodes to connect publishers and subscribers. Check out the Discovery Server [documentation](https://fast-dds.docs.eprosima.com/en/latest/fastdds/ros2/discovery_server/ros2_discovery_server.html) for more details.
 
-With this configuration, the TurtleBot 4 is able to fully function without the Create® 3 being connected to Wi-Fi.
+```note
+Multi-robot configuration with Discovery Server is not supported on Galactic.
+```
+
+With this configuration, the TurtleBot 4 is able to fully function without the Create® 3 being connected to Wi-Fi. Instead, all communication for each robot is routed through the Raspberry Pi which runs a discovery server.
 
 <figure class="aligncenter">
     <img src="media/discovery.png" alt="discovery_server" style="width: 70%"/>
@@ -38,10 +46,62 @@ With this configuration, the TurtleBot 4 is able to fully function without the C
 
 ### Choosing a networking configuration
 
-Each configuration has its own advantages and disadvantages. Simple Discovery makes it easy to interact with the robot from any device on the network. It is the default discovery protocol in ROS 2, so there is no additional setup required. Also, it supports both CycloneDDS and FastDDS. The main disadvantage is that this protocol uses multicasting which can be problematic with some Wi-Fi networks, such as university and corporate. Additionally, the Create® 3 must also be connected to Wi-Fi for a remote PC to be able to interact with the TurtleBot 4, so the network must bridge the 2.4 and 5 GHz bands.
+Each configuration has its own advantages and disadvantages.
 
-Using a Discovery Server bypasses multicasting issues and allows for the TurtleBot 4 to function off of just the Raspberry Pi Wi-Fi. The disadvantages of this configuration is that extra setup is required on the Create® 3, Raspberry Pi, and User PC. Additionally, the Raspberry Pi must route traffic from the User PC to the Create® 3, and vice versa. Discovery Server also requires FastDDS as the middleware.
+**Simple Discovery**
 
-```note
-Discovery Server currently does not support communicating with multiple TurtleBot 4's simultaneously from one computer.
-```
+Recommended for systems of up to 1-2 robots running simple functionality.
+
+<table>
+    <tr>
+        <th style="width:50%">Advantages</th>
+        <th style="width:50%">Disadvantages</th>
+    </tr>
+    <tr>
+        <td style="vertical-align:top">
+            <ul>
+                <li>Easy to connect to the robot from any device on the network.</li>
+                <li>The default discovery protocol in ROS 2, so there is no additional setup required.</li>
+                <li>Supports both CycloneDDS and FastDDS.</li>
+            </ul>
+        </td>
+        <td style="vertical-align:top">
+            <ul>
+                <li>Uses multicasting which can be problematic with some Wi-Fi networks, such as university and corporate networks.</li>
+                <li>Create® 3 must also be connected to Wi-Fi for an offboard / user computer to be able to interact with the TurtleBot 4. Therefore, the network must bridge the 2.4 GHz and 5 GHz bands as well.</li>
+                <li>Significant baseline network traffic required to keep the system operational. This means that too many ROS devices/nodes can result in saturating the network and/or increased CPU usage on each of the devices.</li>
+            </ul>
+        </td>
+    </tr>
+</table>
+
+
+**Discovery Server**
+
+Recommended for systems with 1+ robots running complex functionality such as navigation or 2+ robots running simple functionality.
+
+<table>
+    <tr>
+        <th style="width:50%">Advantages</th>
+        <th style="width:50%">Disadvantages</th>
+    </tr>
+    <tr>
+        <td style="vertical-align:top">
+            <ul>
+                <li>Avoids multicasting issues.</li>
+                <li>Has much lower baseline network traffic and therefore is scalable to many robots.</li>
+                <li>Create® 3 does not need to be connected to WiFi, allowing full TurtleBot 4 functionality with only the Raspberry Pi connected to Wi-Fi and therefore the system can fully operate on a 5 GHz band.</li>
+            </ul>
+        </td>
+        <td style="vertical-align:top">
+            <ul>
+                <li>Extra setup is required on the Raspberry Pi, and User PC, particularly if more than one robot is being used.</li>
+                <li>Currently requires FastDDS as the middleware.</li>
+            </ul>
+        </td>
+    </tr>
+</table>
+
+## Next Steps
+
+Once the networking configuration has been selected, proceed to the corresponding page for instructions on how to configure it, [Simple Discovery](simple_discovery.md) or [Discovery Server](discovery_server.md).

@@ -42,7 +42,9 @@ To run this example, start the Ignition Gazebo simulation:
 ros2 launch turtlebot4_ignition_bringup ignition.launch.py nav:=true slam:=off localization:=true
 ```
 
-Once the simulation has started, open another terminal and run:
+Once the simulation has started, ensure to press the "Play" button on Gazebo to start the simulation.
+
+Next, open another terminal and run:
 
 ```bash
 ros2 run turtlebot4_python_tutorials nav_to_pose
@@ -57,7 +59,9 @@ To run this example, start the Ignition Gazebo simulation:
 ros2 launch turtlebot4_ignition_bringup turtlebot4_ignition.launch.py nav2:=true slam:=false localization:=true rviz:=true
 ```
 
-Once the simulation has started, open another terminal and run:
+Once the simulation has started, ensure to press the "Play" button on Gazebo to start the simulation.
+
+Next, open another terminal and run:
 
 ```bash
 ros2 run turtlebot4_python_tutorials nav_to_pose
@@ -231,6 +235,7 @@ goal_pose = navigator.getPoseStamped([-13.0, 9.0], TurtleBot4Directions.EAST)
 
 {% endtab %}
 {% endtabs %}
+
 #### Undock the robot and go to the goal pose
 
 We are ready to drive to the goal pose. We start by undocking the robot so that it does not attempt to drive through the dock, and then send the goal pose. As the robot drives to the goal pose, we will be receiving feedback from the action. This feedback includes the estimated time of arrival.
@@ -286,7 +291,9 @@ To run this example, start the Ignition Gazebo simulation:
 ros2 launch turtlebot4_ignition_bringup ignition.launch.py nav:=true slam:=off localization:=true
 ```
 
-Once the simulation has started, open another terminal and run:
+Once the simulation has started, ensure to press the "Play" button on Gazebo to start the simulation.
+
+Next, open another terminal and run:
 
 ```bash
 ros2 run turtlebot4_python_tutorials nav_through_poses
@@ -303,7 +310,9 @@ To run this example, start the Ignition Gazebo simulation:
 ros2 launch turtlebot4_ignition_bringup turtlebot4_ignition.launch.py nav2:=true slam:=false localization:=true rviz:=true
 ```
 
-Once the simulation has started, open another terminal and run:
+Once the simulation has started, ensure to press the "Play" button on Gazebo to start the simulation.
+
+Next, open another terminal and run:
 
 ```bash
 ros2 run turtlebot4_python_tutorials nav_through_poses
@@ -500,7 +509,9 @@ To run this example, start the Ignition Gazebo simulation:
 ros2 launch turtlebot4_ignition_bringup ignition.launch.py nav:=true slam:=off localization:=true
 ```
 
-Once the simulation has started, open another terminal and run:
+Once the simulation has started, ensure to press the "Play" button on Gazebo to start the simulation.
+
+Next, open another terminal and run:
 
 ```bash
 ros2 run turtlebot4_python_tutorials follow_waypoints
@@ -517,7 +528,9 @@ To run this example, start the Ignition Gazebo simulation:
 ros2 launch turtlebot4_ignition_bringup turtlebot4_ignition.launch.py nav2:=true slam:=false localization:=true rviz:=true
 ```
 
-Once the simulation has started, open another terminal and run:
+Once the simulation has started, ensure to press the "Play" button on Gazebo to start the simulation.
+
+Next, open another terminal and run:
 
 ```bash
 ros2 run turtlebot4_python_tutorials follow_waypoints
@@ -783,7 +796,9 @@ To run this example, start the Ignition simulation:
 ros2 launch turtlebot4_ignition_bringup turtlebot4_ignition.launch.py nav2:=true slam:=false localization:=true rviz:=true
 ```
 
-Once the simulation has started, open another terminal and run:
+Once the simulation has started, ensure to press the "Play" button on Gazebo to start the simulation.
+
+Next, open another terminal and run:
 
 ```bash
 ros2 run turtlebot4_python_tutorials mail_delivery
@@ -963,7 +978,18 @@ elif goal_options[selected_index]['name'] == 'Exit':
     break
 ```
 
-### Watch Navigation Progress in RViz
+{% endtab %}
+{% endtabs %}
+
+### Watch navigation progress in Rviz
+
+{% tabs navigation %}
+{% tab navigation galactic %}
+
+This tutorial is only available in Humble
+
+{% endtab %}
+{% tab navigation humble %}
 
 <figure class="aligncenter">
     <video style="width: 100%" controls autoplay muted>
@@ -1008,7 +1034,9 @@ To run this example, start the Ignition simulation:
 ros2 launch turtlebot4_ignition_bringup turtlebot4_ignition.launch.py nav2:=true slam:=false localization:=true rviz:=true
 ```
 
-Once the simulation has started, open another terminal and run:
+Once the simulation has started, ensure to press the "Play" button on Gazebo to start the simulation.
+
+Next, open another terminal and run:
 
 ```bash
 ros2 run turtlebot4_python_tutorials patrol_loop
@@ -1293,7 +1321,18 @@ else:
         position_index = 0
 ```
 
-### Watch Navigation Progress in RViz
+{% endtab %}
+{% endtabs %}
+
+### Watch navigation progress in Rviz
+
+{% tabs navigation %}
+{% tab navigation galactic %}
+
+This tutorial is only available in Humble
+
+{% endtab %}
+{% tab navigation humble %}
 
 <figure class="aligncenter">
     <video style="width: 100%" controls autoplay muted>
@@ -1345,7 +1384,9 @@ ros2 launch turtlebot4_ignition_bringup turtlebot4_ignition.launch.py nav2:=true
 {% endtab %}
 {% endtabs %}
 
-Once the simulation has started, open another terminal and run:
+Once the simulation has started, ensure to press the "Play" button on Gazebo to start the simulation.
+
+Next, open another terminal and run:
 
 ```bash
 ros2 launch turtlebot4_openai_tutorials natural_language_nav_launch.py openai_api_key:=API_KEY parking_brake:=false

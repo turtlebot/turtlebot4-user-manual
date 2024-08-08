@@ -58,6 +58,8 @@ sudo apt install ros-humble-rplidar-ros
 
 ### Running
 
+The RPLIDAR drivers run on boot up as part of the TurtleBot4 service on the robot. The following command should only be used on the computer that the lidar is actively plugged into and only if the automatically starting RPLIDAR node has been stopped or disabled.
+
 ```bash
 ros2 launch turtlebot4_bringup rplidar.launch.py
 ```
@@ -66,7 +68,15 @@ The laserscan will be published to the */scan* topic by default.
 
 ### Controlling
 
-To stop the motor from spinning, call:
+The RPLIDAR driver has a default auto standby mode that will start the motor whenever there is at least one subscriber present on the scan topic and will stop the motor whenever there are 0 subscribers present on the scan topic.
+
+```note
+There is currently a bug which results in the scan topic only stopping when the subscriber count drops from 1 or more to 0. This means that the motor will run until the scan topic is subscribed to and then unsubscribed from for the first time.
+```
+
+To control the motor manually, the auto standby mode must be disabled and then the `start_motor` and `stop_motor` services can be used. This is controlled in the [`rplidar.launch.py` file in the `turtlebot4_robot` repository](https://github.com/turtlebot/turtlebot4_robot/blob/humble/turtlebot4_bringup/launch/rplidar.launch.py).
+
+To use `stop_motor` the service to stop the motor from spinning, call:
 
 ```bash
 ros2 service call /stop_motor std_srvs/srv/Empty {}
@@ -74,12 +84,15 @@ ros2 service call /stop_motor std_srvs/srv/Empty {}
 
 This will also stop scans from publishing.
 
-To start the motor again, call:
+To use the `start_motor` service to start the motor again, call:
 
 ```bash
 ros2 service call /start_motor std_srvs/srv/Empty {}
 ```
 
+``` note
+If the robot is namesapced, then the service names above have to be modified to include the namespace.
+```
 
 ## OAK-D
 
@@ -112,6 +125,8 @@ sudo apt install ros-humble-depthai-ros
 
 ### Running
 
+The OAK-D drivers run on boot up as part of the TurtleBot4 service on the robot. The following command should only be used on the computer that the OAK-D camera is actively plugged into and only if the automatically starting OAK-D node has been stopped or disabled.
+
 The default node used by the TurtleBot 4 can be launched:
 
 ```bash
@@ -134,7 +149,9 @@ ssh ubuntu@192.168.0.15 -X
 
 ## Create® 3
 
-The Create® 3 comes with several sensors for safety, object detection, and odometry. For more information on the physical location of the sensors, read the Create® 3 [Hardware Overview](https://iroboteducation.github.io/create3_docs/hw/overview/). Hazards detected by the robot are published to the */hazard_detection* topic, although some sensors also have their own individual topics
+The Create® 3 comes with several sensors for safety, object detection, and odometry. For more information on the physical location of the sensors, read the Create® 3 [Hardware Overview](https://iroboteducation.github.io/create3_docs/hw/overview/). Hazards detected by the robot are published to the */hazard_detection* topic, although some sensors also have their own individual topics.
+
+When using these sensors with the Discovery Server network configuration, these topics must be enabled in the [`create3_republisher` launch parameters](https://github.com/iRobotEducation/create3_examples/blob/humble/create3_republisher/bringup/params.yaml).
 
 ### Cliff
 

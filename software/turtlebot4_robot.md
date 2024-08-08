@@ -4,15 +4,23 @@ sort: 3
 
 # TurtleBot 4 Robot
 
+The `turtlebot4_robot` repository contains packages that are used only by the physical robot, not the user computer.
+
 Source code is available [here](https://github.com/turtlebot/turtlebot4_robot).
 
 ## Installation
 
 The `turtlebot4_robot` metapackage is pre-installed on the TurtleBot 4 Raspberry Pi image.
 
+If a robot computer needs to be set up from scratch without using the provided Raspberry Pi image, please refer to the instructions in the [Readme file on the TurtleBot 4 setup repository](https://github.com/turtlebot/turtlebot4_setup).
+
 ### Source installation
 
-To manually install this metapackage from source, clone the git repository:
+```note
+Source installation is an alternative to the debian package and should only be used if the debian package cannot be used or if modifications are being made to the source code.
+```
+
+To manually install this metapackage from source:
 
 {% tabs install %}
 {% tab install galactic %}
@@ -38,6 +46,8 @@ source /opt/ros/galactic/setup.bash
 colcon build --symlink-install
 ```
 
+Next, the workspace must be sourced.
+
 {% endtab %}
 {% tab install humble %}
 
@@ -61,6 +71,8 @@ Build the packages:
 source /opt/ros/humble/setup.bash
 colcon build --symlink-install
 ```
+
+Next, the workspace must be sourced. Source the workspace on the robot by running the `turtlebot4-setup` tool and under `ROS Setup` set the workspace as the path to your workspace's setup.bash (`/home/ubuntu/turtlebot4_ws/install/setup.bash`).
 
 {% endtab %}
 {% endtabs %}

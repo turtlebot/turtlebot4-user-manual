@@ -49,6 +49,8 @@ Replace `office.yaml` with your own map.
 ros2 launch turtlebot4_ignition_bringup ignition.launch.py nav2:=true slam:=off localization:=true
 ```
 
+Once the Gazebo window loads, ensure to press the "Play" button to start the simulation.
+
 This will launch the simulation in the default `depot` world and will use the existing `depot.yaml` file for the map. If you are using a custom world you will need to build the [turtlebot4_simulator package](../software/turtlebot4_simulator.md#source-installation) from source and place your world file [alongside the others](https://github.com/turtlebot/turtlebot4_simulator/tree/galactic/turtlebot4_ignition_bringup/worlds). You will then need to create a map for it and pass both the world name and the map file path in as launch arguments.
 
 For example:
@@ -88,6 +90,8 @@ If using multiple robots through the namespacing method, an additional `namespac
 ```bash
 ros2 launch turtlebot4_ignition_bringup turtlebot4_ignition.launch.py nav2:=true slam:=false localization:=true rviz:=true
 ```
+
+Once the Gazebo window loads, ensure to press the "Play" button to start the simulation.
 
 This will launch the simulation in the default `warehouse` world and will use the existing [`warehouse.yaml`](https://github.com/turtlebot/turtlebot4/blob/humble/turtlebot4_navigation/maps/warehouse.yaml) file for the map.
 
@@ -138,7 +142,7 @@ At the top of the Rviz window is the toolbar. You will notice that there are thr
     <figcaption>Navigation tools in Rviz</figcaption>
 </figure>
 
-#### 2D Pose Estimate
+#### Setting the Initial Pose
 
 The 2D Pose Estimate tool is used in localization to set the approximate initial pose of the robot on the map. This is required for the Nav2 stack to know where to start localizing from. Click on the tool, and then click and drag the arrow on the map to approximate the position and orientation of the robot.
 

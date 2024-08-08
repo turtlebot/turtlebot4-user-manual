@@ -66,7 +66,7 @@ ros2 launch turtlebot4_navigation slam.launch.py params:=/full/path/to/slam.yaml
 
 ## Launch Rviz2
 
-To visualise the map, launch Rviz2 with the `view_robot` launch file.
+To visualise the map, launch Rviz2 with the `view_robot` launch file on the user computer. This requires a desktop version of Ubuntu with a display and therefore cannot be run on the robot itself.
 
 ```bash
 ros2 launch turtlebot4_viz view_robot.launch.py

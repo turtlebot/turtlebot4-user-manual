@@ -72,4 +72,6 @@ The Create® 3 Integration Plate and Shell can be removed with the rest of the a
 
 To reattach the plate, place the plate slightly angled such that the posts fit into the tabs. Then, twist the plate clockwise until it snaps back into place.
 
+## Hardware Details
 
+For further information regarding the mechanical build, see the [TurtleBot 4 hardware repository](https://github.com/turtlebot/turtlebot4-hardware)

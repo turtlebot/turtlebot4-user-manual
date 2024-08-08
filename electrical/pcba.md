@@ -12,6 +12,9 @@ The User Interface PCBA is only available on the TurtleBot 4 and NOT the TurtleB
 
 The TurtleBot 4 comes with an additional User Interface board that expands on the Raspberry Pi 4 functionality to give the user ease of control over the Create® 3 robot and Raspberry Pi and to act as an expansion board for addons, sensors, gadgets the user might have in mind to utilize.
 
+
+Full documentation including the schematic, Gerber files and bill of materials are available in the [TurtleBot 4 hardware repository](https://github.com/turtlebot/turtlebot4-hardware/tree/master/TurtleBot%204/Components/025618%20-%20PCBA%2C%20SHELL-SHAPE%E2%80%94%C3%98273%20X%20230).
+
 <figure class="aligncenter">
     <img src="media/PCB.png" alt="TurtleBot 4 UI Board" style="width: 90%"/>
     <figcaption>TurtleBot 4 User Interface PCBA</figcaption>

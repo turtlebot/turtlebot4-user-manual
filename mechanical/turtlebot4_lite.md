@@ -43,3 +43,7 @@ The Raspberry Pi is found in the rear tray of the robot. To fully access the Ras
     <img src="media/create_tray.jpg" alt="Create® 3 Tray" style="width: 50%"/>
     <figcaption>Create® 3 Cargo Bay removal</figcaption>
 </figure>
+
+## Hardware Details
+
+For further information regarding the mechanical build, see the [TurtleBot 4 hardware repository](https://github.com/turtlebot/turtlebot4-hardware)

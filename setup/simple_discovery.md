@@ -13,27 +13,29 @@ See [Networking](./networking.md) for details.
 
 To use the TurtleBot 4 with Simple Discovery, the Create® 3 should be connected to Wi-Fi.
 
+```note
+The Create® 3 can only be connected to 2.4 GHz Wi-Fi networks.
+```
+
 ### Wi-Fi Setup
 
 Access the [Create® 3 webserver](./basic.md#accessing-the-create-3-webserver), then navigate to the <b>Connect</b> tab.
-Enter your Wi-Fi SSID and password, and then click 'Connect'.
+Enter your Wi-Fi SSID and password, and then click 'Connect'. Wait for it to initiate the WiFi connection, and then play a "happy sound" to signal successful connection. This may take a couple minutes. Click on the <b>Connect</b> tab once again and it should now show an IP address if the connection was successful. If the light ring turns yellow during this process, it indicates an error in connection. See [the Create® 3 documentation](https://iroboteducation.github.io/create3_docs/hw/face/) to understand what the different light ring colors indicate.
+
+```note
+If the Create® 3 is unable to connect to your 2.4 GHz WiFi network and the light ring does not show any particular error color, press and hold both [Buttons 1 and 2](https://iroboteducation.github.io/create3_docs/hw/face/) on the Create® 3 for about 5 seconds until the light ring shows spinning blue light. Now, reload the <b>Connect</b> page and try again. You may hear several chimes, but you must wait until the light ring color changes.
+```
 
 <figure class="aligncenter">
     <img src="media/create3_connect.png" alt="Create® 3 connect" style="width: 100%"/>
     <figcaption>Connecting the Create® 3 to Wi-Fi</figcaption>
 </figure>
 
-Wait for it to connect to Wi-Fi and play a chime. The <b>Connect</b> tab should now show an IP address.
-
-```note
-The Create® 3 can only be connected to 2.4 GHz Wi-Fi networks.
-```
-
 ### Application Configuration
 
 Access the [Create® 3 webserver](./basic.md#accessing-the-create-3-webserver), then navigate to the <b>Application Configuration</b> tab.
 Set ROS 2 Domain ID to 0, ROS 2 Namespace to an empty string, and RMW_IMPLEMENTATION to the [default](networking.md#dds) for your ROS 2 version. Additionally, make
-sure that the Fast DDS discover server is disabled.
+sure that the Fast DDS discovery server is disabled.
 
 <figure class="aligncenter">
     <img src="media/webserver_config.png" alt="Create® 3 config" style="width: 80%"/>

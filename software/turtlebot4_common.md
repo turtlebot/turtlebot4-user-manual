@@ -4,14 +4,20 @@ sort: 2
 
 # TurtleBot 4 Common
 
-The [`turtlebot4`](https://github.com/turtlebot/turtlebot4) repository contains common packages that are used by both the physical and simulated robot.
+The `turtlebot4` repository contains common packages that are used by both the physical and simulated robot.
+
+Source code is available [here](https://github.com/turtlebot/turtlebot4).
 
 ## Installation
 
-{% tabs installation %}
-{% tab installation galactic %}
+```note
+The `turtlebot4` packages are automatically installed when either of `turtlebot4_robot` or `turtlebot4_simulator` is installed. Therefore it comes pre-installed on the robot and is installed when going through the [simulation install instructions](./turtlebot4_simulator.md)
+```
 
-**Debian package**
+### Debian package
+
+{% tabs debian %}
+{% tab debian galactic %}
 
 Individual packages can be installed through apt:
 
@@ -23,7 +29,30 @@ ros-galactic-turtlebot4-navigation \
 ros-galactic-turtlebot4-node
 ```
 
-**Source installation**
+{% endtab %}
+{% tab debian humble %}
+
+Individual packages can be installed through apt:
+
+```bash
+sudo apt update
+sudo apt install ros-humble-turtlebot4-description \
+ros-humble-turtlebot4-msgs \
+ros-humble-turtlebot4-navigation \
+ros-humble-turtlebot4-node
+```
+
+{% endtab %}
+{% endtabs %}
+
+### Source installation
+
+```note
+Source installation is an alternative to the debian package and should only be used if the debian package cannot be used or if modifications are being made to the source code.
+```
+
+{% tabs source %}
+{% tab source galactic %}
 
 To manually install this metapackage from source, clone the git repository:
 
@@ -46,23 +75,10 @@ source /opt/ros/galactic/setup.bash
 colcon build --symlink-install
 ```
 
+Next, the workspace must be sourced on the user computer or on the robot depending on which computer it was installed on.
+
 {% endtab %}
-
-{% tab installation humble %}
-
-**Debian package**
-
-Individual packages can be installed through apt:
-
-```bash
-sudo apt update
-sudo apt install ros-humble-turtlebot4-description \
-ros-humble-turtlebot4-msgs \
-ros-humble-turtlebot4-navigation \
-ros-humble-turtlebot4-node
-```
-
-**Source installation**
+{% tab source humble %}
 
 To manually install this metapackage from source, clone the git repository:
 
@@ -85,12 +101,10 @@ source /opt/ros/humble/setup.bash
 colcon build --symlink-install
 ```
 
+Next, the workspace must be sourced. If implemented on the robot, source the workspace on the robot by running the `turtlebot4-setup` tool and under `ROS Setup` set the workspace as the path to your workspace's setup.bash (`/home/ubuntu/turtlebot4_ws/install/setup.bash`). If being installed on a user computer then this path must be sourced in the terminal or in the user's `.bashrc` file.
+
 {% endtab %}
 {% endtabs %}
-
-```note
-The `turtlebot4` packages are automatically installed when either of `turtlebot4_robot` or `turtlebot4_simulator` is installed.
-```
 
 ## Description
 
