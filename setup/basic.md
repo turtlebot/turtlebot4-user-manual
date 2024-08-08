@@ -39,6 +39,19 @@ sudo apt update && sudo apt install ros-humble-turtlebot4-desktop
 ```
 
 {% endtab %}
+{% tab installation jazzy %}
+
+Required OS: [Ubuntu 24.04](https://releases.ubuntu.com/24.04/)
+
+Follow [these instructions](https://docs.ros.org/en/jazzy/Installation/Ubuntu-Install-Debians.html) to install ROS 2 Jazzy on your PC.
+
+Once ROS 2 is installed, install `turtlebot4_desktop`:
+
+```bash
+sudo apt update && sudo apt install ros-jazzy-turtlebot4-desktop
+```
+
+{% endtab %}
 {% endtabs %}
 
 ## 2. Robot {#robot}
@@ -111,6 +124,26 @@ Change your Wi-Fi mode to 'Client' when connecting to an existing network.
 ```
 
 {% endtab %}
+{% tab wifi jazzy %}
+
+In your SSH session, run the [TurtleBot 4 setup tool](../software/turtlebot4_setup.md#configuration-tools):
+
+```bash
+turtlebot4-setup
+```
+
+This will start the TurtleBot 4 setup tool. Navigate to the "Wi-Fi Setup" menu and configure your connection. When you have finished, save and apply the settings.
+
+<figure class="aligncenter">
+    <img src="media/wifi_setup.gif" alt="Wi-Fi setup" style="width: 100%"/>
+    <figcaption>Wi-Fi Setup using the TurtleBot 4 Setup tool</figcaption>
+</figure>
+
+```note
+Change your Wi-Fi mode to 'Client' when connecting to an existing network.
+```
+
+{% endtab %}
 {% endtabs %}
 
 ### Find the new Raspberry Pi IP
@@ -138,6 +171,18 @@ ros2 topic echo /ip
 
 {% endtab %}
 {% tab ip humble %}
+
+On your PC, run the following commands:
+
+```bash
+source /opt/ros/humble/setup.bash
+export RMW_IMPLEMENTATION=rmw_fastrtps_cpp
+export ROS_DOMAIN_ID=0
+ros2 topic echo /ip
+```
+
+{% endtab %}
+{% tab ip jazzy %}
 
 On your PC, run the following commands:
 
@@ -270,6 +315,17 @@ sudo wifi.sh -s '<SSID>' -p '<PASSWORD>' -a && sudo reboot
 
 {% endtab %}
 {% tab ap humble %}
+
+SSH into the Raspberry Pi and run the [TurtleBot 4 setup tool](../software/turtlebot4_setup.md#configuration-tools):
+
+```bash
+turtlebot4-setup
+```
+
+Go to <b>Wi-Fi Setup</b> and select <b>Apply Defaults</b>. Optionally you can set your own SSID and password before saving and applying the new settings.
+
+{% endtab %}
+{% tab ap jazzy %}
 
 SSH into the Raspberry Pi and run the [TurtleBot 4 setup tool](../software/turtlebot4_setup.md#configuration-tools):
 

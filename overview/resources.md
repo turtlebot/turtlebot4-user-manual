@@ -9,6 +9,7 @@ sort: 2
 ### Ubuntu 
   - Ubuntu 20.04 LTS Desktop (Focal Fossa): <https://releases.ubuntu.com/20.04/>
   - Ubuntu 22.04 LTS Desktop (Jammy Jellyfish): <https://releases.ubuntu.com/22.04/>
+  - Ubuntu 24.04 LTS Desktop (Noble Numbat): <https://releases.ubuntu.com/24.04/>
 
 ### Raspberry Pi 
   - Raspberry Pi Imager: <https://www.raspberrypi.com/software/>
