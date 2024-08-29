@@ -1,8 +1,8 @@
-remote_theme: false
+remote_theme: clearpathrobotics/jekyll-rtd-theme
 
 debug:
   compress: false
   dist: true
   shortcodes: true
 
-theme: jekyll-rtd-theme
+#theme: jekyll-rtd-theme
