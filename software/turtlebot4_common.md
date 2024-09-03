@@ -43,6 +43,19 @@ ros-humble-turtlebot4-node
 ```
 
 {% endtab %}
+{% tab debian jazzy %}
+
+Individual packages can be installed through apt:
+
+```bash
+sudo apt update
+sudo apt install ros-jazzy-turtlebot4-description \
+ros-jazzy-turtlebot4-msgs \
+ros-jazzy-turtlebot4-navigation \
+ros-jazzy-turtlebot4-node
+```
+
+{% endtab %}
 {% endtabs %}
 
 ### Source installation
@@ -104,6 +117,32 @@ colcon build --symlink-install
 Next, the workspace must be sourced. If implemented on the robot, source the workspace on the robot by running the `turtlebot4-setup` tool and under `ROS Setup` set the workspace as the path to your workspace's setup.bash (`/home/ubuntu/turtlebot4_ws/install/setup.bash`). If being installed on a user computer then this path must be sourced in the terminal or in the user's `.bashrc` file.
 
 {% endtab %}
+{% tab source jazzy %}
+
+To manually install this metapackage from source, clone the git repository:
+
+```bash
+cd ~/turtlebot4_ws/src
+git clone https://github.com/turtlebot/turtlebot4.git -b jazzy
+```
+
+Install dependencies:
+
+```bash
+cd ~/turtlebot4_ws
+rosdep install --from-path src -yi --rosdistro jazzy
+```
+
+Build the packages:
+
+```bash
+source /opt/ros/jazzy/setup.bash
+colcon build --symlink-install
+```
+
+Next, the workspace must be sourced. If implemented on the robot, source the workspace on the robot by running the `turtlebot4-setup` tool and under `ROS Setup` set the workspace as the path to your workspace's setup.bash (`/home/ubuntu/turtlebot4_ws/install/setup.bash`). If being installed on a user computer then this path must be sourced in the terminal or in the user's `.bashrc` file.
+
+{% endtab %}
 {% endtabs %}
 
 ## Description
@@ -158,6 +197,39 @@ Launch files:
 * [Nav2](https://github.com/turtlebot/turtlebot4/blob/humble/turtlebot4_navigation/launch/nav2.launch.py): Launches the Nav2 stack.
 * [SLAM](https://github.com/turtlebot/turtlebot4/blob/humble/turtlebot4_navigation/launch/slam.launch.py): Launches `slam_toolbox` with online mapping.
 * [Localization](https://github.com/turtlebot/turtlebot4/blob/humble/turtlebot4_navigation/launch/localization.launch.py): Launches localization on a given map.
+
+Running synchronous SLAM:
+```bash
+ros2 launch turtlebot4_navigation slam.launch.py
+```
+
+Running asynchronous SLAM:
+```bash
+ros2 launch turtlebot4_navigation slam.launch.py sync:=false
+```
+
+Running localization with an existing map:
+```bash
+ros2 launch turtlebot4_navigation localization.launch.py map:=/path/to/map.yaml
+```
+
+Running the Nav2 stack:
+```bash
+ros2 launch turtlebot4_navigation nav2.launch.py
+```
+
+```note
+Nav2 requires either SLAM or localization to already be running.
+```
+
+{% endtab %}
+{% tab navigation jazzy %}
+
+Launch files:
+
+* [Nav2](https://github.com/turtlebot/turtlebot4/blob/jazzy/turtlebot4_navigation/launch/nav2.launch.py): Launches the Nav2 stack.
+* [SLAM](https://github.com/turtlebot/turtlebot4/blob/jazzy/turtlebot4_navigation/launch/slam.launch.py): Launches `slam_toolbox` with online mapping.
+* [Localization](https://github.com/turtlebot/turtlebot4/blob/jazzy/turtlebot4_navigation/launch/localization.launch.py): Launches localization on a given map.
 
 Running synchronous SLAM:
 ```bash
@@ -496,6 +568,158 @@ The `turtlebot4_node` package contains the source code for the [rclcpp](https://
 </figure>
 
 {% endtab %}
+{% tab turtlebot4_node jazzy %}
+
+**Publishers**
+
+<figure>
+    <table>
+        <thead>
+            <tr>
+                <th>Topic</th>
+                <th>Message Type</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><b>hmi/display</b></td>
+                <td><i>turtlebot4_msgs/msg/UserDisplay</i></td>
+                <td>The current information that is to be displayed (TurtleBot 4 model only)</td>
+            </tr>
+            <tr>
+                <td><b>ip</b></td>
+                <td><i>std_msgs/msg/String</i></td>
+                <td>The IP address of the Wi-Fi interface</td>
+            </tr>
+            <tr>
+                <td><b>function_calls</b></td>
+                <td><i>std_msgs/msg/String</i></td>
+                <td>Publishes the name of a button or menu function when it is called</td>
+            </tr>
+        </tbody>
+    </table>
+</figure>
+
+**Subscribers**
+
+<figure>
+    <table>
+        <thead>
+            <tr>
+                <th>Topic</th>
+                <th>Message Type</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><b>battery_state</b></td>
+                <td><i>sensor_msgs/msg/BatteryState</i></td>
+                <td>Current battery state of the Create® 3</td>
+            </tr>
+            <tr>
+                <td><b>hmi/buttons</b></td>
+                <td><i>turtlebot4_msgs/msg/UserButton</i></td>
+                <td>Button states of the TurtleBot 4 HMI (TurtleBot 4 model only)</td>
+            </tr>
+            <tr>
+                <td><b>hmi/display/message</b></td>
+                <td><i>std_msgs/msg/String</i></td>
+                <td>User topic to print custom message to display (TurtleBot 4 model only)</td>
+            </tr>
+            <tr>
+                <td><b>hmi/led</b></td>
+                <td><i>turtlebot4_msgs/msg/UserLed</i></td>
+                <td>User topic to control User LED 1 and 2 (TurtleBot 4 model only)</td>
+            </tr>
+            <tr>
+                <td><b>interface_buttons</b></td>
+                <td><i>irobot_create_msgs/msg/InterfaceButtons</i></td>
+                <td>Button states of Create® 3 buttons</td>
+            </tr>
+            <tr>
+                <td><b>joy</b></td>
+                <td><i>sensor_msgs/msg/Joy</i></td>
+                <td>Bluetooth controller button states</td>
+            </tr>
+            <tr>
+                <td><b>wheel_status</b></td>
+                <td><i>irobot_create_msgs/msg/WheelStatus</i></td>
+                <td>Wheel status reported by Create® 3</td>
+            </tr>
+        </tbody>
+    </table>
+</figure>
+
+**Service Clients**
+
+<figure>
+    <table>
+        <thead>
+            <tr>
+                <th>Service</th>
+                <th>Service Type</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><b>e_stop</b></td>
+                <td><i>irobot_create_msgs/srv/EStop</i></td>
+                <td>Enable or disable motor stop</td>
+            </tr>
+            <tr>
+                <td><b>robot_power</b></td>
+                <td><i>irobot_create_msgs/srv/RobotPower</i></td>
+                <td>Power off the robot</td>
+            </tr>
+            <tr>
+                <td><b>start_motor</b></td>
+                <td><i>std_srvs/srv/Empty</i></td>
+                <td>Start the RPLIDAR motor</td>
+            </tr>
+            <tr>
+                <td><b>stop_motor</b></td>
+                <td><i>std_srvs/srv/Empty</i></td>
+                <td>Stop the RPLIDAR motor</td>
+            </tr>
+        </tbody>
+    </table>
+</figure>
+
+**Action Clients**
+
+<figure>
+    <table>
+        <thead>
+            <tr>
+                <th>Action</th>
+                <th>Action Type</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><b>dock</b></td>
+                <td><i>irobot_create_msgs/action/Dock</i></td>
+                <td>Command the robot to dock into its charging station</td>
+            </tr>
+            <tr>
+                <td><b>wall_follow</b></td>
+                <td><i>irobot_create_msgs/action/WallFollow</i></td>
+                <td>Command the robot to wall follow on left or right side using bump and IR sensors</td>
+            </tr>
+            <tr>
+                <td><b>undock</b></td>
+                <td><i>irobot_create_msgs/action/Undock</i></td>
+                <td>Command the robot to undock from its charging station</td>
+            </tr>
+        </tbody>
+    </table>
+</figure>
+
+{% endtab %}
 {% endtabs %}
 
 ### Functions
@@ -561,7 +785,7 @@ The node has a set of static functions that can be used either with a button or 
 
 ### Configuration
 
-This node can be configured using a parameter *.yaml* file. The default robot parameters can be found [here](https://github.com/turtlebot/turtlebot4_robot/blob/galactic/turtlebot4_bringup/config/turtlebot4.yaml). 
+This node can be configured using a parameter *.yaml* file. The default robot parameters can be found [here](https://github.com/turtlebot/turtlebot4_robot/blob/galactic/turtlebot4_bringup/config/turtlebot4.yaml).
 
 **Parameters**
 
@@ -657,7 +881,7 @@ Use your favourite text editor and paste the following into `example.yaml`:
 ```yaml
 turtlebot4_node:
   ros__parameters:
-    buttons:  
+    buttons:
       create3_1: ["EStop"]
       hmi_1: ["Wall Follow Left", "Wall Follow Right", "3000"]
 
@@ -834,9 +1058,9 @@ The menu can have any number of entries. If there are more than 5 entries, the u
 
 #### Menu Control
 
-The TurtleBot 4 display has a simple scrolling menu. There are 4 control functions for the menu: Scroll up, Scroll down, Select, and Back. 
+The TurtleBot 4 display has a simple scrolling menu. There are 4 control functions for the menu: Scroll up, Scroll down, Select, and Back.
 
-* Scroll up and down allow the users to navigate through the menu entries and by default are mapped to user buttons 3 and 4 respectively. 
+* Scroll up and down allow the users to navigate through the menu entries and by default are mapped to user buttons 3 and 4 respectively.
 * The select function will call the currently selected menu entry. This can trigger an action such as docking, a service such as EStop, or display a message such as the Help message. This function is mapped to user button 1 by default.
 * The back function allows the user to return back to the menu from a message screen. If the menu is already showing the menu entries, it will return to showing the first 5 menu entries and the first entry will be highlighted.
 

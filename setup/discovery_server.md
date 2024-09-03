@@ -71,7 +71,7 @@ The Create® 3 needs to be updated to the latest firmware and have its Wi-Fi dis
 
 <b>Setup instructions:</b>
 - Update to the [latest firmware](https://iroboteducation.github.io/create3_docs/releases/overview/) using the webserver.
-- Once updated, perform a [factory reset](https://iroboteducation.github.io/create3_docs/webserver/about/#:~:text=set%20to%20USB.-,Factory%20Reset,-A%20hyperlink%20to) to disconnect the Create® 3 from any Wi-Fi networks. 
+- Once updated, perform a [factory reset](https://iroboteducation.github.io/create3_docs/webserver/about/#:~:text=set%20to%20USB.-,Factory%20Reset,-A%20hyperlink%20to) to disconnect the Create® 3 from any Wi-Fi networks.
 
 ```note
 Ensure that this factory reset is done before the remaining setup as it will clear out the settings that are written to the Create® 3 by the Raspberry Pi.
@@ -102,10 +102,13 @@ turtlebot4-setup
 - When the Create® 3 chimes, call `ros2 topic list` to view topics
 
 ```tip
-When a network change occurs or a robot ROS service or robot is rebooted, you may need to restart the ros2 daemon to see the changes with the ROS 2 command line tools (ros2cli). 
-You may also need to call `ros2 topic list` twice to get a full list of topics. This is because the first time that you run the command, it starts the daemon which will record all of the available topics. If there are a lot of ROS nodes then it may take some time before the full topic list is available. 
+When a network change occurs or a robot ROS service or robot is rebooted, you may need to restart the ros2 daemon to see the changes with the ROS 2 command line tools (ros2cli).
+You may also need to call `ros2 topic list` twice to get a full list of topics. This is because the first time that you run the command, it starts the daemon which will record all of the available topics. If there are a lot of ROS nodes then it may take some time before the full topic list is available.
 ```
 
+{% endtab %}
+{% tab discovery jazzy %}
+TODO
 {% endtab %}
 {% endtabs %}
 
@@ -162,8 +165,8 @@ ros2 topic list
 ```
 
 ```note
-When a network change occurs or a robot ROS service or robot is rebooted, you may need to restart the ros2 daemon to see the changes with the ROS 2 command line tools (ros2cli). 
-You may also need to call `ros2 topic list` twice to get a full list of topics. This is because the first time that you run the command, it starts the daemon which will record all of the available topics. If there are a lot of ROS nodes then it may take some time before the full topic list is available. 
+When a network change occurs or a robot ROS service or robot is rebooted, you may need to restart the ros2 daemon to see the changes with the ROS 2 command line tools (ros2cli).
+You may also need to call `ros2 topic list` twice to get a full list of topics. This is because the first time that you run the command, it starts the daemon which will record all of the available topics. If there are a lot of ROS nodes then it may take some time before the full topic list is available.
 ```
 
 {% endtab %}
@@ -219,9 +222,13 @@ ros2 topic list
 ```
 
 ```note
-When a network change occurs or a robot ROS service or robot is rebooted, you may need to restart the ros2 daemon to see the changes with the ROS 2 command line tools (ros2cli). You may also need to call `ros2 topic list` twice to get a full list of topics. This is because the first time that you run the command, it starts the daemon which will record all of the available topics. If there are a lot of ROS nodes then it may take some time before the full topic list is available. 
+When a network change occurs or a robot ROS service or robot is rebooted, you may need to restart the ros2 daemon to see the changes with the ROS 2 command line tools (ros2cli). You may also need to call `ros2 topic list` twice to get a full list of topics. This is because the first time that you run the command, it starts the daemon which will record all of the available topics. If there are a lot of ROS nodes then it may take some time before the full topic list is available.
 ```
 
+{% endtab %}
+
+{% tab discovery jazzy %}
+TODO
 {% endtab %}
 {% endtabs %}
 
@@ -326,5 +333,8 @@ Configuring:
 Source your ~/.bashrc file to apply changes
 ```
 
+{% endtab %}
+{% tab discovery jazzy %}
+TODO
 {% endtab %}
 {% endtabs %}
