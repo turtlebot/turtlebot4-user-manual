@@ -157,6 +157,33 @@ ros2 launch turtlebot4_viz view_model.launch.py namespace:=/my_robot_namespace
 ```
 
 {% endtab %}
+{% tab debian jazzy %}
+
+Launch files:
+* [View Diagnostics](https://github.com/turtlebot/turtlebot4_desktop/blob/jazzy/turtlebot4_viz/launch/view_diagnostics.launch.py): Launches `rqt_robot_monitor` to view diagnostic data.
+* [View Model](https://github.com/turtlebot/turtlebot4_desktop/blob/jazzy/turtlebot4_viz/launch/view_model.launch.py): Launches `rviz2`. Used to view the model.
+* [View Robot](https://github.com/turtlebot/turtlebot4_desktop/blob/jazzy/turtlebot4_viz/launch/view_robot.launch.py): Launches `rviz2`. Used to view the robot model and sensor data
+* [View Navigation](https://github.com/turtlebot/turtlebot4_desktop/blob/jazzy/turtlebot4_viz/launch/view_navigation.launch.py): Launches `rviz2`. Used to view the robot model and sensor data while navigating. Allows setting 2D pose estimates & goal poses.
+
+Viewing the robot while mapping:
+
+```bash
+ros2 launch turtlebot4_viz view_navigation.launch.py
+```
+
+Viewing diagnostics:
+
+```bash
+ros2 launch turtlebot4_viz view_diagnostics.launch.py
+```
+
+If your robot is using a namespace, use it as a launch argument:
+
+```bash
+ros2 launch turtlebot4_viz view_model.launch.py namespace:=/my_robot_namespace
+```
+
+{% endtab %}
 {% endtabs %}
 
 

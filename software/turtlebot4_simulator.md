@@ -387,7 +387,7 @@ The [TurtleBot 4 HMI GUI plugin](https://github.com/turtlebot/turtlebot4_simulat
 ## Gazebo Toolbox
 
 {% tabs toolbox %}
-{% tab toolbox galactic}
+{% tab toolbox galactic %}
 The `turtlebot4_ignition_toolbox` package contains the source code for the TurtleBot 4 HMI node. The TurtleBot 4 HMI node acts as a bridge between the `turtlebot4_node` and `ros_ign_bridge` to convert the custom [TurtleBot 4 messages](./turtlebot4_common.md#messages) into standard messages such as `Int32` and `String`.
 {% endtab %}
 {% tab toolbox humble %}
