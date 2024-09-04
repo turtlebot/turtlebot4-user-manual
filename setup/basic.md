@@ -256,7 +256,6 @@ If you are using ROS 2 Humble, make sure you install firmware with version `H.*.
 {% tab firmware jazzy %}
 ```note
 If you are using ROS 2 Jazzy, make sure you install firmware with version `I.*.*`; firmware versions starting with `G` or `H` are _not_ compatible with Jazzy.
-The Jazzy firmware was originally developped for the non-LTS ROS 2 Iron release (which is why it starts with `I` and not `J`), but it is compatible with Jazzy.
 ```
 {% endtab %}
 {% endtabs %}
