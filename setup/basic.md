@@ -74,7 +74,7 @@ The TurtleBot 4 AP network is a 5GHz network. Your computer will need to support
 
 ### SSH into the Raspberry Pi
 
-Once connected, you can SSH into the Raspberry Pi to configure its Wi-Fi. Open a terminal on your PC and call: 
+Once connected, you can SSH into the Raspberry Pi to configure its Wi-Fi. Open a terminal on your PC and call:
 
 ```bash
 ssh ubuntu@10.42.0.1
@@ -148,7 +148,7 @@ Change your Wi-Fi mode to 'Client' when connecting to an existing network.
 
 ### Find the new Raspberry Pi IP
 
-Once the Wi-Fi settings are applied, the Raspberry Pi will reboot and connect to your network. DHCP will assign it a new IP address. On the TurtleBot 4, this IP address will be shown at the top of the display. 
+Once the Wi-Fi settings are applied, the Raspberry Pi will reboot and connect to your network. DHCP will assign it a new IP address. On the TurtleBot 4, this IP address will be shown at the top of the display.
 
 <figure class="aligncenter">
     <img src="media/display_ip2.jpg" alt="IP Address" style="transform:rotate(270deg); width: 20%"/>
@@ -241,6 +241,25 @@ It is recommended to update both the Create® 3 and the Raspberry Pi when you fi
 #### Create® 3
 
 Check the [Create® 3 software releases](https://iroboteducation.github.io/create3_docs/releases/overview/) to see if a newer firmware version is available. You can check the firmware version of your Create® 3 by visiting the webserver.
+
+{% tabs firmware %}
+{% tab firmware galactic %}
+```note
+If you are using ROS 2 Galactic, make sure you install firmware with version `G.*.*`; firmware versions starting with `H` or `I` are _not_ compatible with Galactic.
+```
+{% endtab %}
+{% tab firmware humble %}
+```note
+If you are using ROS 2 Humble, make sure you install firmware with version `H.*.*`; firmware versions starting with `G` or `I` are _not_ compatible with Humble.
+```
+{% endtab %}
+{% tab firmware jazzy %}
+```note
+If you are using ROS 2 Jazzy, make sure you install firmware with version `I.*.*`; firmware versions starting with `G` or `H` are _not_ compatible with Jazzy.
+The Jazzy firmware was originally developped for the non-LTS ROS 2 Iron release (which is why it starts with `I` and not `J`), but it is compatible with Jazzy.
+```
+{% endtab %}
+{% endtabs %}
 
 If new firmware is available, download it, then access the [webserver](./basic.md#accessing-the-create-3-webserver). Go to the <b>Update</b> tab, upload the firmware, then update your robot.
 
@@ -339,8 +358,8 @@ Go to <b>Wi-Fi Setup</b> and select <b>Apply Defaults</b>. Optionally you can se
 {% endtabs %}
 
 ```tip
-If you are moving your TurtleBot 4 to a new location with a different Wi-Fi network, 
-reconfigure the Raspberry Pi to connect to that network beforehand or place it into AP mode. 
+If you are moving your TurtleBot 4 to a new location with a different Wi-Fi network,
+reconfigure the Raspberry Pi to connect to that network beforehand or place it into AP mode.
 Otherwise it will continue trying to connect to your current network.
 ```
 
@@ -383,8 +402,8 @@ Installing a new image on the Raspberry Pi will delete any changes you may have 
 
 Find the latest TurtleBot 4 Raspberry Pi images at <http://download.ros.org/downloads/turtlebot4/>.
 
-- Download the latest image for the given ROS distribution and robot model. 
-- Extract the zip file to get the `.img` file 
+- Download the latest image for the given ROS distribution and robot model.
+- Extract the zip file to get the `.img` file
 - Power off your robot and then remove the microSD card from the Raspberry Pi.
 - Insert the microSD card into your PC. You may need an adapter.
 - Install the imaging tool `dcfldd`
@@ -418,7 +437,7 @@ IMAGE_PATH is the path to where you want the image saved -- e.g., `~/turtlebot4_
 wget https://raw.githubusercontent.com/turtlebot/turtlebot4_setup/humble/scripts/sd_flash.sh
 bash sd_flash.sh /path/to/downloaded/image.img
 ```
-- Follow the instructions and wait for the SD card to be flashed. 
+- Follow the instructions and wait for the SD card to be flashed.
 - Remove the SD card from your PC.
 - Ensure your Raspberry Pi 4 is not powered on before inserting the flashed SD card.
 - Follow the [Robot Setup](#robot) to configure your TurtleBot 4.
