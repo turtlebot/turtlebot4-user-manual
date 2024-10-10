@@ -49,8 +49,9 @@ For systems experiencing high CPU usage issues or limited bandwidth, it can help
 
 {% tabs navigation %}
 {% tab navigation galactic %}
-
-> :warning: **ROS 2 Galactic is no longer supported.** Please consider upgrading to a newer release
+```warning
+**ROS 2 Galactic is no longer supported.** Please consider upgrading to a newer release
+```
 
 Instructions are not currently available for Galactic.
 

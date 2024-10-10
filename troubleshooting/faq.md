@@ -84,8 +84,9 @@ There is an automatic power-saving mode that shuts down the OAK-D topics when th
 
 {% tabs source %}
 {% tab source galactic %}
-
-> :warning: **ROS 2 Galactic is no longer supported.** Please consider upgrading to a newer release
+```warning
+**ROS 2 Galactic is no longer supported.** Please consider upgrading to a newer release
+```
 
 Make sure you have sourced ROS 2 Galactic:
 

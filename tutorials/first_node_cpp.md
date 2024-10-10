@@ -8,8 +8,9 @@ This tutorial will go through the steps of creating a ROS 2 package and writing 
 
 {% tabs navigation %}
 {% tab navigation galactic %}
-
-> :warning: **ROS 2 Galactic is no longer supported.** Please consider upgrading to a newer release
+```warning
+**ROS 2 Galactic is no longer supported.** Please consider upgrading to a newer release
+```
 
 These steps are similar to the [ROS 2 Tutorial](https://docs.ros.org/en/galactic/Tutorials/Writing-A-Simple-Cpp-Publisher-And-Subscriber.html), but focus on interacting with the TurtleBot 4. For source code, click [here](https://github.com/turtlebot/turtlebot4_tutorials/tree/galactic/turtlebot4_cpp_tutorials).
 
@@ -37,8 +38,9 @@ mkdir ~/turtlebot4_ws/src -p
 
 {% tabs package %}
 {% tab package galactic %}
-
-> :warning: **ROS 2 Galactic is no longer supported.** Please consider upgrading to a newer release
+```warning
+**ROS 2 Galactic is no longer supported.** Please consider upgrading to a newer release
+```
 
 You will need to create a ROS 2 package to hold your files. For this tutorial, we will create a package called `turtlebot4_cpp_tutorials` with a node called `turtlebot4_first_cpp_node`.
 

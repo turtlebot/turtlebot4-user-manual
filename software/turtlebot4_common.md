@@ -18,8 +18,9 @@ The `turtlebot4` packages are automatically installed when either of `turtlebot4
 
 {% tabs debian %}
 {% tab debian galactic %}
-
-> :warning: **ROS 2 Galactic is no longer supported.** Please consider upgrading to a newer release
+```warning
+**ROS 2 Galactic is no longer supported.** Please consider upgrading to a newer release
+```
 
 Individual packages can be installed through apt:
 
@@ -68,8 +69,9 @@ Source installation is an alternative to the debian package and should only be u
 
 {% tabs source %}
 {% tab source galactic %}
-
-> :warning: **ROS 2 Galactic is no longer supported.** Please consider upgrading to a newer release
+```warning
+**ROS 2 Galactic is no longer supported.** Please consider upgrading to a newer release
+```
 
 To manually install this metapackage from source, clone the git repository:
 
@@ -170,8 +172,9 @@ The `turtlebot4_navigation` packages contains launch and configuration files for
 {% tabs navigation %}
 
 {% tab navigation galactic %}
-
-> :warning: **ROS 2 Galactic is no longer supported.** Please consider upgrading to a newer release
+```warning
+**ROS 2 Galactic is no longer supported.** Please consider upgrading to a newer release
+```
 
 Launch files:
 
@@ -276,8 +279,9 @@ The `turtlebot4_node` package contains the source code for the [rclcpp](https://
 
 {% tabs turtlebot4_node %}
 {% tab turtlebot4_node galactic %}
-
-> :warning: **ROS 2 Galactic is no longer supported.** Please consider upgrading to a newer release
+```warning
+**ROS 2 Galactic is no longer supported.** Please consider upgrading to a newer release
+```
 
 **Publishers**
 

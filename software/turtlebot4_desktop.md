@@ -16,8 +16,9 @@ This package is installed when following the [user computer setup instructions](
 
 {% tabs debian %}
 {% tab debian galactic %}
-
-> :warning: **ROS 2 Galactic is no longer supported.** Please consider upgrading to a newer release
+```warning
+**ROS 2 Galactic is no longer supported.** Please consider upgrading to a newer release
+```
 
 ```note
 The `turtlebot4_desktop` metapackage can be installed on a PC running Ubuntu Desktop 20.04 with ROS 2 Galactic.
@@ -55,8 +56,9 @@ Source installation is an alternative to the debian package and should only be u
 
 {% tabs source %}
 {% tab source galactic %}
-
-> :warning: **ROS 2 Galactic is no longer supported.** Please consider upgrading to a newer release
+```warning
+**ROS 2 Galactic is no longer supported.** Please consider upgrading to a newer release
+```
 
 To manually install this metapackage from source, clone the git repository:
 
@@ -116,8 +118,9 @@ The `turtlebot4_viz` package contains launch files and configurations for viewin
 
 {% tabs debian %}
 {% tab debian galactic %}
-
-> :warning: **ROS 2 Galactic is no longer supported.** Please consider upgrading to a newer release
+```warning
+**ROS 2 Galactic is no longer supported.** Please consider upgrading to a newer release
+```
 
 Launch files:
 * [View Diagnostics](https://github.com/turtlebot/turtlebot4_desktop/blob/galactic/turtlebot4_viz/launch/view_diagnostics.launch.py): Launches `rqt_robot_monitor` to view diagnostic data.

@@ -49,8 +49,9 @@ recommended to use the default DDS for your ROS 2 version.
 
 {% tabs simple %}
 {% tab simple galactic %}
-
-> :warning: **ROS 2 Galactic is no longer supported.** Please consider upgrading to a newer release
+```warning
+**ROS 2 Galactic is no longer supported.** Please consider upgrading to a newer release
+```
 
 Create a file called `setup.bash` in a convenient location:
 
