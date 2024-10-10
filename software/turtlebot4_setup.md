@@ -128,6 +128,55 @@ TurtleBot 4's come with an already set up RPi4 image, so these scripts will not 
 ```
 
 {% endtab %}
+{% tab install jazzy %}
+
+There are several install scripts that are used to set up the TurtleBot 4 image.
+
+<table>
+    <thead>
+        <tr>
+            <th>Script</th>
+            <th>Usage</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><b>turtlebot4_setup.sh</b></td>
+            <td style="white-space: nowrap;"><code>bash turtlebot4_setup.sh -m [model]</code></td>
+            <td>This script should be used on a clean Ubuntu 24.04 Server image.
+            It sets up installs ROS 2 Jazzy as well as other dependencies of the TurtleBot 4.</td>
+        </tr>
+        <tr>
+            <td><b>jazzy.sh</b></td>
+            <td style="white-space: nowrap;"><code>bash jazzy.sh</code></td>
+            <td>Installs <i>ros-jazzy-ros-base</i> as well as other useful packages. It is called from <b>turtlebot4_setup.sh</b>.</td>
+        </tr>
+        <tr>
+            <td><b>bluetooth.sh</b></td>
+            <td style="white-space: nowrap;"><code>bash bluetooth.sh</code></td>
+            <td>Installs bluetooth packages.</td>
+        </tr>
+        <tr>
+            <td><b>sd_flash.sh</b></td>
+            <td style="white-space: nowrap;"><code>sudo sd_flash.sh /path/to/image</code></td>
+            <td>Flashes a RPi image to a microSD card. It is used from a PC.</td>
+        </tr>
+        <tr>
+            <td><b>create_update.sh</b></td>
+            <td style="white-space: nowrap;">
+                <code>create_update.sh /path/to/firmware.swu</code>
+            </td>
+            <td>Send a firmware file to the Create® 3 to update it.</td>
+        </tr>
+    </tbody>
+</table>
+
+```note
+TurtleBot 4's come with an already set up RPi4 image, so these scripts will not be needed for most users.
+```
+
+{% endtab %}
 {% endtabs %}
 
 ## Configuration Tools
