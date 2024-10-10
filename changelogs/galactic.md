@@ -2,11 +2,11 @@
 sort: 1
 ---
 
+# TurtleBot 4 Galactic
+
 ```warning
 **ROS 2 Galactic is no longer supported.** Please consider updating to a newer release
 ```
-
-# TurtleBot 4 Galactic
 
 TurtleBot 4 RPi4 image changelogs. Latest images are available [here](http://download.ros.org/downloads/turtlebot4/).
 
