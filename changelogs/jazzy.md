@@ -12,7 +12,7 @@ TurtleBot 4 RPi4 image changelogs. Latest images are available [here](http://dow
 
 **ROS**: Jazzy
 
-**Create® 3 Firmware**: I.1.0
+**Create® 3 Firmware**: I.0.0
 
 ### General
 
