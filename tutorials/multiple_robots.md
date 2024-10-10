@@ -106,6 +106,24 @@ This will apply the new `ROS_DOMAIN_ID` to the Create® 3, RPi4 Terminal, and RP
 On the user PC, set the `ROS_DOMAIN_ID` in your *setup.bash* file and source it. See [Installing ROS 2](../setup/basic.md#installing-ros-2) for more details.
 
 {% endtab %}
+{% tab domain jazzy %}
+SSH into your TurtleBot 4 and run the turtlebot4 setup tool:
+
+```bash
+turtlebot4-setup
+```
+
+Navigate to 'Bash Setup' in the 'ROS Setup' menu, then change your `ROS_DOMAIN_ID`. Save the settings, then apply settings in the main menu.
+
+<figure class="aligncenter">
+    <img src="media/domain_id.gif" alt="ROS_DOMAIN_ID" style="width: 100%"/>
+    <figcaption>Setting the ROS_DOMAIN_ID</figcaption>
+</figure>
+
+This will apply the new `ROS_DOMAIN_ID` to the Create® 3, RPi4 Terminal, and RPi4 Robot Upstart job.
+
+On the user PC, set the `ROS_DOMAIN_ID` in your *setup.bash* file and source it. See [Installing ROS 2](../setup/basic.md#installing-ros-2) for more details.
+{% endtab %}
 {% endtabs %}
 
 Once the Create® 3 application has restarted, try calling `ros2 topic list` on both your PC and the RPi4 to ensure that all topics are visible.
@@ -204,6 +222,63 @@ Any additional robots must be launched using the `turtlebot4_spawn` launch file,
 
 ```bash
 ros2 launch turtlebot4_ignition_bringup turtlebot4_spawn.launch.py namespace:=/robot2 x:=0.0 y:=1.0 nav2:=true slam:=false localization:=true rviz:=true
+```
+
+```note
+Not all functionality is currently fully supported in multi-robot simulation.
+```
+
+### Launching Navigation
+
+The SLAM, Localization and Nav2 launch files all support namespacing and can be launched as follows:
+
+```bash
+ros2 launch turtlebot4_navigation slam.launch.py namespace:=/robot1
+ros2 launch turtlebot4_navigation localization.launch.py map:=office.yaml namespace:=/robot1
+ros2 launch turtlebot4_navigation nav2.launch.py namespace:=/robot1
+```
+
+Replace `robot1` with the desired robot namespace.
+
+{% endtab %}
+{% tab namespacing jazzy %}
+
+To set the robot namespace, SSH into your TurtleBot 4 and run the turtlebot4 setup tool:
+
+```bash
+turtlebot4-setup
+```
+
+Navigate to 'Bash Setup' in the 'ROS Setup' menu, then change the `ROBOT_NAMESPACE` setting.
+Save the settings, then apply settings in the main menu.
+
+<figure class="aligncenter">
+    <img src="media/namespace.gif" alt="namespace" style="width: 100%"/>
+    <figcaption>Setting the robot namespace</figcaption>
+</figure>
+
+This will apply the new namespace to the Create® 3, RPi4 Terminal, and RPi4 Robot Upstart job.
+
+### Viewing the Robot in RViz
+
+On the user PC, `turtlebot4_desktop` launch files can use a `namespace` argument to view a specific robot:
+
+```bash
+ros2 launch turtlebot4_viz view_model.launch.py namespace:=/robot1
+```
+
+### Launching Robots in Simulation
+
+The first robot can be launched normally, with the addition of a `namespace`. All other parameters are still available as shown below:
+
+```bash
+ros2 launch turtlebot4_gz_bringup turtlebot4_gz.launch.py namespace:=/robot1 nav2:=true slam:=false localization:=true rviz:=true
+```
+
+Any additional robots must be launched using the `turtlebot4_spawn` launch file, a unique `namespace` and a unique spawn location:
+
+```bash
+ros2 launch turtlebot4_gz_bringup turtlebot4_spawn.launch.py namespace:=/robot2 x:=0.0 y:=1.0 nav2:=true slam:=false localization:=true rviz:=true
 ```
 
 ```note

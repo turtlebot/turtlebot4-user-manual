@@ -115,6 +115,38 @@ Call `source ~/.bashrc` to apply these settings to your current terminal.
 ```
 
 {% endtab %}
+{% tab simple jazzy %}
+
+Create a file called `setup.bash` in a convenient location:
+
+```bash
+sudo mkdir /etc/turtlebot4/
+sudo touch /etc/turtlebot4/setup.bash
+```
+
+Add the following lines to `setup.bash` with your favourite text editor:
+
+```bash
+source /opt/ros/jazzy/setup.bash
+export ROS_DOMAIN_ID=0
+export RMW_IMPLEMENTATION=rmw_fastrtps_cpp
+```
+
+```tip
+Source your workspaces and export any other environment variables in this file.
+```
+
+Finally, add the following line in `~/.bashrc` to apply the settings to every new terminal:
+
+```bash
+source /etc/turtlebot4/setup.bash
+```
+
+```note
+Call `source ~/.bashrc` to apply these settings to your current terminal.
+```
+
+{% endtab %}
 {% endtabs %}
 
 ### Additional CycloneDDS configuration

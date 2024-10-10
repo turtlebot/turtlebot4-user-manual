@@ -110,7 +110,48 @@ You may also need to call `ros2 topic list` twice to get a full list of topics. 
 
 {% endtab %}
 {% tab discovery jazzy %}
-TODO
+
+<u><b style="font-size: 20px;">Create® 3</b></u>
+
+The Create® 3 needs to be updated to the latest firmware and have its Wi-Fi disabled.
+
+<b>Setup instructions:</b>
+- Update to the [latest firmware](https://iroboteducation.github.io/create3_docs/releases/overview/) using the webserver.
+- Once updated, perform a [factory reset](https://iroboteducation.github.io/create3_docs/webserver/about/#:~:text=set%20to%20USB.-,Factory%20Reset,-A%20hyperlink%20to) to disconnect the Create® 3 from any Wi-Fi networks.
+
+```note
+Ensure that this factory reset is done before the remaining setup as it will clear out the settings that are written to the Create® 3 by the Raspberry Pi.
+```
+
+<u><b style="font-size: 20px;">Raspberry Pi</b></u>
+
+The Raspberry Pi needs to be configured to host a discovery server, and the TurtleBot 4 upstart job needs to be reinstalled with the new configuration. During this step, the Raspberry Pi will also write the discovery server details to the Create® 3 and enable the `create3_republisher` that will make all of the Create® 3 topics conveniently broadcast by the Raspberry Pi. For more information on the `create3_republisher` see the [Create® 3 Republisher section of the Create® 3 page](../software/create3.md#create-3-republisher).
+
+<b>Setup instructions:</b>
+- SSH into the Raspberry Pi
+- Run the [TurtleBot 4 setup tool](../software/turtlebot4_setup.md#configuration-tools):
+
+```bash
+turtlebot4-setup
+```
+- Enter the <b>Discovery Server</b> menu via <b>ROS Setup</b>.
+- Set Enabled to `True`.
+- Onboard Discovery Server: This is the primary server that will connect the onboard robot nodes.
+  - Leave onboard server port as `11811`.
+  - Set the onboard server ID as a unique number in the system. If there is only one robot then this can be left as `0`. If there is more than one robot then give each robot a unique number between 0 and 255.
+- Offboard Server: This allows support for the robots to communicate on an offboard server but is not recommended for beginners because it can overload the network when there are too many robots.
+  - Leave all of these as default. When the offboard IP address is blank then all offboard server settings will be ignored.
+- Save the settings, navigate to the main menu, and apply settings.
+- Exit the setup tool
+- In your terminal, call `turtlebot4-source` to apply the new settings to your terminal.
+- Restart the ROS 2 daemon with `turtlebot4-daemon-restart` or `ros2 daemon stop; ros2 daemon start`
+- When the Create® 3 chimes, call `ros2 topic list` to view topics
+
+```tip
+When a network change occurs or a robot ROS service or robot is rebooted, you may need to restart the ros2 daemon to see the changes with the ROS 2 command line tools (ros2cli).
+You may also need to call `ros2 topic list` twice to get a full list of topics. This is because the first time that you run the command, it starts the daemon which will record all of the available topics. If there are a lot of ROS nodes then it may take some time before the full topic list is available.
+```
+
 {% endtab %}
 {% endtabs %}
 
@@ -231,9 +272,59 @@ When a network change occurs or a robot ROS service or robot is rebooted, you ma
 ```
 
 {% endtab %}
-
 {% tab discovery jazzy %}
-TODO
+In order to see all of the nodes and topics, any computer, including the user PC has to use `rmw_fastrtps_cpp` as their DDS and must define the `ROS_DISCOVERY_SERVER` environment variable to inform FastDDS of where to contact the discovery servers.
+
+```note
+Previously the user PC needed routing configured to access the Create® 3 through the Raspberry Pi. This route is no longer necessary/used and can be removed.
+```
+
+A convenient script to configure the user PC exists in the [turtlebot4_setup](https://github.com/turtlebot/turtlebot4_setup/blob/humble/turtlebot4_discovery/configure_discovery.sh) repo.
+
+To download and run the script, call:
+
+```bash
+wget -qO - https://raw.githubusercontent.com/turtlebot/turtlebot4_setup/jazzy/turtlebot4_discovery/configure_discovery.sh | bash <(cat) </dev/tty
+```
+
+You will be prompted for a few settings. All of these settings must match the settings configured on the robots and/or discovery servers in the system:
+- The `ROS_DOMAIN_ID` of your robot(s) (0 by default)
+- The Discovery Server Information. For each server it will ask for:
+  - The Discovery Server ID (0 by default, each server must have a unique server ID)
+  - The Discovery Server IP address (most often should be the TurtleBot4 Raspberry Pi WiFi IP)
+  - The Discovery Server port (11811 by default)
+  - If you only have one server then you can select done `d`, if you entered any of the information incorrectly then you can select re-enter `r` or if you need to add another discovery server (for example on a different robot) then you can select add another `a`.
+
+Once you have entered these values, the script will perform the following:
+
+- Create a directory called `/etc/turtlebot4_discovery/`
+- Create a setup.bash file in `/etc/turtlebot4_discovery/` with the required configurations.
+- Add the line `source /etc/turtlebot4_discovery/setup.bash` to your `~/.bashrc` file.
+- Check if an IP route already exists from the previous method of discovery server configuration. If it does, it will delete the route.
+
+After the script has run, call:
+```bash
+source ~/.bashrc
+```
+to apply the new settings.
+
+Then, run:
+
+```bash
+ros2 daemon stop; ros2 daemon start
+```
+
+to restart the ROS 2 daemon.
+
+You should now be able to see the Raspberry Pi and Create® 3 topics:
+
+```bash
+ros2 topic list
+```
+
+```note
+When a network change occurs or a robot ROS service or robot is rebooted, you may need to restart the ros2 daemon to see the changes with the ROS 2 command line tools (ros2cli). You may also need to call `ros2 topic list` twice to get a full list of topics. This is because the first time that you run the command, it starts the daemon which will record all of the available topics. If there are a lot of ROS nodes then it may take some time before the full topic list is available.
+```
 {% endtab %}
 {% endtabs %}
 
