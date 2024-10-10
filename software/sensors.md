@@ -8,10 +8,12 @@ sort: 8
 
 ### Connecting
 
-The RPLIDAR connects to the TurtleBot 4 with a micro USB to USB-A cable. The sensor does not require high data throughput, so using a USB 2.0 port is sufficient. 
+The RPLIDAR connects to the TurtleBot 4 with a micro USB to USB-A cable. The sensor does not require high data throughput, so using a USB 2.0 port is sufficient.
 
 {% tabs udev %}
 {% tab udev galactic %}
+
+> :warning: **ROS 2 Galactic is no longer supported** Please consider upgrading to a newer release
 
 Once connected, the RPLIDAR should register on the Raspberry PI as a USB device. If the [udev rules](https://github.com/turtlebot/turtlebot4_setup/blob/galactic/udev/turtlebot4.rules) are installed, the RPLIDAR will appear as `/dev/RPLIDAR`. Otherwise it will be `/dev/ttyUSB0`.
 
@@ -37,6 +39,8 @@ If the device exists, the terminal will echo `/dev/RPLIDAR`.
 
 {% tabs rplidar %}
 {% tab rplidar galactic %}
+
+> :warning: **ROS 2 Galactic is no longer supported** Please consider upgrading to a newer release
 
 The RPLIDAR drivers are installed by default on all TurtleBot 4's. To manually install, run:
 
@@ -104,6 +108,8 @@ The OAK-D cameras are connected to the Raspberry Pi with a USB-C to USB-A cable.
 
 {% tabs rplidar %}
 {% tab rplidar galactic %}
+
+> :warning: **ROS 2 Galactic is no longer supported** Please consider upgrading to a newer release
 
 The OAK-D drivers are installed by default on all TurtleBot 4's. To manually install, run:
 

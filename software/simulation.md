@@ -31,6 +31,8 @@ For a full tutorial using Gazebo, see the [Navigation tutorial](../tutorials/nav
 {% tabs ignition %}
 {% tab ignition galactic %}
 
+> :warning: **ROS 2 Galactic is no longer supported** Please consider upgrading to a newer release
+
 The `ignition.launch.py` launch file has several [launch configurations](turtlebot4_simulator.md#ignition-bringup) that allow the user to customize the simulation.
 
 Default TurtleBot 4 launch:

@@ -4,10 +4,12 @@ sort: 3
 
 # Creating your first node (Python)
 
-This tutorial will go through the steps of creating a ROS 2 package and writing a ROS 2 node in Python. For a C++ example, click [here](./first_node_cpp.html#creating-your-first-node-c). 
+This tutorial will go through the steps of creating a ROS 2 package and writing a ROS 2 node in Python. For a C++ example, click [here](./first_node_cpp.html#creating-your-first-node-c).
 
 {% tabs navigation %}
 {% tab navigation galactic %}
+
+> :warning: **ROS 2 Galactic is no longer supported** Please consider upgrading to a newer release
 
 These steps are similar to the [ROS 2 Tutorial](https://docs.ros.org/en/galactic/Tutorials/Writing-A-Simple-Cpp-Publisher-And-Subscriber.html), but focus on interacting with the TurtleBot 4. For source code, click [here](https://github.com/turtlebot/turtlebot4_tutorials/tree/galactic/turtlebot4_cpp_tutorials).
 
@@ -35,6 +37,8 @@ mkdir ~/turtlebot4_ws/src -p
 
 {% tabs package %}
 {% tab package galactic %}
+
+> :warning: **ROS 2 Galactic is no longer supported** Please consider upgrading to a newer release
 
 You will need to create a ROS 2 package to hold your files. For this tutorial, we will create a package called `turtlebot4_python_tutorials` with a node called `turtlebot4_first_python_node`.
 
@@ -95,7 +99,7 @@ class TurtleBot4FirstNode(Node):
         super().__init__('turtlebot4_first_python_node')
 ```
 
-Notice that our class calls the `super()` constructor and passes it the name of our node, `turtlebot4_first_python_node`. 
+Notice that our class calls the `super()` constructor and passes it the name of our node, `turtlebot4_first_python_node`.
 
 We can now create our node in the `main` function and spin it. Since our node is empty, the node will be created but it won't do anything.
 
@@ -131,7 +135,7 @@ class TurtleBot4FirstNode(Node):
             '/interface_buttons',
             self.interface_buttons_callback,
             qos_profile_sensor_data)
-    
+
     # Interface buttons subscription callback
     def interface_buttons_callback(self, create3_buttons_msg: InterfaceButtons):
 ```
@@ -337,7 +341,7 @@ def interface_buttons_callback(self, create3_buttons_msg: InterfaceButtons):
         self.button_1_function()
 ```
 
-Test this out by running the node like before. 
+Test this out by running the node like before.
 
 Press button 1 and the lightring light should look like this:
 

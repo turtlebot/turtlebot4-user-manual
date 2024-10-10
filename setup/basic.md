@@ -15,6 +15,8 @@ To interface with the robot, it is recommended to use a remote PC running the ap
 {% tabs installation %}
 {% tab installation galactic %}
 
+> :warning: **ROS 2 Galactic is no longer supported** Please consider upgrading to a newer release
+
 Required OS: [Ubuntu 20.04](https://releases.ubuntu.com/20.04/)
 
 Follow [these instructions](https://docs.ros.org/en/galactic/Installation/Ubuntu-Install-Debians.html) to install ROS 2 Galactic on your PC.
@@ -93,6 +95,8 @@ Connect the Raspberry Pi to a 5GHz Wi-Fi network for optimal performance.
 {% tabs wifi %}
 {% tab wifi galactic %}
 
+> :warning: **ROS 2 Galactic is no longer supported** Please consider upgrading to a newer release
+
 In your SSH session, call:
 
 ```bash
@@ -159,6 +163,8 @@ For the TurtleBot 4 Lite, you will need to check the `/ip` topic for the new add
 
 {% tabs ip %}
 {% tab ip galactic %}
+
+> :warning: **ROS 2 Galactic is no longer supported** Please consider upgrading to a newer release
 
 On your PC, run the following commands:
 
@@ -244,6 +250,8 @@ Check the [Create® 3 software releases](https://iroboteducation.github.io/creat
 
 {% tabs firmware %}
 {% tab firmware galactic %}
+> :warning: **ROS 2 Galactic is no longer supported** Please consider upgrading to a newer release
+
 ```note
 If you are using ROS 2 Galactic, make sure you install firmware with version `G.*.*`; firmware versions starting with `H` or `I` are _not_ compatible with Galactic.
 ```
@@ -316,6 +324,8 @@ Placing the Raspberry Pi into Access Point mode can be useful when using the rob
 
 {% tabs ap %}
 {% tab ap galactic %}
+
+> :warning: **ROS 2 Galactic is no longer supported** Please consider upgrading to a newer release
 
 SSH into the Raspberry Pi and call:
 
@@ -432,8 +442,9 @@ IMAGE_PATH is the path to where you want the image saved -- e.g., `~/turtlebot4_
 
 - Get the SD flash script from `turtlebot4_setup` and flash the SD card:
 
+
 ```bash
-wget https://raw.githubusercontent.com/turtlebot/turtlebot4_setup/humble/scripts/sd_flash.sh
+wget https://raw.githubusercontent.com/turtlebot/turtlebot4_setup/jazzy/scripts/sd_flash.sh
 bash sd_flash.sh /path/to/downloaded/image.img
 ```
 - Follow the instructions and wait for the SD card to be flashed.

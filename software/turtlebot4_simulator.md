@@ -27,6 +27,8 @@ sudo apt install ros-dev-tools
 {% tabs ignition %}
 {% tab ignition galactic %}
 
+> :warning: **ROS 2 Galactic is no longer supported** Please consider upgrading to a newer release
+
 Ignition Edifice must be installed:
 
 ```bash
@@ -69,6 +71,8 @@ sudo apt-get install gz-harmonic
 {% tabs debian %}
 {% tab debian galactic %}
 
+> :warning: **ROS 2 Galactic is no longer supported** Please consider upgrading to a newer release
+
 To install the metapackage through apt:
 
 ```bash
@@ -107,6 +111,8 @@ Source installation is an alternative to the debian package and should only be u
 
 {% tabs setup %}
 {% tab setup galactic %}
+
+> :warning: **ROS 2 Galactic is no longer supported** Please consider upgrading to a newer release
 
 To manually install this metapackage from source, clone the git repository:
 
@@ -201,6 +207,8 @@ Simulated robots and physical robots should not be combined in the same system.
 
 {% tabs bringup %}
 {% tab bringup galactic %}
+> :warning: **ROS 2 Galactic is no longer supported** Please consider upgrading to a newer release
+
 The `turtlebot4_ignition_bringup` package contains launch files and configurations to launch Ignition Gazebo.
 
 Launch files:
@@ -360,6 +368,8 @@ ros2 launch turtlebot4_gz_bringup turtlebot4_gz.launch.py slam:=true nav2:=true 
 
 {% tabs bringup %}
 {% tab bringup galactic %}
+> :warning: **ROS 2 Galactic is no longer supported** Please consider upgrading to a newer release
+
 The `turtlebot4_ignition_gui_plugins` package contains the source code for the TurtleBot 4 HMI GUI plugin.
 
 The [TurtleBot 4 HMI GUI plugin](https://github.com/turtlebot/turtlebot4_simulator/tree/galactic/turtlebot4_ignition_gui_plugins/Turtlebot4Hmi) is only used for the standard model. The lite model uses the [Create® 3 HMI GUI plugin](https://github.com/iRobotEducation/create3_sim/tree/main/irobot_create_ignition/irobot_create_ignition_plugins/Create3Hmi).
@@ -388,6 +398,8 @@ The [TurtleBot 4 HMI GUI plugin](https://github.com/turtlebot/turtlebot4_simulat
 
 {% tabs toolbox %}
 {% tab toolbox galactic %}
+> :warning: **ROS 2 Galactic is no longer supported** Please consider upgrading to a newer release
+
 The `turtlebot4_ignition_toolbox` package contains the source code for the TurtleBot 4 HMI node. The TurtleBot 4 HMI node acts as a bridge between the `turtlebot4_node` and `ros_ign_bridge` to convert the custom [TurtleBot 4 messages](./turtlebot4_common.md#messages) into standard messages such as `Int32` and `String`.
 {% endtab %}
 {% tab toolbox humble %}

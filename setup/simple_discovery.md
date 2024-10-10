@@ -5,7 +5,7 @@ sort: 3
 # Simple Discovery
 
 ```note
-The TurtleBot 4 should be configured for either Simple Discovery or Discovery Server, not both. 
+The TurtleBot 4 should be configured for either Simple Discovery or Discovery Server, not both.
 See [Networking](./networking.md) for details.
 ```
 
@@ -44,11 +44,13 @@ sure that the Fast DDS discovery server is disabled.
 
 ## User PC
 
-The user PC should be configured to use the same [DDS vendor](./networking.md#dds) and [ROS_DOMAIN_ID](../tutorials/multiple_robots.md#rosdomainid) as the robot. It is 
+The user PC should be configured to use the same [DDS vendor](./networking.md#dds) and [ROS_DOMAIN_ID](../tutorials/multiple_robots.md#rosdomainid) as the robot. It is
 recommended to use the default DDS for your ROS 2 version.
 
 {% tabs simple %}
 {% tab simple galactic %}
+
+> :warning: **ROS 2 Galactic is no longer supported** Please consider upgrading to a newer release
 
 Create a file called `setup.bash` in a convenient location:
 
@@ -123,7 +125,7 @@ wget https://raw.githubusercontent.com/turtlebot/turtlebot4_setup/galactic/conf/
 ```
 
 ```note
-The `DontRoute` setting is required to see the Create® 3 topics. 
+The `DontRoute` setting is required to see the Create® 3 topics.
 ```
 
 Move the xml file to a convenient location:

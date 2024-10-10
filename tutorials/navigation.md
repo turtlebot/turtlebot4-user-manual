@@ -12,7 +12,7 @@ There are two localization methods we can use to figure out where the robot is o
 
 ### SLAM
 
-SLAM is useful for generating a new map, or navigating in unknown or dynamic environments. It updates the map as it detects and changes, but cannot see areas of the environment that it has not discovered yet. 
+SLAM is useful for generating a new map, or navigating in unknown or dynamic environments. It updates the map as it detects and changes, but cannot see areas of the environment that it has not discovered yet.
 
 ### Localization
 
@@ -32,6 +32,8 @@ Remember to always source your ROS 2 environment before trying to launch a node.
 
 {% tabs navigation %}
 {% tab navigation galactic %}
+
+> :warning: **ROS 2 Galactic is no longer supported** Please consider upgrading to a newer release
 
 For this tutorial we can launch navigation with [Nav Bringup](https://github.com/turtlebot/turtlebot4/blob/galactic/turtlebot4_navigation/launch/nav_bringup.launch.py).
 
@@ -65,7 +67,7 @@ For this tutorial we can launch navigation with the [turtlebot4_navigation](http
 
 **For a physical TurtleBot 4:**
 
-If you do not have a map of the environment, [generate a map](./generate_map.md) first.  
+If you do not have a map of the environment, [generate a map](./generate_map.md) first.
 
 Open a terminal and launch [localization](https://github.com/turtlebot/turtlebot4/blob/humble/turtlebot4_navigation/launch/localization.launch.py):
 

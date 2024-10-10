@@ -13,6 +13,8 @@ Source code is available [here](https://github.com/turtlebot/turtlebot4_setup).
 {% tabs install %}
 {% tab install galactic %}
 
+> :warning: **ROS 2 Galactic is no longer supported** Please consider upgrading to a newer release
+
 There are several install scripts that are used to set up the TurtleBot 4 image.
 
 <table>
@@ -131,6 +133,8 @@ TurtleBot 4's come with an already set up RPi4 image, so these scripts will not 
 
 {% tabs configuration %}
 {% tab configuration galactic %}
+
+> :warning: **ROS 2 Galactic is no longer supported** Please consider upgrading to a newer release
 
 <u><b style="font-size: 20px;">Configuration Scripts</b></u>
 

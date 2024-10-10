@@ -25,6 +25,8 @@ There are four locations in which the **ROS_DOMAIN_ID** environment variable mus
 {% tabs domain %}
 {% tab domain galactic %}
 
+> :warning: **ROS 2 Galactic is no longer supported** Please consider upgrading to a newer release
+
 For RPi4 images v0.1.3 or higher, a script `ros_config.sh` has been installed which will conveniently set the **ROS_DOMAIN_ID** in the first 3 locations. If you are using an earlier version, you can copy the [script](https://github.com/turtlebot/turtlebot4_setup/blob/galactic/scripts/ros_config.sh) to `/usr/local/bin/` on your RPi4. You will also need to update your `install.py` script by downloading it from [here](https://github.com/turtlebot/turtlebot4_setup/blob/galactic/scripts/install.py) and replacing the existing script in `/usr/local/bin`.
 
 Simply call `ros_config.sh` on your RPi4 and follow the instructions. Note that this script can also be used to switch between `fastrtps` and `cyclonedds` middlewares.
@@ -110,11 +112,11 @@ Once the Create® 3 application has restarted, try calling `ros2 topic list` on 
 
 ## Namespacing
 
-Namespacing is a method of adding a prefix to topic names to group certain topics, or to make them unique. 
+Namespacing is a method of adding a prefix to topic names to group certain topics, or to make them unique.
 By namespacing all topics on a TurtleBot 4, we can have a full set of unique topics for that robot. This allows
 us to run multiple robots on the same `ROS_DOMAIN_ID`.
 
-It is common to use the name of the robot as the namespace. For example, 
+It is common to use the name of the robot as the namespace. For example,
 if we have a robot named `robot1`, the namespaced topics would look like:
 
 ```bash
@@ -157,6 +159,8 @@ ubuntu@ubuntu:~$ ros2 topic list
 {% tabs namespacing %}
 {% tab namespacing galactic %}
 
+> :warning: **ROS 2 Galactic is no longer supported** Please consider upgrading to a newer release
+
 Namespacing is not supported in Galactic.
 
 {% endtab %}
@@ -168,7 +172,7 @@ To set the robot namespace, SSH into your TurtleBot 4 and run the turtlebot4 set
 turtlebot4-setup
 ```
 
-Navigate to 'Bash Setup' in the 'ROS Setup' menu, then change the `ROBOT_NAMESPACE` setting. 
+Navigate to 'Bash Setup' in the 'ROS Setup' menu, then change the `ROBOT_NAMESPACE` setting.
 Save the settings, then apply settings in the main menu.
 
 <figure class="aligncenter">
@@ -214,7 +218,7 @@ ros2 launch turtlebot4_navigation localization.launch.py map:=office.yaml namesp
 ros2 launch turtlebot4_navigation nav2.launch.py namespace:=/robot1
 ```
 
-Replace `robot1` with the desired robot namespace. 
+Replace `robot1` with the desired robot namespace.
 
 {% endtab %}
 {% endtabs %}
