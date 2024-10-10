@@ -16,11 +16,12 @@ TurtleBot 4 RPi4 image changelogs. Latest images are available [here](http://dow
 
 ### General
 
+- Due to technical limitations, the Create3 firmware only supports FastRTPS or CycloneDDS; changing
+  RMW implementations requires installing the correct firwmare version on the Create3
 - Updated `install.py` to support Jazzy
 - Use `create3_republisher` by default to expose base platform topics from the RPi4
-- Due to technical limitations, the Create3 firmware only supports FastRTPS or CycloneDDS; chaning
-  RMW implementations requires installing the correct firwmare version on the Create3
 - ROS Control changes to use `TwistStamped` messages for velocity control instead of `Twist`
+- Renamed `ignition` and `ign` packages & launch files to use preferred `gz` nomenclature
 
 ### TurtleBot 4 Packages
 
