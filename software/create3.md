@@ -9,7 +9,7 @@ The TurtleBot 4 can also use all of the actions, messages, and services that the
 {% tabs create3 %}
 {% tab create3 galactic %}
 
-> :warning: **ROS 2 Galactic is no longer supported** Please consider upgrading to a newer release
+> :warning: **ROS 2 Galactic is no longer supported.** Please consider upgrading to a newer release
 
 **Actions**
 

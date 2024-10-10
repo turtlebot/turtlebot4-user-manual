@@ -15,7 +15,7 @@ See [Networking](./networking.md) for details.
 {% tabs discovery %}
 {% tab discovery galactic %}
 
-> :warning: **ROS 2 Galactic is no longer supported** Please consider upgrading to a newer release
+> :warning: **ROS 2 Galactic is no longer supported.** Please consider upgrading to a newer release
 
 ```warning
 The Turtlebot 4 discovery server Galactic implementation does not support more than one robot in the system. Please upgrade to Humble.
@@ -118,7 +118,7 @@ TODO
 {% tabs discovery %}
 {% tab discovery galactic %}
 
-> :warning: **ROS 2 Galactic is no longer supported** Please consider upgrading to a newer release
+> :warning: **ROS 2 Galactic is no longer supported.** Please consider upgrading to a newer release
 
 Because the Create® 3 is not on the same network as the user PC, an IP route has to be added on the user PC to reach the Create® 3, through the Raspberry Pi. This route must be up at all times to maintain a connection between the PC and the Create® 3. Additionally, every device in the system must use `rmw_fastrtps_cpp` as their DDS and must define the `ROS_DISCOVERY_SERVER` environment variable to inform FastDDS of the IP and port of the server.
 
@@ -240,7 +240,7 @@ TODO
 {% tabs discovery %}
 {% tab discovery galactic %}
 
-> :warning: **ROS 2 Galactic is no longer supported** Please consider upgrading to a newer release
+> :warning: **ROS 2 Galactic is no longer supported.** Please consider upgrading to a newer release
 
 There is currently no example for Galactic.
 

@@ -25,7 +25,7 @@ To manually install this metapackage from source:
 {% tabs install %}
 {% tab install galactic %}
 
-> :warning: **ROS 2 Galactic is no longer supported** Please consider upgrading to a newer release
+> :warning: **ROS 2 Galactic is no longer supported.** Please consider upgrading to a newer release
 
 Clone the repository into your workspace:
 
@@ -230,7 +230,7 @@ The robot uses the [robot_upstart](https://github.com/clearpathrobotics/robot_up
 {% tabs upstart %}
 {% tab upstart galactic %}
 
-> :warning: **ROS 2 Galactic is no longer supported** Please consider upgrading to a newer release
+> :warning: **ROS 2 Galactic is no longer supported.** Please consider upgrading to a newer release
 
 Robot upstart commands:
 
@@ -346,7 +346,7 @@ The [diagnostics updater](https://github.com/turtlebot/turtlebot4_robot/blob/gal
 {% tabs diagnostics %}
 {% tab diagnostics galactic %}
 
-> :warning: **ROS 2 Galactic is no longer supported** Please consider upgrading to a newer release
+> :warning: **ROS 2 Galactic is no longer supported.** Please consider upgrading to a newer release
 
 Diagnostic topics:
 
