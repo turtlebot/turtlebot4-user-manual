@@ -15,7 +15,7 @@ Remember to always source your ROS 2 environment before trying to launch a node.
 {% tabs slam %}
 {% tab slam galactic %}
 
-> :warning: **ROS 2 Galactic is no longer supported** Please consider upgrading to a newer release
+> :warning: **ROS 2 Galactic is no longer supported.** Please consider upgrading to a newer release
 
 First, install `turtlebot4_navigation`:
 

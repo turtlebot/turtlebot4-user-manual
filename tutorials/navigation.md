@@ -33,7 +33,7 @@ Remember to always source your ROS 2 environment before trying to launch a node.
 {% tabs navigation %}
 {% tab navigation galactic %}
 
-> :warning: **ROS 2 Galactic is no longer supported** Please consider upgrading to a newer release
+> :warning: **ROS 2 Galactic is no longer supported.** Please consider upgrading to a newer release
 
 For this tutorial we can launch navigation with [Nav Bringup](https://github.com/turtlebot/turtlebot4/blob/galactic/turtlebot4_navigation/launch/nav_bringup.launch.py).
 

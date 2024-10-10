@@ -25,7 +25,7 @@ There are four locations in which the **ROS_DOMAIN_ID** environment variable mus
 {% tabs domain %}
 {% tab domain galactic %}
 
-> :warning: **ROS 2 Galactic is no longer supported** Please consider upgrading to a newer release
+> :warning: **ROS 2 Galactic is no longer supported.** Please consider upgrading to a newer release
 
 For RPi4 images v0.1.3 or higher, a script `ros_config.sh` has been installed which will conveniently set the **ROS_DOMAIN_ID** in the first 3 locations. If you are using an earlier version, you can copy the [script](https://github.com/turtlebot/turtlebot4_setup/blob/galactic/scripts/ros_config.sh) to `/usr/local/bin/` on your RPi4. You will also need to update your `install.py` script by downloading it from [here](https://github.com/turtlebot/turtlebot4_setup/blob/galactic/scripts/install.py) and replacing the existing script in `/usr/local/bin`.
 
@@ -159,7 +159,7 @@ ubuntu@ubuntu:~$ ros2 topic list
 {% tabs namespacing %}
 {% tab namespacing galactic %}
 
-> :warning: **ROS 2 Galactic is no longer supported** Please consider upgrading to a newer release
+> :warning: **ROS 2 Galactic is no longer supported.** Please consider upgrading to a newer release
 
 Namespacing is not supported in Galactic.
 

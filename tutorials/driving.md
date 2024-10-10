@@ -21,7 +21,7 @@ In order to control the Turtlebot 4 while running the application on your pc, yo
 {% tabs keyboard %}
 {% tab keyboard galactic %}
 
-> :warning: **ROS 2 Galactic is no longer supported** Please consider upgrading to a newer release
+> :warning: **ROS 2 Galactic is no longer supported.** Please consider upgrading to a newer release
 
 You can install the `teleop_twist_keyboard` package on your PC by running the following commands:
 
