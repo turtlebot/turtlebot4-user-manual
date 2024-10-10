@@ -36,58 +36,47 @@ TurtleBot 4 RPi4 image changelogs. Latest images are available [here](http://dow
     <tbody>
         <tr>
             <td>turtlebot4_base</td>
-            <td>0.1.3</td>
+            <td>2.0.0</td>
             <td>-</td>
         </tr>
         <tr>
             <td>turtlebot4_bringup</td>
-            <td>0.1.3</td>
-            <td>
-                - Added RPLIDAR Motor start/stop to default menu config
-            </td>
+            <td>2.0.0</td>
+            <td>-</td>
         </tr>
         <tr>
             <td>turtlebot4_description</td>
-            <td>0.1.2</td>
+            <td>2.0.0</td>
             <td>-</td>
         </tr>
         <tr>
             <td>turtlebot4_diagnostics</td>
-            <td>0.1.3</td>
+            <td>2.0.0</td>
             <td>-</td>
         </tr>
         <tr>
             <td>turtlebot4_msgs</td>
-            <td>0.1.2</td>
+            <td>2.0.0</td>
             <td>-</td>
         </tr>
         <tr>
             <td>turtlebot4_navigation</td>
-            <td>0.1.2</td>
-            <td>
-                - Added TurtleBot 4 Navigator <br/>
-                - Fixed AMCL crashing issue <br/>
-                - Install turtlebot4_navigation python module
-            </td>
+            <td>2.0.0</td>
+            <td>-</td>
         </tr>
         <tr>
             <td>turtlebot4_node</td>
-            <td>0.1.2</td>
-            <td>
-                - Added support for Empty service <br/>
-                - Added RPLIDAR motor start/stop service as a function option <br/>
-                - Added timeouts to services (defaults to 30s) <br/>
-                - Updated rclcpp Action api
-            </td>
+            <td>2.0.0</td>
+            <td>-</td>
         </tr>
         <tr>
             <td>turtlebot4_robot</td>
-            <td>0.1.3</td>
+            <td>2.0.0</td>
             <td>-</td>
         </tr>
         <tr>
             <td>turtlebot4_tests</td>
-            <td>0.1.3</td>
+            <td>2.0.0</td>
             <td>-</td>
         </tr>
     </tbody>
