@@ -14,39 +14,17 @@ This package is installed when following the [user computer setup instructions](
 
 ### Debian package
 
-{% tabs debian %}
-{% tab debian galactic %}
-```warning
-**ROS 2 Galactic is no longer supported.** Please consider upgrading to a newer release
-```
-
-```note
-The `turtlebot4_desktop` metapackage can be installed on a PC running Ubuntu Desktop 20.04 with ROS 2 Galactic.
-```
+The Turtlebot4 desktop metapackage can be installed as a debian package:
+* Ubuntu 24.04 with ROS 2 Jazzy
+* Ubuntu 22.04 with ROS 2 Humble
+* Ubuntu 20.04 with ROS 2 Galactic _end-of-life, not recommended_
 
 To install the metapackage through apt:
 
 ```bash
 sudo apt update
-sudo apt install ros-galactic-turtlebot4-desktop
+sudo apt install ros-${ROS_DISTRO}-turtlebot4-desktop
 ```
-
-{% endtab %}
-{% tab debian humble %}
-
-```note
-The `turtlebot4_desktop` metapackage can be installed on a PC running Ubuntu Desktop 22.04 with ROS 2 Humble.
-```
-
-To install the metapackage through apt:
-
-```bash
-sudo apt update
-sudo apt install ros-humble-turtlebot4-desktop
-```
-
-{% endtab %}
-{% endtabs %}
 
 ### Source installation
 
@@ -104,6 +82,32 @@ Build the packages:
 
 ```bash
 source /opt/ros/humble/setup.bash
+colcon build --symlink-install
+```
+
+Next, the workspace must be sourced by running `source ~/turtlebot4_ws/install/setup.bash` in the terminal or by adding that command in the `.bashrc` file and sourcing the `.bashrc` file.
+
+{% endtab %}
+{% tab source jazzy %}
+
+To manually install this metapackage from source, clone the git repository:
+
+```bash
+cd ~/turtlebot4_ws/src
+git clone https://github.com/turtlebot/turtlebot4_desktop.git -b jazzy
+```
+
+Install dependencies:
+
+```bash
+cd ~/turtlebot4_ws
+rosdep install --from-path src -yi
+```
+
+Build the packages:
+
+```bash
+source /opt/ros/jazzy/setup.bash
 colcon build --symlink-install
 ```
 
