@@ -869,6 +869,11 @@ need to run `turtlebot4-source` or `source $ROBOT_SETUP` to apply them to your c
 applied to any new terminals.
 
 <br/>
+<u><b style="font-size: 20px;">Reset Create3</b></u>
+
+Selecting "Reset Create3" will reconfigure the Create® 3's domain ID, namespace, and discovery server settings to match the current Raspberry Pi configuration.  No changes are made to the Raspberry Pi itself: only the Create® 3 settings are modified.
+
+<br/>
 <u><b style="font-size: 20px;">About</b></u>
 
 The "About" menu displays system information and has menu options to change the TurtleBot 4 model and hostname.
