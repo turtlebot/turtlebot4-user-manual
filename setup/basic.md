@@ -382,9 +382,7 @@ Go to <b>Wi-Fi Setup</b> and select <b>Apply Defaults</b>. Optionally you can se
 {% endtabs %}
 
 ```tip
-If you are moving your TurtleBot 4 to a new location with a different Wi-Fi network,
-reconfigure the Raspberry Pi to connect to that network beforehand or place it into AP mode.
-Otherwise it will continue trying to connect to your current network.
+If you are moving your TurtleBot 4 to a new location with a different Wi-Fi network, reconfigure the Raspberry Pi to connect to that network beforehand or place it into AP mode. Otherwise it will continue trying to connect to your current network.
 ```
 
 ## Troubleshooting

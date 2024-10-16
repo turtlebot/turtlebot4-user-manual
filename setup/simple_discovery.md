@@ -6,6 +6,7 @@ sort: 3
 
 ```note
 The TurtleBot 4 should be configured for either Simple Discovery or Discovery Server, not both.
+
 See [Networking](./networking.md) for details.
 ```
 
@@ -90,8 +91,7 @@ sure that the Fast DDS discovery server is disabled.
 
 ## User PC
 
-The user PC should be configured to use the same [DDS vendor](./networking.md#dds) and [ROS_DOMAIN_ID](../tutorials/multiple_robots.md#rosdomainid) as the robot. It is
-recommended to use the default DDS for your ROS 2 version.
+The user PC should be configured to use the same [DDS vendor](./networking.md#dds) and [ROS_DOMAIN_ID](../tutorials/multiple_robots.md#rosdomainid) as the robot. It is recommended to use the default DDS for your ROS 2 version.
 
 {% tabs simple %}
 {% tab simple galactic %}
