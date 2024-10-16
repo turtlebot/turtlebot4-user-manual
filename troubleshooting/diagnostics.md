@@ -47,8 +47,8 @@ In this example, the OAK-D node is not running, so the camera topics are not bei
 
 For systems experiencing high CPU usage issues or limited bandwidth, it can help to disable the diagnostics whenever they are not actively in use.
 
-{% tabs navigation %}
-{% tab navigation galactic %}
+{% tabs disable_diagnostics %}
+{% tab disable_diagnostics galactic %}
 ```warning
 **ROS 2 Galactic is no longer supported.** Please consider upgrading to a newer release
 ```
@@ -56,7 +56,21 @@ For systems experiencing high CPU usage issues or limited bandwidth, it can help
 Instructions are not currently available for Galactic.
 
 {% endtab %}
-{% tab navigation humble %}
+{% tab disable_diagnostics humble %}
+
+
+To disable diagnostics, SSH into your TurtleBot 4 and run the turtlebot4 setup tool:
+
+```bash
+turtlebot4-setup
+```
+
+Navigate to 'Bash Setup' in the 'ROS Setup' menu, then change the `DIAGNOSTICS` setting to `False`.
+Save the settings, then apply settings in the main menu.
+
+
+{% endtab %}
+{% tab disable_diagnostics jazzy %}
 
 
 To disable diagnostics, SSH into your TurtleBot 4 and run the turtlebot4 setup tool:
