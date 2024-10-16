@@ -32,11 +32,6 @@ Ensure your Ruby gems are up to date:
 gem update --system
 ```
 
-Next [install Jekyll and the rest of the prerequisites](https://jekyllrb.com/docs/). Be careful to not overwrite the Ruby version.
-```shell
-gem install jekyll bundler
-```
-
 Clone this repository:
 
 ```bash
