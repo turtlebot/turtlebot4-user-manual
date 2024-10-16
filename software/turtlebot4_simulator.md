@@ -10,9 +10,17 @@ Source code is available [here](https://github.com/turtlebot/turtlebot4_simulato
 
 ## Installation
 
-```note
-The `turtlebot4_simulator` metapackage can be installed on a PC running Ubuntu Desktop 20.04 with ROS 2 Galactic or Ubuntu Desktop 22.04 with ROS 2 Humble.
+The recommended way to install the Turtlebot4 simulator is to install the debian metapackage, which is available on:
+* Ubuntu 24.04 with ROS 2 Jazzy
+* Ubuntu 22.04 with ROS 2 Humble
+* Ubuntu 20.04 with ROS 2 Galactic _end-of-life, not recommended_
+
+by running
+```bash
+sudo apt install ros-${ROS_DISTRO}-turtlebot4-simulator ros-${ROS_DISTRO}-irobot-create-nodes
 ```
+
+For installation from source code, see [below](#source-installation).
 
 ### Dev Tools
 
@@ -62,44 +70,6 @@ sudo curl https://packages.osrfoundation.org/gazebo.gpg --output /usr/share/keyr
 echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/pkgs-osrf-archive-keyring.gpg] http://packages.osrfoundation.org/gazebo/ubuntu-stable $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/gazebo-stable.list > /dev/null
 sudo apt-get update
 sudo apt-get install gz-harmonic
-```
-
-{% endtab %}
-{% endtabs %}
-
-### Debian package
-
-{% tabs debian %}
-{% tab debian galactic %}
-```warning
-**ROS 2 Galactic is no longer supported.** Please consider upgrading to a newer release
-```
-
-To install the metapackage through apt:
-
-```bash
-sudo apt update
-sudo apt install ros-galactic-turtlebot4-simulator ros-galactic-irobot-create-nodes
-```
-
-{% endtab %}
-{% tab debian humble %}
-
-To install the metapackage through apt:
-
-```bash
-sudo apt update
-sudo apt install ros-humble-turtlebot4-simulator
-```
-
-{% endtab %}
-{% tab debian jazzy %}
-
-To install the metapackage through apt:
-
-```bash
-sudo apt update
-sudo apt install ros-jazzy-turtlebot4-simulator
 ```
 
 {% endtab %}
