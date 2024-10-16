@@ -20,6 +20,11 @@ These steps are similar to the [ROS 2 Tutorial](https://docs.ros.org/en/galactic
  These steps are similar to the [ROS 2 Tutorial](https://docs.ros.org/en/humble/Tutorials/Writing-A-Simple-Cpp-Publisher-And-Subscriber.html), but focus on interacting with the TurtleBot 4. For source code, click [here](https://github.com/turtlebot/turtlebot4_tutorials/tree/humble/turtlebot4_cpp_tutorials).
 
 {% endtab %}
+{% tab navigation jazzy %}
+
+ These steps are similar to the [ROS 2 Tutorial](https://docs.ros.org/en/jazzy/Tutorials/Writing-A-Simple-Cpp-Publisher-And-Subscriber.html), but focus on interacting with the TurtleBot 4. For source code, click [here](https://github.com/turtlebot/turtlebot4_tutorials/tree/jazzy/turtlebot4_cpp_tutorials).
+
+{% endtab %}
 {% endtabs %}
 
 ```note
@@ -57,6 +62,17 @@ You will need to create a ROS 2 package to hold your files. For this tutorial, w
 
 ```bash
 source /opt/ros/humble/setup.bash
+cd ~/turtlebot4_ws/src
+ros2 pkg create --build-type ament_cmake --node-name turtlebot4_first_cpp_node turtlebot4_cpp_tutorials
+```
+
+{% endtab %}
+{% tab package jazzy %}
+
+You will need to create a ROS 2 package to hold your files. For this tutorial, we will create a package called `turtlebot4_cpp_tutorials` with a node called `turtlebot4_first_cpp_node`.
+
+```bash
+source /opt/ros/jazzy/setup.bash
 cd ~/turtlebot4_ws/src
 ros2 pkg create --build-type ament_cmake --node-name turtlebot4_first_cpp_node turtlebot4_cpp_tutorials
 ```
