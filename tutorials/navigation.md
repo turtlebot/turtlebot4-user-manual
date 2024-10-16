@@ -98,7 +98,7 @@ Once the Gazebo window loads, ensure to press the "Play" button to start the sim
 
 This will launch the simulation in the default `warehouse` world and will use the existing [`warehouse.yaml`](https://github.com/turtlebot/turtlebot4/blob/humble/turtlebot4_navigation/maps/warehouse.yaml) file for the map.
 
-To launch a different supported world, see the [simulation package](../software/turtlebot4_simulator.md#ignition-bringup) for a list of supported worlds. You must pass the name of the chosen world and the path to the map file.
+To launch a different supported world, see the [simulation package](../software/turtlebot4_simulator.md#gazebo-bringup) for a list of supported worlds. You must pass the name of the chosen world and the path to the map file.
 
 For example:
 ```bash
@@ -111,6 +111,59 @@ If you are using a custom world you will need to build the [turtlebot4_simulator
 For example:
 ```bash
 ros2 launch turtlebot4_ignition_bringup turtlebot4_ignition.launch.py nav2:=true slam:=false localization:=true \
+rviz:=true world:=classroom map:=path/to/classroom.yaml
+```
+
+{% endtab %}
+{% tab navigation jazzy %}
+
+For this tutorial we can launch navigation with the [turtlebot4_navigation](https://github.com/turtlebot/turtlebot4/tree/jazzy/turtlebot4_navigation) package.
+
+**For a physical TurtleBot 4:**
+
+If you do not have a map of the environment, [generate a map](./generate_map.md) first.
+
+Open a terminal and launch [localization](https://github.com/turtlebot/turtlebot4/blob/jazzy/turtlebot4_navigation/launch/localization.launch.py):
+
+```bash
+ros2 launch turtlebot4_navigation localization.launch.py map:=office.yaml
+```
+
+Replace `office.yaml` with the path to your own map.
+
+Then, in another terminal, launch [nav2](https://github.com/turtlebot/turtlebot4/blob/jazzy/turtlebot4_navigation/launch/nav2.launch.py):
+
+```bash
+ros2 launch turtlebot4_navigation nav2.launch.py
+```
+
+```note
+If using multiple robots through the namespacing method, an additional `namespace` parameter must be passed to both the Localization and Nav2 launch files. For example: `namespace:=/robot1` See [Multiple robots](./multiple_robots.md) for more details.
+```
+
+**If you are using the simulator, call:**
+
+```bash
+ros2 launch turtlebot4_gz_bringup turtlebot4_gz.launch.py nav2:=true slam:=false localization:=true rviz:=true
+```
+
+Once the Gazebo window loads, ensure to press the "Play" button to start the simulation.
+
+This will launch the simulation in the default `warehouse` world and will use the existing [`warehouse.yaml`](https://github.com/turtlebot/turtlebot4/blob/jazzy/turtlebot4_navigation/maps/warehouse.yaml) file for the map.
+
+To launch a different supported world, see the [simulation package](../software/turtlebot4_simulator.md#gazebo-bringup) for a list of supported worlds. You must pass the name of the chosen world and the path to the map file.
+
+For example:
+```bash
+ros2 launch turtlebot4_gz_bringup turtlebot4_gz.launch.py nav2:=true slam:=false localization:=true \
+rviz:=true world:=depot map:=/opt/ros/jazzy/share/turtlebot4_navigation/maps/depot.yaml
+```
+
+If you are using a custom world you will need to build the [turtlebot4_simulator package](../software/turtlebot4_simulator.md#source-installation) from source and place your world file [alongside the others](https://github.com/turtlebot/turtlebot4_simulator/tree/jazzy/turtlebot4_gz_bringup/worlds). You will then need to create a map for it and pass both the world name and the map file path in as launch arguments.
+
+For example:
+```bash
+ros2 launch turtlebot4_gz_bringup turtlebot4_gz.launch.py nav2:=true slam:=false localization:=true \
 rviz:=true world:=classroom map:=path/to/classroom.yaml
 ```
 
