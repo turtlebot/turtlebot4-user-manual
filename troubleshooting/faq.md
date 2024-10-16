@@ -104,6 +104,15 @@ source /opt/ros/humble/setup.bash
 ```
 
 {% endtab %}
+{% tab source jazzy %}
+
+Make sure you have sourced ROS 2 Jazzy:
+
+```bash
+source /opt/ros/jazzy/setup.bash
+```
+
+{% endtab %}
 {% endtabs %}
 
 If you are building packages from source, you will also want to source the workspace:
