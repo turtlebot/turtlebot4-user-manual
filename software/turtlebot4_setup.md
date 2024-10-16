@@ -676,7 +676,7 @@ This file sets environment variables that affect ROS 2.
         </tr>
         <tr>
             <td><b>RMW_IMPLEMENTATION</b></td>
-            <td>Set the RMW implementation (rmw_fastrtps_cpp, rmw_cyclonedds_cpp)</td>
+            <td>Set the RMW implementation (rmw_fastrtps_cpp, rmw_cyclonedds_cpp). The selected implementation <b>must</b> match the one supported by the Create® 3 firmware installed on the base platform</td>
             <td>rmw_fastrtps_cpp</td>
         </tr>
         <tr>
