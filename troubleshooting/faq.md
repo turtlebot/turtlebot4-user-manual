@@ -195,9 +195,7 @@ Replace `#` with the ID.
 If topics are not visible on the Raspberry Pi, you may need to restart the Create® 3 application through the portal, or reboot the robot.
 {% endtab %}
 {% tab create3_topics jazzy %}
-First, make sure that the Raspberry Pi's `RMW_IMPLEMENTATION` matches the one supported by your Create® 3 firmware. Reinstall the Create® 3 firmware or change the Raspberry Pi's RMW if needed.
-
-If the RMW implementations match, run the `turtlebot4-setup` command and use the "Reset Create3" option to reconfigure the Create® 3's domain ID, namespace, and discovery server settings.
+First, make sure that the Raspberry Pi's `RMW_IMPLEMENTATION` matches the one supported by your Create® 3 firmware and that your Create® 3's firmware is version `I.*.*`. Reinstall the Create® 3 firmware or change the Raspberry Pi's RMW if needed.
 
 Check that the Create® 3's topics are visible in the `_do_not_use` namespace:
 ```bash
@@ -237,37 +235,9 @@ you should see the following topics:
 /_do_not_use/wheel_status
 ```
 
-First, check that the Create® 3 is connected to your WiFi network. You should be able to access the Create® 3 portal by entering the Create® 3 IP address in a browser. For information on how to connect the Create® 3 to WiFi, check the [Wi-Fi Setup Guide](../setup/simple_discovery.md#wi-fi-setup).
+If these topics are not visible, run the `turtlebot4-setup` command and use the "Reset Create3" option to reconfigure the Create® 3's domain ID, namespace, and discovery server settings.
 
-If it is connected to WiFi, check if you can see Create® 3 topics on the Raspberry Pi.
-
-If topics are visible on the Raspberry Pi, ensure that your PC has the following configuration set for CycloneDDS:
-
-```xml
-<CycloneDDS>
-    <Domain>
-        <General>
-            <DontRoute>true</DontRoute>
-        </General>
-    </Domain>
-</CycloneDDS>
-```
-
-To set this configuration automatically, add the following line to your `~/.bashrc` file.
-
-```bash
-export CYCLONEDDS_URI='<CycloneDDS><Domain><General><DontRoute>true</></></></>'
-```
-
-If you have set a `ROS_DOMAIN_ID` for the Create® 3, your terminal will have to have the same ID. You can set the ID by using this command:
-
-```bash
-export ROS_DOMAIN_ID=#
-```
-
-Replace `#` with the ID.
-
-If topics are not visible on the Raspberry Pi, you may need to restart the Create® 3 application through the portal, or reboot the robot.
+Once the Create® 3 resets, check if the topics are visible again. If they are still not visible, reboot the robot by removing it from the dock and holding the power button.
 {% endtab %}
 {% endtabs %}
 
