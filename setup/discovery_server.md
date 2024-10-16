@@ -125,7 +125,9 @@ Ensure that this factory reset is done before the remaining setup as it will cle
 
 <u><b style="font-size: 20px;">Raspberry Pi</b></u>
 
-The Raspberry Pi needs to be configured to host a discovery server, and the TurtleBot 4 upstart job needs to be reinstalled with the new configuration. During this step, the Raspberry Pi will also write the discovery server details to the Create® 3 and enable the `create3_republisher` that will make all of the Create® 3 topics conveniently broadcast by the Raspberry Pi. For more information on the `create3_republisher` see the [Create® 3 Republisher section of the Create® 3 page](../software/create3.md#create-3-republisher).
+The Raspberry Pi needs to be configured to host a discovery server, and the TurtleBot 4 upstart job needs to be reinstalled with the new configuration. During this step, the Raspberry Pi will also write the discovery server details to the Create® 3.
+
+Unlike ROS 2 Humble, the Jazzy version always uses the `create3_republisher` node to broadcast the Create® 3 topics, services, and actions from the Raspberry Pi. For more information on the `create3_republisher` see the [Create® 3 Republisher section of the Create® 3 page](../software/create3.md#create-3-republisher).
 
 <b>Setup instructions:</b>
 - SSH into the Raspberry Pi
