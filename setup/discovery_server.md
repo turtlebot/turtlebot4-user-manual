@@ -279,7 +279,7 @@ In order to see all of the nodes and topics, any computer, including the user PC
 Previously the user PC needed routing configured to access the Create® 3 through the Raspberry Pi. This route is no longer necessary/used and can be removed.
 ```
 
-A convenient script to configure the user PC exists in the [turtlebot4_setup](https://github.com/turtlebot/turtlebot4_setup/blob/humble/turtlebot4_discovery/configure_discovery.sh) repo.
+A convenient script to configure the user PC exists in the [turtlebot4_setup](https://github.com/turtlebot/turtlebot4_setup/blob/jazzy/turtlebot4_discovery/configure_discovery.sh) repo.
 
 To download and run the script, call:
 
@@ -434,6 +434,97 @@ Source your ~/.bashrc file to apply changes
 
 {% endtab %}
 {% tab discovery jazzy %}
-TODO
+
+### 2 Robots and 1 User Computer
+
+#### Recommended Architecture
+Each robot is always configured with its own discovery server. This allows each robot to operate independently even if the WiFi is disconnected. Since there are two robots and therefore two discovery servers in the system, the discovery servers must be assigned unique server IDs. In this case, the first robot will be assigned server ID 0 and the second robot will be assigned server ID 1. Similarly, the robots need unique namespaces in order for their topics to be distinguished from each other. In this case they will be assigned as `/robot1` and `/robot2`.
+
+Although both robots are present in the same system, this example will not include direct inter-robot communication. Each robot's discovery server will be isolated from the other. Instead, the robots will both communicate with the user computer which can be thought of as a command center. This allows for the number of robots to be scaled up while minimizing the load on the network.
+
+The user computer will connect to both discovery servers, allowing the user computer to see all of the ROS nodes / topics from each of the robots. Each of the robots will be able to see all of the ROS nodes / topics from the user computer as well. This allows the user computer to send commands to each of the robots, coordinating the system and sharing information across the fleet as necessary.
+
+Although one could run another discovery server on the user computer, this would add significant load on all of the robots unless done in such a way that the server was isolated from the robot servers. This is not recommended for most use cases.
+
+#### Example Robot Setup
+
+<table>
+<tr style="text-align:center">
+  <th>Robot 1</th>
+  <th>Robot 2</th>
+</tr>
+<tr style="background-color:white">
+<td>
+
+<p><code>ROS Setup</code> &rarr; <code>Bash Setup</code></p>
+<pre><code>ROBOT_NAMESPACE                    [/robot1]
+</code></pre>
+<p><code>ROS Setup</code> &rarr; <code>Discovery Server</code></p>
+<pre><code>  Enabled                         [True]
+  Onboard Server - Port           [11811]
+  Onboard Server - Server ID      [0]
+  Offboard Server - IP            []
+  Offboard Server - Port          [11811]
+  Offboard Server - Server ID     [1]
+</code></pre>
+<p><code>Wi-Fi Setup</code></p>
+<pre><code>  Wi-Fi Mode            [Client]
+  SSID                  [my_ttb4_network]
+  Password              [secure_password]
+  Band                  [5GHz]
+  IP Address            []
+  DHCP                  [True]
+</code></pre>
+
+</td>
+<td>
+
+<p><code>ROS Setup</code> &rarr; <code>Bash Setup</code></p>
+<pre><code>ROBOT_NAMESPACE                    [/robot2]
+</code></pre>
+<p><code>ROS Setup</code> &rarr; <code>Discovery Server</code></p>
+<pre><code>  Enabled                         [True]
+  Onboard Server - Port           [11811]
+  Onboard Server - Server ID      [1]
+  Offboard Server - IP            []
+  Offboard Server - Port          [11811]
+  Offboard Server - Server ID     [1]
+</code></pre>
+<p><code>Wi-Fi Setup</code></p>
+<pre><code>  Wi-Fi Mode            [Client]
+  SSID                  [my_ttb4_network]
+  Password              [secure_password]
+  Band                  [5GHz]
+  IP Address            []
+  DHCP                  [True]
+</code></pre>
+
+</td>
+</tr>
+</table>
+
+
+#### Example User Computer Setup
+From the robot configuration the robot server IDs and the ROS Domain ID are known, and from the robots themselves or the router the IP addresses are known. It is recommended that the robot IPs be reserved on the router so that they always remain the same and this process does not need to be repeated. Running the user computer configuration script as described above, would look as follows:
+
+```
+ROS_DOMAIN_ID [0]: 0
+Enter the information for the first discovery server
+Discovery Server ID [0]: 0
+Discovery Server IP: 192.168.131.5
+Discovery Server Port [11811]:
+Re-enter the last server (r), add another server (a), or done (d): a
+Enter the information for the next discovery server
+Discovery Server ID [0]: 1
+Discovery Server IP: 192.168.131.6
+Discovery Server Port [11811]:
+Re-enter the last server (r), add another server (a), or done (d): d
+Configuring:
+ ROS_DOMAIN_ID=0
+ ROS_DISCOVERY_SERVER="192.168.131.5:11811;192.168.131.6:11811;"
+[sudo] password for cpr-1234:
+Source your ~/.bashrc file to apply changes
+```
+
 {% endtab %}
 {% endtabs %}
