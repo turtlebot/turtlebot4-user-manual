@@ -273,6 +273,12 @@ If you are using ROS 2 Humble, make sure you install firmware with version `H.*.
 ```note
 If you are using ROS 2 Jazzy, make sure you install firmware with version `I.*.*`; firmware versions starting with `G` or `H` are _not_ compatible with Jazzy.
 ```
+
+```warning
+Unlike previous versions, the Create® 3 firmware `I.*.*` does _not_ support switching between FastDDS and CycloneDDS. Instead there are two separate versions of the firmware available, each supporting one RMW implementation.  When installing the firmware on your Create® 3 you _must_ use the firmware that corresponds to the middleware you intend to use.
+
+For ROS 2 Jazzy, the default is FastDDS.  Unless you have specific reasons for using CycloneDDS, it is recommended to use the FastDDS firmware on your Create® 3.
+```
 {% endtab %}
 {% endtabs %}
 
