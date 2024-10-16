@@ -22,16 +22,40 @@ For ROS 2 networking, the TurtleBot 4 can function with two different configurat
 
 Simple Discovery is the default protocol that ROS 2 uses, and is available with both FastDDS and CycloneDDS. Simple Discovery uses multicasting to allow each ROS 2 participant to contact every other ROS 2 participant at the same time. This allows for all devices on the network to automatically discover each other's ROS 2 nodes.
 
-To use the TurtleBot 4 in the multicast configuration, both the RPi4 and the Create® 3 should be connected to the same Wi-Fi network. It is recommended that the RPi4 is connected to a 5GHz network for improved performance, so the network must bridge the 2.4 GHz and 5 GHz bands. Networks that provide 2.4 GHz and 5 GHz on the same SSID may not work properly with the Create3. This issue can be avoided by using Discovery Server.
-
 ```note
 Connecting the Raspberry Pi using a 2.4 GHz network or over a network with very limited bandwidth can limit functionality including navigation and sending/receiving images.
 ```
 
+{% tabs wifi_simple %}
+{% tab wifi_simple galactic %}
+```warning
+**ROS 2 Galactic is no longer supported.** Please consider upgrading to a newer release
+```
+
+To use the TurtleBot 4 in the multicast configuration, both the RPi4 and the Create® 3 should be connected to the same Wi-Fi network. It is recommended that the RPi4 is connected to a 5GHz network for improved performance, so the network must bridge the 2.4 GHz and 5 GHz bands. Networks that provide 2.4 GHz and 5 GHz on the same SSID may not work properly with the Create3. This issue can be avoided by using [Discovery Server](#discovery-server).
+
 <figure class="aligncenter">
     <img src="media/simple.png" alt="simple_discovery" style="width: 70%"/>
-    <figcaption>TurtleBot 4 Simple Discovery configuration</figcaption>
+    <figcaption>TurtleBot 4 Simple Discovery configuration for ROS 2 Galactic</figcaption>
 </figure>
+{% endtab %}
+{% tab wifi_simple humble %}
+To use the TurtleBot 4 in the multicast configuration, both the RPi4 and the Create® 3 should be connected to the same Wi-Fi network. It is recommended that the RPi4 is connected to a 5GHz network for improved performance, so the network must bridge the 2.4 GHz and 5 GHz bands. Networks that provide 2.4 GHz and 5 GHz on the same SSID may not work properly with the Create3. This issue can be avoided by using [Discovery Server](#discovery-server).
+
+<figure class="aligncenter">
+    <img src="media/simple.png" alt="simple_discovery" style="width: 70%"/>
+    <figcaption>TurtleBot 4 Simple Discovery configuration for ROS 2 Humble</figcaption>
+</figure>
+{% endtab %}
+{% tab wifi_simple jazzy %}
+To use the TurtleBot 4 in the multicast configuration, the RPi4 should be connected to the Wi-Fi network, but the Create® 3 should be left offline. It is recommended that the RPi4 is connected to a 5GHz network for improved performance. Note that this is the same network configuration as used with [Discovery Server](#discovery-server).
+
+<figure class="aligncenter">
+    <img src="media/discovery.png" alt="simple_discovery" style="width: 70%"/>
+    <figcaption>TurtleBot 4 Simple Discovery configuration for ROS 2 Jazzy. Note that the Create® 3 is not connected to wi-fi.</figcaption>
+</figure>
+{% endtab %}
+{% endtabs %}
 
 ### Discovery Server
 
