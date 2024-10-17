@@ -197,7 +197,7 @@ If topics are not visible on the Raspberry Pi, you may need to restart the Creat
 {% tab create3_topics jazzy %}
 First, make sure that the Raspberry Pi's `RMW_IMPLEMENTATION` matches the one supported by your Create® 3 firmware and that your Create® 3's firmware is version `I.*.*`. Reinstall the Create® 3 firmware or change the Raspberry Pi's RMW if needed.
 
-Check that the Create® 3's topics are visible in the `_do_not_use` namespace:
+Check that the Create® 3's topics are visible in the `_do_not_use` namespace. SSH into the Turtlebot 4 and run the following command:
 ```bash
 ros2 topic list --include-hidden-topics | grep _do_not_use
 ```
