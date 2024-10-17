@@ -456,6 +456,10 @@ IMAGE_PATH is the path to where you want the image saved -- e.g., `~/turtlebot4_
 - Get the SD flash script from `turtlebot4_setup` and flash the SD card:
 {% tabs sd_flash %}
 {% tab sd_flash galactic %}
+```warning
+**ROS 2 Galactic is no longer supported.** Please consider upgrading to a newer release
+```
+
 ```bash
 wget https://raw.githubusercontent.com/turtlebot/turtlebot4_setup/galactic/scripts/sd_flash.sh
 bash sd_flash.sh /path/to/downloaded/image.img
