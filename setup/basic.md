@@ -454,12 +454,26 @@ IMAGE_PATH is the path to where you want the image saved -- e.g., `~/turtlebot4_
 ```
 
 - Get the SD flash script from `turtlebot4_setup` and flash the SD card:
-
-
+{% tabs sd_flash %}
+{% tab sd_flash galactic %}
+```bash
+wget https://raw.githubusercontent.com/turtlebot/turtlebot4_setup/galactic/scripts/sd_flash.sh
+bash sd_flash.sh /path/to/downloaded/image.img
+```
+{% endtab %}
+{% tab sd_flash humble %}
+```bash
+wget https://raw.githubusercontent.com/turtlebot/turtlebot4_setup/humble/scripts/sd_flash.sh
+bash sd_flash.sh /path/to/downloaded/image.img
+```
+{% endtab %}
+{% tab sd_flash jazzy %}
 ```bash
 wget https://raw.githubusercontent.com/turtlebot/turtlebot4_setup/jazzy/scripts/sd_flash.sh
 bash sd_flash.sh /path/to/downloaded/image.img
 ```
+{% endtab %}
+{% endtabs %}
 - Follow the instructions and wait for the SD card to be flashed.
 - Remove the SD card from your PC.
 - Ensure your Raspberry Pi 4 is not powered on before inserting the flashed SD card.
