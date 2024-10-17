@@ -20,10 +20,26 @@ In order to control the Turtlebot 4 while running the application on your pc, yo
 
 You can install the `teleop_twist_keyboard` package on your PC by running the following commands:
 
-```bash
-sudo apt update
-sudo apt install ros-${ROS_DISTRO}-teleop-twist-keyboard
+{% tabs install_apt %}
+{% tab install_apt galactic %}
+```warning
+**ROS 2 Galactic is no longer supported.** Please consider upgrading to a newer release
 ```
+```bash
+sudo apt install ros-galactic-teleop-twist-keyboard
+```
+{% endtab %}
+{% tab install_apt humble %}
+```bash
+sudo apt install ros-humble-teleop-twist-keyboard
+```
+{% endtab %}
+{% tab install_apt jazzy %}
+```bash
+sudo apt install ros-jazzy-teleop-twist-keyboard
+```
+{% endtab %}
+{% endtabs %}
 
 Once installed, run the node by calling:
 
