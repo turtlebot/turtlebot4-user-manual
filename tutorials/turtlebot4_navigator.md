@@ -2156,11 +2156,7 @@ Before using this as the basis for a product, please consult the substantial lis
 **ROS 2 Galactic is no longer supported.** Please consider upgrading to a newer release
 ```
 
-To run this example, first start the Gazebo simulation:
-
-```bash
-ros2 launch turtlebot4_ignition_bringup ignition.launch.py nav2:=true slam:=false localization:=true rviz:=true
-```
+This tutorial is not available in Galactic.
 
 {% endtab %}
 {% tab navigation humble %}
