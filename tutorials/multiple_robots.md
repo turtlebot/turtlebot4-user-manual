@@ -109,6 +109,7 @@ On the user PC, set the `ROS_DOMAIN_ID` in your *setup.bash* file and source it.
 
 {% endtab %}
 {% tab domain jazzy %}
+
 SSH into your TurtleBot 4 and run the turtlebot4 setup tool:
 
 ```bash
@@ -127,6 +128,7 @@ Save the settings, then apply settings in the main menu.
 This will apply the new `ROS_DOMAIN_ID` to the Create® 3, RPi4 Terminal, and RPi4 Robot Upstart job.
 
 On the user PC, set the `ROS_DOMAIN_ID` in your *setup.bash* file and source it. See [Installing ROS 2](../setup/basic.md#installing-ros-2) for more details.
+
 {% endtab %}
 {% endtabs %}
 
@@ -208,26 +210,9 @@ This will apply the new namespace to the Create® 3, RPi4 Terminal, and RPi4 Rob
 
 On the user PC, `turtlebot4_desktop` launch files can use a `namespace` argument to view a specific robot:
 
-{% tabs view_model_multiple %}
-{% tab view_model_multiple galactic %}
-```warning
-**ROS 2 Galactic is no longer supported.** Please consider upgrading to a newer release
-```
 ```bash
 ros2 launch turtlebot4_viz view_model.launch.py namespace:=/robot1
 ```
-{% endtab %}
-{% tab view_model_multiple humble %}
-```bash
-ros2 launch turtlebot4_viz view_model.launch.py namespace:=/robot1
-```
-{% endtab %}
-{% tab view_model_multiple jazzy %}
-```bash
-ros2 launch turtlebot4_viz view_robot.launch.py namespace:=/robot1
-```
-{% endtab %}
-{% endtabs %}
 
 ### Launching Robots in Simulation
 
@@ -283,26 +268,9 @@ This will apply the new namespace to the Create® 3, RPi4 Terminal, and RPi4 Rob
 
 On the user PC, `turtlebot4_desktop` launch files can use a `namespace` argument to view a specific robot:
 
-{% tabs view_model_single %}
-{% tab view_model_single galactic %}
-```warning
-**ROS 2 Galactic is no longer supported.** Please consider upgrading to a newer release
-```
-```bash
-ros2 launch turtlebot4_viz view_model.launch.py namespace:=/robot1
-```
-{% endtab %}
-{% tab view_model_single humble %}
-```bash
-ros2 launch turtlebot4_viz view_model.launch.py namespace:=/robot1
-```
-{% endtab %}
-{% tab view_model_single jazzy %}
 ```bash
 ros2 launch turtlebot4_viz view_robot.launch.py namespace:=/robot1
 ```
-{% endtab %}
-{% endtabs %}
 
 ### Launching Robots in Simulation
 
