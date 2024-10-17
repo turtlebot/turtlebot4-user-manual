@@ -42,7 +42,7 @@ sure that the Fast DDS discovery server is disabled.
 
 <figure class="aligncenter">
     <img src="media/webserver_config.png" alt="Create® 3 config" style="width: 80%"/>
-    <figcaption>Configuring the Create® 3 application for Humble</figcaption>
+    <figcaption>Configuring the Create® 3 application for Galactic</figcaption>
 </figure>
 {% endtab %}
 {% tab wifi humble %}
@@ -87,7 +87,7 @@ sure that the Fast DDS discovery server is disabled.
 
 <figure class="aligncenter">
     <img src="media/webserver_config_jazzy.png" alt="Create® 3 config" style="width: 80%"/>
-    <figcaption>Configuring the Create® 3 application for Humble</figcaption>
+    <figcaption>Configuring the Create® 3 application for Jazzy</figcaption>
 </figure>
 {% endtab %}
 {% endtabs %}
