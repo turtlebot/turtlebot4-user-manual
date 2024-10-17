@@ -20,11 +20,26 @@ The Turtlebot4 desktop metapackage can be installed as a debian package:
 * Ubuntu 20.04 with ROS 2 Galactic _end-of-life, not recommended_
 
 To install the metapackage through apt:
-
-```bash
-sudo apt update
-sudo apt install ros-${ROS_DISTRO}-turtlebot4-desktop
+{% tabs install_apt %}
+{% tab install_apt galactic %}
+```warning
+**ROS 2 Galactic is no longer supported.** Please consider upgrading to a newer release
 ```
+```bash
+sudo apt install ros-galactic-turtlebot4-desktop
+```
+{% endtab %}
+{% tab install_apt humble %}
+```bash
+sudo apt install ros-humble-turtlebot4-desktop
+```
+{% endtab %}
+{% tab install_apt jazzy %}
+```bash
+sudo apt install ros-jazzy-turtlebot4-desktop
+```
+{% endtab %}
+{% endtabs %}
 
 ### Source installation
 
