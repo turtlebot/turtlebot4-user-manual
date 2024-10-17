@@ -94,7 +94,9 @@ SSH into your TurtleBot 4 and run the turtlebot4 setup tool:
 turtlebot4-setup
 ```
 
-Navigate to 'Bash Setup' in the 'ROS Setup' menu, then change your `ROS_DOMAIN_ID`. Save the settings, then apply settings in the main menu.
+Navigate to 'Bash Setup' in the 'ROS Setup' menu, then change your `ROS_DOMAIN_ID`.
+
+Save the settings, then apply settings in the main menu.
 
 <figure class="aligncenter">
     <img src="media/domain_id.gif" alt="ROS_DOMAIN_ID" style="width: 100%"/>
@@ -113,7 +115,9 @@ SSH into your TurtleBot 4 and run the turtlebot4 setup tool:
 turtlebot4-setup
 ```
 
-Navigate to 'Bash Setup' in the 'ROS Setup' menu, then change your `ROS_DOMAIN_ID`. Save the settings, then apply settings in the main menu.
+Navigate to 'Bash Setup' in the 'ROS Setup' menu, then change your `ROS_DOMAIN_ID`.
+
+Save the settings, then apply settings in the main menu.
 
 <figure class="aligncenter">
     <img src="media/domain_id.gif" alt="ROS_DOMAIN_ID" style="width: 100%"/>
@@ -131,12 +135,9 @@ Once the Create® 3 application has restarted, try calling `ros2 topic list` on 
 
 ## Namespacing
 
-Namespacing is a method of adding a prefix to topic names to group certain topics, or to make them unique.
-By namespacing all topics on a TurtleBot 4, we can have a full set of unique topics for that robot. This allows
-us to run multiple robots on the same `ROS_DOMAIN_ID`.
+Namespacing is a method of adding a prefix to topic names to group certain topics, or to make them unique. By namespacing all topics on a TurtleBot 4, we can have a full set of unique topics for that robot. This allows us to run multiple robots on the same `ROS_DOMAIN_ID`.
 
-It is common to use the name of the robot as the namespace. For example,
-if we have a robot named `robot1`, the namespaced topics would look like:
+It is common to use the name of the robot as the namespace. For example, if we have a robot named `robot1`, the namespaced topics would look like:
 
 ```bash
 ubuntu@ubuntu:~$ ros2 topic list
@@ -193,6 +194,7 @@ turtlebot4-setup
 ```
 
 Navigate to 'Bash Setup' in the 'ROS Setup' menu, then change the `ROBOT_NAMESPACE` setting.
+
 Save the settings, then apply settings in the main menu.
 
 <figure class="aligncenter">
@@ -267,6 +269,7 @@ turtlebot4-setup
 ```
 
 Navigate to 'Bash Setup' in the 'ROS Setup' menu, then change the `ROBOT_NAMESPACE` setting.
+
 Save the settings, then apply settings in the main menu.
 
 <figure class="aligncenter">
