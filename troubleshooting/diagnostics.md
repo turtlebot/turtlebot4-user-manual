@@ -66,6 +66,7 @@ turtlebot4-setup
 ```
 
 Navigate to 'Bash Setup' in the 'ROS Setup' menu, then change the `DIAGNOSTICS` setting to `False`.
+
 Save the settings, then apply settings in the main menu.
 
 
@@ -80,6 +81,7 @@ turtlebot4-setup
 ```
 
 Navigate to 'Bash Setup' in the 'ROS Setup' menu, then change the `DIAGNOSTICS` setting to `False`.
+
 Save the settings, then apply settings in the main menu.
 
 
