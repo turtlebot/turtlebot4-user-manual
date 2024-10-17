@@ -178,9 +178,26 @@ An initial pose is required before navigation can begin.
 
 If you are using the physical robot: In a new terminal launch Rviz so that you can view the map and interact with navigation:
 
+{% tabs view_nav %}
+{% tab view_nav galactic %}
+```warning
+**ROS 2 Galactic is no longer supported.** Please consider upgrading to a newer release
+```
 ```bash
 ros2 launch turtlebot4_viz view_robot.launch.py
 ```
+{% endtab %}
+{% tab view_nav humble %}
+```bash
+ros2 launch turtlebot4_viz view_robot.launch.py
+```
+{% endtab %}
+{% tab view_nav jazzy %}
+```bash
+ros2 launch turtlebot4_viz view_navigation.launch.py
+```
+{% endtab %}
+{% endtabs %}
 
 ```note
 If using multiple robots through the namespacing method, an additional `namespace` parameter must be passed. For example: `namespace:=/robot1` See [Multiple robots](./multiple_robots.md) for more details.
