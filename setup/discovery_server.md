@@ -152,6 +152,7 @@ turtlebot4-setup
 
 ```tip
 When a network change occurs or a robot ROS service or robot is rebooted, you may need to restart the ros2 daemon to see the changes with the ROS 2 command line tools (ros2cli).
+
 You may also need to call `ros2 topic list` twice to get a full list of topics. This is because the first time that you run the command, it starts the daemon which will record all of the available topics. If there are a lot of ROS nodes then it may take some time before the full topic list is available.
 ```
 
@@ -215,6 +216,7 @@ ros2 topic list
 
 ```note
 When a network change occurs or a robot ROS service or robot is rebooted, you may need to restart the ros2 daemon to see the changes with the ROS 2 command line tools (ros2cli).
+
 You may also need to call `ros2 topic list` twice to get a full list of topics. This is because the first time that you run the command, it starts the daemon which will record all of the available topics. If there are a lot of ROS nodes then it may take some time before the full topic list is available.
 ```
 
@@ -271,7 +273,9 @@ ros2 topic list
 ```
 
 ```note
-When a network change occurs or a robot ROS service or robot is rebooted, you may need to restart the ros2 daemon to see the changes with the ROS 2 command line tools (ros2cli). You may also need to call `ros2 topic list` twice to get a full list of topics. This is because the first time that you run the command, it starts the daemon which will record all of the available topics. If there are a lot of ROS nodes then it may take some time before the full topic list is available.
+When a network change occurs or a robot ROS service or robot is rebooted, you may need to restart the ros2 daemon to see the changes with the ROS 2 command line tools (ros2cli).
+
+You may also need to call `ros2 topic list` twice to get a full list of topics. This is because the first time that you run the command, it starts the daemon which will record all of the available topics. If there are a lot of ROS nodes then it may take some time before the full topic list is available.
 ```
 
 {% endtab %}
@@ -326,7 +330,9 @@ ros2 topic list
 ```
 
 ```note
-When a network change occurs or a robot ROS service or robot is rebooted, you may need to restart the ros2 daemon to see the changes with the ROS 2 command line tools (ros2cli). You may also need to call `ros2 topic list` twice to get a full list of topics. This is because the first time that you run the command, it starts the daemon which will record all of the available topics. If there are a lot of ROS nodes then it may take some time before the full topic list is available.
+When a network change occurs or a robot ROS service or robot is rebooted, you may need to restart the ros2 daemon to see the changes with the ROS 2 command line tools (ros2cli).
+
+You may also need to call `ros2 topic list` twice to get a full list of topics. This is because the first time that you run the command, it starts the daemon which will record all of the available topics. If there are a lot of ROS nodes then it may take some time before the full topic list is available.
 ```
 {% endtab %}
 {% endtabs %}
