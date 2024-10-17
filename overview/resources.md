@@ -9,6 +9,7 @@ sort: 2
 ### Ubuntu 
   - Ubuntu 20.04 LTS Desktop (Focal Fossa): <https://releases.ubuntu.com/20.04/>
   - Ubuntu 22.04 LTS Desktop (Jammy Jellyfish): <https://releases.ubuntu.com/22.04/>
+  - Ubuntu 24.04 LTS Desktop (Noble Numbat): <https://releases.ubuntu.com/24.04/>
 
 ### Raspberry Pi 
   - Raspberry Pi Imager: <https://www.raspberrypi.com/software/>
@@ -17,7 +18,7 @@ sort: 2
 ### ROS 2
   - Documentation: <https://docs.ros.org/en/humble/index.html>
   - Ubuntu (Debian) Install: <https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debians.html>
-  - Nav2 Documentation: <https://navigation.ros.org/>
+  - Nav2 Documentation: <https://docs.nav2.org/>
   - Nav2 Github: <https://github.com/ros-planning/navigation2>
   - SLAM Toolbox: <https://github.com/SteveMacenski/slam_toolbox>
 

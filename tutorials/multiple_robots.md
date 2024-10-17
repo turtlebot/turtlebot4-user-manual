@@ -24,6 +24,9 @@ There are four locations in which the **ROS_DOMAIN_ID** environment variable mus
 
 {% tabs domain %}
 {% tab domain galactic %}
+```warning
+**ROS 2 Galactic is no longer supported.** Please consider upgrading to a newer release
+```
 
 For RPi4 images v0.1.3 or higher, a script `ros_config.sh` has been installed which will conveniently set the **ROS_DOMAIN_ID** in the first 3 locations. If you are using an earlier version, you can copy the [script](https://github.com/turtlebot/turtlebot4_setup/blob/galactic/scripts/ros_config.sh) to `/usr/local/bin/` on your RPi4. You will also need to update your `install.py` script by downloading it from [here](https://github.com/turtlebot/turtlebot4_setup/blob/galactic/scripts/install.py) and replacing the existing script in `/usr/local/bin`.
 
@@ -91,7 +94,31 @@ SSH into your TurtleBot 4 and run the turtlebot4 setup tool:
 turtlebot4-setup
 ```
 
-Navigate to 'Bash Setup' in the 'ROS Setup' menu, then change your `ROS_DOMAIN_ID`. Save the settings, then apply settings in the main menu.
+Navigate to 'Bash Setup' in the 'ROS Setup' menu, then change your `ROS_DOMAIN_ID`.
+
+Save the settings, then apply settings in the main menu.
+
+<figure class="aligncenter">
+    <img src="media/domain_id.gif" alt="ROS_DOMAIN_ID" style="width: 100%"/>
+    <figcaption>Setting the ROS_DOMAIN_ID</figcaption>
+</figure>
+
+This will apply the new `ROS_DOMAIN_ID` to the Create® 3, RPi4 Terminal, and RPi4 Robot Upstart job.
+
+On the user PC, set the `ROS_DOMAIN_ID` in your *setup.bash* file and source it. See [Installing ROS 2](../setup/basic.md#installing-ros-2) for more details.
+
+{% endtab %}
+{% tab domain jazzy %}
+
+SSH into your TurtleBot 4 and run the turtlebot4 setup tool:
+
+```bash
+turtlebot4-setup
+```
+
+Navigate to 'Bash Setup' in the 'ROS Setup' menu, then change your `ROS_DOMAIN_ID`.
+
+Save the settings, then apply settings in the main menu.
 
 <figure class="aligncenter">
     <img src="media/domain_id.gif" alt="ROS_DOMAIN_ID" style="width: 100%"/>
@@ -110,12 +137,9 @@ Once the Create® 3 application has restarted, try calling `ros2 topic list` on 
 
 ## Namespacing
 
-Namespacing is a method of adding a prefix to topic names to group certain topics, or to make them unique. 
-By namespacing all topics on a TurtleBot 4, we can have a full set of unique topics for that robot. This allows
-us to run multiple robots on the same `ROS_DOMAIN_ID`.
+Namespacing is a method of adding a prefix to topic names to group certain topics, or to make them unique. By namespacing all topics on a TurtleBot 4, we can have a full set of unique topics for that robot. This allows us to run multiple robots on the same `ROS_DOMAIN_ID`.
 
-It is common to use the name of the robot as the namespace. For example, 
-if we have a robot named `robot1`, the namespaced topics would look like:
+It is common to use the name of the robot as the namespace. For example, if we have a robot named `robot1`, the namespaced topics would look like:
 
 ```bash
 ubuntu@ubuntu:~$ ros2 topic list
@@ -156,6 +180,9 @@ ubuntu@ubuntu:~$ ros2 topic list
 
 {% tabs namespacing %}
 {% tab namespacing galactic %}
+```warning
+**ROS 2 Galactic is no longer supported.** Please consider upgrading to a newer release
+```
 
 Namespacing is not supported in Galactic.
 
@@ -168,7 +195,8 @@ To set the robot namespace, SSH into your TurtleBot 4 and run the turtlebot4 set
 turtlebot4-setup
 ```
 
-Navigate to 'Bash Setup' in the 'ROS Setup' menu, then change the `ROBOT_NAMESPACE` setting. 
+Navigate to 'Bash Setup' in the 'ROS Setup' menu, then change the `ROBOT_NAMESPACE` setting.
+
 Save the settings, then apply settings in the main menu.
 
 <figure class="aligncenter">
@@ -214,7 +242,65 @@ ros2 launch turtlebot4_navigation localization.launch.py map:=office.yaml namesp
 ros2 launch turtlebot4_navigation nav2.launch.py namespace:=/robot1
 ```
 
-Replace `robot1` with the desired robot namespace. 
+Replace `robot1` with the desired robot namespace.
+
+{% endtab %}
+{% tab namespacing jazzy %}
+
+To set the robot namespace, SSH into your TurtleBot 4 and run the turtlebot4 setup tool:
+
+```bash
+turtlebot4-setup
+```
+
+Navigate to 'Bash Setup' in the 'ROS Setup' menu, then change the `ROBOT_NAMESPACE` setting.
+
+Save the settings, then apply settings in the main menu.
+
+<figure class="aligncenter">
+    <img src="media/namespace.gif" alt="namespace" style="width: 100%"/>
+    <figcaption>Setting the robot namespace</figcaption>
+</figure>
+
+This will apply the new namespace to the Create® 3, RPi4 Terminal, and RPi4 Robot Upstart job.
+
+### Viewing the Robot in RViz
+
+On the user PC, `turtlebot4_desktop` launch files can use a `namespace` argument to view a specific robot:
+
+```bash
+ros2 launch turtlebot4_viz view_robot.launch.py namespace:=/robot1
+```
+
+### Launching Robots in Simulation
+
+The first robot can be launched normally, with the addition of a `namespace`. All other parameters are still available as shown below:
+
+```bash
+ros2 launch turtlebot4_gz_bringup turtlebot4_gz.launch.py namespace:=/robot1 nav2:=true slam:=false localization:=true rviz:=true
+```
+
+Any additional robots must be launched using the `turtlebot4_spawn` launch file, a unique `namespace` and a unique spawn location:
+
+```bash
+ros2 launch turtlebot4_gz_bringup turtlebot4_spawn.launch.py namespace:=/robot2 x:=0.0 y:=1.0 nav2:=true slam:=false localization:=true rviz:=true
+```
+
+```note
+Not all functionality is currently fully supported in multi-robot simulation.
+```
+
+### Launching Navigation
+
+The SLAM, Localization and Nav2 launch files all support namespacing and can be launched as follows:
+
+```bash
+ros2 launch turtlebot4_navigation slam.launch.py namespace:=/robot1
+ros2 launch turtlebot4_navigation localization.launch.py map:=office.yaml namespace:=/robot1
+ros2 launch turtlebot4_navigation nav2.launch.py namespace:=/robot1
+```
+
+Replace `robot1` with the desired robot namespace.
 
 {% endtab %}
 {% endtabs %}

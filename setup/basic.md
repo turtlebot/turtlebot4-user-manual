@@ -15,6 +15,10 @@ To interface with the robot, it is recommended to use a remote PC running the ap
 {% tabs installation %}
 {% tab installation galactic %}
 
+```warning
+**ROS 2 Galactic is no longer supported.** Please consider upgrading to a newer release
+```
+
 Required OS: [Ubuntu 20.04](https://releases.ubuntu.com/20.04/)
 
 Follow [these instructions](https://docs.ros.org/en/galactic/Installation/Ubuntu-Install-Debians.html) to install ROS 2 Galactic on your PC.
@@ -36,6 +40,19 @@ Once ROS 2 is installed, install `turtlebot4_desktop`:
 
 ```bash
 sudo apt update && sudo apt install ros-humble-turtlebot4-desktop
+```
+
+{% endtab %}
+{% tab installation jazzy %}
+
+Required OS: [Ubuntu 24.04](https://releases.ubuntu.com/24.04/)
+
+Follow [these instructions](https://docs.ros.org/en/jazzy/Installation/Ubuntu-Install-Debians.html) to install ROS 2 Jazzy on your PC.
+
+Once ROS 2 is installed, install `turtlebot4_desktop`:
+
+```bash
+sudo apt update && sudo apt install ros-jazzy-turtlebot4-desktop
 ```
 
 {% endtab %}
@@ -61,7 +78,7 @@ The TurtleBot 4 AP network is a 5GHz network. Your computer will need to support
 
 ### SSH into the Raspberry Pi
 
-Once connected, you can SSH into the Raspberry Pi to configure its Wi-Fi. Open a terminal on your PC and call: 
+Once connected, you can SSH into the Raspberry Pi to configure its Wi-Fi. Open a terminal on your PC and call:
 
 ```bash
 ssh ubuntu@10.42.0.1
@@ -79,6 +96,10 @@ Connect the Raspberry Pi to a 5GHz Wi-Fi network for optimal performance.
 
 {% tabs wifi %}
 {% tab wifi galactic %}
+
+```warning
+**ROS 2 Galactic is no longer supported.** Please consider upgrading to a newer release
+```
 
 In your SSH session, call:
 
@@ -111,11 +132,31 @@ Change your Wi-Fi mode to 'Client' when connecting to an existing network.
 ```
 
 {% endtab %}
+{% tab wifi jazzy %}
+
+In your SSH session, run the [TurtleBot 4 setup tool](../software/turtlebot4_setup.md#configuration-tools):
+
+```bash
+turtlebot4-setup
+```
+
+This will start the TurtleBot 4 setup tool. Navigate to the "Wi-Fi Setup" menu and configure your connection. When you have finished, save and apply the settings.
+
+<figure class="aligncenter">
+    <img src="media/wifi_setup.gif" alt="Wi-Fi setup" style="width: 100%"/>
+    <figcaption>Wi-Fi Setup using the TurtleBot 4 Setup tool</figcaption>
+</figure>
+
+```note
+Change your Wi-Fi mode to 'Client' when connecting to an existing network.
+```
+
+{% endtab %}
 {% endtabs %}
 
 ### Find the new Raspberry Pi IP
 
-Once the Wi-Fi settings are applied, the Raspberry Pi will reboot and connect to your network. DHCP will assign it a new IP address. On the TurtleBot 4, this IP address will be shown at the top of the display. 
+Once the Wi-Fi settings are applied, the Raspberry Pi will reboot and connect to your network. DHCP will assign it a new IP address. On the TurtleBot 4, this IP address will be shown at the top of the display.
 
 <figure class="aligncenter">
     <img src="media/display_ip2.jpg" alt="IP Address" style="transform:rotate(270deg); width: 20%"/>
@@ -126,6 +167,10 @@ For the TurtleBot 4 Lite, you will need to check the `/ip` topic for the new add
 
 {% tabs ip %}
 {% tab ip galactic %}
+
+```warning
+**ROS 2 Galactic is no longer supported.** Please consider upgrading to a newer release
+```
 
 On your PC, run the following commands:
 
@@ -138,6 +183,18 @@ ros2 topic echo /ip
 
 {% endtab %}
 {% tab ip humble %}
+
+On your PC, run the following commands:
+
+```bash
+source /opt/ros/humble/setup.bash
+export RMW_IMPLEMENTATION=rmw_fastrtps_cpp
+export ROS_DOMAIN_ID=0
+ros2 topic echo /ip
+```
+
+{% endtab %}
+{% tab ip jazzy %}
 
 On your PC, run the following commands:
 
@@ -197,6 +254,34 @@ It is recommended to update both the Create® 3 and the Raspberry Pi when you fi
 
 Check the [Create® 3 software releases](https://iroboteducation.github.io/create3_docs/releases/overview/) to see if a newer firmware version is available. You can check the firmware version of your Create® 3 by visiting the webserver.
 
+{% tabs firmware %}
+{% tab firmware galactic %}
+```warning
+**ROS 2 Galactic is no longer supported.** Please consider upgrading to a newer release
+```
+
+```note
+If you are using ROS 2 Galactic, make sure you install firmware with version `G.*.*`; firmware versions starting with `H` or `I` are _not_ compatible with Galactic.
+```
+{% endtab %}
+{% tab firmware humble %}
+```note
+If you are using ROS 2 Humble, make sure you install firmware with version `H.*.*`; firmware versions starting with `G` or `I` are _not_ compatible with Humble.
+```
+{% endtab %}
+{% tab firmware jazzy %}
+```note
+If you are using ROS 2 Jazzy, make sure you install firmware with version `I.*.*`; firmware versions starting with `G` or `H` are _not_ compatible with Jazzy.
+```
+
+```warning
+Unlike previous versions, the Create® 3 firmware `I.*.*` does _not_ support switching between FastDDS and CycloneDDS. Instead there are two separate versions of the firmware available, each supporting one RMW implementation.  When installing the firmware on your Create® 3 you _must_ use the firmware that corresponds to the middleware you intend to use.
+
+For ROS 2 Jazzy, the default is FastDDS.  Unless you have specific reasons for using CycloneDDS, it is recommended to use the FastDDS firmware on your Create® 3.
+```
+{% endtab %}
+{% endtabs %}
+
 If new firmware is available, download it, then access the [webserver](./basic.md#accessing-the-create-3-webserver). Go to the <b>Update</b> tab, upload the firmware, then update your robot.
 
 #### Raspberry Pi packages
@@ -253,6 +338,9 @@ Placing the Raspberry Pi into Access Point mode can be useful when using the rob
 
 {% tabs ap %}
 {% tab ap galactic %}
+```warning
+**ROS 2 Galactic is no longer supported.** Please consider upgrading to a newer release
+```
 
 SSH into the Raspberry Pi and call:
 
@@ -280,12 +368,21 @@ turtlebot4-setup
 Go to <b>Wi-Fi Setup</b> and select <b>Apply Defaults</b>. Optionally you can set your own SSID and password before saving and applying the new settings.
 
 {% endtab %}
+{% tab ap jazzy %}
+
+SSH into the Raspberry Pi and run the [TurtleBot 4 setup tool](../software/turtlebot4_setup.md#configuration-tools):
+
+```bash
+turtlebot4-setup
+```
+
+Go to <b>Wi-Fi Setup</b> and select <b>Apply Defaults</b>. Optionally you can set your own SSID and password before saving and applying the new settings.
+
+{% endtab %}
 {% endtabs %}
 
 ```tip
-If you are moving your TurtleBot 4 to a new location with a different Wi-Fi network, 
-reconfigure the Raspberry Pi to connect to that network beforehand or place it into AP mode. 
-Otherwise it will continue trying to connect to your current network.
+If you are moving your TurtleBot 4 to a new location with a different Wi-Fi network, reconfigure the Raspberry Pi to connect to that network beforehand or place it into AP mode. Otherwise it will continue trying to connect to your current network.
 ```
 
 ## Troubleshooting
@@ -327,8 +424,8 @@ Installing a new image on the Raspberry Pi will delete any changes you may have 
 
 Find the latest TurtleBot 4 Raspberry Pi images at <http://download.ros.org/downloads/turtlebot4/>.
 
-- Download the latest image for the given ROS distribution and robot model. 
-- Extract the zip file to get the `.img` file 
+- Download the latest image for the given ROS distribution and robot model.
+- Extract the zip file to get the `.img` file
 - Power off your robot and then remove the microSD card from the Raspberry Pi.
 - Insert the microSD card into your PC. You may need an adapter.
 - Install the imaging tool `dcfldd`
@@ -357,12 +454,31 @@ IMAGE_PATH is the path to where you want the image saved -- e.g., `~/turtlebot4_
 ```
 
 - Get the SD flash script from `turtlebot4_setup` and flash the SD card:
+{% tabs sd_flash %}
+{% tab sd_flash galactic %}
+```warning
+**ROS 2 Galactic is no longer supported.** Please consider upgrading to a newer release
+```
 
+```bash
+wget https://raw.githubusercontent.com/turtlebot/turtlebot4_setup/galactic/scripts/sd_flash.sh
+bash sd_flash.sh /path/to/downloaded/image.img
+```
+{% endtab %}
+{% tab sd_flash humble %}
 ```bash
 wget https://raw.githubusercontent.com/turtlebot/turtlebot4_setup/humble/scripts/sd_flash.sh
 bash sd_flash.sh /path/to/downloaded/image.img
 ```
-- Follow the instructions and wait for the SD card to be flashed. 
+{% endtab %}
+{% tab sd_flash jazzy %}
+```bash
+wget https://raw.githubusercontent.com/turtlebot/turtlebot4_setup/jazzy/scripts/sd_flash.sh
+bash sd_flash.sh /path/to/downloaded/image.img
+```
+{% endtab %}
+{% endtabs %}
+- Follow the instructions and wait for the SD card to be flashed.
 - Remove the SD card from your PC.
 - Ensure your Raspberry Pi 4 is not powered on before inserting the flashed SD card.
 - Follow the [Robot Setup](#robot) to configure your TurtleBot 4.

@@ -18,42 +18,34 @@ The simplest way to get your robot driving is to use a keyboard application on y
 In order to control the Turtlebot 4 while running the application on your pc, you must set up the [networking](../setup/networking.md) between your robot and your pc, so that they can communicate over ros topics.
 ```
 
-{% tabs keyboard %}
-{% tab keyboard galactic %}
-
 You can install the `teleop_twist_keyboard` package on your PC by running the following commands:
 
+{% tabs install_apt %}
+{% tab install_apt galactic %}
+```warning
+**ROS 2 Galactic is no longer supported.** Please consider upgrading to a newer release
+```
 ```bash
-sudo apt update
 sudo apt install ros-galactic-teleop-twist-keyboard
 ```
-
-Once installed, run the node by calling:
-
-```bash
-source /opt/ros/galactic/setup.bash
-ros2 run teleop_twist_keyboard teleop_twist_keyboard
-```
-
 {% endtab %}
-{% tab keyboard humble %}
-
-You can install the `teleop_twist_keyboard` package on your PC by running the following commands:
-
+{% tab install_apt humble %}
 ```bash
-sudo apt update
 sudo apt install ros-humble-teleop-twist-keyboard
 ```
+{% endtab %}
+{% tab install_apt jazzy %}
+```bash
+sudo apt install ros-jazzy-teleop-twist-keyboard
+```
+{% endtab %}
+{% endtabs %}
 
 Once installed, run the node by calling:
 
 ```bash
-source /opt/ros/humble/setup.bash
 ros2 run teleop_twist_keyboard teleop_twist_keyboard
 ```
-
-{% endtab %}
-{% endtabs %}
 
 This will start a CLI interface which allows you to press keys to command the robot to drive.
 

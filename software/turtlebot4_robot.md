@@ -24,6 +24,9 @@ To manually install this metapackage from source:
 
 {% tabs install %}
 {% tab install galactic %}
+```warning
+**ROS 2 Galactic is no longer supported.** Please consider upgrading to a newer release
+```
 
 Clone the repository into your workspace:
 
@@ -75,11 +78,37 @@ colcon build --symlink-install
 Next, the workspace must be sourced. Source the workspace on the robot by running the `turtlebot4-setup` tool and under `ROS Setup` set the workspace as the path to your workspace's setup.bash (`/home/ubuntu/turtlebot4_ws/install/setup.bash`).
 
 {% endtab %}
+{% tab install jazzy %}
+
+Clone the repository into your workspace:
+
+```bash
+cd ~/turtlebot4_ws/src
+git clone https://github.com/turtlebot/turtlebot4_robot.git  -b jazzy
+```
+
+Install dependencies:
+
+```bash
+cd ~/turtlebot4_ws
+rosdep install --from-path src -yi
+```
+
+Build the packages:
+
+```bash
+source /opt/ros/jazzy/setup.bash
+colcon build --symlink-install
+```
+
+Next, the workspace must be sourced. Source the workspace on the robot by running the `turtlebot4-setup` tool and under `ROS Setup` set the workspace as the path to your workspace's setup.bash (`/home/ubuntu/turtlebot4_ws/install/setup.bash`).
+
+{% endtab %}
 {% endtabs %}
 
 ## Base
 
-The `turtlebot4_base` package contains the source code for the [rclcpp](https://github.com/ros2/rclcpp) node `turtlebot4_base_node` which runs on the physical robot. This node interfaces with the GPIO lines of the Raspberry Pi which allows it to read the state of the buttons, as well as write to the LEDs and display. 
+The `turtlebot4_base` package contains the source code for the [rclcpp](https://github.com/ros2/rclcpp) node `turtlebot4_base_node` which runs on the physical robot. This node interfaces with the GPIO lines of the Raspberry Pi which allows it to read the state of the buttons, as well as write to the LEDs and display.
 
 ```note
 This node is only used on the standard TurtleBot 4 model.
@@ -201,6 +230,9 @@ The robot uses the [robot_upstart](https://github.com/clearpathrobotics/robot_up
 
 {% tabs upstart %}
 {% tab upstart galactic %}
+```warning
+**ROS 2 Galactic is no longer supported.** Please consider upgrading to a newer release
+```
 
 Robot upstart commands:
 
@@ -231,7 +263,7 @@ Robot upstart commands:
         <tr>
             <td><b>Install</b></td>
             <td>
-                <code>install.py model [ROS_DOMAIN_ID]</code> (v0.1.2)<br/> 
+                <code>install.py model [ROS_DOMAIN_ID]</code> (v0.1.2)<br/>
                 <code>install.py model --domain [ROS_DOMAIN_ID]</code> (v0.1.3)
             </td>
             <td>Install the service. Optionally, set the ROS_DOMAIN_ID.</td>
@@ -280,6 +312,25 @@ Use the various menu options to start, stop, uninstall, or reinstall the upstart
 The setup tool will automatically reinstall the `robot_upstart` job when certain settings are changed.
 
 {% endtab %}
+{% tab upstart jazzy %}
+
+Use the TurtleBot 4 setup tool to manage `robot_upstart`:
+
+```bash
+turtlebot4-setup
+```
+
+Navigate to 'ROS Setup', then 'Robot Upstart'.
+Use the various menu options to start, stop, uninstall, or reinstall the upstart job.
+
+<figure class="aligncenter">
+    <img src="media/robot_upstart.png" alt="robot_upstart" style="width: 70%"/>
+    <figcaption>Manage robot_upstart with the TurtleBot 4 setup tool</figcaption>
+</figure>
+
+The setup tool will automatically reinstall the `robot_upstart` job when certain settings are changed.
+
+{% endtab %}
 {% endtabs %}
 
 ## Diagnostics
@@ -296,6 +347,9 @@ The [diagnostics updater](https://github.com/turtlebot/turtlebot4_robot/blob/gal
 
 {% tabs diagnostics %}
 {% tab diagnostics galactic %}
+```warning
+**ROS 2 Galactic is no longer supported.** Please consider upgrading to a newer release
+```
 
 Diagnostic topics:
 
@@ -353,6 +407,63 @@ Diagnostic topics:
 
 {% endtab %}
 {% tab diagnostics humble %}
+
+Diagnostic topics:
+
+<table>
+    <thead>
+        <tr>
+            <th>Topic</th>
+            <th>Message Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><b>battery_state</b></td>
+            <td><i>sensor_msgs/msg/BatteryState</i></td>
+            <td>Battery voltage and percentage</td>
+        </tr>
+        <tr>
+            <td><b>color/preview/image</b></td>
+            <td><i>sensor_msgs/msg/Image</i></td>
+            <td>OAK-D color camera data</td>
+        </tr>
+        <tr>
+            <td><b>dock</b></td>
+            <td><i>irobot_create_msgs/msg/DockStatus</i></td>
+            <td>Dock status</td>
+        </tr>
+        <tr>
+            <td><b>hazard_detection</b></td>
+            <td><i>irobot_create_msgs/msg/HazardDetectionVector</i></td>
+            <td>Create® 3 Hazards</td>
+        </tr>
+        <tr>
+            <td><b>imu</b></td>
+            <td><i>sensor_msgs/msg/Imu</i></td>
+            <td>IMU data</td>
+        </tr>
+        <tr>
+            <td><b>mouse</b></td>
+            <td><i>irobot_create_msgs/msg/Mouse</i></td>
+            <td>Mouse sensor data</td>
+        </tr>
+        <tr>
+            <td><b>scan</b></td>
+            <td><i>sensor_msgs/msg/LaserScan</i></td>
+            <td>RPLIDAR laser scan data</td>
+        </tr>
+        <tr>
+            <td><b>wheel_status</b></td>
+            <td><i>irobot_create_msgs/msg/WheelStatus</i></td>
+            <td>Wheels enabled status</td>
+        </tr>
+    </tbody>
+</table>
+
+{% endtab %}
+{% tab diagnostics jazzy %}
 
 Diagnostic topics:
 

@@ -10,9 +10,34 @@ Source code is available [here](https://github.com/turtlebot/turtlebot4_simulato
 
 ## Installation
 
-```note
-The `turtlebot4_simulator` metapackage can be installed on a PC running Ubuntu Desktop 20.04 with ROS 2 Galactic or Ubuntu Desktop 22.04 with ROS 2 Humble.
+The recommended way to install the Turtlebot4 simulator is to install the debian metapackage, which is available on:
+* Ubuntu 24.04 with ROS 2 Jazzy
+* Ubuntu 22.04 with ROS 2 Humble
+* Ubuntu 20.04 with ROS 2 Galactic _end-of-life, not recommended_
+
+by running
+{% tabs install_apt %}
+{% tab install_apt galactic %}
+```warning
+**ROS 2 Galactic is no longer supported.** Please consider upgrading to a newer release
 ```
+```bash
+sudo apt install ros-galactic-turtlebot4-simulator ros-galactic-irobot-create-nodes
+```
+{% endtab %}
+{% tab install_apt humble %}
+```bash
+sudo apt install ros-humble-turtlebot4-simulator ros-humble-irobot-create-nodes
+```
+{% endtab %}
+{% tab install_apt jazzy %}
+```bash
+sudo apt install ros-jazzy-turtlebot4-simulator ros-jazzy-irobot-create-nodes
+```
+{% endtab %}
+{% endtabs %}
+
+For installation from source code, see [below](#source-installation).
 
 ### Dev Tools
 
@@ -22,10 +47,13 @@ Install useful development tools:
 sudo apt install ros-dev-tools
 ```
 
-### Ignition Gazebo
+### Gazebo
 
 {% tabs ignition %}
 {% tab ignition galactic %}
+```warning
+**ROS 2 Galactic is no longer supported.** Please consider upgrading to a newer release
+```
 
 Ignition Edifice must be installed:
 
@@ -49,28 +77,16 @@ sudo apt-get update && sudo apt-get install ignition-fortress
 ```
 
 {% endtab %}
-{% endtabs %}
+{% tab ignition jazzy %}
 
-### Debian package
-
-{% tabs debian %}
-{% tab debian galactic %}
-
-To install the metapackage through apt:
+Gazebo Harmonic [must be installed](https://gazebosim.org/docs/latest/install_ubuntu/):
 
 ```bash
-sudo apt update
-sudo apt install ros-galactic-turtlebot4-simulator ros-galactic-irobot-create-nodes
-```
-
-{% endtab %}
-{% tab debian humble %}
-
-To install the metapackage through apt:
-
-```bash
-sudo apt update
-sudo apt install ros-humble-turtlebot4-simulator
+sudo apt-get install curl
+sudo curl https://packages.osrfoundation.org/gazebo.gpg --output /usr/share/keyrings/pkgs-osrf-archive-keyring.gpg
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/pkgs-osrf-archive-keyring.gpg] http://packages.osrfoundation.org/gazebo/ubuntu-stable $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/gazebo-stable.list > /dev/null
+sudo apt-get update
+sudo apt-get install gz-harmonic
 ```
 
 {% endtab %}
@@ -84,6 +100,9 @@ Source installation is an alternative to the debian package and should only be u
 
 {% tabs setup %}
 {% tab setup galactic %}
+```warning
+**ROS 2 Galactic is no longer supported.** Please consider upgrading to a newer release
+```
 
 To manually install this metapackage from source, clone the git repository:
 
@@ -136,6 +155,32 @@ colcon build --symlink-install
 Next, the workspace must be sourced by running `source ~/turtlebot4_ws/install/setup.bash` in the terminal or by adding that command in the `.bashrc` file and sourcing the `.bashrc` file.
 
 {% endtab %}
+{% tab setup jazzy %}
+
+To manually install this metapackage from source, clone the git repository:
+
+```bash
+cd ~/turtlebot4_ws/src
+git clone https://github.com/turtlebot/turtlebot4_simulator.git -b jazzy
+```
+
+Install dependencies:
+
+```bash
+cd ~/turtlebot4_ws
+rosdep install --from-path src -yi
+```
+
+Build the packages:
+
+```bash
+source /opt/ros/jazzy/setup.bash
+colcon build --symlink-install
+```
+
+Next, the workspace must be sourced by running `source ~/turtlebot4_ws/install/setup.bash` in the terminal or by adding that command in the `.bashrc` file and sourcing the `.bashrc` file.
+
+{% endtab %}
 {% endtabs %}
 
 ## Networking
@@ -148,12 +193,15 @@ The simulation can be run in discovery server mode but the discovery server refe
 Simulated robots and physical robots should not be combined in the same system.
 ```
 
-## Ignition Bringup
-
-The `turtlebot4_ignition_bringup` package contains launch files and configurations to launch Ignition Gazebo.
+## Gazebo Bringup
 
 {% tabs bringup %}
 {% tab bringup galactic %}
+```warning
+**ROS 2 Galactic is no longer supported.** Please consider upgrading to a newer release
+```
+
+The `turtlebot4_ignition_bringup` package contains launch files and configurations to launch Ignition Gazebo.
 
 Launch files:
 
@@ -193,6 +241,7 @@ ros2 launch turtlebot4_ignition_bringup ignition.launch.py slam:=sync nav2:=true
 
 {% endtab %}
 {% tab bringup humble %}
+The `turtlebot4_ignition_bringup` package contains launch files and configurations to launch Ignition Gazebo.
 
 Launch files:
 
@@ -248,21 +297,88 @@ ros2 launch turtlebot4_ignition_bringup turtlebot4_ignition.launch.py slam:=true
 ```
 
 {% endtab %}
+{% tab bringup jazzy %}
+The `turtlebot4_gz_bringup` package contains launch files and configurations to launch Gazebo.
+
+Launch files:
+
+* [Turtlebot 4 Gazebo Launch](https://github.com/turtlebot/turtlebot4_simulator/blob/jazzy/turtlebot4_gz_bringup/launch/turtlebot4_gz.launch.py): Launches Gazebo and all required nodes to run the simulation.
+* [Gazebo](https://github.com/turtlebot/turtlebot4_simulator/blob/jazzy/turtlebot4_gz_bringup/launch/sim.launch.py): Launches Gazebo only.
+* [ROS Gazebo Bridge](https://github.com/turtlebot/turtlebot4_simulator/blob/jazzy/turtlebot4_gz_bringup/launch/ros_gz_bridge.launch.py): Launches all of the required `ros_gz_bridge` nodes to bridge Ignition topics with ROS topics.
+* [TurtleBot 4 Nodes](https://github.com/turtlebot/turtlebot4_simulator/blob/jazzy/turtlebot4_gz_bringup/launch/turtlebot4_nodes.launch.py): Launches the `turtlebot4_node` and `turtlebot4_ignition_hmi_node` required to control the HMI plugin and robot behaviour.
+
+Turtlebot 4 Gazebo launch configuration options:
+
+- **model**: Which TurtleBot 4 model to use
+    - options: *standard, lite*
+    - default: *standard*
+- **rviz**: Whether to launch rviz
+    - options: *true, false*
+    - default: *false*
+- **localization**: Whether to launch localization
+    - options: *true, false*
+    - default: *false*
+- **slam**: Whether to launch SLAM
+    - options: *true, false*
+    - default: *false*
+- **nav2**: Whether to launch Nav2
+    - options: *true, false*
+    - default: *false*
+- **world**: Which world to use for simulation
+    - options: *depot, maze, warehouse*
+    - default: *warehouse*
+- **namespace**: Optional robot namespace
+  - options: Any valid ROS 2 name as a string
+  - default: blank ("")
+- **x**: x coordinate of the robot and dock spawn location in the gazebo world
+  - options: float representing a valid free location in the map
+  - default: *0.0*
+- **y**: y coordinate of the robot and dock spawn location in the gazebo world
+  - options: float representing a valid free location in the map
+  - default: *0.0*
+- **z**: z coordinate of the robot and dock spawn location in the gazebo world
+  - options: float representing a valid free location in the map
+  - default: *0.0*
+- **yaw**: robot and dock orientation at spawn in the gazebo world
+  - options: float representing a valid free location in the map
+  - default: *0.0*
+
+Running the simulator with default settings:
+```bash
+ros2 launch turtlebot4_gz_bringup turtlebot4_gz.launch.py
+```
+
+Running synchronous SLAM with Nav2:
+```bash
+ros2 launch turtlebot4_gz_bringup turtlebot4_gz.launch.py slam:=true nav2:=true rviz:=true
+```
+
+{% endtab %}
 {% endtabs %}
 
-## Ignition GUI Plugins
-
-The `turtlebot4_ignition_gui_plugins` package contains the source code for the TurtleBot 4 HMI GUI plugin.
+## Gazebo GUI Plugins
 
 {% tabs bringup %}
 {% tab bringup galactic %}
+```warning
+**ROS 2 Galactic is no longer supported.** Please consider upgrading to a newer release
+```
+
+The `turtlebot4_ignition_gui_plugins` package contains the source code for the TurtleBot 4 HMI GUI plugin.
 
 The [TurtleBot 4 HMI GUI plugin](https://github.com/turtlebot/turtlebot4_simulator/tree/galactic/turtlebot4_ignition_gui_plugins/Turtlebot4Hmi) is only used for the standard model. The lite model uses the [Create® 3 HMI GUI plugin](https://github.com/iRobotEducation/create3_sim/tree/main/irobot_create_ignition/irobot_create_ignition_plugins/Create3Hmi).
 
 {% endtab %}
 {% tab bringup humble %}
+The `turtlebot4_ignition_gui_plugins` package contains the source code for the TurtleBot 4 HMI GUI plugin.
 
 The [TurtleBot 4 HMI GUI plugin](https://github.com/turtlebot/turtlebot4_simulator/tree/humble/turtlebot4_ignition_gui_plugins/Turtlebot4Hmi) is only used for the standard model. The lite model uses the [Create® 3 HMI GUI plugin](https://github.com/iRobotEducation/create3_sim/tree/main/irobot_create_ignition/irobot_create_ignition_plugins/Create3Hmi).
+
+{% endtab %}
+{% tab bringup jazzy %}
+The `turtlebot4_gz_gui_plugins` package contains the source code for the TurtleBot 4 HMI GUI plugin.
+
+The [TurtleBot 4 HMI GUI plugin](https://github.com/turtlebot/turtlebot4_simulator/tree/jazzy/turtlebot4_gz_gui_plugins/Turtlebot4Hmi) is only used for the standard model. The lite model uses the [Create® 3 HMI GUI plugin](https://github.com/iRobotEducation/create3_sim/tree/jazzy/irobot_create_gz/irobot_create_gz_plugins/Create3Hmi).
 
 {% endtab %}
 {% endtabs %}
@@ -272,7 +388,20 @@ The [TurtleBot 4 HMI GUI plugin](https://github.com/turtlebot/turtlebot4_simulat
     <figcaption>TurtleBot 4 HMI GUI plugin</figcaption>
 </figure>
 
-## Ignition Toolbox
+## Gazebo Toolbox
+
+{% tabs toolbox %}
+{% tab toolbox galactic %}
+```warning
+**ROS 2 Galactic is no longer supported.** Please consider upgrading to a newer release
+```
 
 The `turtlebot4_ignition_toolbox` package contains the source code for the TurtleBot 4 HMI node. The TurtleBot 4 HMI node acts as a bridge between the `turtlebot4_node` and `ros_ign_bridge` to convert the custom [TurtleBot 4 messages](./turtlebot4_common.md#messages) into standard messages such as `Int32` and `String`.
-
+{% endtab %}
+{% tab toolbox humble %}
+The `turtlebot4_ignition_toolbox` package contains the source code for the TurtleBot 4 HMI node. The TurtleBot 4 HMI node acts as a bridge between the `turtlebot4_node` and `ros_ign_bridge` to convert the custom [TurtleBot 4 messages](./turtlebot4_common.md#messages) into standard messages such as `Int32` and `String`.
+{% endtab %}
+{% tab toolbox jazzy %}
+The `turtlebot4_gz_toolbox` package contains the source code for the TurtleBot 4 HMI node. The TurtleBot 4 HMI node acts as a bridge between the `turtlebot4_node` and `ros_gz_bridge` to convert the custom [TurtleBot 4 messages](./turtlebot4_common.md#messages) into standard messages such as `Int32` and `String`.
+{% endtab %}
+{% endtabs %}

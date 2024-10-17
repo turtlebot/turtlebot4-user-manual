@@ -8,53 +8,32 @@ sort: 8
 
 ### Connecting
 
-The RPLIDAR connects to the TurtleBot 4 with a micro USB to USB-A cable. The sensor does not require high data throughput, so using a USB 2.0 port is sufficient. 
+The RPLIDAR connects to the TurtleBot 4 with a micro USB to USB-A cable. The sensor does not require high data throughput, so using a USB 2.0 port is sufficient.
 
-{% tabs udev %}
-{% tab udev galactic %}
-
-Once connected, the RPLIDAR should register on the Raspberry PI as a USB device. If the [udev rules](https://github.com/turtlebot/turtlebot4_setup/blob/galactic/udev/turtlebot4.rules) are installed, the RPLIDAR will appear as `/dev/RPLIDAR`. Otherwise it will be `/dev/ttyUSB0`.
-
-
-{% endtab %}
-{% tab udev humble %}
-
-Once connected, the RPLIDAR should register on the Raspberry PI as a USB device. If the [udev rules](https://github.com/turtlebot/turtlebot4_setup/blob/humble/udev/50-turtlebot4.rules) are installed, the RPLIDAR will appear as `/dev/RPLIDAR`. Otherwise it will be `/dev/ttyUSB0`.
-
-
-{% endtab %}
-{% endtabs %}
+Once connected, the RPLIDAR should register on the Raspberry PI as a USB device. If the [udev rules](https://github.com/turtlebot/turtlebot4_setup/blob/jazzy/udev/turtlebot4.rules) are installed, the RPLIDAR will appear as `/dev/RPLIDAR`. Otherwise it will be `/dev/ttyUSB0`.
 
 To check that the USB device exists, use the command
 
 ```bash
-ls /dev/RPLIDAR
+ls -l /dev/RPLIDAR
 ```
 
-If the device exists, the terminal will echo `/dev/RPLIDAR`.
+If the device exists, the command will print something of the form
+```
+lrwxrwxrwx 1 root root 7 Oct 10 13:49 /dev/RPLIDAR -> ttyUSB0
+```
+If the device does not exist, the command will print
+```
+ls: cannot access '/dev/RPLIDAR': No such file or directory
+```
 
 ### Installing
 
-{% tabs rplidar %}
-{% tab rplidar galactic %}
-
 The RPLIDAR drivers are installed by default on all TurtleBot 4's. To manually install, run:
 
 ```bash
-sudo apt install ros-galactic-rplidar-ros
+sudo apt install ros-${ROS_DISTRO}-rplidar-ros
 ```
-
-{% endtab %}
-{% tab rplidar humble %}
-
-The RPLIDAR drivers are installed by default on all TurtleBot 4's. To manually install, run:
-
-```bash
-sudo apt install ros-humble-rplidar-ros
-```
-
-{% endtab %}
-{% endtabs %}
 
 ### Running
 
@@ -102,26 +81,11 @@ The OAK-D cameras are connected to the Raspberry Pi with a USB-C to USB-A cable.
 
 ### Installing
 
-{% tabs rplidar %}
-{% tab rplidar galactic %}
-
 The OAK-D drivers are installed by default on all TurtleBot 4's. To manually install, run:
 
 ```bash
-sudo apt install ros-galactic-depthai-ros
+sudo apt install ros-${ROS_DISTRO}-depthai-ros
 ```
-
-{% endtab %}
-{% tab rplidar humble %}
-
-The OAK-D drivers are installed by default on all TurtleBot 4's. To manually install, run:
-
-```bash
-sudo apt install ros-humble-depthai-ros
-```
-
-{% endtab %}
-{% endtabs %}
 
 ### Running
 
@@ -141,10 +105,9 @@ For example:
 ros2 launch depthai_examples mobile_publisher.launch.py
 ```
 
-AI examples are available on the DepthAI [github](https://github.com/luxonis/depthai-python). To view the images from these examples you will need to ssh into the robot with a `-X` flag.
-
+AI examples are available on the DepthAI [github](https://github.com/luxonis/depthai-python). To view the images from these examples you will need to ssh into the robot with a `-X` flag:
 ```bash
-ssh ubuntu@192.168.0.15 -X
+ssh -X ubuntu@10.42.0.1
 ```
 
 ## Create® 3
@@ -167,12 +130,12 @@ The wheeldrop is the spring on which the Create® 3 wheels sit. When the robot i
 
 ### IR Proximity
 
-The IR proxmity sensors are located on the front of the bumper and are used for the wall follow action. The sensor data can be viewed on the */ir_intensity* topic.
+The IR proxmity sensors are located on the front of the bumper and are used for the wall follow action. The sensor data can be viewed on the `/ir_intensity` topic.
 
 ### Slip and Stall
 
-Wheel slip and stall is also detected by the Create® 3. The status can be viewed on the */slip_status* and */stall_status* topics.
+Wheel slip and stall is also detected by the Create® 3. The status can be viewed on the `/slip_status` and `/stall_status` topics.
 
 ### Kidnap
 
-The robot uses a fusion of sensor data to detect when it has been picked up and "kidnapped". Motors will be disabled in this state, and will re-enable when placed on the ground again. The */kidnap_status* topic shows the current kidnap state.
+The robot uses a fusion of sensor data to detect when it has been picked up and "kidnapped". Motors will be disabled in this state, and will re-enable when placed on the ground again. The `/kidnap_status` topic shows the current kidnap state.

@@ -14,6 +14,9 @@ Remember to always source your ROS 2 environment before trying to launch a node.
 
 {% tabs slam %}
 {% tab slam galactic %}
+```warning
+**ROS 2 Galactic is no longer supported.** Please consider upgrading to a newer release
+```
 
 First, install `turtlebot4_navigation`:
 
@@ -61,6 +64,33 @@ ros2 launch turtlebot4_navigation slam.launch.py params:=/full/path/to/slam.yaml
 ```
 
 {% endtab %}
+{% tab slam jazzy %}
+
+First, install `turtlebot4_navigation`:
+
+```bash
+sudo apt install ros-jazzy-turtlebot4-navigation
+```
+
+Then run SLAM. It is recommended to run synchronous SLAM on a remote PC to get a higher resolution map.
+
+```bash
+ros2 launch turtlebot4_navigation slam.launch.py
+```
+
+Asynchronous SLAM can be used as well.
+
+```bash
+ros2 launch turtlebot4_navigation slam.launch.py sync:=false
+```
+
+To change map resolution or other SLAM parameters, copy the [default config](https://github.com/turtlebot/turtlebot4/blob/jazzy/turtlebot4_navigation/config/slam.yaml) and modify it. Then, pass the parameters in as a launch argument.
+
+```bash
+ros2 launch turtlebot4_navigation slam.launch.py params:=/full/path/to/slam.yaml
+```
+
+{% endtab %}
 {% endtabs %}
 
 
@@ -68,9 +98,27 @@ ros2 launch turtlebot4_navigation slam.launch.py params:=/full/path/to/slam.yaml
 
 To visualise the map, launch Rviz2 with the `view_robot` launch file on the user computer. This requires a desktop version of Ubuntu with a display and therefore cannot be run on the robot itself.
 
+{% tabs view_map %}
+{% tab view_map galactic %}
+```warning
+**ROS 2 Galactic is no longer supported.** Please consider upgrading to a newer release
+```
+
 ```bash
 ros2 launch turtlebot4_viz view_robot.launch.py
 ```
+{% endtab %}
+{% tab view_map humble %}
+```bash
+ros2 launch turtlebot4_viz view_robot.launch.py
+```
+{% endtab %}
+{% tab view_map jazzy %}
+```bash
+ros2 launch turtlebot4_viz view_navigation.launch.py
+```
+{% endtab %}
+{% endtabs %}
 
 <figure class="aligncenter">
     <img src="media/rviz_slam.png" alt="RVIZ SLAM" style="width: 80%"/>

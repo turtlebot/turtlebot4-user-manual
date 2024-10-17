@@ -6,6 +6,9 @@ sort: 6
 
 {% tabs navigation %}
 {% tab navigation galactic %}
+```warning
+**ROS 2 Galactic is no longer supported.** Please consider upgrading to a newer release
+```
 
 The [TurtleBot 4 Navigator](https://github.com/turtlebot/turtlebot4/blob/galactic/turtlebot4_navigation/turtlebot4_navigation/turtlebot4_navigator.py) is a Python node that adds on to the [Nav2 Simple Commander](https://github.com/ros-planning/navigation2/blob/galactic/nav2_simple_commander/nav2_simple_commander/robot_navigator.py). It includes TurtleBot 4 specific features such as docking and undocking, as well as easy to use methods for navigating.
 
@@ -13,6 +16,11 @@ The [TurtleBot 4 Navigator](https://github.com/turtlebot/turtlebot4/blob/galacti
 {% tab navigation humble %}
 
 The [TurtleBot 4 Navigator](https://github.com/turtlebot/turtlebot4/blob/humble/turtlebot4_navigation/turtlebot4_navigation/turtlebot4_navigator.py) is a Python node that adds on to the [Nav2 Simple Commander](https://github.com/ros-planning/navigation2/blob/humble/nav2_simple_commander/nav2_simple_commander/robot_navigator.py). It includes TurtleBot 4 specific features such as docking and undocking, as well as easy to use methods for navigating.
+
+{% endtab %}
+{% tab navigation jazzy %}
+
+The [TurtleBot 4 Navigator](https://github.com/turtlebot/turtlebot4/blob/jazzy/turtlebot4_navigation/turtlebot4_navigation/turtlebot4_navigator.py) is a Python node that adds on to the [Nav2 Simple Commander](https://github.com/ros-planning/navigation2/blob/jazzy/nav2_simple_commander/nav2_simple_commander/robot_navigator.py). It includes TurtleBot 4 specific features such as docking and undocking, as well as easy to use methods for navigating.
 
 {% endtab %}
 {% endtabs %}
@@ -35,6 +43,9 @@ This example demonstrates the same behaviour as [Nav2 Goal](./navigation.md/#nav
 
 {% tabs navigation %}
 {% tab navigation galactic %}
+```warning
+**ROS 2 Galactic is no longer supported.** Please consider upgrading to a newer release
+```
 
 To run this example, start the Ignition Gazebo simulation:
 
@@ -68,6 +79,23 @@ ros2 run turtlebot4_python_tutorials nav_to_pose
 ```
 
 {% endtab %}
+{% tab navigation jazzy %}
+
+To run this example, start the Gazebo simulation:
+
+```bash
+ros2 launch turtlebot4_gz_bringup turtlebot4_gz.launch.py nav2:=true slam:=false localization:=true rviz:=true
+```
+
+Once the simulation has started, ensure to press the "Play" button on Gazebo to start the simulation.
+
+Next, open another terminal and run:
+
+```bash
+ros2 run turtlebot4_python_tutorials nav_to_pose
+```
+
+{% endtab %}
 {% endtabs %}
 
 ### Code breakdown
@@ -75,6 +103,9 @@ ros2 run turtlebot4_python_tutorials nav_to_pose
 
 {% tabs navigation %}
 {% tab navigation galactic %}
+```warning
+**ROS 2 Galactic is no longer supported.** Please consider upgrading to a newer release
+```
 
 The source code for this example is available [here](https://github.com/turtlebot/turtlebot4_tutorials/blob/galactic/turtlebot4_python_tutorials/turtlebot4_python_tutorials/nav_to_pose.py).
 
@@ -116,6 +147,45 @@ def main():
 
 
 The source code for this example is available [here](https://github.com/turtlebot/turtlebot4_tutorials/blob/humble/turtlebot4_python_tutorials/turtlebot4_python_tutorials/nav_to_pose.py).
+
+
+Let's take a look at the main function.
+
+```py
+def main():
+    rclpy.init()
+
+    navigator = TurtleBot4Navigator()
+
+    # Start on dock
+    if not navigator.getDockedStatus():
+        navigator.info('Docking before initialising pose')
+        navigator.dock()
+
+    # Set initial pose
+    initial_pose = navigator.getPoseStamped([0.0, 0.0], TurtleBot4Directions.NORTH)
+    navigator.setInitialPose(initial_pose)
+
+    # Wait for Nav2
+    navigator.waitUntilNav2Active()
+
+    # Set goal poses
+    goal_pose = navigator.getPoseStamped([-13.0, 9.0], TurtleBot4Directions.EAST)
+
+    # Undock
+    navigator.undock()
+
+    # Go to each goal pose
+    navigator.startToPose(goal_pose)
+
+    rclpy.shutdown()
+```
+
+{% endtab %}
+{% tab navigation jazzy %}
+
+
+The source code for this example is available [here](https://github.com/turtlebot/turtlebot4_tutorials/blob/jazzy/turtlebot4_python_tutorials/turtlebot4_python_tutorials/nav_to_pose.py).
 
 
 Let's take a look at the main function.
@@ -217,6 +287,9 @@ This call will block until Nav2 is ready. Make sure you have launched Nav2.
 
 {% tabs navigation %}
 {% tab navigation galactic %}
+```warning
+**ROS 2 Galactic is no longer supported.** Please consider upgrading to a newer release
+```
 
 Now we can create a [geometry_msgs/PoseStamped](https://github.com/ros2/common_interfaces/blob/galactic/geometry_msgs/msg/PoseStamped.msg) message. The `getPoseStamped` method makes it easy for us. All we have to do is pass in a list describing the x and y position that we want to drive to on the map, and the direction that we want the robot to be facing when it reaches that point.
 
@@ -228,6 +301,15 @@ goal_pose = navigator.getPoseStamped([13.0, 5.0], TurtleBot4Directions.EAST)
 {% tab navigation humble %}
 
 Now we can create a [geometry_msgs/PoseStamped](https://github.com/ros2/common_interfaces/blob/humble/geometry_msgs/msg/PoseStamped.msg) message. The `getPoseStamped` method makes it easy for us. All we have to do is pass in a list describing the x and y position that we want to drive to on the map, and the direction that we want the robot to be facing when it reaches that point.
+
+```py
+goal_pose = navigator.getPoseStamped([-13.0, 9.0], TurtleBot4Directions.EAST)
+```
+
+{% endtab %}
+{% tab navigation jazzy %}
+
+Now we can create a [geometry_msgs/PoseStamped](https://github.com/ros2/common_interfaces/blob/jazzy/geometry_msgs/msg/PoseStamped.msg) message. The `getPoseStamped` method makes it easy for us. All we have to do is pass in a list describing the x and y position that we want to drive to on the map, and the direction that we want the robot to be facing when it reaches that point.
 
 ```py
 goal_pose = navigator.getPoseStamped([-13.0, 9.0], TurtleBot4Directions.EAST)
@@ -258,6 +340,9 @@ ros2 launch turtlebot4_viz view_robot.launch.py
 
 {% tabs navigation %}
 {% tab navigation galactic %}
+```warning
+**ROS 2 Galactic is no longer supported.** Please consider upgrading to a newer release
+```
 
 <figure class="aligncenter">
     <img src="media/nav_to_pose_rviz.gif" alt="Nav to pose" style="width: 100%"/>
@@ -276,14 +361,28 @@ ros2 launch turtlebot4_viz view_robot.launch.py
 </figure>
 
 {% endtab %}
+{% tab navigation jazzy %}
+
+<figure class="aligncenter">
+    <video style="width: 100%" controls autoplay muted>
+    <source src="media/nav_to_pose_rviz_humble.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+    </video>
+    <figcaption>Navigate to a pose (3x speed)</figcaption>
+</figure>
+
+{% endtab %}
 {% endtabs %}
 
 ## Navigate Through Poses
 
 {% tabs navigation %}
 {% tab navigation galactic %}
+```warning
+**ROS 2 Galactic is no longer supported.** Please consider upgrading to a newer release
+```
 
-This example demonstrates the [Navigate Through Poses](https://navigation.ros.org/behavior_trees/trees/nav_through_poses_recovery.html) behaviour tree. The Nav2 stack is given a set of poses on the map and creates a path that goes through each pose in order until the last pose is reached. The robot then attempts to drive along the path. This example is demonstrated in the `depot` world of the TurtleBot 4 simulation.
+This example demonstrates the [Navigate Through Poses](https://docs.nav2.org/behavior_trees/trees/nav_through_poses_recovery.html) behaviour tree. The Nav2 stack is given a set of poses on the map and creates a path that goes through each pose in order until the last pose is reached. The robot then attempts to drive along the path. This example is demonstrated in the `depot` world of the TurtleBot 4 simulation.
 
 To run this example, start the Ignition Gazebo simulation:
 
@@ -319,12 +418,34 @@ ros2 run turtlebot4_python_tutorials nav_through_poses
 ```
 
 {% endtab %}
+{% tab navigation jazzy %}
+
+This example demonstrates the [Navigate Through Poses](https://navigation.ros.org/behavior_trees/trees/nav_through_poses_recovery.html) behaviour tree. The Nav2 stack is given a set of poses on the map and creates a path that goes through each pose in order until the last pose is reached. The robot then attempts to drive along the path. This example is demonstrated in the `warehouse` world of the TurtleBot 4 simulation.
+
+To run this example, start the Gazebo simulation:
+
+```bash
+ros2 launch turtlebot4_gz_bringup turtlebot4_gz.launch.py nav2:=true slam:=false localization:=true rviz:=true
+```
+
+Once the simulation has started, ensure to press the "Play" button on Gazebo to start the simulation.
+
+Next, open another terminal and run:
+
+```bash
+ros2 run turtlebot4_python_tutorials nav_through_poses
+```
+
+{% endtab %}
 {% endtabs %}
 
 ### Code breakdown
 
 {% tabs navigation %}
 {% tab navigation galactic %}
+```warning
+**ROS 2 Galactic is no longer supported.** Please consider upgrading to a newer release
+```
 
 The source code for this example is available [here](https://github.com/turtlebot/turtlebot4_tutorials/blob/galactic/turtlebot4_python_tutorials/turtlebot4_python_tutorials/nav_through_poses.py).
 
@@ -419,6 +540,53 @@ def main():
 ```
 
 {% endtab %}
+{% tab navigation jazzy %}
+
+The source code for this example is available [here](https://github.com/turtlebot/turtlebot4_tutorials/blob/jazzy/turtlebot4_python_tutorials/turtlebot4_python_tutorials/nav_through_poses.py).
+
+
+Let's take a look at the main function.
+
+```py
+def main():
+    rclpy.init()
+
+    navigator = TurtleBot4Navigator()
+
+    # Start on dock
+    if not navigator.getDockedStatus():
+        navigator.info('Docking before initialising pose')
+        navigator.dock()
+
+    # Set initial pose
+    initial_pose = navigator.getPoseStamped([0.0, 0.0], TurtleBot4Directions.NORTH)
+    navigator.setInitialPose(initial_pose)
+
+    # Wait for Nav2
+    navigator.waitUntilNav2Active()
+
+    # Set goal poses
+    goal_pose = []
+    goal_pose.append(navigator.getPoseStamped([-3.0, -0.0], TurtleBot4Directions.EAST))
+    goal_pose.append(navigator.getPoseStamped([-3.0, -3.0], TurtleBot4Directions.NORTH))
+    goal_pose.append(navigator.getPoseStamped([3.0, -3.0], TurtleBot4Directions.NORTH_WEST))
+    goal_pose.append(navigator.getPoseStamped([9.0, -1.0], TurtleBot4Directions.WEST))
+    goal_pose.append(navigator.getPoseStamped([9.0, 1.0], TurtleBot4Directions.SOUTH))
+    goal_pose.append(navigator.getPoseStamped([-1.0, 1.0], TurtleBot4Directions.EAST))
+
+    # Undock
+    navigator.undock()
+
+    # Navigate through poses
+    navigator.startThroughPoses(goal_pose)
+
+    # Finished navigating, dock
+    navigator.dock()
+
+    rclpy.shutdown()
+```
+
+{% endtab %}
 {% endtabs %}
 
 This example starts the same as [navigate to pose](#navigate-to-pose). We initialise the node, make sure the robot is docked, and set the initial pose. Then we wait for Nav2 to become active.
@@ -429,6 +597,9 @@ The next step is to create a list of `PoseStamped` messages which represent the 
 
 {% tabs navigation %}
 {% tab navigation galactic %}
+```warning
+**ROS 2 Galactic is no longer supported.** Please consider upgrading to a newer release
+```
 
 ```py
 goal_pose = []
@@ -441,6 +612,19 @@ goal_pose.append(navigator.getPoseStamped([-1.0, -1.0], TurtleBot4Directions.WES
 ```
 {% endtab %}
 {% tab navigation humble %}
+
+```py
+goal_pose = []
+goal_pose.append(navigator.getPoseStamped([-3.0, -0.0], TurtleBot4Directions.EAST))
+goal_pose.append(navigator.getPoseStamped([-3.0, -3.0], TurtleBot4Directions.NORTH))
+goal_pose.append(navigator.getPoseStamped([3.0, -3.0], TurtleBot4Directions.NORTH_WEST))
+goal_pose.append(navigator.getPoseStamped([9.0, -1.0], TurtleBot4Directions.WEST))
+goal_pose.append(navigator.getPoseStamped([9.0, 1.0], TurtleBot4Directions.SOUTH))
+goal_pose.append(navigator.getPoseStamped([-1.0, 1.0], TurtleBot4Directions.EAST))
+```
+
+{% endtab %}
+{% tab navigation jazzy %}
 
 ```py
 goal_pose = []
@@ -476,6 +660,9 @@ ros2 launch turtlebot4_viz view_robot.launch.py
 ```
 {% tabs navigation %}
 {% tab navigation galactic %}
+```warning
+**ROS 2 Galactic is no longer supported.** Please consider upgrading to a newer release
+```
 
 <figure class="aligncenter">
     <img src="media/nav_through_pose_rviz.gif" alt="Nav through pose" style="width: 100%"/>
@@ -494,12 +681,26 @@ ros2 launch turtlebot4_viz view_robot.launch.py
 </figure>
 
 {% endtab %}
+{% tab navigation jazzy %}
+
+<figure class="aligncenter">
+    <video style="width: 100%" controls autoplay muted>
+    <source src="media/nav_through_pose_rviz_humble.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+    </video>
+    <figcaption>Navigate through a set of poses</figcaption>
+</figure>
+
+{% endtab %}
 {% endtabs %}
 
 ## Follow Waypoints
 
 {% tabs navigation %}
 {% tab navigation galactic %}
+```warning
+**ROS 2 Galactic is no longer supported.** Please consider upgrading to a newer release
+```
 
 This example demonstrates how to follow waypoints. The Nav2 stack is given a set of waypoints on the map and creates a path that goes through each waypoint in order until the last waypoint is reached. The robot then attempts to drive along the path. The difference between this example and Navigating Through Poses is that when following waypoints the robot will plan to reach each waypoint individually, rather than planning to reach the last pose by driving through the other poses.  This example is demonstrated in the `depot` world of the TurtleBot 4 simulation.
 
@@ -537,6 +738,25 @@ ros2 run turtlebot4_python_tutorials follow_waypoints
 ```
 
 {% endtab %}
+{% tab navigation jazzy %}
+
+This example demonstrates how to follow waypoints. The Nav2 stack is given a set of waypoints on the map and creates a path that goes through each waypoint in order until the last waypoint is reached. The robot then attempts to drive along the path. The difference between this example and Navigating Through Poses is that when following waypoints the robot will plan to reach each waypoint individually, rather than planning to reach the last pose by driving through the other poses.  This example is demonstrated in the `depot` world of the TurtleBot 4 simulation.
+
+To run this example, start the Gazebo simulation:
+
+```bash
+ros2 launch turtlebot4_gz_bringup turtlebot4_gz.launch.py nav2:=true slam:=false localization:=true rviz:=true
+```
+
+Once the simulation has started, ensure to press the "Play" button on Gazebo to start the simulation.
+
+Next, open another terminal and run:
+
+```bash
+ros2 run turtlebot4_python_tutorials follow_waypoints
+```
+
+{% endtab %}
 {% endtabs %}
 
 
@@ -544,6 +764,9 @@ ros2 run turtlebot4_python_tutorials follow_waypoints
 
 {% tabs navigation %}
 {% tab navigation galactic %}
+```warning
+**ROS 2 Galactic is no longer supported.** Please consider upgrading to a newer release
+```
 
 The source code for this example is available [here](https://github.com/turtlebot/turtlebot4_tutorials/blob/galactic/turtlebot4_python_tutorials/turtlebot4_python_tutorials/follow_waypoints.py).
 
@@ -551,6 +774,11 @@ The source code for this example is available [here](https://github.com/turtlebo
 {% tab navigation humble %}
 
 The source code for this example is available [here](https://github.com/turtlebot/turtlebot4_tutorials/blob/humble/turtlebot4_python_tutorials/turtlebot4_python_tutorials/follow_waypoints.py).
+
+{% endtab %}
+{% tab navigation jazzy %}
+
+The source code for this example is available [here](https://github.com/turtlebot/turtlebot4_tutorials/blob/jazzy/turtlebot4_python_tutorials/turtlebot4_python_tutorials/follow_waypoints.py).
 
 {% endtab %}
 {% endtabs %}
@@ -607,6 +835,9 @@ ros2 launch turtlebot4_viz view_robot.launch.py
 
 {% tabs navigation %}
 {% tab navigation galactic %}
+```warning
+**ROS 2 Galactic is no longer supported.** Please consider upgrading to a newer release
+```
 
 <figure class="aligncenter">
     <img src="media/follow_waypoint_rviz.gif" alt="Follow Waypoints" style="width: 100%"/>
@@ -615,6 +846,17 @@ ros2 launch turtlebot4_viz view_robot.launch.py
 
 {% endtab %}
 {% tab navigation humble %}
+
+<figure class="aligncenter">
+    <video style="width: 100%" controls autoplay muted>
+    <source src="media/follow_waypoint_rviz_humble.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+    </video>
+    <figcaption>Follow a set of Waypoints</figcaption>
+</figure>
+
+{% endtab %}
+{% tab navigation jazzy %}
 
 <figure class="aligncenter">
     <video style="width: 100%" controls autoplay muted>
@@ -650,6 +892,9 @@ ros2 launch turtlebot4_viz view_robot.launch.py
 
 {% tabs navigation %}
 {% tab navigation galactic %}
+```warning
+**ROS 2 Galactic is no longer supported.** Please consider upgrading to a newer release
+```
 
 The source code for this example is available [here](https://github.com/turtlebot/turtlebot4_tutorials/blob/galactic/turtlebot4_python_tutorials/turtlebot4_python_tutorials/create_path.py).
 
@@ -657,6 +902,11 @@ The source code for this example is available [here](https://github.com/turtlebo
 {% tab navigation humble %}
 
 The source code for this example is available [here](https://github.com/turtlebot/turtlebot4_tutorials/blob/humble/turtlebot4_python_tutorials/turtlebot4_python_tutorials/create_path.py).
+
+{% endtab %}
+{% tab navigation jazzy %}
+
+The source code for this example is available [here](https://github.com/turtlebot/turtlebot4_tutorials/blob/jazzy/turtlebot4_python_tutorials/turtlebot4_python_tutorials/create_path.py).
 
 {% endtab %}
 {% endtabs %}
@@ -754,6 +1004,9 @@ Running this example will look something like this:
 
 {% tabs navigation %}
 {% tab navigation galactic %}
+```warning
+**ROS 2 Galactic is no longer supported.** Please consider upgrading to a newer release
+```
 
 <figure class="aligncenter">
     <img src="media/create_path_rviz.gif" alt="Create Path" style="width: 100%"/>
@@ -762,6 +1015,17 @@ Running this example will look something like this:
 
 {% endtab %}
 {% tab navigation humble %}
+
+<figure class="aligncenter">
+    <video style="width: 100%" controls autoplay muted>
+    <source src="media/create_path_rviz_humble.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+    </video>
+    <figcaption>Creating a path and following it</figcaption>
+</figure>
+
+{% endtab %}
+{% tab navigation jazzy %}
 
 <figure class="aligncenter">
     <video style="width: 100%" controls autoplay muted>
@@ -782,8 +1046,11 @@ As the path is created, you will see the robot being placed at the position you 
 
 {% tabs navigation %}
 {% tab navigation galactic %}
+```warning
+**ROS 2 Galactic is no longer supported.** Please consider upgrading to a newer release
+```
 
-This tutorial is only available in Humble
+This tutorial is not available in Galactic.
 
 {% endtab %}
 {% tab navigation humble %}
@@ -805,14 +1072,36 @@ ros2 run turtlebot4_python_tutorials mail_delivery
 ```
 
 {% endtab %}
+{% tab navigation jazzy %}
+
+This example demonstrates how to create an interactive delivery route. The user is able to send the robot to different pre-defined locations on demand using the terminal interface. It then uses the [Navigate to Pose](#navigate-to-pose) behaviour to navigate to the pose.
+
+To run this example, start the Gazebo simulation:
+
+```bash
+ros2 launch turtlebot4_gz_bringup turtlebot4_gz.launch.py nav2:=true slam:=false localization:=true rviz:=true
+```
+
+Once the simulation has started, ensure to press the "Play" button on Gazebo to start the simulation.
+
+Next, open another terminal and run:
+
+```bash
+ros2 run turtlebot4_python_tutorials mail_delivery
+```
+
+{% endtab %}
 {% endtabs %}
 
 ### Code breakdown
 
 {% tabs navigation %}
 {% tab navigation galactic %}
+```warning
+**ROS 2 Galactic is no longer supported.** Please consider upgrading to a newer release
+```
 
-This tutorial is only available in Humble
+This tutorial is not available in Galactic.
 
 {% endtab %}
 {% tab navigation humble %}
@@ -927,9 +1216,9 @@ goal_options = [
 
 #### Select the Goal Pose
 
-The remainder of the program is repeated in a loop. 
+The remainder of the program is repeated in a loop.
 
-A list of goals is compiled and displayed on the terminal as a prompt and the program will wait for input from the user. 
+A list of goals is compiled and displayed on the terminal as a prompt and the program will wait for input from the user.
 
 ```py
 # Create a list of the goals for display
@@ -947,7 +1236,171 @@ The terminal will display:
     <figcaption>Mail Delivery Terminal Prompt</figcaption>
 </figure>
 
-The user will then enter a number and press enter. 
+The user will then enter a number and press enter.
+
+#### User Input Validation
+
+The user input is verified to be an integer which is within the allowable range. If it is not a number or if the number does not correspond to a valid option then the loop will restart, prompting the user for a new input.
+
+```py
+selected_index = 0
+
+# Verify that the value input is a number
+try:
+    selected_index = int(raw_input)
+except ValueError:
+    navigator.error(f'Invalid goal selection: {raw_input}')
+    continue
+
+# Verify that the user input is within a valid range
+if (selected_index < 0) or (selected_index >= len(goal_options)):
+    navigator.error(f'Goal selection out of bounds: {selected_index}')
+```
+
+#### Check for exit
+
+If the user selected to exit the program then the loop is terminated and the program will exit.
+
+```py
+# Check for exit
+elif goal_options[selected_index]['name'] == 'Exit':
+    break
+```
+
+{% endtab %}
+{% tab navigation jazzy %}
+
+The source code for this example is available [here](https://github.com/turtlebot/turtlebot4_tutorials/blob/jazzy/turtlebot4_python_tutorials/turtlebot4_python_tutorials/mail_delivery.py).
+
+Let's take a look at the main function.
+
+```py
+def main(args=None):
+    rclpy.init(args=args)
+
+    navigator = TurtleBot4Navigator()
+
+    # Start on dock
+    if not navigator.getDockedStatus():
+        navigator.info('Docking before initialising pose')
+        navigator.dock()
+
+    # Set initial pose
+    initial_pose = navigator.getPoseStamped([0.0, 0.0], TurtleBot4Directions.NORTH)
+    navigator.setInitialPose(initial_pose)
+
+    # Wait for Nav2
+    navigator.waitUntilNav2Active()
+
+    # Undock
+    navigator.undock()
+
+    # Prepare goal pose options
+    goal_options = [
+        {'name': 'Home',
+         'pose': navigator.getPoseStamped([-1.0, 1.0], TurtleBot4Directions.EAST)},
+
+        {'name': 'Position 1',
+         'pose': navigator.getPoseStamped([10.0, 6.0], TurtleBot4Directions.EAST)},
+
+        {'name': 'Position 2',
+         'pose': navigator.getPoseStamped([-9.0, 9.0], TurtleBot4Directions.NORTH)},
+
+        {'name': 'Position 3',
+         'pose': navigator.getPoseStamped([-12.0, 2.0], TurtleBot4Directions.NORTH_WEST)},
+
+        {'name': 'Position 4',
+         'pose': navigator.getPoseStamped([3.0, -7.0], TurtleBot4Directions.WEST)},
+
+        {'name': 'Exit',
+         'pose': None}
+    ]
+
+    navigator.info('Welcome to the mail delivery service.')
+
+    while True:
+        # Create a list of the goals for display
+        options_str = 'Please enter the number corresponding to the desired robot goal position:\n'
+        for i in range(len(goal_options)):
+            options_str += f'    {i}. {goal_options[i]["name"]}\n'
+
+        # Prompt the user for the goal location
+        raw_input = input(f'{options_str}Selection: ')
+
+        selected_index = 0
+
+        # Verify that the value input is a number
+        try:
+            selected_index = int(raw_input)
+        except ValueError:
+            navigator.error(f'Invalid goal selection: {raw_input}')
+            continue
+
+        # Verify that the user input is within a valid range
+        if (selected_index < 0) or (selected_index >= len(goal_options)):
+            navigator.error(f'Goal selection out of bounds: {selected_index}')
+
+        # Check for exit
+        elif goal_options[selected_index]['name'] == 'Exit':
+            break
+
+        else:
+            # Navigate to requested position
+            navigator.startToPose(goal_options[selected_index]['pose'])
+
+    rclpy.shutdown()
+```
+This example starts the same as [navigate to pose](#navigate-to-pose). We initialise the node, make sure the robot is docked, and set the initial pose. Then we wait for Nav2 to become active.
+
+#### Prepare Goal Poses
+
+The next step is to create a list of `PoseStamped` messages which represent all possible poses that the robot can be sent to.
+
+```py
+goal_options = [
+    {'name': 'Home',
+        'pose': navigator.getPoseStamped([-1.0, 1.0], TurtleBot4Directions.EAST)},
+
+    {'name': 'Position 1',
+        'pose': navigator.getPoseStamped([10.0, 6.0], TurtleBot4Directions.EAST)},
+
+    {'name': 'Position 2',
+        'pose': navigator.getPoseStamped([-9.0, 9.0], TurtleBot4Directions.NORTH)},
+
+    {'name': 'Position 3',
+        'pose': navigator.getPoseStamped([-12.0, 2.0], TurtleBot4Directions.NORTH_WEST)},
+
+    {'name': 'Position 4',
+        'pose': navigator.getPoseStamped([3.0, -7.0], TurtleBot4Directions.WEST)},
+
+    {'name': 'Exit',
+        'pose': None}
+]
+```
+
+#### Select the Goal Pose
+
+The remainder of the program is repeated in a loop.
+
+A list of goals is compiled and displayed on the terminal as a prompt and the program will wait for input from the user.
+
+```py
+# Create a list of the goals for display
+options_str = 'Please enter the number corresponding to the desired robot goal position:\n'
+for i in range(len(goal_options)):
+    options_str += f'    {i}. {goal_options[i]["name"]}\n'
+
+# Prompt the user for the goal location
+raw_input = input(f'{options_str}Selection: ')
+```
+The terminal will display:
+
+<figure class="aligncenter">
+    <img src="media/mail_delivery_terminal.png" alt="Mail Delivery Terminal" style="width: 100%"/>
+    <figcaption>Mail Delivery Terminal Prompt</figcaption>
+</figure>
+
+The user will then enter a number and press enter.
 
 #### User Input Validation
 
@@ -985,8 +1438,11 @@ elif goal_options[selected_index]['name'] == 'Exit':
 
 {% tabs navigation %}
 {% tab navigation galactic %}
+```warning
+**ROS 2 Galactic is no longer supported.** Please consider upgrading to a newer release
+```
 
-This tutorial is only available in Humble
+This tutorial is not available in Galactic.
 
 {% endtab %}
 {% tab navigation humble %}
@@ -1002,7 +1458,31 @@ This tutorial is only available in Humble
 
 #### Navigate
 
-Finally, navigate to the selected position. 
+Finally, navigate to the selected position.
+
+```py
+else:
+    # Navigate to requested position
+    navigator.startToPose(goal_options[selected_index]['pose'])
+```
+
+The loop then repeats, prompting the user for the next goal position.
+
+{% endtab %}
+{% tab navigation jazzy %}
+
+<figure class="aligncenter">
+    <video style="width: 100%" controls autoplay muted>
+    <source src="media/mail_delivery_rviz.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+    </video>
+    <figcaption>Mail Delivery (3x speed)</figcaption>
+</figure>
+
+
+#### Navigate
+
+Finally, navigate to the selected position.
 
 ```py
 else:
@@ -1020,8 +1500,11 @@ The loop then repeats, prompting the user for the next goal position.
 
 {% tabs navigation %}
 {% tab navigation galactic %}
+```warning
+**ROS 2 Galactic is no longer supported.** Please consider upgrading to a newer release
+```
 
-This tutorial is only available in Humble
+This tutorial is not available in Galactic.
 
 {% endtab %}
 {% tab navigation humble %}
@@ -1043,14 +1526,36 @@ ros2 run turtlebot4_python_tutorials patrol_loop
 ```
 
 {% endtab %}
+{% tab navigation jazzy %}
+
+This example demonstrates how to create an infinite patrol loop with auto-charging. The robot will continuously drive through a set of poses until the charge is low and then it will go charge. Once the robot is sufficiently charged, it will start driving through the set of poses again. It uses the [Navigate to Pose](#navigate-to-pose) behaviour to navigate to the pose.
+
+To run this example, start the Gazebo simulation:
+
+```bash
+ros2 launch turtlebot4_gz_bringup turtlebot4_gz.launch.py nav2:=true slam:=false localization:=true rviz:=true
+```
+
+Once the simulation has started, ensure to press the "Play" button on Gazebo to start the simulation.
+
+Next, open another terminal and run:
+
+```bash
+ros2 run turtlebot4_python_tutorials patrol_loop
+```
+
+{% endtab %}
 {% endtabs %}
 
 ### Code breakdown
 
 {% tabs navigation %}
 {% tab navigation galactic %}
+```warning
+**ROS 2 Galactic is no longer supported.** Please consider upgrading to a newer release
+```
 
-This tutorial is only available in Humble
+This tutorial is not available in Galactic.
 
 {% endtab %}
 {% tab navigation humble %}
@@ -1085,7 +1590,7 @@ class BatteryMonitor(Node):
         executor.add_node(self)
         executor.spin()
 ```
-This class serves to monitor the Create3® battery charge percentage and to make it available for decision making. 
+This class serves to monitor the Create3® battery charge percentage and to make it available for decision making.
 
 ##### Subscription
 
@@ -1102,9 +1607,9 @@ self.battery_state_subscriber = self.create_subscription(
 
 ##### Battery State Callback
 
-Whenever a `battery_state` message is received, the battery charge percentage is saved in a member variable. 
+Whenever a `battery_state` message is received, the battery charge percentage is saved in a member variable.
 
-A Global Interpreter Lock (GIL) is used to ensure that the main function and battery monitoring functions do not access or modify that member variable at the same time. The process will queue until the lock is available. 
+A Global Interpreter Lock (GIL) is used to ensure that the main function and battery monitoring functions do not access or modify that member variable at the same time. The process will queue until the lock is available.
 
 ```py
 # Callbacks
@@ -1214,13 +1719,13 @@ def main(args=None):
     battery_monitor.destroy_node()
     rclpy.shutdown()
 ```
-This example starts with many of the same steps as [navigate to pose](#navigate-to-pose). We initialise the node, make sure the robot is docked, and set the initial pose. Then we wait for Nav2 to become active. The additional steps are discussed below. 
+This example starts with many of the same steps as [navigate to pose](#navigate-to-pose). We initialise the node, make sure the robot is docked, and set the initial pose. Then we wait for Nav2 to become active. The additional steps are discussed below.
 
 ##### Multi-threading
 
  A Global Interpreter Lock (GIL) is used to ensure that the main function and battery monitoring functions do not access or modify that member variable at the same time.
 
- The lock is created as well as the battery monitor node being created. The lock is passed into the battery monitor node to ensure that both processes are using the same lock. 
+ The lock is created as well as the battery monitor node being created. The lock is passed into the battery monitor node to ensure that both processes are using the same lock.
 
 
 ```py
@@ -1228,7 +1733,7 @@ lock = Lock()
 battery_monitor = BatteryMonitor(lock)
 ```
 
-A thread is created to run the battery monitor thread function that was created earlier. This thread is started. 
+A thread is created to run the battery monitor thread function that was created earlier. This thread is started.
 
 ```py
 thread = Thread(target=battery_monitor.thread_function, daemon=True)
@@ -1257,14 +1762,283 @@ The battery percentage is updated when it is granted access by the lock.
 with lock:
     battery_percent = battery_monitor.battery_percent
 ```
-Initially when the processes are not ready, the battery percent may be None. The program continues to check until the battery percent is not None. 
+Initially when the processes are not ready, the battery percent may be None. The program continues to check until the battery percent is not None.
 
 ```py
 if (battery_percent is not None):
 
 ```
 
-Based on the battery charge level, the program chooses an action: 
+Based on the battery charge level, the program chooses an action:
+
+If the battery is at critical levels, it breaks the loop, ending the program.
+
+```py
+navigator.info(f'Battery is at {(battery_percent*100):.2f}% charge')
+
+# Check battery charge level
+if (battery_percent < BATTERY_CRITICAL):
+    navigator.error('Battery critically low. Charge or power down')
+    break
+```
+
+If the battery is low then it navigates near the charger, docks and then waits for full charge. While charging it continues to periodically use the lock to update the battery percentage. Once full, it undocks and prepares to start the patrol loop again from the first position.
+
+```py
+elif (battery_percent < BATTERY_LOW):
+    # Go near the dock
+    navigator.info('Docking for charge')
+    navigator.startToPose(navigator.getPoseStamped([-1.0, 1.0],
+                            TurtleBot4Directions.EAST))
+    navigator.dock()
+
+    if not navigator.getDockedStatus():
+        navigator.error('Robot failed to dock')
+        break
+
+    # Wait until charged
+    navigator.info('Charging...')
+    battery_percent_prev = 0
+    while (battery_percent < BATTERY_HIGH):
+        sleep(15)
+        battery_percent_prev = floor(battery_percent*100)/100
+        with lock:
+            battery_percent = battery_monitor.battery_percent
+
+        # Print charge level every time it increases a percent
+        if battery_percent > (battery_percent_prev + 0.01):
+            navigator.info(f'Battery is at {(battery_percent*100):.2f}% charge')
+
+    # Undock
+    navigator.undock()
+    position_index = 0
+```
+
+Finally, if the battery was not critical or low then the robot navigates to the next position in the loop. This position is tracked by the 'position_index' variable
+
+```py
+else:
+    # Navigate to next position
+    navigator.startToPose(goal_pose[position_index])
+
+    position_index = position_index + 1
+    if position_index >= len(goal_pose):
+        position_index = 0
+```
+
+{% endtab %}
+{% tab navigation jazzy %}
+
+The source code for this example is available [here](https://github.com/turtlebot/turtlebot4_tutorials/blob/jazzy/turtlebot4_python_tutorials/turtlebot4_python_tutorials/patrol_loop.py).
+
+#### Battery Monitoring Node
+Let's take a look at the battery monitoring node class.
+
+```py
+class BatteryMonitor(Node):
+
+    def __init__(self, lock):
+        super().__init__('battery_monitor')
+
+        self.lock = lock
+
+        # Subscribe to the /battery_state topic
+        self.battery_state_subscriber = self.create_subscription(
+            BatteryState,
+            'battery_state',
+            self.battery_state_callback,
+            qos_profile_sensor_data)
+
+    # Callbacks
+    def battery_state_callback(self, batt_msg: BatteryState):
+        with self.lock:
+            self.battery_percent = batt_msg.percentage
+
+    def thread_function(self):
+        executor = SingleThreadedExecutor()
+        executor.add_node(self)
+        executor.spin()
+```
+This class serves to monitor the Create3® battery charge percentage and to make it available for decision making.
+
+##### Subscription
+
+The class contains a subscriber that listens on the `battery_state` topic for the latest battery state published by the Create3® and calls the `battery_state_callback` function whenever new information has been published.
+
+```py
+# Subscribe to the /battery_state topic
+self.battery_state_subscriber = self.create_subscription(
+    BatteryState,
+    'battery_state',
+    self.battery_state_callback,
+    qos_profile_sensor_data)
+```
+
+##### Battery State Callback
+
+Whenever a `battery_state` message is received, the battery charge percentage is saved in a member variable.
+
+A Global Interpreter Lock (GIL) is used to ensure that the main function and battery monitoring functions do not access or modify that member variable at the same time. The process will queue until the lock is available.
+
+```py
+# Callbacks
+def battery_state_callback(self, batt_msg: BatteryState):
+    with self.lock:
+        self.battery_percent = batt_msg.percentage
+```
+
+##### Prepare Threading
+
+In order to listen for new messages and run callbacks, a node must be actively spinning. To simultaneously spin the node and run the navigation code, multi-threading is used. Here the battery node is prepared to spin in a separate thread which is created in the main function (see below).
+
+```py
+def thread_function(self):
+    executor = SingleThreadedExecutor()
+    executor.add_node(self)
+    executor.spin()
+
+```
+
+#### Main Function
+Let's take a look at the main function.
+
+```py
+def main(args=None):
+    rclpy.init(args=args)
+
+    lock = Lock()
+    battery_monitor = BatteryMonitor(lock)
+
+    navigator = TurtleBot4Navigator()
+    battery_percent = None
+    position_index = 0
+
+    thread = Thread(target=battery_monitor.thread_function, daemon=True)
+    thread.start()
+
+    # Start on dock
+    if not navigator.getDockedStatus():
+        navigator.info('Docking before initialising pose')
+        navigator.dock()
+
+    # Set initial pose
+    initial_pose = navigator.getPoseStamped([0.0, 0.0], TurtleBot4Directions.NORTH)
+    navigator.setInitialPose(initial_pose)
+
+    # Wait for Nav2
+    navigator.waitUntilNav2Active()
+
+    # Undock
+    navigator.undock()
+
+    # Prepare goal poses
+    goal_pose = []
+    goal_pose.append(navigator.getPoseStamped([-5.0, 1.0], TurtleBot4Directions.EAST))
+    goal_pose.append(navigator.getPoseStamped([-5.0, -23.0], TurtleBot4Directions.NORTH))
+    goal_pose.append(navigator.getPoseStamped([9.0, -23.0], TurtleBot4Directions.NORTH_WEST))
+    goal_pose.append(navigator.getPoseStamped([10.0, 2.0], TurtleBot4Directions.WEST))
+
+    while True:
+        with lock:
+            battery_percent = battery_monitor.battery_percent
+
+        if (battery_percent is not None):
+            navigator.info(f'Battery is at {(battery_percent*100):.2f}% charge')
+
+            # Check battery charge level
+            if (battery_percent < BATTERY_CRITICAL):
+                navigator.error('Battery critically low. Charge or power down')
+                break
+            elif (battery_percent < BATTERY_LOW):
+                # Go near the dock
+                navigator.info('Docking for charge')
+                navigator.startToPose(navigator.getPoseStamped([-1.0, 1.0],
+                                      TurtleBot4Directions.EAST))
+                navigator.dock()
+
+                if not navigator.getDockedStatus():
+                    navigator.error('Robot failed to dock')
+                    break
+
+                # Wait until charged
+                navigator.info('Charging...')
+                battery_percent_prev = 0
+                while (battery_percent < BATTERY_HIGH):
+                    sleep(15)
+                    battery_percent_prev = floor(battery_percent*100)/100
+                    with lock:
+                        battery_percent = battery_monitor.battery_percent
+
+                    # Print charge level every time it increases a percent
+                    if battery_percent > (battery_percent_prev + 0.01):
+                        navigator.info(f'Battery is at {(battery_percent*100):.2f}% charge')
+
+                # Undock
+                navigator.undock()
+                position_index = 0
+
+            else:
+                # Navigate to next position
+                navigator.startToPose(goal_pose[position_index])
+
+                position_index = position_index + 1
+                if position_index >= len(goal_pose):
+                    position_index = 0
+
+    battery_monitor.destroy_node()
+    rclpy.shutdown()
+```
+This example starts with many of the same steps as [navigate to pose](#navigate-to-pose). We initialise the node, make sure the robot is docked, and set the initial pose. Then we wait for Nav2 to become active. The additional steps are discussed below.
+
+##### Multi-threading
+
+ A Global Interpreter Lock (GIL) is used to ensure that the main function and battery monitoring functions do not access or modify that member variable at the same time.
+
+ The lock is created as well as the battery monitor node being created. The lock is passed into the battery monitor node to ensure that both processes are using the same lock.
+
+
+```py
+lock = Lock()
+battery_monitor = BatteryMonitor(lock)
+```
+
+A thread is created to run the battery monitor thread function that was created earlier. This thread is started.
+
+```py
+thread = Thread(target=battery_monitor.thread_function, daemon=True)
+thread.start()
+```
+
+##### Prepare Goal Pose Loop
+
+The robot poses that make up the robot's patrol loop are assembled into a list.
+
+```py
+# Prepare goal poses
+goal_pose = []
+goal_pose.append(navigator.getPoseStamped([-5.0, 1.0], TurtleBot4Directions.EAST))
+goal_pose.append(navigator.getPoseStamped([-5.0, -23.0], TurtleBot4Directions.NORTH))
+goal_pose.append(navigator.getPoseStamped([9.0, -23.0], TurtleBot4Directions.NORTH_WEST))
+goal_pose.append(navigator.getPoseStamped([10.0, 2.0], TurtleBot4Directions.WEST))
+```
+
+##### Operating Loop
+The remainder of the code continues until it is interrupted.
+
+The battery percentage is updated when it is granted access by the lock.
+
+```py
+with lock:
+    battery_percent = battery_monitor.battery_percent
+```
+Initially when the processes are not ready, the battery percent may be None. The program continues to check until the battery percent is not None.
+
+```py
+if (battery_percent is not None):
+
+```
+
+Based on the battery charge level, the program chooses an action:
 
 If the battery is at critical levels, it breaks the loop, ending the program.
 
@@ -1328,11 +2102,24 @@ else:
 
 {% tabs navigation %}
 {% tab navigation galactic %}
-
-This tutorial is only available in Humble
+```warning
+**ROS 2 Galactic is no longer supported.** Please consider upgrading to a newer release
+```
+This tutorial is not available in Galactic.
 
 {% endtab %}
 {% tab navigation humble %}
+
+<figure class="aligncenter">
+    <video style="width: 100%" controls autoplay muted>
+    <source src="media/patrol_loop_rviz.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+    </video>
+    <figcaption>Patrol Loop (9x speed)</figcaption>
+</figure>
+
+{% endtab %}
+{% tab navigation jazzy %}
 
 <figure class="aligncenter">
     <video style="width: 100%" controls autoplay muted>
@@ -1365,12 +2152,11 @@ Before using this as the basis for a product, please consult the substantial lis
 
 {% tabs navigation %}
 {% tab navigation galactic %}
-
-To run this example, first start the Gazebo simulation:
-
-```bash
-ros2 launch turtlebot4_ignition_bringup ignition.launch.py nav2:=true slam:=false localization:=true rviz:=true
+```warning
+**ROS 2 Galactic is no longer supported.** Please consider upgrading to a newer release
 ```
+
+This tutorial is not available in Galactic.
 
 {% endtab %}
 {% tab navigation humble %}
@@ -1379,6 +2165,15 @@ To run this example, first start the Gazebo simulation, specifying the 'depot' w
 
 ```bash
 ros2 launch turtlebot4_ignition_bringup turtlebot4_ignition.launch.py nav2:=true slam:=false localization:=true rviz:=true world:=depot map:=/opt/ros/humble/share/turtlebot4_navigation/maps/depot.yaml
+```
+
+{% endtab %}
+{% tab navigation jazzy %}
+
+To run this example, first start the Gazebo simulation, specifying the 'depot' world:
+
+```bash
+ros2 launch turtlebot4_gz_bringup turtlebot4_gz.launch.py nav2:=true slam:=false localization:=true rviz:=true world:=depot map:=/opt/ros/humble/share/turtlebot4_navigation/maps/depot.yaml
 ```
 
 {% endtab %}

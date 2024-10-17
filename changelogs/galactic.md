@@ -4,6 +4,10 @@ sort: 1
 
 # TurtleBot 4 Galactic
 
+```warning
+**ROS 2 Galactic is no longer supported.** Please consider updating to a newer release
+```
+
 TurtleBot 4 RPi4 image changelogs. Latest images are available [here](http://download.ros.org/downloads/turtlebot4/).
 
 ## v0.1.3
@@ -19,7 +23,7 @@ TurtleBot 4 RPi4 image changelogs. Latest images are available [here](http://dow
 - Added a service to forward the Create® 3 webserver through the RPi4
     - Users can now access the Create® 3 webserver by navigating to the IP address of their TurtleBot 4 with the port 8080 on a web browser.
     - The Create® 3 does not need to be placed into AP mode to access the webserver.
-    - Example: TurtleBot 4 with an IP address of `192.168.0.187`. 
+    - Example: TurtleBot 4 with an IP address of `192.168.0.187`.
         - Enter `192.168.0.187:8080` into your browser:
 <figure class="aligncenter">
     <img src="media/webserver.png" alt="Webserver" style="width: 90%"/>

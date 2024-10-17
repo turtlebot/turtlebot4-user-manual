@@ -12,7 +12,7 @@ There are two localization methods we can use to figure out where the robot is o
 
 ### SLAM
 
-SLAM is useful for generating a new map, or navigating in unknown or dynamic environments. It updates the map as it detects and changes, but cannot see areas of the environment that it has not discovered yet. 
+SLAM is useful for generating a new map, or navigating in unknown or dynamic environments. It updates the map as it detects and changes, but cannot see areas of the environment that it has not discovered yet.
 
 ### Localization
 
@@ -22,7 +22,7 @@ For this tutorial, we will be using localization to navigate on a map [generated
 
 ## Nav2
 
-The TurtleBot 4 uses the [Nav2](https://navigation.ros.org/) stack for navigation.
+The TurtleBot 4 uses the [Nav2](https://docs.nav2.org/) stack for navigation.
 
 ```note
 Remember to always source your ROS 2 environment before trying to launch a node.
@@ -32,6 +32,9 @@ Remember to always source your ROS 2 environment before trying to launch a node.
 
 {% tabs navigation %}
 {% tab navigation galactic %}
+```warning
+**ROS 2 Galactic is no longer supported.** Please consider upgrading to a newer release
+```
 
 For this tutorial we can launch navigation with [Nav Bringup](https://github.com/turtlebot/turtlebot4/blob/galactic/turtlebot4_navigation/launch/nav_bringup.launch.py).
 
@@ -65,7 +68,7 @@ For this tutorial we can launch navigation with the [turtlebot4_navigation](http
 
 **For a physical TurtleBot 4:**
 
-If you do not have a map of the environment, [generate a map](./generate_map.md) first.  
+If you do not have a map of the environment, [generate a map](./generate_map.md) first.
 
 Open a terminal and launch [localization](https://github.com/turtlebot/turtlebot4/blob/humble/turtlebot4_navigation/launch/localization.launch.py):
 
@@ -95,7 +98,7 @@ Once the Gazebo window loads, ensure to press the "Play" button to start the sim
 
 This will launch the simulation in the default `warehouse` world and will use the existing [`warehouse.yaml`](https://github.com/turtlebot/turtlebot4/blob/humble/turtlebot4_navigation/maps/warehouse.yaml) file for the map.
 
-To launch a different supported world, see the [simulation package](../software/turtlebot4_simulator.md#ignition-bringup) for a list of supported worlds. You must pass the name of the chosen world and the path to the map file.
+To launch a different supported world, see the [simulation package](../software/turtlebot4_simulator.md#gazebo-bringup) for a list of supported worlds. You must pass the name of the chosen world and the path to the map file.
 
 For example:
 ```bash
@@ -112,6 +115,59 @@ rviz:=true world:=classroom map:=path/to/classroom.yaml
 ```
 
 {% endtab %}
+{% tab navigation jazzy %}
+
+For this tutorial we can launch navigation with the [turtlebot4_navigation](https://github.com/turtlebot/turtlebot4/tree/jazzy/turtlebot4_navigation) package.
+
+**For a physical TurtleBot 4:**
+
+If you do not have a map of the environment, [generate a map](./generate_map.md) first.
+
+Open a terminal and launch [localization](https://github.com/turtlebot/turtlebot4/blob/jazzy/turtlebot4_navigation/launch/localization.launch.py):
+
+```bash
+ros2 launch turtlebot4_navigation localization.launch.py map:=office.yaml
+```
+
+Replace `office.yaml` with the path to your own map.
+
+Then, in another terminal, launch [nav2](https://github.com/turtlebot/turtlebot4/blob/jazzy/turtlebot4_navigation/launch/nav2.launch.py):
+
+```bash
+ros2 launch turtlebot4_navigation nav2.launch.py
+```
+
+```note
+If using multiple robots through the namespacing method, an additional `namespace` parameter must be passed to both the Localization and Nav2 launch files. For example: `namespace:=/robot1` See [Multiple robots](./multiple_robots.md) for more details.
+```
+
+**If you are using the simulator, call:**
+
+```bash
+ros2 launch turtlebot4_gz_bringup turtlebot4_gz.launch.py nav2:=true slam:=false localization:=true rviz:=true
+```
+
+Once the Gazebo window loads, ensure to press the "Play" button to start the simulation.
+
+This will launch the simulation in the default `warehouse` world and will use the existing [`warehouse.yaml`](https://github.com/turtlebot/turtlebot4/blob/jazzy/turtlebot4_navigation/maps/warehouse.yaml) file for the map.
+
+To launch a different supported world, see the [simulation package](../software/turtlebot4_simulator.md#gazebo-bringup) for a list of supported worlds. You must pass the name of the chosen world and the path to the map file.
+
+For example:
+```bash
+ros2 launch turtlebot4_gz_bringup turtlebot4_gz.launch.py nav2:=true slam:=false localization:=true \
+rviz:=true world:=depot map:=/opt/ros/jazzy/share/turtlebot4_navigation/maps/depot.yaml
+```
+
+If you are using a custom world you will need to build the [turtlebot4_simulator package](../software/turtlebot4_simulator.md#source-installation) from source and place your world file [alongside the others](https://github.com/turtlebot/turtlebot4_simulator/tree/jazzy/turtlebot4_gz_bringup/worlds). You will then need to create a map for it and pass both the world name and the map file path in as launch arguments.
+
+For example:
+```bash
+ros2 launch turtlebot4_gz_bringup turtlebot4_gz.launch.py nav2:=true slam:=false localization:=true \
+rviz:=true world:=classroom map:=path/to/classroom.yaml
+```
+
+{% endtab %}
 {% endtabs %}
 
 ```note
@@ -122,9 +178,26 @@ An initial pose is required before navigation can begin.
 
 If you are using the physical robot: In a new terminal launch Rviz so that you can view the map and interact with navigation:
 
+{% tabs view_nav %}
+{% tab view_nav galactic %}
+```warning
+**ROS 2 Galactic is no longer supported.** Please consider upgrading to a newer release
+```
 ```bash
 ros2 launch turtlebot4_viz view_robot.launch.py
 ```
+{% endtab %}
+{% tab view_nav humble %}
+```bash
+ros2 launch turtlebot4_viz view_robot.launch.py
+```
+{% endtab %}
+{% tab view_nav jazzy %}
+```bash
+ros2 launch turtlebot4_viz view_navigation.launch.py
+```
+{% endtab %}
+{% endtabs %}
 
 ```note
 If using multiple robots through the namespacing method, an additional `namespace` parameter must be passed. For example: `namespace:=/robot1` See [Multiple robots](./multiple_robots.md) for more details.
