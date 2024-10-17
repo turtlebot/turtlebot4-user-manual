@@ -72,9 +72,12 @@ sure that the Fast DDS discovery server is disabled.
 </figure>
 {% endtab %}
 {% tab wifi jazzy %}
+
 ### Wi-Fi Setup
 
 The Create® 3 must _not_ be connected to Wifi when using ROS 2 Jazzy.  All communication between the Raspberry Pi and the Create® 3 is done over the internal wired connection.  The [`create3_republisher`](../software/create3.md#create-3-republisher) node ensures that all ROS 2 topics, services, and actions from the Create® 3 are accessible by other computers on the same wireless network.
+
+To disconnect the Create® 3 from wi-fi, access the [Create® 3 webserver](./basic.md#accessing-the-create-3-webserver) and choose the "Forget wi-fi settings" item from the menu at the top of the screen.
 
 ### Application Configuration
 
