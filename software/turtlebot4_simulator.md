@@ -16,9 +16,26 @@ The recommended way to install the Turtlebot4 simulator is to install the debian
 * Ubuntu 20.04 with ROS 2 Galactic _end-of-life, not recommended_
 
 by running
-```bash
-sudo apt install ros-${ROS_DISTRO}-turtlebot4-simulator ros-${ROS_DISTRO}-irobot-create-nodes
+{% tabs install_apt %}
+{% tab install_apt galactic %}
+```warning
+**ROS 2 Galactic is no longer supported.** Please consider upgrading to a newer release
 ```
+```bash
+sudo apt install ros-galactic-turtlebot4-simulator ros-galactic-irobot-create-nodes
+```
+{% endtab %}
+{% tab install_apt humble %}
+```bash
+sudo apt install ros-humble-turtlebot4-simulator ros-humble-irobot-create-nodes
+```
+{% endtab %}
+{% tab install_apt jazzy %}
+```bash
+sudo apt install ros-jazzy-turtlebot4-simulator ros-jazzy-irobot-create-nodes
+```
+{% endtab %}
+{% endtabs %}
 
 For installation from source code, see [below](#source-installation).
 
