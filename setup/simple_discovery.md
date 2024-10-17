@@ -20,6 +20,7 @@ The Create® 3 can only be connected to 2.4 GHz Wi-Fi networks.
 
 {% tabs wifi %}
 {% tab wifi galactic %}
+
 ### Wi-Fi Setup
 
 Access the [Create® 3 webserver](./basic.md#accessing-the-create-3-webserver), then navigate to the <b>Connect</b> tab.
@@ -46,6 +47,7 @@ sure that the Fast DDS discovery server is disabled.
 </figure>
 {% endtab %}
 {% tab wifi humble %}
+
 ### Wi-Fi Setup
 
 Access the [Create® 3 webserver](./basic.md#accessing-the-create-3-webserver), then navigate to the <b>Connect</b> tab.
@@ -62,9 +64,11 @@ If the Create® 3 is unable to connect to your 2.4 GHz WiFi network and the ligh
 
 ### Application Configuration
 
-Access the [Create® 3 webserver](./basic.md#accessing-the-create-3-webserver), then navigate to the <b>Application Configuration</b> tab.
-Set ROS 2 Domain ID to 0, ROS 2 Namespace to an empty string, and RMW_IMPLEMENTATION to the [default](networking.md#dds) for your ROS 2 version. Additionally, make
-sure that the Fast DDS discovery server is disabled.
+Use the [`turtlebot4-setup`](../software/turtlebot4_setup.md) tool to configure the Create® 3.  You can access the [Create® 3 webserver](./basic.md#accessing-the-create-3-webserver) and navigate to the <b>Application Configuration</b> tab to confirm the configuration as follows:
+- ROS 2 Domain ID is `0`
+- ROS 2 Namespace is empty
+- RMW Implementation is set to the [default](networking.md#dds) for your ROS 2 version
+- Fast DDS Discovery Server is disabled
 
 <figure class="aligncenter">
     <img src="media/webserver_config.png" alt="Create® 3 config" style="width: 80%"/>
@@ -81,9 +85,11 @@ To disconnect the Create® 3 from wi-fi, access the [Create® 3 webserver](./bas
 
 ### Application Configuration
 
-Access the [Create® 3 webserver](./basic.md#accessing-the-create-3-webserver), then navigate to the <b>Application Configuration</b> tab.
-Set ROS 2 Domain ID to 0, ROS 2 Namespace to `/_do_not_use`, and RMW_IMPLEMENTATION to the [default](networking.md#dds) for your firmware. Additionally, make
-sure that the Fast DDS discovery server is disabled.
+Use the [`turtlebot4-setup`](../software/turtlebot4_setup.md) tool to configure the Create® 3.  You can access the [Create® 3 webserver](./basic.md#accessing-the-create-3-webserver) and navigate to the <b>Application Configuration</b> tab to confirm the configuration as follows:
+- ROS 2 Domain ID is `0`
+- ROS 2 Namespace is `/_do_not_use`
+- RMW Implementation is set to the [default](networking.md#dds) for your firmware
+- Fast DDS Discovery Server is disabled
 
 <figure class="aligncenter">
     <img src="media/webserver_config_jazzy.png" alt="Create® 3 config" style="width: 80%"/>
