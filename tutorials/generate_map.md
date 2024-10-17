@@ -98,9 +98,27 @@ ros2 launch turtlebot4_navigation slam.launch.py params:=/full/path/to/slam.yaml
 
 To visualise the map, launch Rviz2 with the `view_robot` launch file on the user computer. This requires a desktop version of Ubuntu with a display and therefore cannot be run on the robot itself.
 
+{% tabs view_map %}
+{% tab view_map galactic %}
+```warning
+**ROS 2 Galactic is no longer supported.** Please consider upgrading to a newer release
+```
+
 ```bash
 ros2 launch turtlebot4_viz view_robot.launch.py
 ```
+{% endtab %}
+{% tab view_map humble %}
+```bash
+ros2 launch turtlebot4_viz view_robot.launch.py
+```
+{% endtab %}
+{% tab view_map jazzy %}
+```bash
+ros2 launch turtlebot4_viz view_navigation.launch.py
+```
+{% endtab %}
+{% endtabs %}
 
 <figure class="aligncenter">
     <img src="media/rviz_slam.png" alt="RVIZ SLAM" style="width: 80%"/>
