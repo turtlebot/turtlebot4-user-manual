@@ -42,7 +42,7 @@ For a full tutorial using Gazebo, see the [Navigation tutorial](../tutorials/nav
 **ROS 2 Galactic is no longer supported.** Please consider upgrading to a newer release
 ```
 
-The `ignition.launch.py` launch file has several [launch configurations](turtlebot4_simulator.md#ignition-bringup) that allow the user to customize the simulation.
+The `ignition.launch.py` launch file has several [launch configurations](turtlebot4_simulator.md#gazebo-bringup) that allow the user to customize the simulation.
 
 Default TurtleBot 4 launch:
 
@@ -71,7 +71,7 @@ ros2 launch turtlebot4_ignition_bringup ignition.launch.py model:=lite
 {% endtab %}
 {% tab ignition humble %}
 
-The `turtlebot4_ignition.launch.py` launch file has several [launch configurations](turtlebot4_simulator.md#ignition-bringup) that allow the user to customize the simulation.
+The `turtlebot4_ignition.launch.py` launch file has several [launch configurations](turtlebot4_simulator.md#gazebo-bringup) that allow the user to customize the simulation.
 
 Default TurtleBot 4 launch:
 
@@ -100,7 +100,7 @@ ros2 launch turtlebot4_ignition_bringup turtlebot4_ignition.launch.py model:=lit
 {% endtab %}
 {% tab ignition jazzy %}
 
-The `turtlebot4_gz.launch.py` launch file has several [launch configurations](turtlebot4_simulator.md#ignition-bringup) that allow the user to customize the simulation.
+The `turtlebot4_gz.launch.py` launch file has several [launch configurations](turtlebot4_simulator.md#gazebo-bringup) that allow the user to customize the simulation.
 
 Default TurtleBot 4 launch:
 
