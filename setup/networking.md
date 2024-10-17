@@ -48,7 +48,7 @@ To use the TurtleBot 4 in the multicast configuration, both the RPi4 and the Cre
 </figure>
 {% endtab %}
 {% tab wifi_simple jazzy %}
-To use the TurtleBot 4 in the multicast configuration, the RPi4 should be connected to the Wi-Fi network, but the Create® 3 should be left offline. It is recommended that the RPi4 is connected to a 5GHz network for improved performance. Note that this is the same network configuration as used with [Discovery Server](#discovery-server).
+To use the TurtleBot 4 in the multicast configuration, the RPi4 should be connected to the Wi-Fi network, but the Create® 3 should be left offline. It is recommended that the RPi4 is connected to a 5GHz network for improved performance. Note that this is the network topology as used with [Discovery Server](#discovery-server).
 
 <figure class="aligncenter">
     <img src="media/discovery.png" alt="simple_discovery" style="width: 70%"/>
