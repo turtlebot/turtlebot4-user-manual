@@ -36,47 +36,55 @@ TurtleBot 4 RPi4 image changelogs. Latest images are available [here](http://dow
     <tbody>
         <tr>
             <td>turtlebot4_base</td>
-            <td>2.0.0</td>
+            <td>2.0.1</td>
             <td>-</td>
         </tr>
         <tr>
             <td>turtlebot4_bringup</td>
-            <td>2.0.0</td>
-            <td>-</td>
+            <td>2.0.1</td>
+            <td>
+              - namespacing support
+            </td>
         </tr>
         <tr>
             <td>turtlebot4_description</td>
-            <td>2.0.0</td>
+            <td>2.0.1</td>
             <td>-</td>
         </tr>
         <tr>
             <td>turtlebot4_diagnostics</td>
-            <td>2.0.0</td>
+            <td>2.0.1</td>
             <td>-</td>
         </tr>
         <tr>
             <td>turtlebot4_msgs</td>
-            <td>2.0.0</td>
+            <td>2.0.1</td>
             <td>-</td>
         </tr>
         <tr>
             <td>turtlebot4_navigation</td>
-            <td>2.0.0</td>
-            <td>-</td>
+            <td>2.0.1</td>
+            <td>
+              - Update SLAM, Nav2 to use stamped messages for velocity commands
+              - Update config files to use new formatting introduced in Jazzy
+              - Use MPPIController plugin instead of DWMLocalPlanner by default
+            </td>
         </tr>
         <tr>
             <td>turtlebot4_node</td>
-            <td>2.0.0</td>
-            <td>-</td>
+            <td>2.0.1</td>
+            <td>
+              - Block wall-follow actions from being executed while the robot is docked
+            </td>
         </tr>
         <tr>
             <td>turtlebot4_robot</td>
-            <td>2.0.0</td>
+            <td>2.0.1</td>
             <td>-</td>
         </tr>
         <tr>
             <td>turtlebot4_tests</td>
-            <td>2.0.0</td>
+            <td>2.0.1</td>
             <td>-</td>
         </tr>
     </tbody>
