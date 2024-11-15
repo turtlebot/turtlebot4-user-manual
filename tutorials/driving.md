@@ -100,6 +100,12 @@ Both the keyboard and joystick teleop methods work by sending velocity commands 
 
 You can manually publish to this topic through the command line by calling:
 
+{% tabs manual_pub %}
+{% tab manual_pub galactic %}
+```warning
+**ROS 2 Galactic is no longer supported.** Please consider upgrading to a newer release
+```
+
 ```bash
 ros2 topic pub /cmd_vel geometry_msgs/msg/Twist \
 "linear:
@@ -111,6 +117,36 @@ angular:
   y: 0.0
   z: 0.0"
 ```
+{% endtab %}
+{% tab manual_pub humble %}
+```bash
+ros2 topic pub /cmd_vel geometry_msgs/msg/Twist \
+"linear:
+  x: 0.0
+  y: 0.0
+  z: 0.0
+angular:
+  x: 0.0
+  y: 0.0
+  z: 0.0"
+```
+{% endtab %}
+{% tab manual_pub jazzy %}
+```bash
+ros2 topic pub /cmd_vel geometry_msgs/msg/TwistStamped \
+"
+twist:
+  linear:
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  angular:
+    x: 0.0
+    y: 0.0
+    z: 0.0"
+```
+{% endtab %}
+{% endtabs %}
 
 Set the `linear.x` value to drive the robot forwards or backwards, and the `angular.z` value to rotate left or right.
 
