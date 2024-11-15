@@ -134,8 +134,7 @@ angular:
 {% tab manual_pub jazzy %}
 ```bash
 ros2 topic pub /cmd_vel geometry_msgs/msg/TwistStamped \
-"
-twist:
+"twist:
   linear:
     x: 0.0
     y: 0.0
