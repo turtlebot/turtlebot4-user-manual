@@ -28,24 +28,40 @@ You can install the `teleop_twist_keyboard` package on your PC by running the fo
 ```bash
 sudo apt install ros-galactic-teleop-twist-keyboard
 ```
-{% endtab %}
-{% tab install_apt humble %}
-```bash
-sudo apt install ros-humble-teleop-twist-keyboard
-```
-{% endtab %}
-{% tab install_apt jazzy %}
-```bash
-sudo apt install ros-jazzy-teleop-twist-keyboard
-```
-{% endtab %}
-{% endtabs %}
 
 Once installed, run the node by calling:
 
 ```bash
 ros2 run teleop_twist_keyboard teleop_twist_keyboard
 ```
+{% endtab %}
+{% tab install_apt humble %}
+```bash
+sudo apt install ros-humble-teleop-twist-keyboard
+```
+
+Once installed, run the node by calling:
+
+```bash
+ros2 run teleop_twist_keyboard teleop_twist_keyboard
+```
+{% endtab %}
+{% tab install_apt jazzy %}
+```bash
+sudo apt install ros-jazzy-teleop-twist-keyboard
+```
+
+Once installed, run the node by calling:
+
+```bash
+ros2 run teleop_twist_keyboard teleop_twist_keyboard --ros-args -p stamped:=true
+```
+
+```note
+In Jazzy onwards, the preference is to use stamped messages for control. By default the `teleop_twist_keyboard` package uses unstamped messages. Therefore the `stamped` parameter must be set to `true` manually when starting the node.
+```
+{% endtab %}
+{% endtabs %}
 
 This will start a CLI interface which allows you to press keys to command the robot to drive.
 
