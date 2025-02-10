@@ -94,6 +94,8 @@ Uber Self Driving Car Crash
     - Better oversight of backup drivers to ensure attentiveness.
     - Enhanced safety systems that can initiate emergency braking when needed, without relying solely on human intervention.
 
+![side view stopping](media/vehicle_stop_distance_side.png)
+![vehicle view stopping](media/vehicle_stop_distance_front.png) 
 
 ## Euclidean Distance vs Time to Collision
 
