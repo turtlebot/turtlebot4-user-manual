@@ -252,14 +252,13 @@ A planar LiDAR (Light Detection and Ranging) is a device that uses laser light t
 In summary, a planar LiDAR is a powerful tool for distance measurement and object detection in a 2D plane, with applications ranging from robotics to industrial safety systems.
 
 
-## RPLIDAR A1
+## RPLIDAR A1 Laser Range Scanner
 
 The RPLIDAR A1 is a popular 360-degree 2D laser scanner (LiDAR) developed by SLAMTEC. It's widely used in robotics, drones, and other applications for environmental scanning, mapping, and obstacle detection.
 
-<figure class="aligncenter">
-    <img src="media/RPLidar.png" alt="lidar" style="width: 70%"/>
-    <figcaption>RPLidar A1</figcaption>
-</figure>
+![RPLidar](media/RPlidar.png)
+
+[manufaturer website]("https://www.slamtec.com/en/lidar/a1")
 
 ### **Key Features**:
 
@@ -281,6 +280,56 @@ The RPLIDAR A1 is a popular 360-degree 2D laser scanner (LiDAR) developed by SLA
 [SEE rviz2 laser scan data here]("https://weber-agv.github.io/WSU-turtlebot4-user-manual/ros2_adv/rviz2.html")
 ---
 
+## Hokuyo UST-10LX 2D LiDar
+
+[manufaturer website]("https://www.slamtec.com/en/lidar/a1](https://hokuyo-usa.com/products/lidar-obstacle-detection/ust-10lx")
+
+![UST-10LX](media/10XL.PNG)
+
+# Hokuyo UST-10LX Key Features
+
+## 1. Measurement Range
+- **Maximum Range**: 10 meters
+- **Minimum Range**: 0.06 meters (60 mm)
+
+## 2. Field of View (FoV)
+- **270° field of view**, ideal for wide-angle scanning.
+
+## 3. Accuracy
+- **±30 mm** accuracy under standard conditions.
+
+## 4. Angular Resolution
+- **0.25°** resolution for precise measurement.
+
+## 5. Scanning Frequency
+- **40 Hz** scanning speed for fast updates.
+
+## 6. Light Resistance
+- Operates in environments with **ambient light up to 100,000 lux**.
+
+## 7. Communication
+- **Ethernet interface** for high-speed data transfer.
+
+## 8. Power Requirements
+- Operates on **12V DC**.
+- **Typical Power Consumption**: ~8W.
+
+## 9. Size and Weight
+- **Compact and lightweight**:
+  - Dimensions: **62 × 62 × 87 mm**
+  - Weight: **130 g**
+
+## 10. Environmental Durability
+- **IP65-rated** enclosure for dustproof and water-resistant operation.
+
+## 11. Applications
+- Perfect for:
+  - Indoor robotics and navigation
+  - Warehouse automation
+  - SLAM-based mapping systems
+ 
+
+---
 # Assignment
 
 ## ROS2 Humble: Automatic Emergency Braking for TurtleBot 4
