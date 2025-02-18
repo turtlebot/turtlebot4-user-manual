@@ -36,7 +36,10 @@ Using the value for &alpha; we can determine D<sub>t</sub> as
 D<sub>t</sub> is the current distance between the car and the right wall.
 
 
-The error term e(t) is the difference between the desired distance and the actual distance. If the desired distance from the wall is 0.5 meters then e(t) = 0.5 - D<sub>t</sub>
+The error term e(t) is the difference between the desired distance and the actual distance. If the desired distance from the wall is 0.5 meters then 
+
+e(t) = 0.5 - D<sub>t</sub>
+![e(t)](media/e(t).png)
 
 
 ## Calculating Future distance
