@@ -2,145 +2,122 @@
 sort: 1
 ---
 
-1. Configuring the VESC
-==========================
-.. danger:: **Important Safety Tips**
+# WSU Roboracer: Configuring the VESC
 
-    * Put your car on an elevated stand so that its wheels can turn without it going anywhere. If you don’t have an RC car stand, you can use the box that came with your Jetson.
-    * Make sure you hold on to the car while testing the motor to prevent it from flying off the stand.
-    * Make sure there are no objects (or people) in the vicinity of the wheels while testing.
-    * Use a fully-charged LiPO battery instead of a power supply to ensure the motor has enough current to spin up.
+## 🚨 Important Safety Tips
+> **Warning:**
+> - Put your car on an elevated stand so that its wheels can turn without it going anywhere. If you don’t have an RC car stand, you can use the box that came with your Jetson.
+> - Make sure you hold on to the car while testing the motor to prevent it from flying off the stand.
+> - Make sure there are no objects (or people) in the vicinity of the wheels while testing.
+> - Use a fully charged LiPO battery instead of a power supply to ensure the motor has enough current to spin up.
 
-**Equipment Required:**
-	* Fully built RoboRacer vehicle
-	* Box or `Car stand <https://www.amazon.com/Duratrax-Tech-Deluxe-Truck-Stand/dp/B0014T74MS/ref=sr_1_6?keywords=rc+car+jack&link_code=qs&qid=1584393402&sr=8-6>`_  to put vehicle on
-	* Laptop/computer (does not need to be running Linux)
+### **Equipment Required:**
+- Fully built RoboRacer vehicle
+- Box or [Car stand](https://www.amazon.com/Duratrax-Tech-Deluxe-Truck-Stand/dp/B0014T74MS) to put the vehicle on
+- Laptop/computer (does not need to be running Linux)
 
-**Approximate Time Investment:** 1 hour
+### **Approximate Time Investment:** 1 hour
 
-.. note::
+> **Note:**  
+> If using the VESC mkIV (e.g., hardware based on VESC 4.12), see [this repository](https://github.com/f1tenth/vesc_firmware) for details on building firmware for corresponding VESCs and prebuilt firmware for different VESC hardware versions.
 
-	If using the VESC mkIV, e.g. hardware based on VESC 4.12, see `here <https://github.com/f1tenth/vesc_firmware>`_ for more details on how you can build your firmware for corresponding VESCs, and prebuilt firmware for different VESC hardware versions.
+---
 
-1. Installing the VESC Tool
------------------------------
-We need to configure the VESC so that it works with our motor and vehicle transmission. Before you start, you'll need to install the `VESC Tool <https://vesc-project.com/vesc_tool>`_. You'll have to register for an account to download. Add the free tier tool to cart (you don't have to fill in any information other than your email.) After checkout, a download link will be sent to your email address. There should be versions of the software for Linux, Windows and macOS.
+## 1. Installing the VESC Tool
+We need to configure the VESC so that it works with our motor and vehicle transmission. Before you start, you'll need to install the [VESC Tool](https://vesc-project.com/vesc_tool). You'll have to register for an account to download it. Add the free tier tool to your cart (you don't have to fill in any information other than your email). After checkout, a download link will be sent to your email. The software is available for Linux, Windows, and macOS.
 
-2. Powering the VESC
--------------------------
-First we need to power the VESC. Plug the battery in, and make sure the polarity is correct. Note that you don't need to turn on the Powerboard for configuring the VESC.
+---
 
-.. figure:: img/vesc/vesc01.JPG
-	:align: center
+## 2. Powering the VESC
+First, we need to power the VESC. Plug the battery in and make sure the polarity is correct. Note that you don't need to turn on the Powerboard for configuring the VESC.
 
+![Powering the VESC](media/vesc01.JPG)
 
 Next, unplug the USB cable of the VESC from the Jetson NX and plug the USB into your laptop that's running the VESC Tool. You may want to use a longer cable.
 
-.. figure:: img/vesc/vesc02.JPG
-	:align: center
+![Connecting the VESC](media/vesc02.JPG)
 
-	.. Plug a longer mirco USB cable from the VESC to your computer.
+---
 
-3. Connecting the VESC to Your Laptop
------------------------------------------
-Launch the VESC Tool. On the Welcome page, press the **AutoConnect** button on bottom left of the page. After the VESC is connected, you should see an updated status on the bottom right of the screen.
+## 3. Connecting the VESC to Your Laptop
+Launch the VESC Tool. On the Welcome page, press the **AutoConnect** button at the bottom left of the page. After the VESC is connected, you should see an updated status at the bottom right of the screen.
 
-.. figure:: img/vesc/connect.png
-	:align: center
+![AutoConnect in VESC Tool](media/connect.png)
 
-	.. Click *Autoconnect* in the VESC Tool.
+---
 
-4. Updating the Firmware on the VESC
------------------------------------------
-..
-	This is Kim's edit for people using VESC tool 2.05.
-	We are currently using an older firmware version of the VESC. Download it `here <https://drive.google.com/file/d/19veWRe745p3efOyn-Ff3RRYlADhp_c5V/view?usp=sharing>`_. This is assuming that you are also using the version 4.12 of the VESC hardware. Read more about it `here <https://github.com/RacecarJ/vesc-firmware/tree/master/firmware>`_. Switch to the "Custom File" tab and upload the file that you downloaded. There will be a warning. Continue to upload.
+## 4. Updating the Firmware on the VESC
+We are currently using an older firmware version of the VESC. Download it [here](https://drive.google.com/file/d/19veWRe745p3efOyn-Ff3RRYlADhp_c5V/view?usp=sharing). This assumes that you are also using version 4.12 of the VESC hardware. Read more about it [here](https://github.com/RacecarJ/vesc-firmware/tree/master/firmware).
 
-The first thing you'll need to do is to update the firmware onboard the VESC. Depending on the version of the VESC tool you're using, you'll need to go through different steps to enable servo out from the ppm port on the VESC.
+Switch to the **Custom File** tab and upload the file that you downloaded. There will be a warning; continue to upload.
 
-With VESC Tool versions released after Mar. 31 2021, you can use the latest default firmware. And to enable servo out, go to **App Settings** > **General** > **Enable Servo Output** in the VESC Tool to enable servo out.
+With VESC Tool versions released after Mar. 31, 2021, you can use the latest default firmware. To enable servo out, go to:
 
-.. figure:: img/vesc/servo.png
-	:align: center
+**App Settings > General > Enable Servo Output** in the VESC Tool.
 
-|
-Before VESC Tool version 2.05, you can enable servo out by using a non-default firmware. On the left side of the screen, click on the **Firmware** tab. On bottom left of the page, check the **Show non-default firmwares** check box. On the right, you should see extra firmware options show up. Select the **VESC_servoout.bin** option. Afterwards, on the bottom right of the page, press the button with the down arrow to update the firmware on the connected VESC. A status bar at the bottom of the page will show firmware update status. After it's finished, follow the prompt on screen.
+![Enable Servo Output](media/servo.png)
 
-.. figure:: img/vesc/firmware.png
-	:align: center
+Before VESC Tool version 2.05, you can enable servo out using a non-default firmware. Click on the **Firmware** tab on the left. Then, check **Show non-default firmwares** at the bottom left. Select **VESC_servoout.bin** from the right-side options. Press the **down arrow button** at the bottom right to update the firmware.
 
-	.. Update the firmware.
+![Update Firmware](media/firmware.png)
 
-5. Uploading the Motor Configuration XML
--------------------------------------------
-After firmware update, Select **Load Motor Configuration XML** from the drop down menu and select the provided XML file from `here <https://drive.google.com/file/d/1-KiAh3hCROPZAPeOJtXWvfxKY35lhhTO/view?usp=sharing>`_ . After the XML is uploaded, click on the **Write Motor Configuration** button (the button with a down arrow and the letter M) on the right side of the screen to apply the motor configuration. Note that in the future, you'll have to press this button whenever you make a change in motor configuration.
+---
 
-.. figure:: img/vesc/xml.png
-	:align: center
+## 5. Uploading the Motor Configuration XML
+After updating the firmware, select **Load Motor Configuration XML** from the dropdown menu and upload the provided XML file from [here](https://drive.google.com/file/d/1-KiAh3hCROPZAPeOJtXWvfxKY35lhhTO/view?usp=sharing). Click on the **Write Motor Configuration** button (down arrow with letter "M") to apply the settings.
 
-	.. Upload the XML file.
+![Upload Motor Config XML](media/xml.png)
 
-6. Detecting and Calculating Motor Parameters
-------------------------------------------------
-To detect and calculate the FOC motor parameters, navigate to the **FOC** tab under **Motor Settings** on the left. At the bottom of the screen, follow the direction  of the arrows and clck on the four buttons one by one, and follow the on screen prompt. Note that during the measuring process, the motor will make noise and spin, make sure the wheels of your vehicle are clear.
+---
 
-.. figure:: img/vesc/detect_motor.png
-	:align: center
+## 6. Detecting and Calculating Motor Parameters
+To detect and calculate the FOC motor parameters, navigate to the **FOC** tab under **Motor Settings**. At the bottom of the screen, click the four buttons in sequence, following the on-screen prompts. 
 
-	.. Detect the motor.
+> ⚠ **Warning:** The motor will make noise and spin during the measurement process. Ensure the wheels are clear of obstacles.
 
-After the motor parameters are measured, the fields at the bottom of the screen should turn green. Click on the **Apply** button, and click the **Write Motor Configuration** button.
+![Detecting Motor Parameters](media/detect_motor.png)
 
-.. figure:: img/vesc/apply_motor.png
-	:align: center
+After the parameters are measured, the fields at the bottom of the screen should turn green. Click **Apply**, then **Write Motor Configuration**.
 
-	.. Apply the motor parameters.
+![Apply Motor Parameters](media/apply_motor.png)
 
-7. Changing the Openloop Hysteresis and Openloop Time
--------------------------------------------------------
-Navigate to the **Sensorless** tab on top of the screen. Change the **Openloop Hysteresis** and **Openloop Time** to 0.01, and click the **Write Motor Configuration** button.
+---
 
-.. figure:: img/vesc/open_loop.png
-	:align: center
+## 7. Changing the Openloop Hysteresis and Openloop Time
+Go to the **Sensorless** tab and change the **Openloop Hysteresis** and **Openloop Time** to **0.01**. Click **Write Motor Configuration**.
 
-	.. Change the openloop time.
+![Change Openloop Time](media/open_loop.png)
 
-8. Tuning the PID controller
----------------------------------
-Now you can start tuning the speed PID controller. To see the RPM response from the motor, navigate to the **Realtime Data** tab under **Data Analysis** on the left. Click **Stream Realtime Data** button on the right (the button with letters RT), and navigate to the **RPM** tab on the top of the screen. You should see RPM data streaming now.
+---
 
-.. figure:: img/vesc/realtime.png
-	:align: center
+## 8. Tuning the PID Controller
+To monitor the RPM response, navigate to **Realtime Data > Data Analysis** and click **Stream Realtime Data (RT button)**. Then, go to the **RPM** tab.
 
-	.. RPM data streaming.
+![Stream Realtime Data](media/realtime.png)
 
-To create a step response for the motor, you can set a target RPM at the bottom of the screen (values between 2000 - 10000 RPM). Click the play button next to the text box to start the motor. Note that the motor will spin, so make sure the wheels of your vehicle are clear from objects. Click the Anchor or STOP button to stop the motor.
+To create a step response:
+- Set a target RPM (2000 - 10000 RPM).
+- Click **Play** to start the motor.
+- Click **STOP** to stop.
 
-.. figure:: img/vesc/response.png
-	:align: center
+> ⚠ **Ensure the vehicle's wheels are free from obstacles.**
 
-	.. Step response from the motor.
+![Motor Step Response](media/response.png)
 
-You want to look for a clean step response that has a quick rise time and zero to very little steady state error. Adjust the gains accordingly by navigating to the **PID Controllers** tab under **Motor Settings** on the left, and change the Speed Controller gains. General rules of tuning PID gains apply. If you're seeing a lot of oscillations, try changing the Speed PID Kd Filter.
+To fine-tune the speed PID controller, navigate to **PID Controllers > Motor Settings** and adjust the gains. If oscillations occur, modify the **Speed PID Kd Filter**.
 
-.. figure:: img/vesc/pid_gains.png
-	:align: center
+![Adjust PID Gains](media/pid_gains.png)
 
-	.. Adjusting PID gains.
+---
 
-9. Changing the hardware speed limit
---------------------------------------
-By default, the motor configuration sets a safe top motor RPM. If you wish to change the hard limit set by the VESC firmware, you can go to **Motor Settings** > **General**, and change the max ERPM for forward and backwards rotations. You'll also have to change the configuration file mentioned in the Odometry Tuning section in the software stack setup to change the software limit for your motor ERPM.
+## 9. Changing the Hardware Speed Limit
+By default, the motor configuration sets a safe max RPM. To change the limit, go to:
 
-.. figure:: img/vesc/erpm.png
-	:align: center
+**Motor Settings > General**, then modify the **Max ERPM** for forward and backward rotations.
 
+![Change Max ERPM](media/erpm.png)
 
-.. danger:: **Please see the Odometry Tuning section in the software stack setup to see how vehicle velocity is converted to ERPM for the motor to calculate a safe maximum erpm for your motor.**
+> 🚨 **Warning:** See the **Odometry Tuning** section in the software stack setup for converting vehicle velocity to ERPM to calculate a safe max ERPM.
 
-.. Hopefully you've tuned it well enough that your car will run better than this:
-
-.. .. figure:: img/vesc/vesc03.gif
-.. 	:align: center
-.. 	:width: 300px
+---
 
