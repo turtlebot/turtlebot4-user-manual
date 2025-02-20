@@ -1,7 +1,7 @@
 ---
-sort: 15
+sort: 14
 ---
 
-# WSU Roboracer: Setup
+# WSU Lab - Roboracer - Setup
 
 {% include list.liquid all=true %}
