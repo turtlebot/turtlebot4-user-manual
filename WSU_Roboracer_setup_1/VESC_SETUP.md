@@ -5,11 +5,13 @@ sort: 1
 # WSU Roboracer: Configuring the VESC
 
 ## 🚨 Important Safety Tips
-> **Warning:**
-> - Put your car on an elevated stand so that its wheels can turn without it going anywhere. If you don’t have an RC car stand, you can use the box that came with your Jetson.
-> - Make sure you hold on to the car while testing the motor to prevent it from flying off the stand.
-> - Make sure there are no objects (or people) in the vicinity of the wheels while testing.
-> - Use a fully charged LiPO battery instead of a power supply to ensure the motor has enough current to spin up.
+```warning
+ **Warning:**
+ - Put your car on an elevated stand so that its wheels can turn without it going anywhere. If you don’t have an RC car stand, you can use the box that came with your Jetson.
+ - Make sure you hold on to the car while testing the motor to prevent it from flying off the stand.
+ - Make sure there are no objects (or people) in the vicinity of the wheels while testing.
+ - Use a fully charged LiPO battery instead of a power supply to ensure the motor has enough current to spin up.
+```
 
 ### **Equipment Required:**
 - Fully built RoboRacer vehicle
@@ -18,9 +20,9 @@ sort: 1
 
 ### **Approximate Time Investment:** 1 hour
 
-> **Note:**  
-> If using the VESC mkIV (e.g., hardware based on VESC 4.12), see [this repository](https://github.com/f1tenth/vesc_firmware) for details on building firmware for corresponding VESCs and prebuilt firmware for different VESC hardware versions.
-
+```note:
+If using the VESC mkIV (e.g., hardware based on VESC 4.12), see [this repository](https://github.com/f1tenth/vesc_firmware) for details on building firmware for corresponding VESCs and prebuilt firmware for different VESC hardware versions.
+```
 ---
 
 ## 1. Installing the VESC Tool
