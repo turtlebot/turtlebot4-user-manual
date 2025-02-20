@@ -53,7 +53,7 @@ Make sure to press the down arrow A button on the far right vertical toolbar to 
 ![Enable Servo Output](media/servo_output.PNG)
 
  Click on the **Firmware** tab on the left. 
- 
+
 ![Update Firmware](media/firmware.png)
 
 ---
@@ -112,7 +112,9 @@ By default, the motor configuration sets a safe max RPM. To change the limit, go
 
 ![Change Max ERPM](media/erpm.png)
 
-> 🚨 **Warning:** See the **Odometry Tuning** section in the software stack setup for converting vehicle velocity to ERPM to calculate a safe max ERPM.
+```warning
+🚨 **Warning:** See the **Odometry Tuning** section in the software stack setup for converting vehicle velocity to ERPM to calculate a safe max ERPM.
+```
 
----
+
 
