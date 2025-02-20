@@ -14,14 +14,9 @@ sort: 1
 
 ### **Equipment Required:**
 - Fully built RoboRacer vehicle
-- Box or [Car stand](https://www.amazon.com/Duratrax-Tech-Deluxe-Truck-Stand/dp/B0014T74MS) to put the vehicle on
+- Box or Car stand to put the vehicle on
 - Laptop/computer (does not need to be running Linux)
 
-### **Approximate Time Investment:** 1 hour
-
-```note
-If using the VESC mkIV (e.g., hardware based on VESC 4.12), see [this repository](https://github.com/f1tenth/vesc_firmware) for details on building firmware for corresponding VESCs and prebuilt firmware for different VESC hardware versions.
-```
 ---
 
 ## 1. Installing the VESC Tool
@@ -48,18 +43,17 @@ Launch the VESC Tool. On the Welcome page, press the **AutoConnect** button at t
 ---
 
 ## 4. Updating the Firmware on the VESC
-We are currently using an older firmware version of the VESC. Download it [here](https://drive.google.com/file/d/19veWRe745p3efOyn-Ff3RRYlADhp_c5V/view?usp=sharing). This assumes that you are also using version 4.12 of the VESC hardware. Read more about it [here](https://github.com/RacecarJ/vesc-firmware/tree/master/firmware).
+The first thing you'll need to do is to update the firmware onboard the VESC. Depending on the version of the VESC tool you're using, you'll need to go through different steps to enable servo out from the ppm port on the VESC.
 
-Switch to the **Custom File** tab and upload the file that you downloaded. There will be a warning; continue to upload.
+With VESC Tool versions released after Mar. 31 2021, you can use the latest default firmware. And to enable servo out, go to **App Settings** > **General** > **Enable Servo Output > True** in the VESC Tool to enable servo out.
 
-With VESC Tool versions released after Mar. 31, 2021, you can use the latest default firmware. To enable servo out, go to:
+Make sure to press the down arrow A button on the far right vertical toolbar to write app configuration. 
 
-**App Settings > General > Enable Servo Output** in the VESC Tool.
 
-![Enable Servo Output](media/servo.png)
+![Enable Servo Output](media/servo_output.PNG)
 
-Before VESC Tool version 2.05, you can enable servo out using a non-default firmware. Click on the **Firmware** tab on the left. Then, check **Show non-default firmwares** at the bottom left. Select **VESC_servoout.bin** from the right-side options. Press the **down arrow button** at the bottom right to update the firmware.
-
+ Click on the **Firmware** tab on the left. 
+ 
 ![Update Firmware](media/firmware.png)
 
 ---
