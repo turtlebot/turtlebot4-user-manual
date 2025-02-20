@@ -1,3 +1,8 @@
+---
+sort: 3
+---
+
+
 ### **Step 1: Create a New Network Connection**
 
 Run the following command to create a connection named `Hokuyo` for the `enp8p1s0` interface:
