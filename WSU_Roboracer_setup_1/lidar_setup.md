@@ -1,7 +1,8 @@
 ---
-sort: 3
+sort: 2
 ---
 
+# Lidar Setup
 
 ### **Step 1: Create a New Network Connection**
 

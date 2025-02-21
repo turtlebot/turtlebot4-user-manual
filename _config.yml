@@ -26,3 +26,4 @@ plugins:
   - jekyll-mentions
   - jekyll-tabs
   - jekyll-remote-theme
+  - jekyll-code-copy
