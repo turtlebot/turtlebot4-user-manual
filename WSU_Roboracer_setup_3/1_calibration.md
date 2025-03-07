@@ -50,9 +50,8 @@ Now that everything is built, configured, and installed, the odometry of the veh
    bringup
    ```
 
-   ```important 
-   If you need to modify the direction of the motor, **disconnect the battery** from the VESC before swapping wires.
-   ```
+   ⚠️ 🚨  **Warning:** If you need to modify the direction of the motor, **disconnect the battery** from the VESC before swapping wires.
+   
 
    First, we need to check if our motor is rotating in the right direction. If when given a positive velocity, or commanded moving forward with the joystick, the motor is spinning in the reverse direction, swap 2 of the 3 connections from the vesc to the BLDC motor. 
 
@@ -71,6 +70,17 @@ Now that everything is built, configured, and installed, the odometry of the veh
 
    ![negative x](media/neg_x.png)
 
+   Modify the file found at `/f1tenth_ws/src/f1tenth_system/vesc/vesc_ackermann/src/vesc_to_odom.cpp`
+
+   Modify line 102
+
+   ![negative_odom](media/odom_neg.png)
+
+   Add a - to the start of the formula
+
+   ![positive_odom](media/odom_pos.png)
+
+   ---
 
    
 
