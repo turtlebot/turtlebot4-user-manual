@@ -2,6 +2,6 @@
 sort: 15
 ---
 
-# WSU Lab - Roboracer - Setup - Remote Desktop
+# WSU Lab - Roboracer - Remote Desktop
 
 {% include list.liquid all=true %}
