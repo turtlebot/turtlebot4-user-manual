@@ -72,7 +72,7 @@ Now that everything is built, configured, and installed, the odometry of the veh
 
    Modify the file found at `/f1tenth_ws/src/f1tenth_system/vesc/vesc_ackermann/src/vesc_to_odom.cpp`
 
-   Modify line 102
+   Modify line double current_speed = ... around line 100
 
    ![negative_odom](media/odom_neg.png)
 
@@ -82,6 +82,7 @@ Now that everything is built, configured, and installed, the odometry of the veh
 
    ---
 
+   ![positive x](media/pos_x.png)
    
 
 
