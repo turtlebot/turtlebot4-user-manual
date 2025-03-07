@@ -6,7 +6,9 @@ sort: 1
 
 # Calibrating the Odometry
 
-> **Note:** This section assumes that you have already completed [Building the Car](#doc_build_car), [System Configuration](#doc_software_setup), [Installing Driver Stack](#doc_build_car_firmware), and [Manual Control](#drive_manualcontrol).
+```note
+This section assumes that you have already completed [Building the Car](#doc_build_car), [System Configuration](#doc_software_setup), [Installing Driver Stack](#doc_build_car_firmware), and [Manual Control](#drive_manualcontrol).
+```
 
 One final step that's crucial to get an accurate estimate of the car's current velocity, and accurate localization and mapping later on is to calibrate the odometry estimation. On the RoboRacer vehicle, the odometry is estimated from the motor's ERPM and the current angle of the servo.
 
@@ -31,20 +33,26 @@ Now that everything is built, configured, and installed, the odometry of the veh
 
 ### Preparing for Calibration
 
-> **Note:**Before starting, ensure you've **lifted the car up with a pit stand or a box** so the wheels can spin freely.
+```note
+**Before starting, ensure you've **lifted the car up with a pit stand or a box** so the wheels can spin freely.
+```
 
 ### Checking Motor Rotation Direction
 
 1. **Verify Motor Rotation**  
 
    run bringup in the terminal
-   > **Note:** bringup is the alias for 'ros2 launch f1tenth_stack bringup_launch.py'
+   ```note
+   bringup is the alias for 'ros2 launch f1tenth_stack bringup_launch.py'
+   ```
 
    ```bash
    bringup
    ```
 
-   > **Important:** If you need to modify the direction of the motor, **disconnect the battery** from the VESC before swapping wires.
+   ```important 
+   If you need to modify the direction of the motor, **disconnect the battery** from the VESC before swapping wires.
+   ```
 
    First, we need to check if our motor is rotating in the right direction. If when given a positive velocity, or commanded moving forward with the joystick, the motor is spinning in the reverse direction, swap 2 of the 3 connections from the vesc to the BLDC motor. 
 
@@ -57,11 +65,11 @@ Now that everything is built, configured, and installed, the odometry of the veh
    ros2 topic echo --no-arr /odom
    ```
    
-   ```Note
+   ```note
       The --no-arr argument hides the large covariance matrices when echoing the odometry message.
    ```
 
-   
+
    
 
 
