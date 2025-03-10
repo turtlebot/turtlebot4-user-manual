@@ -2,7 +2,7 @@
 sort: 3
 ---
 
-# Lab 2: Automatic Emergency Braking Scan
+# AEB Scan Example
 
 # **🚀 How `safety_node.py` Identifies Front Readings from LiDAR**
 
@@ -47,12 +47,21 @@ CopyEdit
 
 The following **Python code** ensures we only analyze **front** obstacles (±20° from center):
 
-python
+```python
 
-CopyEdit
+# ✅ Compute angles for each LiDAR measurement 
+angles = np.linspace(scan_msg.angle_min, scan_msg.angle_max, len(scan_msg.ranges))  
 
-`# ✅ Compute angles for each LiDAR measurement angles = np.linspace(scan_msg.angle_min, scan_msg.angle_max, len(scan_msg.ranges))  # ✅ Define the front-facing region (e.g., ±20° from center) front_angle_range = np.deg2rad(20)  # Convert 20° to radians  # ✅ Identify indices where angles are within the front range front_indices = np.where(np.abs(angles) < front_angle_range)  # ✅ Extract front readings based on selected indices front_ranges = np.array(scan_msg.ranges)[front_indices] front_angles = angles[front_indices] front_cos_angles = np.cos(front_angles)`
+# ✅ Define the front-facing region (e.g., ±20° from center) 
+front_angle_range = np.deg2rad(20)  # Convert 20° to radians  
 
+# ✅ Identify indices where angles are within the front range 
+front_indices = np.where(np.abs(angles) < front_angle_range)  
+
+# ✅ Extract front readings based on selected indices 
+front_ranges = np.array(scan_msg.ranges)[front_indices] front_angles = angles[front_indices] front_cos_angles = np.cos(front_angles)
+
+```
 ---
 
 ## **📌 Explanation of Code**
@@ -63,12 +72,9 @@ CopyEdit
 - This **generates an array** of angles **corresponding to each LiDAR distance**.
 - Example:
     
-    python
-    
-    CopyEdit
-    
+```python
     `angles = [-135°, -120°, -105°, ..., 0°, ..., +105°, +120°, +135°]`
-    
+```
 
 2️⃣ **Select Only the Front Angles (±20°)**
 
@@ -76,12 +82,9 @@ CopyEdit
 - `np.abs(angles) < front_angle_range` → Finds all angles **between -20° and +20°**.
 - Example:
     
-    less
-    
-    CopyEdit
-    
-    `Front Angles:  [-15°, -10°, -5°, 0°, +5°, +10°, +15°]`
-    
+    ```nash
+    Front Angles:  [-15°, -10°, -5°, 0°, +5°, +10°, +15°]
+    ```
 
 3️⃣ **Extract Corresponding LiDAR Readings**
 
@@ -113,12 +116,7 @@ CopyEdit
 
 ---
 
-## **🚀 Next Steps**
-
-Want to **steer away from obstacles instead of stopping**? We can modify the code to **adjust the steering angle instead of just braking**.
-
-Let me know how you'd like to refine it! 🚗🔥
-
+## Full Code
 
 ```python
 #!/usr/bin/env python3

@@ -2,7 +2,7 @@
 sort: 1
 ---
 
-# Lab 2: Automatic Emergency Braking
+# Lab 2: AEB Assignment
 
 ## I. Learning Goals
 

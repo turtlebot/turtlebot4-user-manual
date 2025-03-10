@@ -2,7 +2,7 @@
 sort: 2
 ---
 
-# Lab 2: Automatic Emergency Braking NOTES
+# AEB NOTES
 
 To set up your safety package within the driver stack container and prevent the roboracer from colliding with objects in front of it, follow these steps:
 
