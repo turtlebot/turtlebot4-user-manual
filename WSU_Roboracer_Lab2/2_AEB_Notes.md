@@ -8,7 +8,7 @@ To set up your safety package within the driver stack container and prevent the 
 
 ### **1️⃣ Create the Safety Package**
    
-    Inside the driver stack container, navigate to your ROS 2 workspace  ~/f1tenth_ws/src and create a new package:
+Inside the driver stack container, navigate to your ROS 2 workspace  ~/f1tenth_ws/src and create a new package:
 
 ```bash 
 cd ~/f1tenth_ws/src
@@ -17,13 +17,13 @@ ros2 pkg create safety_package --build-type ament_python --dependencies rclpy se
 
 ```note
 Dependencies
-    - rcply (ROS Client Library for Python)
-    - sensor_msgs (Standard Messages for Sesnsors)
+- rcply (ROS Client Library for Python)
+- sensor_msgs (Standard Messages for Sesnsors)
 ```
 
 ### **2️⃣ Modify package.xml**
 
-    Ensure package.xml includes dependencies like rclpy, sensor_msgs, and std_msgs. Open package.xml and add:
+Ensure package.xml includes dependencies like rclpy, sensor_msgs, and std_msgs. Open package.xml and add:
 
 ```xml
     <depend>rclpy</depend>
@@ -31,7 +31,7 @@ Dependencies
     <depend>std_msgs</depend>
 ```
 
-    If you're using C++ instead of Python, also ensure you have:
+If you're using C++ instead of Python, also ensure you have:
 
 ```xml
     <depend>rclcpp</depend>
@@ -40,7 +40,7 @@ Dependencies
 ```
 
 ### **3️⃣ Modify CMakeLists.txt (If Using C++)**
-    If you're using C++, modify CMakeLists.txt to include:
+If you're using C++, modify CMakeLists.txt to include:
 
 ```bash
 find_package(rclcpp REQUIRED)
@@ -51,7 +51,7 @@ find_package(std_msgs REQUIRED)
 Ensure the add_executable or ament_target_dependencies includes the necessary dependencies.
 
 ### **4️⃣ Install Dependencies Using rosdep**
-    Run the following to install missing dependencies:
+Run the following to install missing dependencies:
 
 ```bash
 cd ~/f1tenth_ws
@@ -59,7 +59,7 @@ rosdep install --from-paths src --ignore-src -r -y
 ```
 
 ### **5️⃣ Implement the Safety Node**
-    You’ll create a safety node that listens to LiDAR data (/scan) and publishes a safety brake command if an object is too close.
+You’ll create a safety node that listens to LiDAR data (/scan) and publishes a safety brake command if an object is too close.
 
 Example: Python Safety Node (safety_node.py)
 Create a file inside safety_package/safety_node.py:
@@ -122,7 +122,7 @@ if __name__ == '__main__':
 ```
 
 ### **6️⃣ Make It Executable**
-    Modify setup.py inside safety_package:
+Modify setup.py inside safety_package:
 
 ```python
 entry_points={
@@ -133,7 +133,7 @@ entry_points={
 ```
 
 ### **7️⃣ Build & Run**
-    Run the following:
+Run the following:
 
 ```bash
 cd ~/f1tenth_ws
