@@ -1,5 +1,5 @@
 ---
-sort: 3
+sort: 4
 ---
 
 # AEB Drive Example
@@ -14,21 +14,22 @@ This Python script is a **ROS 2 node** that continuously commands a vehicle to d
 
 ```
 python
-#!/usr/bin/env python3 import rclpy from rclpy.node import Node from ackermann_msgs.msg import AckermannDriveStamped`
-
+#!/usr/bin/env python3 
+import rclpy 
+from rclpy.node import Node 
+from ackermann_msgs.msg import AckermannDriveStamped
+```
 - `#!/usr/bin/env python3` → Specifies that this script should be executed using Python 3.
 - `import rclpy` → Imports the ROS 2 Python client library.
 - `from rclpy.node import Node` → Imports the `Node` class, which is the base class for all ROS 2 nodes.
 - `from ackermann_msgs.msg import AckermannDriveStamped` → Imports the `AckermannDriveStamped` message type, which is used to control vehicles with **Ackermann steering (used in cars)**.
-```
 
 ---
 
 ### **2️⃣ Class Definition: `DriveForwardNode`**
 
 ```python
-class DriveForwardNode(Node):     
-	"""     A ROS 2 node that continuously commands the vehicle to drive forward.     """
+class DriveForwardNode(Node):
 ```
 
 - This defines a ROS 2 **node** called `DriveForwardNode`.
@@ -50,8 +51,9 @@ def __init__(self):     super().__init__('drive_forward_node')
 ### **4️⃣ Creating a Publisher**
 
 ```python
-self.drive_publisher_ = self.create_publisher(     AckermannDriveStamped, "/drive", 10)
+self.drive_publisher_ = self.create_publisher(AckermannDriveStamped, "/drive", 10)
 ```
+
 - Creates a **ROS 2 publisher** that sends messages of type `AckermannDriveStamped` to the `/drive` topic.
 - `10` is the **queue size**, meaning up to 10 messages will be buffered if the subscriber is slow.
 
@@ -119,7 +121,8 @@ def main(args=None):
 ### **9️⃣ Running the Script**
 
 ```python
-if __name__ == '__main__':     main()
+if __name__ == '__main__':     
+    main()
 ```
 
 - Ensures that the `main()` function **only runs** if the script is executed directly (not imported as a module).
@@ -183,6 +186,4 @@ def main(args=None):
 
 if __name__ == '__main__':
     main()
-
-
 ```
