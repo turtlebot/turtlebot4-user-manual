@@ -14,11 +14,12 @@ sort: 1
 
 The goal of this lab is to develop a safety node for the race cars that will stop the car from collision when travelling at higher velocities. We will implement Instantaneous Time to Collision (iTTC) using the `LaserScan` message in the simulator.
 
-For different commonly used ROS 2 messages, they are kept mostly the same as in ROS 1. You can use `ros2 interface show <msg_name>` to see the definition of messages. Note for messages that are not installed by default by the distro we use in our container, you'll have to first install it for this to work.
+For different commonly used ROS 2 messages you can use `ros2 interface show <msg_name>` to see the definition of messages. Note for messages that are not installed by default by the distro, you'll have to first install it for this to work.
 
 #### The `LaserScan` Message
 
 [LaserScan](http://docs.ros.org/en/noetic/api/sensor_msgs/html/msg/LaserScan.html) message contains several fields that will be useful to us. You can see detailed descriptions of what each field contains in the API. The one we'll be using the most is the `ranges` field. This is an array that contains all range measurements from the LiDAR radially ordered. You'll need to subscribe to the `/scan` topic and calculate iTTC with the LaserScan messages.
+
 
 #### The `Odometry` Message
 
