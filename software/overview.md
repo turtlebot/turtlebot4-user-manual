@@ -15,11 +15,11 @@ There are 2 main computers that run software used by TurtleBot 4: the onboard Ra
 
 ## Create® 3
 
-The Create® 3 exposes ROS 2 topics, actions, and services over both WiFi and the USB-C cable powering the Raspberry Pi. This gives users access to the battery state, sensor data, docking actions, and more. While the Create® 3 can be used with just the USB-C interface, when used with the simple discovery networking configuration, the Create® 3 will require a WiFi connection in order to view the robot model on Rviz or run software such as SLAM or Nav2 from a user computer.
+The Create® 3 exposes ROS 2 topics, actions, and services over the USB-C cable powering the Raspberry Pi. This gives users access to the battery state, sensor data, docking actions, and allows velocity commands to be sent from the Raspberry Pi to the Create® 3.
 
 ## Raspberry Pi 4B
 
-The Raspberry Pi 4B on both the TurtleBot 4 and TurtleBot 4 Lite comes preinstalled with Ubuntu 24.04 Server, ROS 2 Jazzy, and TurtleBot 4 software. The latest TurtleBot 4 images can be found [here](http://download.ros.org/downloads/turtlebot4/). The purpose of the Raspberry Pi 4B is to run the TurtleBot 4 ROS nodes, run sensor ROS nodes, use Bluetooth to connect to the TurtleBot 4 controller, access GPIO, and more.
+The Raspberry Pi 4B on both the TurtleBot 4 and TurtleBot 4 Lite comes preinstalled with Ubuntu 24.04 Server, ROS 2 Jazzy, and TurtleBot 4 software. The latest TurtleBot 4 images can be found [here](http://download.ros.org/downloads/turtlebot4/). The purpose of the Raspberry Pi 4B is to run the TurtleBot 4 ROS nodes, run sensor ROS nodes, use Bluetooth to connect to the TurtleBot 4 controller, access GPIO, and connect the robot to your network over WiFi.
 
 ## User PC
 
