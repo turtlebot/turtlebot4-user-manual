@@ -53,29 +53,19 @@ After your calculations, you should end up with an array of iTTCs that correspon
 
 For this lab, you will make a Safety Node that should halt the car before it collides with obstacles. To do this, you will make a ROS 2 node that subscribes to the `LaserScan` and `Odometry` messages. It should analyze the `LaserScan` data and, if necessary, publish an `AckermannDriveStamped` with the `speed` field set to 0.0 m/s to brake. After you've calculated the array of iTTCs, you should decide how to proceed with this information. You'll have to decide how to threshold, and how to best remove false positives (braking when collision isn't imminent). Don't forget to deal with `inf`s or `nan`s in your arrays.
 
-To test your node, you can launch the sim container with `kb_teleop` set to `True` in `sim.yaml`. Then in another `bash` session inside the sim container, launch the `teleop_twist_keyboard` node from `teleop_twist_keyboard` package for keyboard teleop. It should already be installed as a dependency of the simulator. After running the simulation, the keyboard teleop, and your safety node, use the reset tool for the simulation and drive the vehicle towards a wall.
 
 Note the following topic names for your publishers and subscribers:
 
 - `LaserScan`: /scan
-- `Odometry`: /ego_racecar/odom, specifically, the longitudinal velocity of the vehicle can be found in `twist.twist.linear.x`
+- `Odometry`: /odom, specifically, the longitudinal velocity of the vehicle can be found in `twist.twist.linear.x`
 - `AckermannDriveStamped`: /drive
 
 ## V: Deliverables and Submission
-You can implement this node in either C++ or Python. A skeleton package is already provided in the repo that you can use. If you're using docker, develop **directly in the simulation container** provided, and put your package in `/sim_ws/src` alongside the simulation package.
-When following the instruction in the simulation repo, the repo directory will be mounted to the sim container. You can also add extra volumes mounted for your convenience when editing the files. For example, if you're using the `rocker` tool:
+You can implement this node in either C++ or Python. A skeleton package is available on the [AEB Notes Page](WSU_Roboracer_Lab2/2_AEB_Notes.md). Put your package in `/src` folder.
 
-```bash
-rocker --nvidia --x11 --volume .:/sim_ws/src/f1tenth_gym_ros --volume <path_to_your_package_on_host>:/sim_ws/src/safety_node -- f1tenth_gym_ros
-```
+**Deliverable 1**: After you're finished, update the entire skeleton package directory with your `safety_node`. Your code should start and run in simulation smoothly. Upload your code to canvas
 
-Or if you're using `docker-compose`, add an extra line `- <path_to_your_package_on_host>:/sim_ws/src/safety_node` to your `volumes` field for the `sim` container.
-
-Note that if you're using Windows, make sure your files have Unix style line endings. You can use `dos2unix` or have correct settings in your text editor.
-
-**Deliverable 1**: After you're finished, update the entire skeleton package directory with your `safety_node` package and directly commit and push to the repo Github classroom created for you. Your commited code should start and run in simulation smoothly.
-
-**Deliverable 2**: Make a screen cast of running your safety node in the simulation. Drive the car with keyboard teleop along the hallways of Levine, showing it doesn't brake when travelling straight in the hallway. You need to show that your safe node doesn't generate false positives. i.e. The car doesn't suddenly stop while travelling down the hallway. Then show the car driving towards a wall and braking correctly. Upload your video to YouTube (unlisted) and include a link to the video in **`SUBMISSION.md`**.
+**Deliverable 2**: Make a screen cast of running your safety node in the simulation. Drive the car showing it doesn't brake when travelling straight in the hallway. You need to show that your safe node doesn't generate false positives. i.e. The car doesn't suddenly stop while travelling down the hallway. Then show the car driving towards an object and braking correctly. Upload your video to canvas.
 
 ## VI: Grading Rubric
 - Compilation: **30** Points
