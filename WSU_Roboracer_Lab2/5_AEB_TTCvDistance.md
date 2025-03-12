@@ -48,7 +48,13 @@ TTC **predicts how long until a collision happens if both objects maintain their
 
 ### **How It Works**
 
-- Calculate TTC using: TTC=distance to objectrelative speed to objectTTC = \frac{\text{distance to object}}{\text{relative speed to object}}TTC=relative speed to objectdistance to object​
+The Time-to-Collision (sssssssssssTTC) is calculated as:
+
+$$
+TTC = \frac{\text{distance to object}}{\text{relative speed to object}}
+$$
+
+
 - If TTC **drops below a safe threshold** (e.g., 0.5s), apply brakes.
 - If TTC **is above a release threshold** (e.g., 1.5s), allow normal driving.
 
