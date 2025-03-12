@@ -17,14 +17,14 @@ wget https://www.nomachine.com/free/arm/v8/deb -O nomachine.deb
 sudo dpkg -i nomachine.deb
 ```
 
-[documentation]('https://kb.nomachine.com/AR02R01074')
+[documentation](https://kb.nomachine.com/AR02R01074)
 
 ---
 
 ## Install NoMachine on Host Machine -- Ubuntu
 ---
 
-[download this]('https://downloads.nomachine.com/download/?id=1')
+[download this](https://downloads.nomachine.com/download/?id=1)
 
 ---
 
