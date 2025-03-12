@@ -1,119 +1,114 @@
 ---
-sort: 7
+sort: 6
 ---
 
-# **TTC-Based Speed Adjustment Using PI Control**
+
+# **Speed Adjustment Using PID Control for TTC**
 
 ## **Overview**
 
-Time-to-Collision (TTC) is a crucial metric in autonomous driving, estimating how soon a vehicle will reach an obstacle given its current speed and distance. Instead of using a **binary braking approach**, a **Proportional-Integral (PI) controller** can dynamically **adjust speed** based on how close the vehicle is to the obstacle.
+In **autonomous driving and Advanced Driver Assistance Systems (ADAS)**, **Time-to-Collision (TTC)** is used to adjust vehicle speed dynamically. Instead of braking abruptly when TTC drops below a threshold, a **Proportional-Integral-Derivative (PID) controller** can **smoothly adjust speed** based on how TTC changes over time.
 
-Instead of **immediate braking**, this method gradually **reduces speed as the TTC decreases**, allowing for smoother deceleration and avoiding unnecessary stops.
-
----
-
-## **1️⃣ Why Use PI Control for Speed Instead of Hard Braking?**
-
-Using a **fixed speed** or a **hard stop at a certain TTC** leads to:
-
-- 🚗 **Abrupt stops**, even when minor speed reductions would suffice.
-- 🚦 **Oscillations**, where the vehicle stops and starts repeatedly.
-- 🔄 **Inefficiency**, as the vehicle might brake unnecessarily.
-
-Using a **PI controller** allows:  
-✅ **Smooth deceleration** based on how fast the vehicle is approaching an obstacle.  
-✅ **Adaptive speed control**, slowing down before an emergency brake is needed.  
-✅ **More natural driving behavior**, reducing harsh stops.
+This approach provides **gradual deceleration and acceleration**, improving both safety and driving comfort.
 
 ---
 
-## **2️⃣ PI Control Formula for Speed Adjustment**
+## **1️⃣ Why Use PID Control for Speed Adjustment?**
 
-The **error** is the difference between the desired TTC and the actual TTC:
+A fixed TTC threshold (e.g., reducing speed when **TTC < 1.0s**) may cause:
 
-$$
-e(t) = TTC_{\text{desired}} - TTC_{\text{actual}}
-$$
+- **Harsh speed reductions**, leading to inefficient driving.
+- **Oscillations**, where speed fluctuates between slowing down and speeding up.
+- **Overcorrections**, making the vehicle feel unstable.
 
-The **adjusted speed** is computed using the PI equation:
+A **PID controller** allows: 
 
-$$
-V(t) = K_p e(t) + K_i \int e(t) dt
-$$
+✅ **Gradual speed adjustments** based on TTC deviation.  
+✅ **Predictive control**, slowing down in advance if TTC is decreasing rapidly.  
+✅ **Smoother driving**, eliminating unnecessary fluctuations in speed.
+
+---
+
+## **2️⃣ PID Control Formula for Speed Adjustment**
+
+The **error** is defined as the difference between desired and actual TTC:
+
+$$e(t) = TTC_{\text{desired}} - TTC_{\text{actual}}$$
+
+The **speed adjustment** output is calculated using:
+
+$$V_{\text{adjustment}} = K_p e(t) + K_i \int e(t) dt + K_d \frac{de(t)}{dt}​$$
 
 Where:
 
-- \(V(t)\) = Adjusted vehicle speed  
-- \(K_p\) = Proportional gain (adjusts speed based on immediate TTC difference)  
-- \(K_i\) = Integral gain (adjusts speed based on cumulative TTC deviation)  
-- \(e(t)\) = TTC error (\(TTC_{\text{desired}} - TTC_{\text{actual}}\))  
+- **$V_{\text{adjustment}}​$** = Speed adjustment (positive = accelerate, negative = decelerate).
+- **$K_{\text{p}}$​** = Proportional gain (reacts to the TTC error).
+- **$K_{\text{i}}$​​** = Integral gain (corrects long-term speed errors).
+- **$K_{\text{d}}$​** = Derivative gain (predicts sudden changes in TTC).
+- **e(t)** = TTC error.
 
 ---
 
-## **3️⃣ Implementation Steps**
+## **3️⃣ How the Derivative Term Helps**
 
-1. **Set the desired TTC threshold** (e.g., **2.0s** for smooth adjustment).  
-2. **Measure the actual TTC** based on LiDAR scan and speed.  
-3. **Compute the error**:  
+The **derivative term** predicts future risks by monitoring the **rate of change of TTC**.
 
-$$
-e(t) = TTC_{\text{desired}} - TTC_{\text{actual}}
-$$
+**If TTC is dropping rapidly** → Reduce speed **aggressively** to prevent a collision.  
+**If TTC is stable** → Hold current speed **(avoid unnecessary slowing)**.  
+**If TTC is increasing** → Smoothly **increase speed** to improve efficiency.
 
-4. **Compute the speed adjustment** using the PI control equation.  
-5. **Apply the adjusted speed** to gradually slow the vehicle.  
+Example:
+
+- **Obstacle detected at a distance** → **Slowly reduce speed** (TTC decreases gradually).
+- **Sudden obstacle appears** → **Rapid speed reduction** (TTC drops sharply).
+- **Obstacle moves away** → **Smooth acceleration** to return to normal speed.
 
 ---
 
-## **4️⃣ Example: PI Speed Adjustment Calculation**
+## **4️⃣ Example: PID-Based Speed Control**
 
-Assume:
+### **Scenario: Adjusting Speed Based on TTC**
 
-- **Desired TTC**: **2.0s**  
-- **Actual TTC**: **1.2s**  
-- **Proportional Gain**: \(K_p = 0.3\)  
-- **Integral Gain**: \(K_i = 0.1\)  
+- **Desired TTC** = **2.0s**
+- **Actual TTC** = **1.0s**
+- **Proportional Gain** = $K_{\text{p}}$ = 0.5
+- **Integral Gain** = $K_{\text{i}}$ = 0.1
+- **Derivative Gain** = $K_{\text{d}}$ = 0.4
+- **TTC is dropping at** 0.3s per second
 
-### **Step 1: Compute the Error**
-$$
-e(t) = 2.0 - 1.2 = 0.8
-$$
+#### **Step 1: Compute the Error**
 
-### **Step 2: Compute the Speed Adjustment**
-If the **integral error** has accumulated to **1.5**:
+$$e(t) = 2.0 - 1.0 = 1.0$$
 
-$$
-V_{\text{adjustment}} = (0.3 \times 0.8) + (0.1 \times 1.5)
-$$
+#### **Step 2: Compute Speed Adjustment**
 
-$$
-V_{\text{adjustment}} = 0.24 + 0.15 = 0.39
-$$
+$$V_{\text{adjustment}} = (0.5 \times 1.0) + (0.1 \times \int 1.0 dt) + (0.4 \times 0.3)$$
 
-Thus, the **vehicle speed is reduced** by **0.39 m/s**.
+If the accumulated **integral error** over time is **2.0**, then:
+
+$$V_{\text{adjustment}} = (0.5 \times 1.0) + (0.1 \times 2.0) + (0.4 \times 0.3)$$
+
+Thus, the vehicle will **reduce speed smoothly by 0.82 m/s**, instead of braking immediately.
 
 ---
 
 ## **5️⃣ Considerations & Tuning**
 
-🚗 **Tuning PI Gains**:
+🛠 **Tuning Kd​ Carefully**
 
-- **If \(K_p\) is too high** → Speed reduces **too aggressively**.  
-- **If \(K_p\) is too low** → Vehicle reacts **too slowly**.  
-- **If \(K_i\) is too high** → Speed stays low even when TTC is safe.  
-- **If \(K_i\) is too low** → Speed fluctuates too much.  
+- **Kd​ too high** → Reacts too aggressively to minor TTC changes (unstable speed control).
+- **Kd​ too low** → Delayed reaction to sudden changes (slower response).
 
-### **Tuning Approach**
-1. Start with **\(K_p\) only** (Proportional control).  
-2. Gradually **increase \(K_i\)** to stabilize speed adjustments.  
-3. Ensure speed **never drops to zero** unless absolutely necessary.  
+🚗 **Tuning Strategy**
+
+1. Start with **P-control only** to see basic responsiveness.
+2. Add **I-control** to **correct steady-state speed errors**.
+3. Introduce **D-control** to **anticipate sudden obstacles and prevent overcorrections**.
 
 ---
 
 ## **6️⃣ Summary**
 
-✅ **PI-based speed adjustment prevents abrupt stops**  
-✅ **Maintains safe TTC without unnecessary braking**  
-✅ **Creates a smoother, more efficient driving experience**  
-
-Would you like to add **derivative control (PID) for even better response?** 🚗💨
+✅ **PID-based TTC speed control prevents abrupt slowdowns**.  
+✅ **The derivative term predicts risk before it happens**.  
+✅ **Results in smoother, more efficient speed adjustments**.
