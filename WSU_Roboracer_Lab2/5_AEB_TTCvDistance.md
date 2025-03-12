@@ -48,7 +48,7 @@ TTC **predicts how long until a collision happens if both objects maintain their
 
 ### **How It Works**
 
-The Time-to-Collision (sssssssssssTTC) is calculated as:
+The Time-to-Collision (TTC) is calculated as:
 
 $$
 TTC = \frac{\text{distance to object}}{\text{relative speed to object}}
