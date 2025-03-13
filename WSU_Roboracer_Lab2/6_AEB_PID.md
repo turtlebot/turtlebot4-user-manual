@@ -41,11 +41,12 @@ $$V_{\text{adjustment}} = K_p e(t) + K_i \int e(t) dt + K_d \frac{de(t)}{dt}​$
 
 Where:
 
-- $V_{\text{adjustment}}​$ = Speed adjustment (positive = accelerate, negative = decelerate).
+- $V_{\text{adjustment}}$ = Speed adjustment (positive = accelerate, negative = decelerate).
 - $K_{\text{p}}$ = Proportional gain (reacts to the TTC error).
-- $K_{\text{i}}$​​ = Integral gain (corrects long-term speed errors).
-- $K_{\text{d}}$​ = Derivative gain (predicts sudden changes in TTC).
-- e(t) = TTC error.
+- $K_{\text{i}}$ = Integral gain (corrects long-term speed errors).
+- $K_{\text{d}}$ = Derivative gain (predicts sudden changes in TTC).
+- $e(t)$ = TTC error.
+
 
 ---
 
