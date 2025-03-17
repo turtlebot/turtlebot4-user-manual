@@ -86,7 +86,7 @@ class SafetyNode(Node):
         One publisher should publish to the /drive topic with a AckermannDriveStamped drive message.
 
         You should also subscribe to the /scan topic to get the LaserScan messages and
-        the /ego_racecar/odom topic to get the current speed of the vehicle.
+        the /odom topic to get the current speed of the vehicle.
 
         The subscribers should use the provided odom_callback and scan_callback as callback methods
 
