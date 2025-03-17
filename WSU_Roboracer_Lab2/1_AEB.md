@@ -2,78 +2,74 @@
 sort: 1
 ---
 
-# Lab 3: Wall Following
+# Lab 2: AEB Assignment
 
 ## I. Learning Goals
 
-- PID Controllers
-- Driving the car autonomously via Wall Following
+- Using the `LaserScan` message in ROS 2
+- Instantaneous Time to Collision (iTTC)
+- Safety critical systems
 
-## II. Review of PID in the time domain
+## II. Overview
 
-A PID controller is a way to maintain certain parameters of a system around a specified set point. PID controllers are used in a variety of applications requiring closed-loop control, such as in the VESC speed controller on your car.
+The goal of this lab is to develop a safety node for the race cars that will stop the car from collision when travelling at higher velocities. We will implement Instantaneous Time to Collision (iTTC) using the `LaserScan` message in the simulator.
 
-The general equation for a PID controller in the time domain, as discussed in lecture, is as follows:
+For different commonly used ROS 2 messages you can use `ros2 interface show <msg_name>` to see the definition of messages. Note for messages that are not installed by default by the distro, you'll have to first install it for this to work.
 
-$$ u(t)=K_{p}e(t)+K_{i}\int_{0}^{t}e(t^{\prime})dt^{\prime}+K_{d}\frac{d}{dt}(e(t)) $$
+#### The `LaserScan` Message
 
-Here, $K_p$, $K_i$, and $K_d$ are constants that determine how much weight each of the three components (proportional, integral, derivative) contribute to the control output $u(t)$. $u(t)$ in our case is the steering angle we want the car to drive at. The error term $e(t)$ is the difference between the set point and the parameter we want to maintain around that set point.
+[LaserScan](http://docs.ros.org/en/noetic/api/sensor_msgs/html/msg/LaserScan.html) message contains several fields that will be useful to us. You can see detailed descriptions of what each field contains in the API. The one we'll be using the most is the `ranges` field. This is an array that contains all range measurements from the LiDAR radially ordered. You'll need to subscribe to the `/scan` topic and calculate iTTC with the LaserScan messages.
 
-## III. Wall Following
 
-In the context of our car, the desired distance to the wall should be our set point for our controller, which means our error is the difference between the desired and actual distance to the wall. This raises an important question: how do we measure the distance to the wall, and at what point in time? One option would simply be to consider the distance to the right wall at the current time $t$ (let's call it $D_t$). Let's consider a generic orientation of the car with respect to the right wall and suppose the angle between the car's x-axis and the axis in the direction along the wall is denoted by $\alpha$. We will obtain two laser scans (distances) to the wall:
-one 90 degrees to the right of the car's x-axis (beam b in the figure), and one (beam a) at an angle $\theta$ ( $0<\theta\leq70$ degrees) to the first beam. Suppose these two laser scans return distances a and b, respectively.
+#### The `Odometry` Message
 
-![fig1](img/wall_following_lab_figure_1.png)
+Both the simulator node and the car itself publish [Odometry](http://docs.ros.org/en/noetic/api/nav_msgs/html/msg/Odometry.html) messages. Within its several fields, the message includes the cars position, orientation, and velocity. You'll need to explore this message type in this lab.
 
-*Figure 1: Distance and orientation of the car relative to the wall*
+#### The `AckermannDriveStamped` Message
 
-Using the two distances $a$ and $b$ from the laser scan, the angle $\theta$ between the laser scans, and some trigonometry, we can express $\alpha$ as
+You've already used [AckermannDriveStamped](http://docs.ros.org/en/jade/api/ackermann_msgs/html/msg/AckermannDriveStamped.html) in the previous lab. It will be the message type that we'll use throughout the course to send driving commands to the simulator and the car. In the simulator, you can stop the car by sending an `AckermannDriveStamped` message with the `speed` field set to 0.0.
 
-$$ \alpha=\mbox{tan}^{-1}\left(\frac{a\mbox{cos}(\theta)-b}{a\mbox{sin}(\theta)}\right) $$
+## III. The TTC Calculation
 
-We can then express $D_t$ as 
+Time to Collision (TTC) is the time it would take for the car to collide with an obstacle if it maintained its current heading and velocity. We approximate the time to collision using Instantaneous Time to Collision (iTTC), which is the ratio of instantaneous range to range rate calculated from current range measurements and velocity measurements of the vehicle.
 
-$$ D_t=b\mbox{cos}(\alpha) $$
+As discussed in the lecture, we can calculate the iTTC as:
 
-to get the current distance between the car and the right wall. What's our error term $e(t)$, then? It's simply the difference between the desired distance and actual distance! For example, if our desired distance is 1 meter from the wall, then $e(t)$ becomes $1-D_t$.
-	
-However, we have a problem on our hands. Remember that this is a race: your car will be traveling at a high speed and therefore will have a non-instantaneous response to whatever speed and servo control you give to it. If we simply use the current distance to the wall, we might end up turning too late, and the car may crash. Therefore, we must look to the future and project the car ahead by a certain lookahead distance (let's call it $L$). Our new distance $D_{t+1}$ will then be
+$$ iTTC=\frac{r}{\lbrace- \dot{r}\rbrace_{+}} $$
 
-$$D_{t+1}=D_t+L\mbox{sin}(\alpha)$$
+where $r$ is the instantaneous range measurements, and $\dot{r}$ is the current range rate for that measurement.
+And the operator $\lbrace \rbrace_{+}$ is defined as $\lbrace x\rbrace_{+} = \text{max}( x, 0 )$.
+The instantaneous range $r$ to an obstacle is easily obtained by using the current measurements from the `LaserScan` message. Since the LiDAR effectively measures the distance from the sensor to some obstacle.
+The range rate $\dot{r}$ is the expected rate of change along each scan beam. A positive range rate means the range measurement is expanding, and a negative one means the range measurement is shrinking.
+Thus, it can be calculated in two different ways.
+First, it can be calculated by mapping the vehicle's current longitudinal velocity onto each scan beam's angle by using $v_x \cos{\theta_{i}}$. Be careful with assigning the range rate a positive or a negative value.
+The angles could also be determined by the information in `LaserScan` messages. The range rate could also be interpreted as how much the range measurement will change if the vehicle keeps the current velocity and the obstacle remains stationary.
+Second, you can take the difference between the previous range measurement and the current one, divide it by how much time has passed in between (timestamps are available in message headers), and calculate the range rate that way.
+Note the negation in the calculation this is to correctly interpret whether the range measurement should be decreasing or increasing. For a vehicle travelling forward towards an obstacle, the corresponding range rate for the beam right in front of the vehicle should be negative since the range measurement should be shrinking. Vice versa, the range rate corresponding to the vehicle travelling away from an obstacle should be positive since the range measurement should be increasing. The operator is in place so the iTTC calculation will be meaningful. When the range rate is positive, the operator will make sure iTTC for that angle goes to infinity.
 
-![fig1](img/wall_following_lab_figure_2.png)
+After your calculations, you should end up with an array of iTTCs that correspond to each angle. When a time to collision drops below a certain threshold, it means a collision is imminent.
 
-*Figure 2: Finding the future distance from the car to the wall*
+## IV. Automatic Emergency Braking with iTTC
 
-We're almost there. Our control algorithm gives us a steering angle for the VESC, but we would also like to slow the car down around corners for safety. We can compute the speed in a step-like fashion based on the steering angle, or equivalently the calculated error, so that as the angle exceeds progressively larger amounts, the speed is cut in discrete increments. For this lab, a good starting point for the speed control algorithm is:
+For this lab, you will make a Safety Node that should halt the car before it collides with obstacles. To do this, you will make a ROS 2 node that subscribes to the `LaserScan` and `Odometry` messages. It should analyze the `LaserScan` data and, if necessary, publish an `AckermannDriveStamped` with the `speed` field set to 0.0 m/s to brake. After you've calculated the array of iTTCs, you should decide how to proceed with this information. You'll have to decide how to threshold, and how to best remove false positives (braking when collision isn't imminent). Don't forget to deal with `inf`s or `nan`s in your arrays.
 
-- If the steering angle is between 0 degrees and 10 degrees, the car should drive at 1.5 meters per second.
-- If the steering angle is between 10 degrees and 20 degrees, the speed should be 1.0 meters per second.
-- Otherwise, the speed should be 0.5 meters per second.
 
-So, in summary, here's what we need to do:
+Note the following topic names for your publishers and subscribers:
 
-1. Obtain two laser scans (distances) a and b.
-2. Use the distances a and b to calculate the angle $\alpha$ between the car's $x$-axis and the right wall.
-3. Use $\alpha$ to find the current distance $D_t$ to the car, and then $\alpha$ and $D_t$ to find the estimated future distance $D_{t+1}$ to the wall.
-4. Run $D_{t+1}$ through the PID algorithm described above to get a steering angle.
-5. Use the steering angle you computed in the previous step to compute a safe driving speed.
-6. Publish the steering angle and driving speed to the `/drive` topic in simulation.
+- `LaserScan`: /scan
+- `Odometry`: /odom, specifically, the longitudinal velocity of the vehicle can be found in `twist.twist.linear.x`
+- `AckermannDriveStamped`: /drive
 
-## IV. Implementation
+## V: Deliverables and Submission
+You can implement this node in either C++ or Python. A skeleton package is available on the [AEB Notes Page](WSU_Roboracer_Lab2/2_AEB_Notes.md). Put your package in `/src` folder.
 
-Implement wall following to make the car drive autonomously around the Levine Hall map. Follow the inner walls of Levine. Which means follow left if the car is going counter-clockwise in the loop. (The first race we run will be counter-clockwise). You can implement this node in either C++ or Python.
+**Deliverable 1**: After you're finished, update the entire skeleton package directory with your `safety_node`. Upload your code to canvas
 
-## V. Deliverables and Submission
-
-**Deliverable 1**: After you're finished, update the entire skeleton package directory with your `wall_follow` package and directly commit and push to the repo Github classroom created for you. Your commited code should start and run in simulation smoothly.
-
-**Deliverable 2**: Make a screen cast of running your wall following node in the simulation. Include a link to the video on YouTube in **`SUBMISSION.md`**.
+**Deliverable 2**: Make a screen cast of running your safety node. Drive the car showing it doesn't brake when travelling straight in the hallway. You need to show that your safe node doesn't generate false positives. i.e. The car doesn't suddenly stop while travelling down the hallway. Then show the car driving towards an object and braking correctly. Upload your video to canvas.
 
 ## VI: Grading Rubric
-
-- Compilation: **10** Points
-- Implemented PID: **40** Points
-- Tuned PID: **40** Points
-- Video: **10** Points
+- Compilation: **30** Points
+- Provided Video: **20** Points
+- Correctly stops before collision: **30** Points
+- Correctly calculates TTC: **10** Points
+- Able to navigate through the hallway: **10** Points
