@@ -2,17 +2,17 @@
 sort: 2
 ---
 
-# AEB NOTES
+# Wall Following NOTES
 
-To set up your safety package within the driver stack container and prevent the roboracer from colliding with objects in front of it, follow these steps:
+To set up your wall following package within the driver stack container follow these steps:
 
-### **1️⃣ Create the Safety Package**
+### **1️⃣ Create the Wall Follow Package**
    
 Inside the driver stack container, navigate to your ROS 2 workspace  ~/f1tenth_ws/src and create a new package:
 
 ```bash 
 cd ~/f1tenth_ws/src
-ros2 pkg create safety_package --build-type ament_python --dependencies rclpy sensor_msgs std_msgs
+ros2 pkg create wall_follow --build-type ament_python --dependencies rclpy sensor_msgs std_msgs
 ```
 
 ```note
@@ -58,62 +58,116 @@ cd ~/f1tenth_ws
 rosdep install --from-paths src --ignore-src -r -y
 ```
 
-### **5️⃣ Implement the Safety Node**
-You’ll create a safety node that listens to LiDAR data (/scan) and publishes a safety brake command if an object is too close.
+### **5️⃣ Implement the Wall Follow Node**
+You’ll create a wall follow node that listens to LiDAR data (/scan) and publishes a steering commands to stay near a wall
 
-Example: Python Safety Node (safety_node.py)
-Create a file inside safety_package/safety_node.py:
+Example: Python Wall follow Node (wall_follow_node.py)
+Create a file inside wall_follow/wall_follow_node.py:
 
 ```python
-#!/usr/bin/env python3
 import rclpy
 from rclpy.node import Node
 
 import numpy as np
-# TODO: include needed ROS msg type headers and libraries
 from sensor_msgs.msg import LaserScan
-from nav_msgs.msg import Odometry
-from ackermann_msgs.msg import AckermannDriveStamped, AckermannDrive
+from ackermann_msgs.msg import AckermannDriveStamped
 
-
-class SafetyNode(Node):
-    """
-    The class that handles emergency braking.
+class WallFollow(Node):
+    """ 
+    Implement Wall Following on the car
     """
     def __init__(self):
-        super().__init__('safety_node')
+        super().__init__('wall_follow_node')
+
+        lidarscan_topic = '/scan'
+        drive_topic = '/drive'
+
+        # TODO: create subscribers and publishers
+
+        # TODO: set PID gains
+        # self.kp = 
+        # self.kd = 
+        # self.ki = 
+
+        # TODO: store history
+        # self.integral = 
+        # self.prev_error = 
+        # self.error = 
+
+        # TODO: store any necessary values you think you'll need
+
+    def get_range(self, range_data, angle):
         """
-        One publisher should publish to the /drive topic with a AckermannDriveStamped drive message.
+        Simple helper to return the corresponding range measurement at a given angle. Make sure you take care of NaNs and infs.
 
-        You should also subscribe to the /scan topic to get the LaserScan messages and
-        the /odom topic to get the current speed of the vehicle.
+        Args:
+            range_data: single range array from the LiDAR
+            angle: between angle_min and angle_max of the LiDAR
 
-        The subscribers should use the provided odom_callback and scan_callback as callback methods
+        Returns:
+            range: range measurement in meters at the given angle
 
-        NOTE that the x component of the linear velocity in odom is the speed
         """
-        self.speed = 0.
-        # TODO: create ROS subscribers and publishers.
 
-    def odom_callback(self, odom_msg):
-        # TODO: update current speed
-        self.speed = 0.
+        #TODO: implement
+        return 0.0
 
-    def scan_callback(self, scan_msg):
-        # TODO: calculate TTC
-        
-        # TODO: publish command to brake
-        pass
+    def get_error(self, range_data, dist):
+        """
+        Calculates the error to the wall. Follow the wall to the left (going counter clockwise in the Levine loop). You potentially will need to use get_range()
+
+        Args:
+            range_data: single range array from the LiDAR
+            dist: desired distance to the wall
+
+        Returns:
+            error: calculated error
+        """
+
+        #TODO:implement
+        return 0.0
+
+    def pid_control(self, error, velocity):
+        """
+        Based on the calculated error, publish vehicle control
+
+        Args:
+            error: calculated error
+            velocity: desired velocity
+
+        Returns:
+            None
+        """
+        angle = 0.0
+        # TODO: Use kp, ki & kd to implement a PID controller
+        drive_msg = AckermannDriveStamped()
+        # TODO: fill in drive message and publish
+
+    def scan_callback(self, msg):
+        """
+        Callback function for LaserScan messages. Calculate the error and publish the drive message in this function.
+
+        Args:
+            msg: Incoming LaserScan message
+
+        Returns:
+            None
+        """
+        error = 0.0 # TODO: replace with error calculated by get_error()
+        velocity = 0.0 # TODO: calculate desired car velocity based on error
+        self.pid_control(error, velocity) # TODO: actuate the car with PID
+
 
 def main(args=None):
     rclpy.init(args=args)
-    safety_node = SafetyNode()
-    rclpy.spin(safety_node)
+    print("WallFollow Initialized")
+    wall_follow_node = WallFollow()
+    rclpy.spin(wall_follow_node)
 
     # Destroy the node explicitly
     # (optional - otherwise it will be done automatically
     # when the garbage collector destroys the node object)
-    safety_node.destroy_node()
+    wall_follow_node.destroy_node()
     rclpy.shutdown()
 
 
@@ -127,7 +181,7 @@ Modify setup.py inside safety_package:
 ```python
 entry_points={
     'console_scripts': [
-        'safety_node = safety_package.safety_node:main',
+        'wall_follow_node = wall_follow_package.wall_follow_node:main',
     ],
 },
 ```
@@ -137,11 +191,13 @@ Run the following:
 
 ```bash
 cd ~/f1tenth_ws
-colcon build --packages-select safety_package
+colcon build --packages-select wall_follow_package
 source install/setup.bash
-ros2 run safety_package safety_node
+ros2 run wall_follow_package wall_follow_node
 ```
 
-This will listen to LiDAR (/scan) and publish a safety stop signal (/safety_brake) when an obstacle is too close.
+
+
+
 
 
