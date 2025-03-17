@@ -63,7 +63,7 @@ Note the following topic names for your publishers and subscribers:
 ## V: Deliverables and Submission
 You can implement this node in either C++ or Python. A skeleton package is available on the [AEB Notes Page](WSU_Roboracer_Lab2/2_AEB_Notes.md). Put your package in `/src` folder.
 
-**Deliverable 1**: After you're finished, update the entire skeleton package directory with your `safety_node`. Your code should start and run in simulation smoothly. Upload your code to canvas
+**Deliverable 1**: After you're finished, update the entire skeleton package directory with your `safety_node`. Upload your code to canvas
 
 **Deliverable 2**: Make a screen cast of running your safety node in the simulation. Drive the car showing it doesn't brake when travelling straight in the hallway. You need to show that your safe node doesn't generate false positives. i.e. The car doesn't suddenly stop while travelling down the hallway. Then show the car driving towards an object and braking correctly. Upload your video to canvas.
 
