@@ -21,14 +21,14 @@ Here, K_p, K_i, and K_d are constants that determine how much weight each of the
 
 ## III. Wall Following
 
-In the context of our car, the desired distance to the wall should be our set point for our controller, which means our error is the difference between the desired and actual distance to the wall. This raises an important question: how do we measure the distance to the wall, and at what point in time? One option would simply be to consider the distance to the right wall at the current time t (let's call it D_t). Let's consider a generic orientation of the car with respect to the right wall and suppose the angle between the car's x-axis and the axis in the direction along the wall is denoted by α. We will obtain two laser scans (distances) to the wall:
-one 90 degrees to the right of the car's x-axis (beam b in the figure), and one (beam a) at an angle Θ ( 0 < Θ ≤ 70 degrees) to the first beam. Suppose these two laser scans return distances a and b, respectively.
+In the context of our car, the desired distance to the wall should be our set point for our controller, which means our error is the difference between the desired and actual distance to the wall. This raises an important question: how do we measure the distance to the wall, and at what point in time? One option would simply be to consider the distance to the right wall at the current time t (let's call it D_t). Let's consider a generic orientation of the car with respect to the right wall and suppose the angle between the car's x-axis and the axis in the direction along the wall is denoted by **α**. We will obtain two laser scans (distances) to the wall:
+one 90 degrees to the right of the car's x-axis (beam b in the figure), and one (beam a) at an angle **Θ** ( 0 < Θ ≤ 70 degrees) to the first beam. Suppose these two laser scans return distances a and b, respectively.
 
 ![fig1](media/wall_following_lab_figure_1.png)
 
 *Figure 1: Distance and orientation of the car relative to the wall*
 
-Using the two distances $a$ and $b$ from the laser scan, the angle $\theta$ between the laser scans, and some trigonometry, we can express $\alpha$ as
+Using the two distances a and b from the laser scan, the angle **Θ** between the laser scans, and some trigonometry, we can express **α** as
 
 $$ \alpha=\mbox{tan}^{-1}\left(\frac{a\mbox{cos}(\theta)-b}{a\mbox{sin}(\theta)}\right) $$
 
@@ -63,13 +63,13 @@ So, in summary, here's what we need to do:
 
 ## IV. Implementation
 
-Implement wall following to make the car drive autonomously around the Levine Hall map. Follow the inner walls of Levine. Which means follow left if the car is going counter-clockwise in the loop. (The first race we run will be counter-clockwise). You can implement this node in either C++ or Python.
+Implement wall following to make the car drive autonomously around the track. Follow the inner walls of the track. Which means follow left if the car is going counter-clockwise in the loop. You can implement this node in either C++ or Python.
 
 ## V. Deliverables and Submission
 
-**Deliverable 1**: After you're finished, update the entire skeleton package directory with your `wall_follow` package and directly commit and push to the repo Github classroom created for you. Your commited code should start and run in simulation smoothly.
+**Deliverable 1**: After you're finished, update the entire skeleton package directory with your `wall_follow_package`. Upload you code to Canvas.
 
-**Deliverable 2**: Make a screen cast of running your wall following node in the simulation. Include a link to the video on YouTube in **`SUBMISSION.md`**.
+**Deliverable 2**: Make a video of running your wall following node on the track.
 
 ## VI: Grading Rubric
 
