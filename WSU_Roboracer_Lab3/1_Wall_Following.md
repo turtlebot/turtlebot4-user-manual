@@ -24,7 +24,7 @@ Here, K_p, K_i, and K_d are constants that determine how much weight each of the
 In the context of our car, the desired distance to the wall should be our set point for our controller, which means our error is the difference between the desired and actual distance to the wall. This raises an important question: how do we measure the distance to the wall, and at what point in time? One option would simply be to consider the distance to the right wall at the current time t (let's call it D_t). Let's consider a generic orientation of the car with respect to the right wall and suppose the angle between the car's x-axis and the axis in the direction along the wall is denoted by α. We will obtain two laser scans (distances) to the wall:
 one 90 degrees to the right of the car's x-axis (beam b in the figure), and one (beam a) at an angle Θ ( 0 < Θ ≤ 70 degrees) to the first beam. Suppose these two laser scans return distances a and b, respectively.
 
-![fig1](img/wall_following_lab_figure_1.png)
+![fig1](media/wall_following_lab_figure_1.png)
 
 *Figure 1: Distance and orientation of the car relative to the wall*
 
@@ -42,7 +42,7 @@ However, we have a problem on our hands. Remember that this is a race: your car 
 
 $$D_{t+1}=D_t+L\mbox{sin}(\alpha)$$
 
-![fig1](img/wall_following_lab_figure_2.png)
+![fig1](media/wall_following_lab_figure_2.png)
 
 *Figure 2: Finding the future distance from the car to the wall*
 
