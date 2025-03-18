@@ -12,7 +12,7 @@ Inside the driver stack container, navigate to your ROS 2 workspace  ~/f1tenth_w
 
 ```bash 
 cd ~/f1tenth_ws/src
-ros2 pkg create wall_follow --build-type ament_python --dependencies rclpy sensor_msgs std_msgs
+ros2 pkg create wall_follow_package --build-type ament_python --dependencies rclpy sensor_msgs std_msgs
 ```
 
 ```note
