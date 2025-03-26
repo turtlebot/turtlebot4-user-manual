@@ -10,7 +10,7 @@ When working with an RPLidar sensor mounted on the Turtlebot4, it's important to
 
 ## Adjusted LiDAR Data Array (ranges)
 
-Due to the mounting orientation, the `ranges` array corresponds to angles starting from the robot's right side (0 degrees) and goes around counterclockwise:
+Due to the mounting orientation of the RPLidar on the Turtlebot 4, the `ranges` array corresponds to angles starting from the robot's right side (0 degrees) and goes around counterclockwise:
 
 | Direction      | Angle (degrees) | Index Calculation                   |
 |----------------|-----------------|-------------------------------------|
@@ -18,6 +18,8 @@ Due to the mounting orientation, the `ranges` array corresponds to angles starti
 | Front (robot's front)  | 90°     | `len(ranges) // 4`                  |
 | Left                   | 180°    | `len(ranges) // 2`                  |
 | Back                   | 270°    | `3 * len(ranges) // 4`              |
+
+![lidar](media/rplidar%20ranges.png)
 
 ## Example in ROS 2 Python Node
 
