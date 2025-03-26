@@ -42,5 +42,4 @@ def scan_callback(self, msg: LaserScan):
 - The angle increments in the LiDAR message (`angle_increment`) will help you calculate precise angular positions.
 - Handle potential edge cases, such as infinite distances (`inf`) or invalid measurements (`NaN`).
 
-This adjusted guide provides a clear reference for interpreting LiDAR data specifically for the Turtlebot4 configuration.
 
