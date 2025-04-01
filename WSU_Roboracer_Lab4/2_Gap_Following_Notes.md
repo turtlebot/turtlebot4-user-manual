@@ -91,7 +91,10 @@ class GapFollow(Node):
 
     def preprocess_lidar(self, ranges):
         """
-        Preprocess LiDAR ranges to handle NaNs, infinities, and limited ranges.
+        Preprocess the LiDAR scan array. Expert implementation includes:
+            1.Setting each value to the mean over some window
+            2.Rejecting high values (eg. > 3m)
+        
 
         Args:
             ranges: Array of LiDAR distances
@@ -99,12 +102,15 @@ class GapFollow(Node):
         Returns:
             processed_ranges: Cleaned ranges
         """
-        # TODO: implement preprocessing
-        return ranges
 
-    def find_largest_gap(self, ranges):
+        # TODO: implement preprocessing
+        proc_ranges = ranges
+        return proc_ranges
+
+    def find_max_gap(self, free_space_ranges):
         """
         Find the largest gap in the processed LiDAR data.
+        Return the start index & end index of the max gap in free_space_ranges
 
         Args:
             ranges: Cleaned LiDAR ranges
@@ -113,9 +119,9 @@ class GapFollow(Node):
             start_idx, end_idx: indices of the largest gap
         """
         # TODO: implement
-        return 0, 0
+        return None
 
-    def calculate_best_point(self, ranges, start_idx, end_idx):
+    def find_best_point(self, ranges, start_idx, end_idx):
         """
         Find the best point within the largest gap to drive towards.
 
@@ -127,25 +133,31 @@ class GapFollow(Node):
             best_point_idx: Index of the target point
         """
         # TODO: implement
-        return 0
+        return None
 
-    def scan_callback(self, msg):
+    def scan_callback(self, data):
         """
         Callback function for LaserScan messages. Calculates the best driving direction.
 
         Args:
             msg: Incoming LaserScan message
-        """
-        processed_ranges = self.preprocess_lidar(msg.ranges)
-        start, end = self.find_largest_gap(processed_ranges)
-        best_point = self.calculate_best_point(processed_ranges, start, end)
         
-        drive_msg = AckermannDriveStamped()
-        # TODO: compute steering angle and velocity
-        # drive_msg.drive.steering_angle = 
-        # drive_msg.drive.speed = 
+        publish an AckermannDriveStamped Message
+        """
 
-        # TODO: Publish drive message
+         ranges = data.ranges
+        proc_ranges = self.preprocess_lidar(ranges)
+        
+        # TODO:
+        #Find closest point to LiDAR
+
+        #Eliminate all points inside 'bubble' (set them to zero) 
+
+        #Find max length gap 
+
+        #Find the best point in the gap 
+
+        #Publish Drive message
 
 
 def main(args=None):
