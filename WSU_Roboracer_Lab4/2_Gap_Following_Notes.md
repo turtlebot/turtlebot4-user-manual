@@ -2,53 +2,57 @@
 sort: 2
 ---
 
-# Wall Following NOTES
+# Gap Following NOTES
 
-To set up your wall following package within the driver stack container follow these steps:
+To set up your gap following package within the driver stack container follow these steps:
 
-### **1️⃣ Create the Wall Follow Package**
-   
-Inside the driver stack container, navigate to your ROS 2 workspace  ~/f1tenth_ws/src and create a new package:
+### **1️⃣ Create the Gap Follow Package**
 
-```bash 
+Inside the driver stack container, navigate to your ROS 2 workspace `~/f1tenth_ws/src` and create a new package:
+
+```bash
 cd ~/f1tenth_ws/src
-ros2 pkg create wall_follow_package --build-type ament_python --dependencies rclpy sensor_msgs std_msgs
+ros2 pkg create gap_follow --build-type ament_python --dependencies rclpy sensor_msgs std_msgs ackermann_msgs
 ```
 
 ```note
-Dependencies
-- rcply (ROS Client Library for Python)
-- sensor_msgs (Standard Messages for Sesnsors)
+Dependencies:
+- rclpy (ROS Client Library for Python)
+- sensor_msgs (Standard Sensor Messages)
+- std_msgs (Standard ROS Messages)
+- ackermann_msgs (Ackermann Drive Messages)
 ```
 
 ### **2️⃣ Modify package.xml**
 
-Ensure package.xml includes dependencies like rclpy, sensor_msgs, and std_msgs. Open package.xml and add:
+Ensure `package.xml` includes dependencies such as `rclpy`, `sensor_msgs`, `std_msgs`, and `ackermann_msgs`. Open `package.xml` and verify:
 
 ```xml
-    <depend>rclpy</depend>
-    <depend>sensor_msgs</depend>
-    <depend>std_msgs</depend>
+  <depend>rclpy</depend>
+  <depend>sensor_msgs</depend>
+  <depend>std_msgs</depend>
+  <depend>ackermann_msgs</depend>
 ```
 
 If you're using C++ instead of Python, also ensure you have:
 
 ```xml
-    <depend>rclcpp</depend>
-    <depend>tf2_ros</depend>
-    <depend>geometry_msgs</depend>
+  <depend>rclcpp</depend>
+  <depend>tf2_ros</depend>
+  <depend>geometry_msgs</depend>
 ```
 
 ### **3️⃣ Modify CMakeLists.txt (If Using C++)**
-If you're using C++, modify CMakeLists.txt to include:
+If you're using C++, modify `CMakeLists.txt` to include:
 
 ```bash
 find_package(rclcpp REQUIRED)
 find_package(sensor_msgs REQUIRED)
 find_package(std_msgs REQUIRED)
+find_package(ackermann_msgs REQUIRED)
 ```
 
-Ensure the add_executable or ament_target_dependencies includes the necessary dependencies.
+Ensure the `add_executable` or `ament_target_dependencies` includes these necessary dependencies.
 
 ### **4️⃣ Install Dependencies Using rosdep**
 Run the following to install missing dependencies:
@@ -58,130 +62,112 @@ cd ~/f1tenth_ws
 rosdep install --from-paths src --ignore-src -r -y
 ```
 
-### **5️⃣ Implement the Wall Follow Node**
-You’ll create a wall follow node that listens to LiDAR data (/scan) and publishes a steering commands to stay near a wall
+### **5️⃣ Implement the Gap Follow Node**
+You’ll create a gap follow node that processes LiDAR data (`/scan`) to find the largest gap and publishes steering commands to navigate through it.
 
-Example: Python Wall follow Node (wall_follow_node.py)
-Create a file inside wall_follow/wall_follow_node.py:
+**Example:** Python Gap Follow Node (`gap_follow_node.py`)
+Create a file inside `gap_follow/gap_follow_node.py`:
 
 ```python
 import rclpy
 from rclpy.node import Node
-
 import numpy as np
 from sensor_msgs.msg import LaserScan
 from ackermann_msgs.msg import AckermannDriveStamped
 
-class WallFollow(Node):
-    """ 
-    Implement Wall Following on the car
+class GapFollow(Node):
+    """
+    Implement Gap Following on the car
+    This is just a template, you are free to implement your own node!
     """
     def __init__(self):
-        super().__init__('wall_follow_node')
+        super().__init__('gap_follow_node')
 
         lidarscan_topic = '/scan'
         drive_topic = '/drive'
 
-        # TODO: create subscribers and publishers
+        # TODO: Subscribe to LIDAR
+        # TODO: Publish to drive
 
-        # TODO: set PID gains
-        # self.kp = 
-        # self.kd = 
-        # self.ki = 
-
-        # TODO: store history
-        # self.integral = 
-        # self.prev_error = 
-        # self.error = 
-
-        # TODO: store any necessary values you think you'll need
-
-    def get_range(self, range_data, angle):
+    def preprocess_lidar(self, ranges):
         """
-        Simple helper to return the corresponding range measurement at a given angle. Make sure you take care of NaNs and infs.
+        Preprocess LiDAR ranges to handle NaNs, infinities, and limited ranges.
 
         Args:
-            range_data: single range array from the LiDAR
-            angle: between angle_min and angle_max of the LiDAR
+            ranges: Array of LiDAR distances
 
         Returns:
-            range: range measurement in meters at the given angle
-
+            processed_ranges: Cleaned ranges
         """
+        # TODO: implement preprocessing
+        return ranges
 
-        #TODO: implement
-        return 0.0
-
-    def get_error(self, range_data, dist):
+    def find_largest_gap(self, ranges):
         """
-        Calculates the error to the wall. Follow the wall to the left (going counter clockwise in the Levine loop). You potentially will need to use get_range()
+        Find the largest gap in the processed LiDAR data.
 
         Args:
-            range_data: single range array from the LiDAR
-            dist: desired distance to the wall
+            ranges: Cleaned LiDAR ranges
 
         Returns:
-            error: calculated error
+            start_idx, end_idx: indices of the largest gap
         """
+        # TODO: implement
+        return 0, 0
 
-        #TODO:implement
-        return 0.0
-
-    def pid_control(self, error, velocity):
+    def calculate_best_point(self, ranges, start_idx, end_idx):
         """
-        Based on the calculated error, publish vehicle control
+        Find the best point within the largest gap to drive towards.
 
         Args:
-            error: calculated error
-            velocity: desired velocity
+            ranges: Cleaned LiDAR ranges
+            start_idx, end_idx: indices of the largest gap
 
         Returns:
-            None
+            best_point_idx: Index of the target point
         """
-        angle = 0.0
-        # TODO: Use kp, ki & kd to implement a PID controller
-        drive_msg = AckermannDriveStamped()
-        # TODO: fill in drive message and publish
+        # TODO: implement
+        return 0
 
     def scan_callback(self, msg):
         """
-        Callback function for LaserScan messages. Calculate the error and publish the drive message in this function.
+        Callback function for LaserScan messages. Calculates the best driving direction.
 
         Args:
             msg: Incoming LaserScan message
-
-        Returns:
-            None
         """
-        error = 0.0 # TODO: replace with error calculated by get_error()
-        velocity = 0.0 # TODO: calculate desired car velocity based on error
-        self.pid_control(error, velocity) # TODO: actuate the car with PID
+        processed_ranges = self.preprocess_lidar(msg.ranges)
+        start, end = self.find_largest_gap(processed_ranges)
+        best_point = self.calculate_best_point(processed_ranges, start, end)
+        
+        drive_msg = AckermannDriveStamped()
+        # TODO: compute steering angle and velocity
+        # drive_msg.drive.steering_angle = 
+        # drive_msg.drive.speed = 
+
+        # TODO: Publish drive message
 
 
 def main(args=None):
     rclpy.init(args=args)
-    print("WallFollow Initialized")
-    wall_follow_node = WallFollow()
-    rclpy.spin(wall_follow_node)
+    print("GapFollow Initialized")
+    gap_follow_node = GapFollow()
+    rclpy.spin(gap_follow_node)
 
-    # Destroy the node explicitly
-    # (optional - otherwise it will be done automatically
-    # when the garbage collector destroys the node object)
-    wall_follow_node.destroy_node()
+    gap_follow_node.destroy_node()
     rclpy.shutdown()
-
 
 if __name__ == '__main__':
     main()
 ```
 
 ### **6️⃣ Make It Executable**
-Modify setup.py inside safety_package:
+Modify `setup.py` inside `gap_follow`:
 
 ```python
 entry_points={
     'console_scripts': [
-        'wall_follow_node = wall_follow_package.wall_follow_node:main',
+        'gap_follow_node = gap_follow.gap_follow_node:main',
     ],
 },
 ```
@@ -191,13 +177,7 @@ Run the following:
 
 ```bash
 cd ~/f1tenth_ws
-colcon build --packages-select wall_follow_package
+colcon build --packages-select gap_follow
 source install/setup.bash
-ros2 run wall_follow_package wall_follow_node
+ros2 run gap_follow gap_follow_node
 ```
-
-
-
-
-
-

@@ -1,181 +1,48 @@
 ---
-sort: 2
+sort: 1
 ---
 
-# Gap Following NOTES
+# Lab 4: Follow the Gap
 
-To set up your gap following package within the driver stack container follow these steps:
+## I. Learning Goals
 
-### **1️⃣ Create the Gap Follow Package**
+- Reactive methods for obstacle avoidance
 
-Inside the driver stack container, navigate to your ROS 2 workspace `~/f1tenth_ws/src` and create a new package:
+## II. Overview
 
-```bash
-cd ~/f1tenth_ws/src
-ros2 pkg create gap_follow --build-type ament_python --dependencies rclpy sensor_msgs std_msgs ackermann_msgs
-```
+In this lab, you will implement a reactive algorithm for obstacle avoidance. While the base starter code defines an implementation of the F1TENTH Follow the Gap Algorithm, you are allowed to submit in C++, and encouraged to try different reactive algorithms or a combination of several. In total, the python code for the algorithm is only about 120 lines.
 
-```note
-Dependencies:
-- rclpy (ROS Client Library for Python)
-- sensor_msgs (Standard Sensor Messages)
-- std_msgs (Standard ROS Messages)
-- ackermann_msgs (Ackermann Drive Messages)
-```
+## III. Review of F1TENTH Follow the Gap
 
-### **2️⃣ Modify package.xml**
+The lecture slides on F1TENTH Follow the gap is the best visual resource for understanding every step of the algorithm. However, the steps are outlined over here:
 
-Ensure `package.xml` includes dependencies such as `rclpy`, `sensor_msgs`, `std_msgs`, and `ackermann_msgs`. Open `package.xml` and verify:
+1. Obtain laser scans and preprocess them.
+2. Find the closest point in the LiDAR ranges array.
+3. Draw a safety bubble around this closest point and set all points inside this bubble to 0. All other non-zero points are now considered “gaps” or “free space”.
+4. Find the max length “gap”, in other words, the largest number of consecutive non-zero elements in your ranges array.
+5. Find the best goal point in this gap. Naively, this could be the furthest point away in your gap, but you can probably go faster if you follow the “Better Idea” method as described in lecture.
+6. Actuate the car to move towards this goal point by publishing an `AckermannDriveStamped` to the /drive topic.
 
-```xml
-  <depend>rclpy</depend>
-  <depend>sensor_msgs</depend>
-  <depend>std_msgs</depend>
-  <depend>ackermann_msgs</depend>
-```
+### IV. Implementation
 
-If you're using C++ instead of Python, also ensure you have:
+Implement a gap follow algorithm to make the car drive autonomously around the Levine Hall map. You can implement this node in either C++ or Python. There are two extra test maps `levine_blocked.png`, which is empty, and `levine_obs.png`, which has obstacles that are relatively hard to navigate through for you to evaluate your code on.
 
-```xml
-  <depend>rclcpp</depend>
-  <depend>tf2_ros</depend>
-  <depend>geometry_msgs</depend>
-```
+To change the map in the simulation, add the included `.png` and `.yaml` map files to `f1tenth_gym_ros/maps` directory. Then, change `f1tenth_gym_ros/config/sim.yaml` to use your desired map.
 
-### **3️⃣ Modify CMakeLists.txt (If Using C++)**
-If you're using C++, modify `CMakeLists.txt` to include:
+### V. Deliverables and Submission
 
-```bash
-find_package(rclcpp REQUIRED)
-find_package(sensor_msgs REQUIRED)
-find_package(std_msgs REQUIRED)
-find_package(ackermann_msgs REQUIRED)
-```
+**Deliverable 1**: After you're finished, update the entire skeleton package directory with your `gap_follow` package and directly commit and push to the repo Github classroom created for you. Your commited code should start and run in simulation smoothly.
 
-Ensure the `add_executable` or `ament_target_dependencies` includes these necessary dependencies.
+**Deliverable 2**: Make a screen cast of running your reactive node in the simulation. Include a link to the video on YouTube in **`SUBMISSION.md`**. The basic requirement is that your car should be able to navigate entire loops in `levine_blocked` map, and through at least most of the obstacles in `levine_obs` map. Make screen casts on both maps.
 
-### **4️⃣ Install Dependencies Using rosdep**
-Run the following to install missing dependencies:
+### VI. Grading Rubric
 
-```bash
-cd ~/f1tenth_ws
-rosdep install --from-paths src --ignore-src -r -y
-```
+- Compilation: **10** Points
+- Implemented Find-Max Gap: **40** Points
+- Implemented Find best point: **30** Points
+- Levine blocked Video: **10** Points
+- Levine obstacles Video: **10** Points
 
-### **5️⃣ Implement the Gap Follow Node**
-You’ll create a gap follow node that processes LiDAR data (`/scan`) to find the largest gap and publishes steering commands to navigate through it.
+### VII. Extra Resources
 
-**Example:** Python Gap Follow Node (`gap_follow_node.py`)
-Create a file inside `gap_follow/gap_follow_node.py`:
-
-```python
-import rclpy
-from rclpy.node import Node
-import numpy as np
-from sensor_msgs.msg import LaserScan
-from ackermann_msgs.msg import AckermannDriveStamped
-
-class GapFollow(Node):
-    """
-    Implement Gap Following on the car
-    """
-    def __init__(self):
-        super().__init__('gap_follow_node')
-
-        lidarscan_topic = '/scan'
-        drive_topic = '/drive'
-
-        # TODO: create subscribers and publishers
-
-    def preprocess_lidar(self, ranges):
-        """
-        Preprocess LiDAR ranges to handle NaNs, infinities, and limited ranges.
-
-        Args:
-            ranges: Array of LiDAR distances
-
-        Returns:
-            processed_ranges: Cleaned ranges
-        """
-        # TODO: implement preprocessing
-        return ranges
-
-    def find_largest_gap(self, ranges):
-        """
-        Find the largest gap in the processed LiDAR data.
-
-        Args:
-            ranges: Cleaned LiDAR ranges
-
-        Returns:
-            start_idx, end_idx: indices of the largest gap
-        """
-        # TODO: implement
-        return 0, 0
-
-    def calculate_best_point(self, ranges, start_idx, end_idx):
-        """
-        Find the best point within the largest gap to drive towards.
-
-        Args:
-            ranges: Cleaned LiDAR ranges
-            start_idx, end_idx: indices of the largest gap
-
-        Returns:
-            best_point_idx: Index of the target point
-        """
-        # TODO: implement
-        return 0
-
-    def scan_callback(self, msg):
-        """
-        Callback function for LaserScan messages. Calculates the best driving direction.
-
-        Args:
-            msg: Incoming LaserScan message
-        """
-        processed_ranges = self.preprocess_lidar(msg.ranges)
-        start, end = self.find_largest_gap(processed_ranges)
-        best_point = self.calculate_best_point(processed_ranges, start, end)
-        
-        drive_msg = AckermannDriveStamped()
-        # TODO: compute steering angle and velocity
-        # drive_msg.drive.steering_angle = 
-        # drive_msg.drive.speed = 
-
-        # TODO: Publish drive message
-
-
-def main(args=None):
-    rclpy.init(args=args)
-    print("GapFollow Initialized")
-    gap_follow_node = GapFollow()
-    rclpy.spin(gap_follow_node)
-
-    gap_follow_node.destroy_node()
-    rclpy.shutdown()
-
-if __name__ == '__main__':
-    main()
-```
-
-### **6️⃣ Make It Executable**
-Modify `setup.py` inside `gap_follow`:
-
-```python
-entry_points={
-    'console_scripts': [
-        'gap_follow_node = gap_follow.gap_follow_node:main',
-    ],
-},
-```
-
-### **7️⃣ Build & Run**
-Run the following:
-
-```bash
-cd ~/f1tenth_ws
-colcon build --packages-select gap_follow
-source install/setup.bash
-ros2 run gap_follow gap_follow_node
-```
+UNC Follow the Gap Video: https://youtu.be/ctTJHueaTcY
