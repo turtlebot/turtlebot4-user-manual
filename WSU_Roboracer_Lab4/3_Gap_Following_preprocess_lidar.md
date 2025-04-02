@@ -1,3 +1,7 @@
+---
+sort: 3
+---
+
 # Preprocessing LiDAR Data
 
 This page describes the implementation of the `preprocess_lidar` function, which is essential for preparing LiDAR sensor data before further analysis, such as gap detection.

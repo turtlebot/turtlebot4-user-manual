@@ -1,6 +1,43 @@
 ---
 sort: 1
 ---
+# Follow the Gap Method
+
+In the context of F1TENTH racing, the **Follow the Gap** method refers to an obstacle avoidance and path-planning algorithm designed to quickly identify the largest navigable opening (or "gap") and steer the vehicle toward it.
+
+## Core Concept
+- **Identify Obstacles**: The vehicle uses LiDAR data to detect obstacles around it.
+- **Finding Gaps**: It analyzes the LiDAR scan points to identify free space (or gaps) that are large enough for the car to safely pass through.
+- **Selecting the Largest Gap**: Among the available gaps, the largest one is chosen to ensure safety and maximize maneuverability.
+- **Choosing a Point within the Gap**: Typically, the safest route is through the middle of the largest gap, so the vehicle aims for that midpoint.
+
+## Step-by-Step Process
+1. **Data Acquisition**:
+   - Acquire a LiDAR scan around the vehicle (360° or a front-facing section).
+2. **Preprocessing**:
+   - Filter out noisy data points.
+   - Possibly add safety margins around obstacles.
+3. **Gap Detection**:
+   - Examine the range data and group consecutive points that exceed a certain distance threshold into "gaps."
+4. **Best Gap Selection**:
+   - Choose the widest continuous gap or the safest navigable gap based on predetermined safety criteria.
+5. **Goal Selection Within the Gap**:
+   - Define a steering target at the midpoint of the selected gap.
+6. **Navigation Command**:
+   - Calculate steering angle and speed to guide the car safely through the identified gap.
+
+## Practical Considerations
+- Adjusting safety margins based on the speed and agility of the vehicle.
+- Fine-tuning the method to handle narrow paths or cluttered environments.
+- Accounting for dynamic obstacles by rapidly updating LiDAR scans and re-computing gaps.
+
+## Advantages
+- Simple, fast, and computationally efficient, making it suitable for real-time systems.
+- Effective in unknown and cluttered environments.
+
+## Limitations
+- May lead to oscillations or suboptimal paths in complex scenarios.
+- Doesn’t inherently incorporate global path planning
 
 # Lab 4: Follow the Gap
 

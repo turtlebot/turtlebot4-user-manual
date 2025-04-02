@@ -145,7 +145,7 @@ class GapFollow(Node):
         publish an AckermannDriveStamped Message
         """
 
-         ranges = data.ranges
+        ranges = data.ranges
         proc_ranges = self.preprocess_lidar(ranges)
         
         # TODO:
