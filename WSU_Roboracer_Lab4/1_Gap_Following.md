@@ -13,7 +13,7 @@ In the context of F1TENTH racing, the **Follow the Gap** method refers to an obs
 
 ## Step-by-Step Process
 1. **Data Acquisition**:
-   - Acquire a LiDAR scan around the vehicle (360° or a front-facing section).
+   - Acquire a LiDAR scan around the vehicle (left range[180] of car to right range[900] of car).
 2. **Preprocessing**:
    - Filter out noisy data points.
    - Possibly add safety margins around obstacles.
