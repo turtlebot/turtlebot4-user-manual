@@ -11,6 +11,10 @@ In the context of F1TENTH racing, the **Follow the Gap** method refers to an obs
 - **Selecting the Largest Gap**: Among the available gaps, the largest one is chosen to ensure safety and maximize maneuverability.
 - **Choosing a Point within the Gap**: Typically, the safest route is through the middle of the largest gap, so the vehicle aims for that midpoint.
 
+![Gap1](media/gap1.jpg)
+![Gap2](media/gap2.jpg)
+![Gap3](media/gap3.jpg)
+
 ## Step-by-Step Process
 1. **Data Acquisition**:
    - Acquire a LiDAR scan around the vehicle (left range[180] of car to right range[900] of car).
