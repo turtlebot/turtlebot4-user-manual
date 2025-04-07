@@ -42,40 +42,45 @@ def find_max_gap(self, free_space_ranges, bubble_radius=0.5):
     Returns:
         (start_idx, end_idx): indices of the largest gap
     """
-    # Step 1: Find the closest obstacle
+    # Step 1: Find the closest obstacle by taking the index of the minimum value in the ranges
     closest_idx = np.argmin(free_space_ranges)
 
     # Step 2: Create the safety bubble
+    # Calculate how many LiDAR points the bubble covers based on bubble radius and angle increment
     angle_increment = self.angle_increment  # Assume you store angle_increment when node starts
     num_bubble_points = int(bubble_radius / angle_increment)
 
+    # Calculate the start and end indices for the bubble, ensuring they stay within valid bounds
     start_bubble_idx = max(0, closest_idx - num_bubble_points)
     end_bubble_idx = min(len(free_space_ranges) - 1, closest_idx + num_bubble_points)
 
-    # Flatten the safety bubble (zero out)
+    # Flatten the safety bubble: set all points within the bubble to 0 (obstacle)
     free_space_ranges[start_bubble_idx:end_bubble_idx + 1] = 0.0
 
-    # Step 3: Find the max consecutive non-zero gap
+    # Step 3: Find the maximum consecutive non-zero gap
     max_gap_size = 0
     max_start_idx = 0
     max_end_idx = 0
 
-    current_start = None
+    current_start = None  # Tracks the start index of the current free space sequence
 
+    # Loop through each point in the LiDAR scan
     for i, distance in enumerate(free_space_ranges):
         if distance > 0:
+            # If we find free space and haven't started a sequence, start one
             if current_start is None:
                 current_start = i
         else:
+            # If we hit an obstacle, check if the previous free space sequence was the longest
             if current_start is not None:
                 gap_size = i - current_start
                 if gap_size > max_gap_size:
                     max_gap_size = gap_size
                     max_start_idx = current_start
                     max_end_idx = i - 1
-                current_start = None
+                current_start = None  # Reset sequence
 
-    # Handle case where gap goes to the end
+    # Handle edge case: if the scan ends while we are still in a free space sequence
     if current_start is not None:
         gap_size = len(free_space_ranges) - current_start
         if gap_size > max_gap_size:
