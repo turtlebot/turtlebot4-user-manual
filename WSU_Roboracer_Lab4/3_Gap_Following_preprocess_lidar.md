@@ -22,21 +22,21 @@ Below is the Python implementation of the LiDAR preprocessing function, broken d
 import numpy as np
 
 # Function to clean and preprocess LiDAR data
-def preprocess_lidar(self, ranges):
-    # Convert incoming ranges list to a numpy array for efficient processing
-    cleaned_ranges = np.array(ranges)
+def preprocess_lidar(self, ranges, min_range=0.05, max_range=10.0):
+        # Convert incoming ranges list to a numpy array for efficient processing
+        processed_ranges = np.array(ranges, dtype=np.float32)
 
-    # Replace infinite values (measurements beyond sensor range) with MAX_RANGE
-    cleaned_ranges[np.isinf(cleaned_ranges)] = self.MAX_RANGE
+        # Replace infinite values (measurements beyond sensor range) with MAX_RANGE
+        processed_ranges[np.isinf(processed_ranges)] = max_range
 
-    # Replace NaN values (failed sensor measurements) with MAX_RANGE to avoid computational issues
-    cleaned_ranges[np.isnan(cleaned_ranges)] = self.MAX_RANGE
+        # Replace NaN values (failed sensor measurements) with MAX_RANGE to avoid computational issues
+        processed_ranges[np.isnan(processed_ranges)] = max_range
 
-    # Clip all values to ensure they are within realistic operational limits
-    cleaned_ranges = np.clip(cleaned_ranges, self.MIN_RANGE, self.MAX_RANGE)
+        # Clip all values to ensure they are within realistic operational limits
+        processed_ranges = np.clip(processed_ranges, min_range,max_range)
 
-    # Return the cleaned and processed LiDAR range data
-    return cleaned_ranges
+        # Return the cleaned and processed LiDAR range data
+        return processed_ranges
 ```
 
 ## Usage
@@ -49,6 +49,9 @@ def scan_callback(self, msg):
     processed_ranges = self.preprocess_lidar(msg.ranges)
     # Continue with gap detection logic...
 ```
+Example: Changing NaN and inf to 10m
+![preprocessed Data](media/preprocessed_data.png)
+
 
 Proper preprocessing enhances your gap-following algorithm's reliability by ensuring it operates on clean, valid data.
 
