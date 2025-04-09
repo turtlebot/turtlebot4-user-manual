@@ -74,14 +74,6 @@ Implement a gap follow algorithm to make the car drive autonomously around the t
 
 **Deliverable 2**: Make a screen cast of running your reactive node. 
 
-### VI. Grading Rubric
-
-- Compilation: **10** Points
-- Implemented Find-Max Gap: **40** Points
-- Implemented Find best point: **30** Points
-- Levine blocked Video: **10** Points
-- Levine obstacles Video: **10** Points
-
 ### VII. Extra Resources
 
 UNC Follow the Gap Video: https://youtu.be/ctTJHueaTcY
