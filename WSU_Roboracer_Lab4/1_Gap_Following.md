@@ -87,3 +87,11 @@ To change the map in the simulation, add the included `.png` and `.yaml` map fil
 ### VII. Extra Resources
 
 UNC Follow the Gap Video: https://youtu.be/ctTJHueaTcY
+
+<h3>Follow the Gap - Penn Engineering</h3>
+
+<iframe width="560" height="315" 
+    src="https://www.youtube.com/embed/5asfD-_Z9x8?" 
+    title="YouTube video - Follow the Gap"
+    frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+</iframe>
