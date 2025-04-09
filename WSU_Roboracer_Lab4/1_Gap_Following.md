@@ -66,15 +66,13 @@ The lecture slides on F1TENTH Follow the gap is the best visual resource for und
 
 ### IV. Implementation
 
-Implement a gap follow algorithm to make the car drive autonomously around the Levine Hall map. You can implement this node in either C++ or Python. There are two extra test maps `levine_blocked.png`, which is empty, and `levine_obs.png`, which has obstacles that are relatively hard to navigate through for you to evaluate your code on.
-
-To change the map in the simulation, add the included `.png` and `.yaml` map files to `f1tenth_gym_ros/maps` directory. Then, change `f1tenth_gym_ros/config/sim.yaml` to use your desired map.
+Implement a gap follow algorithm to make the car drive autonomously around the track. You can implement this node in either C++ or Python. 
 
 ### V. Deliverables and Submission
 
-**Deliverable 1**: After you're finished, update the entire skeleton package directory with your `gap_follow` package and directly commit and push to the repo Github classroom created for you. Your commited code should start and run in simulation smoothly.
+**Deliverable 1**: After you're finished, update the entire skeleton package directory with your `gap_follow` to canvas
 
-**Deliverable 2**: Make a screen cast of running your reactive node in the simulation. Include a link to the video on YouTube in **`SUBMISSION.md`**. The basic requirement is that your car should be able to navigate entire loops in `levine_blocked` map, and through at least most of the obstacles in `levine_obs` map. Make screen casts on both maps.
+**Deliverable 2**: Make a screen cast of running your reactive node. 
 
 ### VI. Grading Rubric
 
