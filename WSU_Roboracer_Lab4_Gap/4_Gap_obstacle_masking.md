@@ -4,11 +4,6 @@ sort: 4
 
 # Obstacle Masking
 
-Got it —  
-you just want **the obstacle masking content** for now, **no front-matter headers** (`---`, `sort: X`, etc.),  
-**no GitHub Pages formatting**, just **normal Markdown** or clean text to build from.  
-Perfect, here’s the cleaned version you can work with easily:
-
 ---
 
 # 🛡 Obstacle Masking: Creating a Safety Bubble
