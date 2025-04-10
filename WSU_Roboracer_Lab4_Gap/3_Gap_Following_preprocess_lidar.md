@@ -72,16 +72,14 @@ Example: Changing NaN and inf to 10m
 Proper preprocessing enhances your gap-following algorithm's reliability by ensuring it operates on clean, valid data.
 
 
-## Optional Smoothing Example
-
-# 📄 Preprocessing LiDAR: Optional Smoothing
+##  Preprocessing LiDAR: Optional Smoothing
 
 In addition to cleaning NaN and infinite values, another important preprocessing step is **smoothing**.  
 Smoothing helps to eliminate small noisy spikes in LiDAR data while preserving the important obstacle structures.
 
 ---
 
-## 🛠 Why Apply Smoothing?
+### 🛠 Why Apply Smoothing?
 
 - Real-world LiDAR sensors introduce small random noise into distance measurements.
 - Smoothing **removes small, isolated errors** and **makes obstacle shapes cleaner**.
@@ -89,7 +87,7 @@ Smoothing helps to eliminate small noisy spikes in LiDAR data while preserving t
 
 ---
 
-## ✏️ Moving Average Smoothing (Simple Concept)
+### Moving Average Smoothing (Simple Concept)
 
 We replace each LiDAR distance with the **average of itself and its neighbors**.
 
@@ -101,7 +99,7 @@ Notice how the 100.0 spike gets blended smoothly!
 
 ---
 
-## ⚙️ Python Code: Smoothing with Convolution
+### Python Code: Smoothing with Convolution
 
 The most efficient way to apply moving average smoothing is using **`np.convolve`**:
 
@@ -133,7 +131,7 @@ def smooth_lidar(self, ranges, window_size=5):
 
 ---
 
-## 🛠 How Smoothing Fits into Preprocessing
+### How Smoothing Fits into Preprocessing
 
 You would call smoothing **after**:
 1. Replacing NaN values
@@ -148,7 +146,7 @@ proc_ranges = self.smooth_lidar(proc_ranges, window_size=5)
 
 ---
 
-## ⚡ Why Convolution?
+### Why Convolution?
 
 | Manual Loop | Convolution |
 |:-----------|:------------|
@@ -160,7 +158,7 @@ proc_ranges = self.smooth_lidar(proc_ranges, window_size=5)
 
 ---
 
-## 🔥 Tip: Choosing Window Size
+### Tip: Choosing Window Size
 
 | Window Size | Behavior |
 |:-----------|:---------|
@@ -173,7 +171,7 @@ proc_ranges = self.smooth_lidar(proc_ranges, window_size=5)
 
 ---
 
-# 📊 Before vs After Example
+### Before vs After Example
 
 ```
 Raw Scan:
