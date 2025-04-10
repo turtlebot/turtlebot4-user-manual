@@ -15,20 +15,62 @@ In the context of F1TENTH racing, the **Follow the Gap** method refers to an obs
 ![Gap2](media/gap2.jpg)
 ![Gap3](media/gap3.jpg)
 
-## Step-by-Step Process
-1. **Data Acquisition**:
-   - Acquire a LiDAR scan around the vehicle (left range[180] of car to right range[900] of car).
-2. **Preprocessing**:
-   - Filter out noisy data points.
-   - Possibly add safety margins around obstacles.
-3. **Gap Detection**:
-   - Examine the range data and group consecutive points that exceed a certain distance threshold into "gaps."
-4. **Best Gap Selection**:
-   - Choose the widest continuous gap or the safest navigable gap based on predetermined safety criteria.
-5. **Goal Selection Within the Gap**:
-   - Define a steering target at the midpoint of the selected gap.
-6. **Navigation Command**:
-   - Calculate steering angle and speed to guide the car safely through the identified gap.
+Here’s an updated version of your **Step-by-Step Process** ✍️ — now fully aligned with the **new full skeleton code** you just built:
+
+---
+
+# 📚 Updated Step-by-Step Process
+
+## 1. **Data Acquisition**
+- Receive a **full 360° LiDAR scan** (`LaserScan` message).
+- For the Hokuyo LiDAR, **flip the scan** if necessary to match intuitive left-to-right ordering.
+- (Optional) Focus on a **front window** (e.g., ±90°), but default is to use the **full scan**.
+
+---
+
+## 2. **Preprocessing**
+- **Clean the raw LiDAR ranges**:
+  - Replace **NaN** values with maximum range.
+  - Replace **infinite** values with maximum range.
+  - **Clip** distances to be within a realistic minimum/maximum range.
+- (Optional) **Apply smoothing** (e.g., moving average) to reduce small noise spikes.
+
+---
+
+## 3. **Obstacle Masking (Safety Bubble)**
+- **Find the closest obstacle** in the LiDAR scan.
+- **Create a safety bubble** around the closest obstacle:
+  - Set all ranges inside the bubble radius to **zero** (obstacle).
+  - This eliminates unsafe directions close to collisions.
+
+---
+
+## 4. **Gap Detection**
+- Treat **non-zero regions** in the processed ranges as **free space**.
+- **Find the longest continuous sequence** of non-zero points:
+  - This is the **largest navigable gap**.
+
+---
+
+## 5. **Best Point Selection Within the Gap**
+- Two options:
+  - **Farthest Point Method**:  
+    Select the furthest reachable point in the gap.
+  - **Disparity Method**:  
+    Detect edges (sudden changes in distance) and **steer between obstacles** using disparities for smarter behavior.
+- Both methods output a **best point index** to steer toward.
+
+---
+
+## 6. **Navigation Command**
+- Calculate the **steering angle**:
+  - Based on the angular difference between the car’s center and the best point.
+- (Optional) Adjust **speed proportionally**:
+  - **Lower speed** for large steering angles (tight turns).
+  - **Higher speed** for small steering angles (straight).
+- Publish an **AckermannDriveStamped** message with the calculated steering and speed.
+
+---
 
 ## Practical Considerations
 - Adjusting safety margins based on the speed and agility of the vehicle.
@@ -51,7 +93,7 @@ In the context of F1TENTH racing, the **Follow the Gap** method refers to an obs
 
 ## II. Overview
 
-In this lab, you will implement a reactive algorithm for obstacle avoidance. While the base starter code defines an implementation of the F1TENTH Follow the Gap Algorithm, you are allowed to submit in C++, and encouraged to try different reactive algorithms or a combination of several. In total, the python code for the algorithm is only about 120 lines.
+In this lab, you will implement a reactive algorithm for obstacle avoidance. While the base starter code defines an implementation of the F1TENTH Follow the Gap Algorithm, you are allowed to submit in C++, and encouraged to try different reactive algorithms or a combination of several.
 
 ## III. Review of F1TENTH Follow the Gap
 
