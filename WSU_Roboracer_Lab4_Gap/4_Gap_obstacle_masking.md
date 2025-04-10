@@ -11,6 +11,8 @@ sort: 4
 Before we find gaps to drive through, we must ensure that the robot **doesn't hit obstacles**.  
 We create a **Safety Bubble** — an area around the closest detected object where driving is not allowed.
 
+![obstacle masking](media/obstacle_masking.png)
+
 ---
 
 ## 🛠 Why Create a Safety Bubble?
