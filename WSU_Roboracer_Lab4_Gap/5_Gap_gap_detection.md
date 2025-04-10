@@ -1,8 +1,8 @@
 ---
-sort: 4
+sort: 5
 ---
 
-# Max Gap
+# Gap Detection
 
 # Follow The Gap - Step-by-Step Breakdown
 
