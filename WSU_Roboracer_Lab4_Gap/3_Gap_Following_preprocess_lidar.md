@@ -72,14 +72,14 @@ Example: Changing NaN and inf to 10m
 Proper preprocessing enhances your gap-following algorithm's reliability by ensuring it operates on clean, valid data.
 
 
-##  Preprocessing LiDAR: Optional Smoothing
+## (Optional) Smoothing
 
 In addition to cleaning NaN and infinite values, another important preprocessing step is **smoothing**.  
 Smoothing helps to eliminate small noisy spikes in LiDAR data while preserving the important obstacle structures.
 
 ---
 
-### 🛠 Why Apply Smoothing?
+### Why Apply Smoothing?
 
 - Real-world LiDAR sensors introduce small random noise into distance measurements.
 - Smoothing **removes small, isolated errors** and **makes obstacle shapes cleaner**.
