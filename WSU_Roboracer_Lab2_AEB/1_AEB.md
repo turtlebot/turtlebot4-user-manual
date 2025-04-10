@@ -2,7 +2,7 @@
 sort: 1
 ---
 
-# Lab 2: AEB Assignment
+# Lab 2: Automatic Emergency Braking
 
 ## I. Learning Goals
 
@@ -65,7 +65,7 @@ You can implement this node in either C++ or Python. A skeleton package is avail
 
 **Deliverable 1**: After you're finished, update the entire skeleton package directory with your `safety_node`. Upload your code to canvas
 
-**Deliverable 2**: Make a screen cast of running your safety node. Drive the car showing it doesn't brake when travelling straight in the hallway. You need to show that your safe node doesn't generate false positives. i.e. The car doesn't suddenly stop while travelling down the hallway. Then show the car driving towards an object and braking correctly. Upload your video to canvas.
+**Deliverable 2**: Make a screen cast of running your safety node. Drive the car showing it doesn't brake when traveling straight in the hallway. You need to show that your safe node doesn't generate false positives. i.e. The car doesn't suddenly stop while traveling down the hallway. Then show the car driving towards an object and braking correctly. Upload your video to canvas.
 
 ## VI: Grading Rubric
 - Compilation: **30** Points
