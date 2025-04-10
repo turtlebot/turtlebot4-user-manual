@@ -4,13 +4,13 @@ sort: 1
 
 # Lab 2: Automatic Emergency Braking
 
-## I. Learning Goals
+## **1️⃣ Learning Goals**
 
 - Using the `LaserScan` message in ROS 2
 - Instantaneous Time to Collision (iTTC)
 - Safety critical systems
 
-## II. Overview
+## **2️⃣ Overview**
 
 The goal of this lab is to develop a safety node for the race cars that will stop the car from collision when travelling at higher velocities. We will implement Instantaneous Time to Collision (iTTC) using the `LaserScan` message in the simulator.
 
@@ -29,7 +29,7 @@ Both the simulator node and the car itself publish [Odometry](http://docs.ros.or
 
 You've already used [AckermannDriveStamped](http://docs.ros.org/en/jade/api/ackermann_msgs/html/msg/AckermannDriveStamped.html) in the previous lab. It will be the message type that we'll use throughout the course to send driving commands to the simulator and the car. In the simulator, you can stop the car by sending an `AckermannDriveStamped` message with the `speed` field set to 0.0.
 
-## III. The TTC Calculation
+## **3️⃣ The TTC Calculation**
 
 Time to Collision (TTC) is the time it would take for the car to collide with an obstacle if it maintained its current heading and velocity. We approximate the time to collision using Instantaneous Time to Collision (iTTC), which is the ratio of instantaneous range to range rate calculated from current range measurements and velocity measurements of the vehicle.
 
@@ -49,7 +49,7 @@ Note the negation in the calculation this is to correctly interpret whether the 
 
 After your calculations, you should end up with an array of iTTCs that correspond to each angle. When a time to collision drops below a certain threshold, it means a collision is imminent.
 
-## IV. Automatic Emergency Braking with iTTC
+## **4️⃣ Automatic Emergency Braking with iTTC**
 
 For this lab, you will make a Safety Node that should halt the car before it collides with obstacles. To do this, you will make a ROS 2 node that subscribes to the `LaserScan` and `Odometry` messages. It should analyze the `LaserScan` data and, if necessary, publish an `AckermannDriveStamped` with the `speed` field set to 0.0 m/s to brake. After you've calculated the array of iTTCs, you should decide how to proceed with this information. You'll have to decide how to threshold, and how to best remove false positives (braking when collision isn't imminent). Don't forget to deal with `inf`s or `nan`s in your arrays.
 
@@ -60,14 +60,14 @@ Note the following topic names for your publishers and subscribers:
 - `Odometry`: /odom, specifically, the longitudinal velocity of the vehicle can be found in `twist.twist.linear.x`
 - `AckermannDriveStamped`: /drive
 
-## V: Deliverables and Submission
+## **5️⃣ Deliverables and Submission **
 You can implement this node in either C++ or Python. A skeleton package is available on the [AEB Notes Page](WSU_Roboracer_Lab2/2_AEB_Notes.md). Put your package in `/src` folder.
 
 **Deliverable 1**: After you're finished, update the entire skeleton package directory with your `safety_node`. Upload your code to canvas
 
 **Deliverable 2**: Make a screen cast of running your safety node. Drive the car showing it doesn't brake when traveling straight in the hallway. You need to show that your safe node doesn't generate false positives. i.e. The car doesn't suddenly stop while traveling down the hallway. Then show the car driving towards an object and braking correctly. Upload your video to canvas.
 
-## VI: Grading Rubric
+## **6️⃣ Grading Rubric **
 - Compilation: **30** Points
 - Provided Video: **20** Points
 - Correctly stops before collision: **30** Points
