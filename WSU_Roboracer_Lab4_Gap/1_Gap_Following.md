@@ -15,20 +15,18 @@ In the context of F1TENTH racing, the **Follow the Gap** method refers to an obs
 ![Gap2](media/gap2.jpg)
 ![Gap3](media/gap3.jpg)
 
-Here’s an updated version of your **Step-by-Step Process** ✍️ — now fully aligned with the **new full skeleton code** you just built:
-
 ---
 
-# 📚 Updated Step-by-Step Process
+## Step-by-Step Process
 
-## 1. **Data Acquisition**
+### 1. **Data Acquisition**
 - Receive a **full 360° LiDAR scan** (`LaserScan` message).
 - For the Hokuyo LiDAR, **flip the scan** if necessary to match intuitive left-to-right ordering.
 - (Optional) Focus on a **front window** (e.g., ±90°), but default is to use the **full scan**.
 
 ---
 
-## 2. **Preprocessing**
+### 2. **Preprocessing**
 - **Clean the raw LiDAR ranges**:
   - Replace **NaN** values with maximum range.
   - Replace **infinite** values with maximum range.
@@ -37,7 +35,7 @@ Here’s an updated version of your **Step-by-Step Process** ✍️ — now full
 
 ---
 
-## 3. **Obstacle Masking (Safety Bubble)**
+### 3. **Obstacle Masking (Safety Bubble)**
 - **Find the closest obstacle** in the LiDAR scan.
 - **Create a safety bubble** around the closest obstacle:
   - Set all ranges inside the bubble radius to **zero** (obstacle).
@@ -45,14 +43,14 @@ Here’s an updated version of your **Step-by-Step Process** ✍️ — now full
 
 ---
 
-## 4. **Gap Detection**
+### 4. **Gap Detection**
 - Treat **non-zero regions** in the processed ranges as **free space**.
 - **Find the longest continuous sequence** of non-zero points:
   - This is the **largest navigable gap**.
 
 ---
 
-## 5. **Best Point Selection Within the Gap**
+### 5. **Best Point Selection Within the Gap**
 - Two options:
   - **Farthest Point Method**:  
     Select the furthest reachable point in the gap.
@@ -62,7 +60,7 @@ Here’s an updated version of your **Step-by-Step Process** ✍️ — now full
 
 ---
 
-## 6. **Navigation Command**
+### 6. **Navigation Command**
 - Calculate the **steering angle**:
   - Based on the angular difference between the car’s center and the best point.
 - (Optional) Adjust **speed proportionally**:
@@ -85,17 +83,17 @@ Here’s an updated version of your **Step-by-Step Process** ✍️ — now full
 - May lead to oscillations or suboptimal paths in complex scenarios.
 - Doesn’t inherently incorporate global path planning
 
-# Lab 4: Follow the Gap
+## Lab 4: Follow the Gap
 
-## I. Learning Goals
+### I. Learning Goals
 
 - Reactive methods for obstacle avoidance
 
-## II. Overview
+### II. Overview
 
 In this lab, you will implement a reactive algorithm for obstacle avoidance. While the base starter code defines an implementation of the F1TENTH Follow the Gap Algorithm, you are allowed to submit in C++, and encouraged to try different reactive algorithms or a combination of several.
 
-## III. Review of F1TENTH Follow the Gap
+### III. Review of F1TENTH Follow the Gap
 
 The lecture slides on F1TENTH Follow the gap is the best visual resource for understanding every step of the algorithm. However, the steps are outlined over here:
 
