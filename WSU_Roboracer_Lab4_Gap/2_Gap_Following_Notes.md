@@ -94,9 +94,10 @@ class GapFollow(Node):
     def preprocess_lidar(self, ranges):
         """
         Preprocess the LiDAR scan array. Preprocessing steps may include:
-            1. Smoothing (e.g., moving average)
-            2. Clipping maximum range values
-            3. Handling NaN or inf values
+            
+            1. Clipping maximum range values
+            2. Handling NaN or inf values
+            3. (Optional) Smoothing (e.g., moving average)
 
         Args:
             ranges (list): Raw LiDAR distance readings
@@ -106,16 +107,16 @@ class GapFollow(Node):
         """
         proc_ranges = np.array(ranges)
 
-        # TODO: Clip values that are too far (e.g., > 3 meters) to a maximum distance
+        # TODO: 1. Clip values that are too far (e.g., > 3 meters) to a maximum distance
         # Hint: Use np.clip()
 
-        # TODO: Replace NaN values with a maximum valid distance
+        # TODO: 2. Replace NaN values with a maximum valid distance
         # Hint: Use np.isnan()
 
-        # TODO: Replace infinite values with a maximum valid distance
+        # TODO: 2. Replace infinite values with a maximum valid distance
         # Hint: Use np.isinf()
 
-        # Optional TODO: Apply smoothing (e.g., moving average) if desired
+        # Optional TODO: 3. Apply smoothing (e.g., moving average) if desired
 
         return proc_ranges
 
