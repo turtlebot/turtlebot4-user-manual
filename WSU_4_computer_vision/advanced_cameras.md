@@ -119,6 +119,9 @@ Run
 ```bash
   depthai-viewer
 ```
+
+Select the camera from the menu at the top right
+
 ![depthai_viewer](media/depthai_viewer.png)
 
 ### DepthAI installation
