@@ -115,6 +115,12 @@ Execute the script below to install DepthAI on Linux systems:
 
 Plug in the OAK-D Pro into the host computer
 
+Run
+```bash
+  depthai-viewer
+```
+![depthai_viewer](media/depthai_viewer.png)
+
 ### DepthAI installation
 
 [Full Instructions](https://docs.luxonis.com/en/latest/pages/tutorials/first_steps/#first-steps-with-depthai)
