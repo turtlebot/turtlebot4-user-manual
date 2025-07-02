@@ -199,7 +199,7 @@ ros2 topic echo /ip
 On your PC, run the following commands:
 
 ```bash
-source /opt/ros/humble/setup.bash
+source /opt/ros/jazzy/setup.bash
 export RMW_IMPLEMENTATION=rmw_fastrtps_cpp
 export ROS_DOMAIN_ID=0
 ros2 topic echo /ip
