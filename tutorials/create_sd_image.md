@@ -86,7 +86,7 @@ sudo tune2fs -l /dev/mmcblk0p2 |grep -i "block size"
 This will produce output like this, indicating the block size in bytes:
 ```
 Block size:               4096
-```.
+```
 
 Multiply the number of used blocks (`1770531`) by the block size (`4096`) to determine the number
 of bytes used by the filesystem, `7252094976` in this example. Round this value up slightly to
