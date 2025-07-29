@@ -19,12 +19,12 @@ SSH into the Turtlebot and run any or all of the following commands:
 sudo journalctl --flush --rotate
 sudo journalctl --vacuum-time=1s
 
+# Clean cached apt packages
+sudo apt clean
+
 # Empty Bash History
 rm .bash_history
 history -c
-
-# Clean cached apt packages
-sudo apt clean
 ```
 
 ## Remove the microSD card
