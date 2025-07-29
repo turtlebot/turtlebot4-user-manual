@@ -140,7 +140,7 @@ the size by 0.2. Multiply this result by `2^30`: `(7.5 + 0.2) * 2^30 = 7.7 * 107
 Add this value to the start position of partition `2` in bytes (`538 * 2**20 = 564133888`):
 `8267812044.8 + 564133888 = 8831945932.8`. Divide this value by the block size of `512`:
 `8831945932.8 / 512 = 17249894.4`. Round this value up to the next `1000` to get the new end sector
-for partition `2`: `17249894.4 -> 17260000`. Note this number for the next step.
+for partition `2`: `17249894.4 -> 17250000`. Note this number for the next step.
 
 In `parted` run the following command to resize the partition:
 ```
@@ -159,7 +159,7 @@ sudo fdisk -l /dev/mmcblk0
 
 Finally we can create the SD card image using the `dd` command:
 ```bash
-sudo dd if=/dev/mmcblk0 of=turtlebot4_custom_sd_image.img bs=512 count=17260000 status=progress
+sudo dd if=/dev/mmcblk0 of=turtlebot4_custom_sd_image.img bs=512 count=17250000 status=progress
 ```
 replacing the `of` value with the name you wish to give the image and the `count` with the end
 sector you determined in the previous step.
