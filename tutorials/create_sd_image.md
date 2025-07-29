@@ -146,6 +146,7 @@ In `parted` run the following command to resize the partition:
 ```
 resizepart 2 17260000s
 ```
+Note that the `s` after the number is required to specify the end sector.
 
 When the operation completes re-run the `print` command to make sure the change was applied.
 Quit `parted` by typing `quit`.
