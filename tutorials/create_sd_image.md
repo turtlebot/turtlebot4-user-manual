@@ -35,7 +35,7 @@ have a built-in microSD card reader).
 
 Open a terminal and perform the following steps.
 
-### Determine the card's device file
+## Determine the card's device file
 
 Determine the microSD card's device handle on your laptop. Run `lsblk -d -e7` in a terminal to
 list connected storage devices. The output should look something like this:
@@ -49,7 +49,7 @@ Find the drive whose size is closest to your microSD card and note its name. In 
 a 32GB card is used, so the 29.7G drive, named `mmcblk0` is the card. Note this name for subsequent
 steps.
 
-### Shrink the filesystem
+## Shrink the filesystem
 
 Typically the file system on the microSD card will not take up the entire drive. By shrinking the
 filesystem we can reduce the size of the image we will create.  Run the following commands,
@@ -105,7 +105,7 @@ sudo e2fsck -f /dev/mmcblk0p2
 ```
 to make sure nothing was corrupted.
 
-### Shrink the partition
+## Shrink the partition
 
 After shrinking the filesystem we can resize the actual partition.
 
@@ -155,7 +155,7 @@ In the `bash` terminal, check tne number of sectors in the disk:
 sudo fdisk -l /dev/mmcblk0
 ```
 
-### Make the image
+## Make the image
 
 Finally we can create the SD card image using the `dd` command:
 ```bash
@@ -164,7 +164,7 @@ sudo dd if=/dev/mmcblk0 of=turtlebot4_custom_sd_image.img bs=512 count=17260000 
 replacing the `of` value with the name you wish to give the image and the `count` with the end
 sector you determined in the previous step.
 
-### Flashing the image
+## Flashing the image
 
 You can flash your new Turtlebot4 image by following the
 [same steps](../setup/basic.md#install-latest-raspberry-pi-image) you would use to install the
