@@ -47,7 +47,8 @@ nvme0n1 259:0    0 476.9G  0 disk
 
 Find the drive whose size is closest to your microSD card and note its name. In the example above
 a 32GB card is used, so the 29.7G drive, named `mmcblk0` is the card. Note this name for subsequent
-steps.
+steps. Anytime in the following instructions, wherever you see `mmcblk0` replace it with your SD
+card's file if it is different.
 
 > **WARNING**
 >
