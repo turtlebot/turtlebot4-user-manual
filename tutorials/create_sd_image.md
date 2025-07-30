@@ -89,10 +89,10 @@ Block size:               4096
 ```
 
 Multiply the number of used blocks (`1770531`) by the block size (`4096`) to determine the number
-of bytes used by the filesystem, `7252094976` in this example. Round this value up slightly to
-get the number of gigabytes to resize the filesystem to. It is advisable to add a little extra
-room, e.g. 0.25 to 0.5GB to make sure there's extra room in the filesystem the first time it boots.
-In this example we have approximately 7.25GB used, so we will round up to 7.5GB.
+of bytes used by the filesystem, `1770531 * 4096 = 7252094976` in this example. Round this value
+up slightly to get the number of gigabytes to resize the filesystem to. It is advisable to add a
+little extra room, e.g. 0.25 to 0.5GB to make sure there's extra room in the filesystem the first
+time it boots. In this example we have approximately 7.25GB used, so we will round up to 7.5GB.
 
 Resize the filesystem by running
 ```bash
