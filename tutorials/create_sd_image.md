@@ -49,7 +49,22 @@ Find the drive whose size is closest to your microSD card and note its name. In 
 a 32GB card is used, so the 29.7G drive, named `mmcblk0` is the card. Note this name for subsequent
 steps.
 
+> **WARNING**
+>
+> The following steps will make modifications to your SD card. To make a simple backup that will not
+> modify the SD card, run
+>
+> ```bash
+> sudo dd if=/dev/mmcblk0 of=my_turtlebot_backup.img status=progress
+> ```
+>
+> This will produce a much larger image on-disk, but will not modify the SD card you are copying.
+
 ## Shrink the filesystem
+
+> **WARNING**
+>
+> This step will modify the SD card.
 
 Typically the file system on the microSD card will not take up the entire drive. By shrinking the
 filesystem we can reduce the size of the image we will create.  Run the following commands,
@@ -62,7 +77,8 @@ for part in $(ls /dev/mmcblk0p*); do
 done
 ```
 
-Determine the size of the main storage partition:
+Determine the size of the main storage partition. Using the standard Turtlebot SD card images, this
+is partition `p2`. If you have created your own custom image the partition may be different.
 ```bash
 sudo e2fsck -f /dev/mmcblk0p2
 ```
@@ -107,7 +123,13 @@ to make sure nothing was corrupted.
 
 ## Shrink the partition
 
-After shrinking the filesystem we can resize the actual partition.
+> **WARNING**
+>
+> This step will modify the SD card.
+
+After shrinking the filesystem we can resize the actual partition. The instructions below assume
+you are using the standard Turtlebot 4 SD card image, where the user data is stored on the second
+partition. If you have a custom image you may need to resize a different partition.
 
 Run the following command:
 ```bash
@@ -162,8 +184,10 @@ Finally we can create the SD card image using the `dd` command:
 ```bash
 sudo dd if=/dev/mmcblk0 of=turtlebot4_custom_sd_image.img bs=512 count=17250000 status=progress
 ```
-replacing the `of` value with the name you wish to give the image and the `count` with the end
-sector you determined in the previous step.
+with the following substitutions:
+- `if` is set to the SD card's device file,
+- `of` is the name you wish to give the image, and
+- `count` is the number of the end sector determined in the previous step.
 
 ## Flashing the image
 
