@@ -55,7 +55,7 @@ Typically the file system on the microSD card will not take up the entire drive.
 filesystem we can reduce the size of the image we will create.  Run the following commands,
 replacing `mmcblk0` with the name of your card if necessary.
 
-Unmount the partitions if they are mounted"
+Unmount the partitions if they are mounted:
 ```bash
 for part in $(ls /dev/mmcblk0p*); do
   sudo umount $part
