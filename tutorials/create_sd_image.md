@@ -144,7 +144,7 @@ for partition `2`: `17249894.4 -> 17250000`. Note this number for the next step.
 
 In `parted` run the following command to resize the partition:
 ```
-resizepart 2 17260000s
+resizepart 2 17250000s
 ```
 Note that the `s` after the number is required to specify the end sector.
 
