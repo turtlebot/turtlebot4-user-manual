@@ -116,7 +116,7 @@ sudo parted /dev/mmcblk0
 `parted` is a command-line tool with many options.
 
 Run the `print` command to print the size of the partition in GiB. One GiB is `2^30 = 1073741824`
-bytes, as opposed to one GB which is `10^9 = 1000000` bytes, so the numbers printed will not
+bytes, as opposed to one GB which is `10^9 = 1000000000` bytes, so the numbers printed will not
 necessarily be the same as in previous steps. The output of the `print` command will look
 something like this:
 ```
