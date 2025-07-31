@@ -247,8 +247,7 @@ You will be greeted by a menu with several submenus. From here you can navigate 
 <u><b style="font-size: 20px;">Usage</b></u>
 
 ```warning
-You _must_ select the `Apply Settings` option and press `Enter` before quitting to apply any changes you have made to the robot.
-Quitting without applying the settings will discard any changes you have staged.
+You _must_ select the `Apply Settings` option and press `Enter` before quitting to apply any changes you have made to the robot. Quitting without applying the settings will discard any changes you have staged.
 ```
 
 You can navigate up and down between the menus by using the `up` and `down` arrow keys, or `j` and `k`. To select a menu,
@@ -579,8 +578,7 @@ You will be greeted by a menu with several submenus. From here you can navigate 
 <u><b style="font-size: 20px;">Usage</b></u>
 
 ```warning
-You _must_ select the `Apply Settings` option and press `Enter` before quitting to apply any changes you have made to the robot.
-Quitting without applying the settings will discard any changes you have staged.
+You _must_ select the `Apply Settings` option and press `Enter` before quitting to apply any changes you have made to the robot. Quitting without applying the settings will discard any changes you have staged.
 ```
 
 You can navigate up and down between the menus by using the `up` and `down` arrow keys, or `j` and `k`. To select a menu,
