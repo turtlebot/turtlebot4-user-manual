@@ -50,8 +50,7 @@ a 32GB card is used, so the 29.7G drive, named `mmcblk0` is the card. Note this 
 steps. Anytime in the following instructions, wherever you see `mmcblk0` replace it with your SD
 card's file if it is different.
 
-> **WARNING**
->
+> [!WARNING]
 > The following steps will make modifications to your SD card. To make a simple backup that will not
 > modify the SD card, run
 >
@@ -63,8 +62,7 @@ card's file if it is different.
 
 ## Shrink the filesystem
 
-> **WARNING**
->
+> [!WARNING]
 > This step will modify the SD card.
 
 Typically the file system on the microSD card will not take up the entire drive. By shrinking the
@@ -124,8 +122,7 @@ to make sure nothing was corrupted.
 
 ## Shrink the partition
 
-> **WARNING**
->
+> [!]
 > This step will modify the SD card.
 
 After shrinking the filesystem we can resize the actual partition. The instructions below assume
