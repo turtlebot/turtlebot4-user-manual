@@ -120,7 +120,8 @@ In your SSH session, run the [TurtleBot 4 setup tool](../software/turtlebot4_set
 turtlebot4-setup
 ```
 
-This will start the TurtleBot 4 setup tool. Navigate to the "Wi-Fi Setup" menu and configure your connection. When you have finished, save and apply the settings.
+This will start the TurtleBot 4 setup tool. Navigate to the "Wi-Fi Setup" menu and configure your connection. When you have finished, save the wifi settings, then
+return to the main menu. Select `Apply Settings` and press `Enter` before quitting the `turtlebot4-setup` tool.
 
 <figure class="aligncenter">
     <img src="media/wifi_setup.gif" alt="Wi-Fi setup" style="width: 100%"/>
@@ -140,7 +141,8 @@ In your SSH session, run the [TurtleBot 4 setup tool](../software/turtlebot4_set
 turtlebot4-setup
 ```
 
-This will start the TurtleBot 4 setup tool. Navigate to the "Wi-Fi Setup" menu and configure your connection. When you have finished, save and apply the settings.
+This will start the TurtleBot 4 setup tool. Navigate to the "Wi-Fi Setup" menu and configure your connection. When you have finished, save the wifi settings, then
+return to the main menu. Select `Apply Settings` and press `Enter` before quitting the `turtlebot4-setup` tool.
 
 <figure class="aligncenter">
     <img src="media/wifi_setup.gif" alt="Wi-Fi setup" style="width: 100%"/>
@@ -365,7 +367,8 @@ SSH into the Raspberry Pi and run the [TurtleBot 4 setup tool](../software/turtl
 turtlebot4-setup
 ```
 
-Go to <b>Wi-Fi Setup</b> and select <b>Apply Defaults</b>. Optionally you can set your own SSID and password before saving and applying the new settings.
+Go to <b>Wi-Fi Setup</b> and select <b>Apply Defaults</b>. Optionally you can set your own SSID and password before saving. Return to the main menu and select
+`Apply Settings` and press `Enter` before quitting the `turtlebot4-setup` tool.
 
 {% endtab %}
 {% tab ap jazzy %}
@@ -376,7 +379,8 @@ SSH into the Raspberry Pi and run the [TurtleBot 4 setup tool](../software/turtl
 turtlebot4-setup
 ```
 
-Go to <b>Wi-Fi Setup</b> and select <b>Apply Defaults</b>. Optionally you can set your own SSID and password before saving and applying the new settings.
+Go to <b>Wi-Fi Setup</b> and select <b>Apply Defaults</b>. Optionally you can set your own SSID and password before saving. Return to the main menu and select
+`Apply Settings` and press `Enter` before quitting the `turtlebot4-setup` tool.
 
 {% endtab %}
 {% endtabs %}
