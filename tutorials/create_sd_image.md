@@ -174,7 +174,7 @@ Note that the `s` after the number is required to specify the end sector.
 When the operation completes re-run the `print` command to make sure the change was applied.
 Quit `parted` by typing `quit`.
 
-In the `bash` terminal, check tne number of sectors in the disk:
+In the `bash` terminal, check the number of sectors in the disk:
 ```bash
 sudo fdisk -l /dev/mmcblk0
 ```
