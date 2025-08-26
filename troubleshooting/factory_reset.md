@@ -41,5 +41,5 @@ This will permanently delete all information on the SD card; make sure you have 
 
  After reset
 
-After you have reset your TurtleBot 4, proceed the [connect it to wifi](../setup/basic.md#connect-the-raspberry-pi-to-your-network) and
+After you have reset your TurtleBot 4, proceed to [connect it to wifi](../setup/basic.md#connect-the-raspberry-pi-to-your-network) and
 [pair the controller](../setup/basic.md#turtlebot-4-controller-manual-setup).
