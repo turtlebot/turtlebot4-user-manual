@@ -34,12 +34,12 @@ Scroll to the very bottom of the `About` screen. There you will find a hyperlink
 The Create® 3 factory reset link will reset all user configurations, but will not reinstall the firmware. ROS namespaces,
 domain IDs, custom safety parameters, and any custom networking configurations will all be deleted.
 
- Resetting the Raspberry Pi
+## Resetting the Raspberry Pi
 
 To reset the Raspberry Pi, [reinstall the SD card image](../setup/basic.md#install-latest-raspberry-pi-image).
 This will permanently delete all information on the SD card; make sure you have any essential data backed up.
 
- After reset
+## After reset
 
 After you have reset your TurtleBot 4, proceed to [connect it to wifi](../setup/basic.md#connect-the-raspberry-pi-to-your-network) and
 [pair the controller](../setup/basic.md#turtlebot-4-controller-manual-setup).
