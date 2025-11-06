@@ -17,12 +17,14 @@ Ensure that it is showing the correct version.
     <summary><b>Configuring Ubuntu 24.04</b></summary>
     By default, Ubuntu 24.04 uses a debian-packaged version of Ruby, which installs gems to a root-owned path. This makes installing additional gems problematic.
     To work around this issue, run the following commands:
+
     ```shell
     mkdir $HOME/.ruby
     echo 'export GEM_HOME=$HOME/.ruby/' >> $HOME/.bashrc
     echo 'export PATH="$PATH:$HOME/.ruby/bin"' >> $HOME/.bashrc
     source $HOME/.bashrc
     ```
+
     This will make the `gem` command install Ruby gems to your local user's `.ruby` directory.
 </details>
 </p>
