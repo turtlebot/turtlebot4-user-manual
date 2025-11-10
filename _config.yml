@@ -26,3 +26,5 @@ plugins:
   - jekyll-mentions
   - jekyll-tabs
   - jekyll-remote-theme
+
+github: [metadata]
