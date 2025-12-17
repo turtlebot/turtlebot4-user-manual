@@ -1,7 +1,7 @@
 ---
-sort: 9
+sort: 2
 ---
 
-# WSU - Inroduction to Linux
+# WSU - Inro 00 - Linux
 
 {% include list.liquid all=true %}
