@@ -55,7 +55,8 @@ sudo apt update
 sudo apt install ros-jazzy-turtlebot4-description \
 ros-jazzy-turtlebot4-msgs \
 ros-jazzy-turtlebot4-navigation \
-ros-jazzy-turtlebot4-node
+ros-jazzy-turtlebot4-node \
+ros-jazzy-irobot-create-description
 ```
 
 {% endtab %}
